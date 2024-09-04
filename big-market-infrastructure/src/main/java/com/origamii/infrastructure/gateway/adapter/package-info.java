@@ -1,0 +1,1 @@
+package com.origamii.infrastructure.gateway.adapter;

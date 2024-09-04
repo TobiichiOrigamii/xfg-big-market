@@ -1,0 +1,1 @@
+package com.origamii.domain.xxx.service;
