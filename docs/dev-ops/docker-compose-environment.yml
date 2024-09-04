@@ -8,7 +8,7 @@ services:
     restart: always
     environment:
       TZ: Asia/Shanghai
-      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: dsdswww111
     networks:
       - my-network
     depends_on:
@@ -18,13 +18,11 @@ services:
     volumes:
       - ./mysql/sql:/docker-entrypoint-initdb.d
     healthcheck:
-      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "mysql" ]
       interval: 5s
       timeout: 10s
       retries: 10
       start_period: 15s
-    volumes_from:
-      - mysql-job-dbdata
 
   # 自动加载数据
   mysql-job-dbdata:
@@ -43,7 +41,7 @@ services:
     environment:
       - PMA_HOST=mysql
       - PMA_PORT=3306
-      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_ROOT_PASSWORD=dsdswww111
     depends_on:
       mysql:
         condition: service_healthy
