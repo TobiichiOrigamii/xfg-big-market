@@ -41,7 +41,7 @@ redis:
   sdk:
     config:
       host: 192.168.236.132
-      port: 1379
+      port: 16379
       pool-size: 10
       min-idle-size: 5
       idle-timeout: 30000

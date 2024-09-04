@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Getter
 public enum ResponseCode {
 
@@ -14,8 +13,6 @@ public enum ResponseCode {
     ILLEGAL_PARAMETER("0002", "非法参数"),
     STRATEGY_RULE_WEIGHT_IS_NULL("ERR_BIZ_001","业务异常，策略规则中 rule_weight 权重规则已使用但为配置"),
     ;
-
     private String code;
     private String info;
-
 }
