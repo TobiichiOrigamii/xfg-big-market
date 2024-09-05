@@ -15,5 +15,6 @@ public interface IStrategyAwardDao {
 
     List<StrategyAward> queryStrategyAwardList();
 
+    // 从数据库中获取Key
     List<StrategyAward> queryStrategyAwardListByStrategyId(Long strategyId);
 }
