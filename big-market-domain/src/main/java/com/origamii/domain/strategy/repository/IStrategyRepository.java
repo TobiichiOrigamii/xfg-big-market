@@ -1,6 +1,8 @@
 package com.origamii.domain.strategy.repository;
 
 import com.origamii.domain.strategy.model.entity.StrategyAwardEntity;
+import com.origamii.domain.strategy.model.entity.StrategyEntity;
+import com.origamii.domain.strategy.model.entity.StrategyRuleEntity;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -24,24 +26,49 @@ public interface IStrategyRepository {
     /**
      * 存储策略奖励比例搜索表到 Redis 中
      *
-     * @param strategyId 策略ID
-     * @param rateRange 概率范围
+     * @param key                                  策略ID
+     * @param rateRange                            概率范围
      * @param shuffleStrategyAwardRateSearchTables 乱序的概率查找表
      */
-    void storeStrategyAwardRateSearchTables(Long strategyId, Integer rateRange, HashMap<Integer, Integer> shuffleStrategyAwardRateSearchTables);
+    void storeStrategyAwardRateSearchTables(String key, Integer rateRange, HashMap<Integer, Integer> shuffleStrategyAwardRateSearchTables);
 
     /**
-     *
      * @param strategyId
      * @return
      */
     int getRateRange(Long strategyId);
 
     /**
-     *
-     * @param strategyId
+     * @param key
+     * @return
+     */
+    int getRateRange(String key);
+
+    /**
+     * @param key
      * @param rateKey
      * @return
      */
-    Integer getStrategyAwardAssemble(Long strategyId, int rateKey);
+    Integer getStrategyAwardAssemble(String key, Integer rateKey);
+
+    /**
+     * @param key
+     * @param rateKey
+     * @return
+     */
+
+    /**
+     * @param strategyId
+     * @return
+     */
+    StrategyEntity queryStrategyEntityByStrategy(Long strategyId);
+
+    /**
+     * 查询策略规则
+     *
+     * @param strategyId
+     * @param ruleModel
+     * @return
+     */
+    StrategyRuleEntity queryStrategyRule(Long strategyId, String ruleModel);
 }

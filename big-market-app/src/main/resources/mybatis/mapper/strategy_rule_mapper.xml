@@ -8,6 +8,8 @@
         <result column="award_id" property="awardId"/>
         <result column="rule_type" property="ruleType"/>
         <result column="rule_model" property="ruleModel"/>
+
+
         <result column="rule_value" property="ruleValue"/>
         <result column="rule_desc" property="ruleDesc"/>
         <result column="create_time" property="createTime"/>
