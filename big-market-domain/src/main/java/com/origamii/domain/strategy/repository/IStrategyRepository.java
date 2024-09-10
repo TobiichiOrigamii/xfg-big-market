@@ -71,4 +71,6 @@ public interface IStrategyRepository {
      * @return
      */
     StrategyRuleEntity queryStrategyRule(Long strategyId, String ruleModel);
+
+    String queryStrategyRuleValue(Long strategyId, Integer awardId, String ruleModel);
 }

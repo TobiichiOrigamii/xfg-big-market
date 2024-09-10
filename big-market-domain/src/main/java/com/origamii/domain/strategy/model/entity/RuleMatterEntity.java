@@ -20,7 +20,7 @@ public class RuleMatterEntity {
     private String userId;
 
     /** 策略ID */
-    private String strategyId;
+    private Long strategyId;
 
     /** 抽奖奖品ID - 规则类型为策略 则不需要奖品ID */
     private Integer awardId;

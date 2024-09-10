@@ -40,6 +40,7 @@ public class StrategyRepository implements IStrategyRepository {
     @Autowired
     private IStrategyAwardDao strategyAwardDao;
 
+
     // 注入 Redis 缓存服务，用于获取和存储缓存数据
     @Autowired
     private IRedisService redisService;
@@ -103,7 +104,6 @@ public class StrategyRepository implements IStrategyRepository {
         cacheRateTable.putAll(shuffleStrategyAwardRateSearchTables);
     }
 
-
     @Override
     public Integer getStrategyAwardAssemble(String key, Integer rateKey) {
         return redisService.getFromMap(Constants.RedisKey.STRATEGY_RATE_TABLE_KEY + key, rateKey);
@@ -118,7 +118,6 @@ public class StrategyRepository implements IStrategyRepository {
     public int getRateRange(String key) {
         return redisService.getValue(Constants.RedisKey.STRATEGY_RATE_RANGE_KEY + key);
     }
-
 
 
     @Override
@@ -168,6 +167,15 @@ public class StrategyRepository implements IStrategyRepository {
                 .ruleValue(strategyRuleRes.getRuleValue())
                 .ruleDesc(strategyRuleRes.getRuleDesc())
                 .build();
+    }
+
+    @Override
+    public String queryStrategyRuleValue(Long strategyId, Integer awardId, String ruleModel) {
+        StrategyRule strategyRule = new StrategyRule();
+        strategyRule.setStrategyId(strategyId);
+        strategyRule.setAwardId(awardId);
+        strategyRule.setRuleModel(ruleModel);
+        return strategyRuleDao.queryStrategyRuleValue(strategyRule);
     }
 
 

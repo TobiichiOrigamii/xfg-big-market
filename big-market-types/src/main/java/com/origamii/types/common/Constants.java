@@ -6,6 +6,7 @@ public class Constants {
     public static final String SPACE = " ";
     public static final String COLON = ":";
 
+
     public static class RedisKey {
         public static String STRATEGY_KEY = "big_market_strategy_key_";
         public static String STRATEGY_AWARD_KEY="big_market_strategy_award_key_";
