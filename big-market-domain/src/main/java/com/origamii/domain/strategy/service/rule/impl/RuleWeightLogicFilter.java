@@ -69,7 +69,9 @@ public class RuleWeightLogicFilter implements ILogicFilter<RuleActionEntity.Raff
 
         // 2.转换Keys值并默认排序
         List<Long> analyticalSortedKeys = new ArrayList<>(analyticalValueGroup.keySet());
-        Collections.sort(analyticalSortedKeys);
+        //  Collections.sort(analyticalSortedKeys); 此时是升序排列
+        // 降序排列
+        analyticalSortedKeys.sort(Comparator.reverseOrder());
 
         // 3.找出最小符合的值
         Long nextValue = analyticalSortedKeys.stream()

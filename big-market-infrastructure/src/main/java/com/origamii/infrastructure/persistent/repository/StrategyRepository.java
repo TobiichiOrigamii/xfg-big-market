@@ -178,6 +178,36 @@ public class StrategyRepository implements IStrategyRepository {
         return strategyRuleDao.queryStrategyRuleValue(strategyRule);
     }
 
+    @Override
+    public StrategyEntity queryStrategyEntityByStrategyId(Long strategyId) {
+        // 优先从缓存中获取
+        String cacheKey = Constants.RedisKey.STRATEGY_KEY + strategyId;
+        StrategyEntity strategyEntity = redisService.getValue(cacheKey);
+
+
+        // 判断缓存中是否有策略实体，如果缓存不为空且有数据，则直接返回缓存中的数据
+        if (null != strategyEntity) {
+            return strategyEntity;
+        }
+
+        // 如果缓存中没有对应数据，则从数据库中查询策略实体
+        Strategy strategy = strategyDao.queryStrategyByStrategyId(strategyId);
+        strategyEntity = StrategyEntity.builder()
+                .strategyId(strategy.getStrategyId())
+                .strategyDesc(strategy.getStrategyDesc())
+                .ruleModels(strategy.getRuleModels())
+                .build();
+
+        // 将策略实体存入Redis缓存
+        redisService.setValue(cacheKey, strategyEntity);
+
+        // 返回策略实体
+        return strategyEntity;
+
+
+
+    }
+
 
 }
 

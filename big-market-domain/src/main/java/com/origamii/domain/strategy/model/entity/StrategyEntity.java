@@ -39,7 +39,7 @@ public class StrategyEntity {
         return ruleModels.split(Constants.SPLIT);
     }
 
-    // 判断吧是否装配了抽奖权重规则
+    // 判断是否装配了抽奖权重规则
     public String getRuleWeight(){
         String[] ruleMoudles = this.ruleModels();
         for (String ruleModel: ruleMoudles)

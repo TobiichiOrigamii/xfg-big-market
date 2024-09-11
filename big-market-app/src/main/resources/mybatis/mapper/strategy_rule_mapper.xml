@@ -8,8 +8,6 @@
         <result column="award_id" property="awardId"/>
         <result column="rule_type" property="ruleType"/>
         <result column="rule_model" property="ruleModel"/>
-
-
         <result column="rule_value" property="ruleValue"/>
         <result column="rule_desc" property="ruleDesc"/>
         <result column="create_time" property="createTime"/>
@@ -31,7 +29,7 @@
     <select id="queryStrategyRuleValue" parameterType="com.origamii.infrastructure.persistent.po.StrategyRule" resultType="java.lang.String">
         select rule_value from strategy_rule
         where strategy_id = #{strategyId} and rule_model = #{ruleModel}
-        <if test="award != null">
+        <if test="awardId != null">
             and award_id = #{awardId}
         </if>
     </select>
