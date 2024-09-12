@@ -2,7 +2,7 @@ package com.origamii.domain.strategy.service.rule.impl;
 
 import com.origamii.domain.strategy.model.entity.RuleActionEntity;
 import com.origamii.domain.strategy.model.entity.RuleMatterEntity;
-import com.origamii.domain.strategy.model.vo.RuleLogicCheckTypeVO;
+import com.origamii.domain.strategy.model.valobj.RuleLogicCheckTypeVO;
 import com.origamii.domain.strategy.repository.IStrategyRepository;
 import com.origamii.domain.strategy.service.annotation.LogicStrategy;
 import com.origamii.domain.strategy.service.rule.ILogicFilter;

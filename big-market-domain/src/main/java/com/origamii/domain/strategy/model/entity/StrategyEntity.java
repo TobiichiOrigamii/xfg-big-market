@@ -40,9 +40,10 @@ public class StrategyEntity {
     }
 
     // 判断是否装配了抽奖权重规则
-    public String getRuleWeight(){
-        String[] ruleMoudles = this.ruleModels();
-        for (String ruleModel: ruleMoudles)
+    public String getRuleWeight() {
+        String[] ruleModels = this.ruleModels();
+        if (null == ruleModels) return null;
+        for (String ruleModel : ruleModels)
             if ("rule_weight".equals(ruleModel))
                 return ruleModel;
         return null;

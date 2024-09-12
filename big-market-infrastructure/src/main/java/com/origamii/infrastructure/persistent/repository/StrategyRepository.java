@@ -3,6 +3,7 @@ package com.origamii.infrastructure.persistent.repository;
 import com.origamii.domain.strategy.model.entity.StrategyAwardEntity;
 import com.origamii.domain.strategy.model.entity.StrategyEntity;
 import com.origamii.domain.strategy.model.entity.StrategyRuleEntity;
+import com.origamii.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 import com.origamii.domain.strategy.repository.IStrategyRepository;
 import com.origamii.infrastructure.persistent.dao.IStrategyAwardDao;
 import com.origamii.infrastructure.persistent.dao.IStrategyDao;
@@ -205,7 +206,19 @@ public class StrategyRepository implements IStrategyRepository {
         return strategyEntity;
 
 
+    }
 
+
+
+    @Override
+    public StrategyAwardRuleModelVO queryStrategyAwardRuleModel(Long strategyId, Integer awardId) {
+        StrategyAward strategyAward = new StrategyAward();
+        strategyAward.setStrategyId(strategyId);
+        strategyAward.setAwardId(awardId);
+        String ruleModel = strategyAwardDao.queryStrategyAwardRuleModel(strategyAward);
+        return StrategyAwardRuleModelVO.builder()
+                .ruleModel(ruleModel)
+                .build();
     }
 
 

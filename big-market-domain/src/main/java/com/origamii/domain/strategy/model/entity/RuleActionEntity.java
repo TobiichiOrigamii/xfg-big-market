@@ -1,6 +1,6 @@
 package com.origamii.domain.strategy.model.entity;
 
-import com.origamii.domain.strategy.model.vo.RuleLogicCheckTypeVO;
+import com.origamii.domain.strategy.model.valobj.RuleLogicCheckTypeVO;
 import lombok.*;
 
 /**

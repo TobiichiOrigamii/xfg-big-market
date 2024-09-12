@@ -1,4 +1,4 @@
-package com.origamii.domain.strategy.model.vo;
+package com.origamii.domain.strategy.model.valobj;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
