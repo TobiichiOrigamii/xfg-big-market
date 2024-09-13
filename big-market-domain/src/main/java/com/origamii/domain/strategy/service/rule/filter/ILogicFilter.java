@@ -1,4 +1,4 @@
-package com.origamii.domain.strategy.service.rule;
+package com.origamii.domain.strategy.service.rule.filter;
 
 import com.origamii.domain.strategy.model.entity.RuleActionEntity;
 import com.origamii.domain.strategy.model.entity.RuleMatterEntity;

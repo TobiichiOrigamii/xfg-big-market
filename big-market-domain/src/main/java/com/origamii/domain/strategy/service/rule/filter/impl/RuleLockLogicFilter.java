@@ -1,12 +1,12 @@
-package com.origamii.domain.strategy.service.rule.impl;
+package com.origamii.domain.strategy.service.rule.filter.impl;
 
 import com.origamii.domain.strategy.model.entity.RuleActionEntity;
 import com.origamii.domain.strategy.model.entity.RuleMatterEntity;
 import com.origamii.domain.strategy.model.valobj.RuleLogicCheckTypeVO;
 import com.origamii.domain.strategy.repository.IStrategyRepository;
 import com.origamii.domain.strategy.service.annotation.LogicStrategy;
-import com.origamii.domain.strategy.service.rule.ILogicFilter;
-import com.origamii.domain.strategy.service.rule.factory.DefaultLogicFactory;
+import com.origamii.domain.strategy.service.rule.filter.ILogicFilter;
+import com.origamii.domain.strategy.service.rule.filter.factory.DefaultLogicFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

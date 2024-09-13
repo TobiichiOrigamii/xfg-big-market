@@ -1,6 +1,6 @@
 package com.origamii.domain.strategy.model.valobj;
 
-import com.origamii.domain.strategy.service.rule.factory.DefaultLogicFactory;
+import com.origamii.domain.strategy.service.rule.filter.factory.DefaultLogicFactory;
 import com.origamii.types.common.Constants;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

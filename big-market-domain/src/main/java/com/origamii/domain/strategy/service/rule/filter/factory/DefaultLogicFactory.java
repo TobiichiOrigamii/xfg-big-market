@@ -1,15 +1,14 @@
-package com.origamii.domain.strategy.service.rule.factory;
+package com.origamii.domain.strategy.service.rule.filter.factory;
 
 import com.origamii.domain.strategy.model.entity.RuleActionEntity;
 import com.origamii.domain.strategy.service.annotation.LogicStrategy;
-import com.origamii.domain.strategy.service.rule.ILogicFilter;
+import com.origamii.domain.strategy.service.rule.filter.ILogicFilter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
