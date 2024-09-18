@@ -26,7 +26,6 @@ public class StrategyRepositoryTest {
 
     @Test
     public void queryRuleTreeVOByTreeId() {
-        System.out.println(111);
         RuleTreeVO ruleTreeVO = strategyRepository.queryRuleTreeVOByTreeId("tree_lock");
         log.info("测试结果：{}", JSON.toJSONString(ruleTreeVO));
     }

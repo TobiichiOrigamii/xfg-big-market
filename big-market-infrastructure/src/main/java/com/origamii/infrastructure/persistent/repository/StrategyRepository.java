@@ -230,7 +230,7 @@ public class StrategyRepository implements IStrategyRepository {
 
     @Override
     public RuleTreeVO queryRuleTreeVOByTreeId(String treeId) {
-// 优先从缓存获取
+    // 优先从缓存获取
         String cacheKey = Constants.RedisKey.RULE_TREE_VO_KEY + treeId;
         RuleTreeVO ruleTreeVOCache = redisService.getValue(cacheKey);
         if (null != ruleTreeVOCache) return ruleTreeVOCache;

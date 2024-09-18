@@ -15,7 +15,7 @@ public class RuleTreeNode {
     /** 自增ID */
     private Long id;
     /** 规则树ID */
-    private String RuleId;
+    private String treeId;
     /** 规则Key */
     private String ruleKey;
     /** 规则描述 */
