@@ -3,6 +3,7 @@ package com.origamii.domain.strategy.repository;
 import com.origamii.domain.strategy.model.entity.StrategyAwardEntity;
 import com.origamii.domain.strategy.model.entity.StrategyEntity;
 import com.origamii.domain.strategy.model.entity.StrategyRuleEntity;
+import com.origamii.domain.strategy.model.valobj.RuleTreeVO;
 import com.origamii.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 
 import java.util.HashMap;
@@ -73,4 +74,6 @@ public interface IStrategyRepository {
     StrategyEntity queryStrategyEntityByStrategyId(Long strategyId);
 
     StrategyAwardRuleModelVO queryStrategyAwardRuleModel(Long strategyId, Integer awardId);
+
+    RuleTreeVO queryRuleTreeVOByTreeId(String treeId);
 }
