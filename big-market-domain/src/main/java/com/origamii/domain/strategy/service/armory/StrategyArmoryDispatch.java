@@ -37,37 +37,44 @@ public class StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispatc
     public boolean assembleLotteryStrategy(Long strategyId) {
         // 1.查询策略配置 获取与策略ID关联的奖品信息
         List<StrategyAwardEntity> strategyAwardEntities = repository.queryStrategyAwardList(strategyId);
+
+        // 2.缓存奖品库存【用于decr扣减库存使用】
+        for (StrategyAwardEntity strategyAwardEntity : strategyAwardEntities) {
+            Integer awardId = strategyAwardEntity.getAwardId();
+            Integer awardCount = strategyAwardEntity.getAwardCount();
+            cacheAwardCount(strategyId,awardId, awardCount);
+        }
+
+        // 3.1 默认装配配置【全局抽奖概率】
         assembleLotteryStrategy(String.valueOf(strategyId), strategyAwardEntities);
 
-        // 2.权重策略配置 - 适用于 rule_weight 权重规则配置
+        // 3.2 权重策略配置 - 适用于 rule_weight 权重规则配置
         StrategyEntity strategyEntity = repository.queryStrategyEntityByStrategy(strategyId);
         String ruleWeight = strategyEntity.getRuleWeight();
 
-        // 3.如果没有配置权重规则，则直接返回
+        // 3.3 如果没有配置权重规则，则直接返回
         if (null == ruleWeight) return true;
 
-        // 4.判断配置了权重规则 则需要查询数据库得到具体的配置规则
+        // 3.4 判断配置了权重规则 则需要查询数据库得到具体的配置规则
         StrategyRuleEntity strategiesRuleEntity = repository.queryStrategyRule(strategyId, ruleWeight);
 
-        // 5.如果没有配置权重规则，则抛出异常
+        // 3.5 如果没有配置权重规则，则抛出异常
         if (null == strategiesRuleEntity) {
             throw new AppException(ResponseCode.STRATEGY_RULE_WEIGHT_IS_NULL.getCode(), ResponseCode.STRATEGY_RULE_WEIGHT_IS_NULL.getInfo());
         }
 
-        // 6.获取权重规则配置
+        // 3.6 获取权重规则配置
         Map<String, List<Integer>> ruleWeightValueMap = strategiesRuleEntity.getRuleWeightValues();
         Set<String> keys = ruleWeightValueMap.keySet();
 
 
-        // 7.遍历配置的权重规则，计算出每个奖品的权重
+        // 3.7 遍历配置的权重规则，计算出每个奖品的权重
         for (String key : keys) {
             List<Integer> ruleWeightValues = ruleWeightValueMap.get(key);
             ArrayList<StrategyAwardEntity> strategyAwardEntitiesClone = new ArrayList<>(strategyAwardEntities);
             strategyAwardEntitiesClone.removeIf(entity -> ruleWeightValues.contains(entity.getAwardId()));
             assembleLotteryStrategy(String.valueOf(strategyId).concat("_").concat(key), strategyAwardEntitiesClone);
         }
-
-
         return true;
     }
 
