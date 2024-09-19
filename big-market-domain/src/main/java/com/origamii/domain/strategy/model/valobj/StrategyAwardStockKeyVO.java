@@ -6,9 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author Fuzhengwei bugstack.cn @小傅哥
+ * @author Origami
  * @description 策略奖品库存Key标识值对象
- * @create 2024-02-09 11:24
+ * @create 2024-09-19 22:12
  */
 @Data
 @Builder

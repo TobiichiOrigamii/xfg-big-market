@@ -10,6 +10,8 @@ import com.origamii.infrastructure.persistent.po.*;
 import com.origamii.infrastructure.persistent.redis.IRedisService;
 import com.origamii.types.common.Constants;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RBlockingQueue;
+import org.redisson.api.RDelayedQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Origami
@@ -296,20 +299,28 @@ public class StrategyRepository implements IStrategyRepository {
         }
 
         // 1.按照cacheKey decr后的值，如99、98、97 和 key 组成为库存所的key进行使用
-        // 2.加锁为了兜底，如果后续有回复库存，手动处理等，页不会超卖。因为所有的可用库存Key，都被加锁了
+        // 2.加锁为了兜底，如果后续有回复库存，手动处理等，也不会超卖。因为所有的可用库存Key，都被加锁了
         String lockKey = cacheKey + Constants.UNDERLINE + surplus;
         Boolean lock = redisService.setNx(lockKey);
-        if (!lock) {
+        if (!lock)
             log.info("策略奖品库存加锁失败{}",lockKey);
-        }
-        return null;
+        return lock;
     }
 
     @Override
     public void cacheStrategyAwardCount(String cacheKey, Integer awardCount) {
-        if(redisService.isExists(cacheKey))
-            return;
+        Long cacheAwardCount = redisService.getAtomicLong(cacheKey);
+        if (null != cacheAwardCount) return;
         redisService.setAtomicLong(cacheKey, awardCount);
+    }
+
+
+    @Override
+    public void awardStockConsumeSendQueue(StrategyAwardStockKeyVO strategyAwardStockKeyVO) {
+        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_QUERY_KEY;
+        RBlockingQueue<StrategyAwardStockKeyVO> blockingQueue = redisService.getBlockingQueue(cacheKey);
+        RDelayedQueue<StrategyAwardStockKeyVO> delayedQueue = redisService.getDelayedQueue(blockingQueue);
+        delayedQueue.offer(strategyAwardStockKeyVO, 3, TimeUnit.SECONDS);
 
     }
 

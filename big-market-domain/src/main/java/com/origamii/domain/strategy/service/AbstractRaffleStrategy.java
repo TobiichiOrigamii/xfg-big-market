@@ -3,15 +3,13 @@ package com.origamii.domain.strategy.service;
 import com.origamii.domain.strategy.model.entity.RaffleAwardEntity;
 import com.origamii.domain.strategy.model.entity.RaffleFactorEntity;
 import com.origamii.domain.strategy.model.entity.RuleActionEntity;
-import com.origamii.domain.strategy.model.entity.StrategyEntity;
 import com.origamii.domain.strategy.model.valobj.RuleLogicCheckTypeVO;
 import com.origamii.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 import com.origamii.domain.strategy.repository.IStrategyRepository;
-import com.origamii.domain.strategy.service.IRaffleStrategy;
 import com.origamii.domain.strategy.service.armory.IStrategyDispatch;
 import com.origamii.domain.strategy.service.rule.chain.ILogicChain;
 import com.origamii.domain.strategy.service.rule.chain.factory.DefaultChainFactory;
-import com.origamii.domain.strategy.service.rule.filter.factory.DefaultLogicFactory;
+import com.origamii.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;
 import com.origamii.types.enums.ResponseCode;
 import com.origamii.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +21,7 @@ import org.apache.commons.lang3.StringUtils;
  * @create 2024-09-09 16:34
  **/
 @Slf4j
-public abstract class AbstractRaffleStrategy implements IRaffleStrategy {
+public abstract class AbstractRaffleStrategy implements IRaffleStrategy, IRaffleStock {
 
     // 策略仓储服务 - domin层是生产线 仓储层提供原材料
     protected IStrategyRepository strategyRepository;
@@ -31,13 +29,18 @@ public abstract class AbstractRaffleStrategy implements IRaffleStrategy {
     // 策略调度服务 - 只负责抽奖处理 通过新增接口的方式 隔离职责 不需要使用方关心或者调用抽奖的初始化
     protected IStrategyDispatch strategyDispatch;
 
-    private DefaultChainFactory defaultChainFactory;
+    // 责任链工厂 - 从抽奖的规则中 解耦出前置规则为责任链处理
+    private final DefaultChainFactory defaultChainFactory;
+
+    // 树工厂 - 从抽奖的规则中 解耦出抽奖树的构建
+    protected final DefaultTreeFactory defaultTreeFactory;
 
     // 通过构造函数注入仓储服务和调度服务
-    public AbstractRaffleStrategy(IStrategyRepository strategyRepository, IStrategyDispatch strategyDispatch, DefaultChainFactory defaultChainFactory) {
+    public AbstractRaffleStrategy(IStrategyRepository strategyRepository, IStrategyDispatch strategyDispatch, DefaultChainFactory defaultChainFactory, DefaultTreeFactory defaultTreeFactory) {
         this.strategyRepository = strategyRepository;
         this.strategyDispatch = strategyDispatch;
         this.defaultChainFactory = defaultChainFactory;
+        this.defaultTreeFactory = defaultTreeFactory;
     }
 
     @Override
@@ -82,7 +85,6 @@ public abstract class AbstractRaffleStrategy implements IRaffleStrategy {
                 .build();
     }
 
-    protected abstract RuleActionEntity<RuleActionEntity.RaffleBeforeEntity> doCheckRaffleBeforeLogic(RaffleFactorEntity raffleFactorEntity, String... logics);
 
     protected abstract RuleActionEntity<RuleActionEntity.RaffleDuringEntity> doCheckRaffleDuringLogic(RaffleFactorEntity raffleFactorEntity, String... logics);
 

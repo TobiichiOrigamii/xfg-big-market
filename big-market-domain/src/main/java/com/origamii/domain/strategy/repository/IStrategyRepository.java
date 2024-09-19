@@ -5,6 +5,7 @@ import com.origamii.domain.strategy.model.entity.StrategyEntity;
 import com.origamii.domain.strategy.model.entity.StrategyRuleEntity;
 import com.origamii.domain.strategy.model.valobj.RuleTreeVO;
 import com.origamii.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
+import com.origamii.domain.strategy.model.valobj.StrategyAwardStockKeyVO;
 
 import java.util.HashMap;
 import java.util.List;
@@ -69,7 +70,7 @@ public interface IStrategyRepository {
 
     String queryStrategyRuleValue(Long strategyId, Integer awardId, String ruleModel);
 
-    String queryStrategyRuleValue(Long strategyId,String ruleModel);
+    String queryStrategyRuleValue(Long strategyId, String ruleModel);
 
     StrategyEntity queryStrategyEntityByStrategyId(Long strategyId);
 
@@ -77,7 +78,23 @@ public interface IStrategyRepository {
 
     RuleTreeVO queryRuleTreeVOByTreeId(String treeId);
 
+
+    /**
+     * 缓存key decr 方式扣减库存
+     *
+     * @param cacheKey 缓存key
+     * @return 扣减结果
+     */
     Boolean subtractionAwardStock(String cacheKey);
 
+    /**
+     * 缓存奖品库存
+     *
+     * @param cacheKey   key
+     * @param awardCount 库存值
+     */
     void cacheStrategyAwardCount(String cacheKey, Integer awardCount);
+
+    void awardStockConsumeSendQueue(StrategyAwardStockKeyVO strategyAwardStockKeyVO);
 }
+

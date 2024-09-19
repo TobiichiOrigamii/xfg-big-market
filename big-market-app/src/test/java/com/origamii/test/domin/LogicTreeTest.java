@@ -95,7 +95,7 @@ public class LogicTreeTest {
 
         IDecisionTreeEngine treeComposite = defaultTreeFactory.openLogicTree(ruleTreeVO);
 
-        DefaultTreeFactory.StrategyAwardData data = treeComposite.process("xiaofuge", 100001L, 100);
+        DefaultTreeFactory.StrategyAwardVO data = treeComposite.process("xiaofuge", 100001L, 100);
         log.info("测试结果：{}", JSON.toJSONString(data));
 
     }

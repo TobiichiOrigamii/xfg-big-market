@@ -33,4 +33,8 @@ public interface IStrategyDispatch {
      * @return 扣减结果
      */
     Boolean subtractionAwardStock(Long strategyId, Integer awardId);
+
+
+
+
 }

@@ -43,7 +43,7 @@ public class StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispatc
         for (StrategyAwardEntity strategyAwardEntity : strategyAwardEntities) {
             Integer awardId = strategyAwardEntity.getAwardId();
             Integer awardCount = strategyAwardEntity.getAwardCount();
-            cacheAwardCount(strategyId,awardId, awardCount);
+            cacheStrategyAwardCount(strategyId,awardId, awardCount);
         }
 
         // 3.1 默认装配配置【全局抽奖概率】
@@ -109,7 +109,6 @@ public class StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispatc
         return repository.subtractionAwardStock(cacheKey);
     }
 
-
     private void assembleLotteryStrategy(String key, List<StrategyAwardEntity> strategyAwardEntities) {
         // 1.获取最小概率值
         BigDecimal minAwardRate = strategyAwardEntities.stream()
@@ -151,9 +150,7 @@ public class StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispatc
 
     }
 
-
-
-    private void cacheAwardCount(Long strategyId, Integer awardId, Integer awardCount) {
+    private void cacheStrategyAwardCount(Long strategyId, Integer awardId, Integer awardCount) {
         String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_KEY + strategyId + Constants.UNDERLINE + awardId;
         repository.cacheStrategyAwardCount(cacheKey, awardCount);
 
