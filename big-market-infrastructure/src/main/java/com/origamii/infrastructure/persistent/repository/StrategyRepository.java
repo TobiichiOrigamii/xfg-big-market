@@ -9,6 +9,7 @@ import com.origamii.infrastructure.persistent.dao.*;
 import com.origamii.infrastructure.persistent.po.*;
 import com.origamii.infrastructure.persistent.redis.IRedisService;
 import com.origamii.types.common.Constants;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,6 +23,7 @@ import java.util.Map;
  * @description 策略仓储实现类
  * @create 2024-09-05 09:38
  **/
+@Slf4j
 @Repository
 public class StrategyRepository implements IStrategyRepository {
 
@@ -281,6 +283,36 @@ public class StrategyRepository implements IStrategyRepository {
         return ruleTreeVODB;
 
     }
+
+
+
+    @Override
+    public Boolean subtractionAwardStock(String cacheKey) {
+        long surplus = redisService.decr(cacheKey);
+        if (surplus < 0) {
+            // 库存小于0 恢复为0个
+            redisService.setValue(cacheKey, 0);
+            return false;
+        }
+
+        // 1.按照cacheKey decr后的值，如99、98、97 和 key 组成为库存所的key进行使用
+        // 2.加锁为了兜底，如果后续有回复库存，手动处理等，页不会超卖。因为所有的可用库存Key，都被加锁了
+        String lockKey = cacheKey + Constants.UNDERLINE + surplus;
+        Boolean lock = redisService.setNx(lockKey);
+        if (!lock) {
+            log.info("策略奖品库存加锁失败{}",lockKey);
+        }
+        return null;
+    }
+
+    @Override
+    public void cacheStrategyAwardCount(String cacheKey, Integer awardCount) {
+        if(redisService.isExists(cacheKey))
+            return;
+        redisService.setAtomicLong(cacheKey, awardCount);
+
+    }
+
 
 }
 

@@ -4,6 +4,7 @@ import com.origamii.domain.strategy.model.entity.StrategyAwardEntity;
 import com.origamii.domain.strategy.model.entity.StrategyEntity;
 import com.origamii.domain.strategy.model.entity.StrategyRuleEntity;
 import com.origamii.domain.strategy.repository.IStrategyRepository;
+import com.origamii.types.common.Constants;
 import com.origamii.types.enums.ResponseCode;
 import com.origamii.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
@@ -78,6 +79,37 @@ public class StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispatc
         return true;
     }
 
+    /**
+     * 获取随机奖品ID
+     *
+     * @param strategyId 策略ID
+     * @return
+     */
+    @Override
+    public Integer getRandomAwardId(Long strategyId) {
+        // 1.分布式部署下，不一为当前应用做的策略装配，也就是值不一定会保存到本应用，所以需要从Redis中获取策略奖品配置
+        int rateRange = repository.getRateRange(strategyId);
+        // 2.通过生成的随机值，获取概率值奖品查找表的结果
+        return repository.getStrategyAwardAssemble(String.valueOf(strategyId), new SecureRandom().nextInt(rateRange));
+    }
+
+    @Override
+    public Integer getRandomAwardId(Long strategyId, String ruleWeightValue) {
+        // 1.装配key
+        String key = String.valueOf(strategyId).concat("_").concat(ruleWeightValue);
+        // 2.分布式部署下，不一为当前应用做的策略装配，也就是值不一定会保存到本应用，所以需要从Redis中获取策略奖品配置
+        int rateRange = repository.getRateRange(key);
+        // 3.通过生成的随机值，获取概率值奖品查找表的结果
+        return repository.getStrategyAwardAssemble(key, new SecureRandom().nextInt(rateRange));
+    }
+
+    @Override
+    public Boolean subtractionAwardStock(Long strategyId, Integer awardId) {
+        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_KEY + strategyId + Constants.UNDERLINE + awardId;
+        return repository.subtractionAwardStock(cacheKey);
+    }
+
+
     private void assembleLotteryStrategy(String key, List<StrategyAwardEntity> strategyAwardEntities) {
         // 1.获取最小概率值
         BigDecimal minAwardRate = strategyAwardEntities.stream()
@@ -120,28 +152,10 @@ public class StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispatc
     }
 
 
-    /**
-     * 获取随机奖品ID
-     *
-     * @param strategyId 策略ID
-     * @return
-     */
-    @Override
-    public Integer getRandomAwardId(Long strategyId) {
-        // 1.分布式部署下，不一为当前应用做的策略装配，也就是值不一定会保存到本应用，所以需要从Redis中获取策略奖品配置
-        int rateRange = repository.getRateRange(strategyId);
-        // 2.通过生成的随机值，获取概率值奖品查找表的结果
-        return repository.getStrategyAwardAssemble(String.valueOf(strategyId), new SecureRandom().nextInt(rateRange));
-    }
 
+    private void cacheAwardCount(Long strategyId, Integer awardId, Integer awardCount) {
+        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_KEY + strategyId + Constants.UNDERLINE + awardId;
+        repository.cacheStrategyAwardCount(cacheKey, awardCount);
 
-    @Override
-    public Integer getRandomAwardId(Long strategyId, String ruleWeightValue) {
-        // 1.装配key
-        String key = String.valueOf(strategyId).concat("_").concat(ruleWeightValue);
-        // 2.分布式部署下，不一为当前应用做的策略装配，也就是值不一定会保存到本应用，所以需要从Redis中获取策略奖品配置
-        int rateRange = repository.getRateRange(key);
-        // 3.通过生成的随机值，获取概率值奖品查找表的结果
-        return repository.getStrategyAwardAssemble(key, new SecureRandom().nextInt(rateRange));
     }
 }

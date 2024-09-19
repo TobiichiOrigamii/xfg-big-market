@@ -76,4 +76,8 @@ public interface IStrategyRepository {
     StrategyAwardRuleModelVO queryStrategyAwardRuleModel(Long strategyId, Integer awardId);
 
     RuleTreeVO queryRuleTreeVOByTreeId(String treeId);
+
+    Boolean subtractionAwardStock(String cacheKey);
+
+    void cacheStrategyAwardCount(String cacheKey, Integer awardCount);
 }
