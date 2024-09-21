@@ -22,11 +22,11 @@ import java.util.List;
 @NoArgsConstructor
 public class StrategyAwardRuleModelVO {
 
-    private String ruleModel;
+    private String ruleModels;
 
     public String[] raffleCenterRuleModelList(){
         List<String> ruleModelList = new ArrayList<>();
-        String[] ruleModelvalues = ruleModel.split(Constants.SPLIT);
+        String[] ruleModelvalues = ruleModels.split(Constants.SPLIT);
         for(String ruleModelvalue : ruleModelvalues){
             if(DefaultLogicFactory.LogicModel.isCenter(ruleModelvalue)){
                 ruleModelList.add(ruleModelvalue);
@@ -34,4 +34,5 @@ public class StrategyAwardRuleModelVO {
         }
         return ruleModelList.toArray(new String[0]);
     }
+
 }

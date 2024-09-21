@@ -1,6 +1,10 @@
 package com.origamii.trigger.job;
 
+import com.origamii.domain.strategy.model.valobj.StrategyAwardStockKeyVO;
+import com.origamii.domain.strategy.service.IRaffleStock;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,7 +17,29 @@ import org.springframework.stereotype.Component;
 @Component()
 public class UpdateAwardStockJob {
 
+    @Autowired
+    private IRaffleStock raffleStock;
 
+    @Scheduled(cron = "0/5 * * * * ?")
+    public void exec() {
+        try {
+            log.info("定时任务，更新奖品消耗库存【延迟队列获取】");
+            StrategyAwardStockKeyVO strategyAwardStockKeyVO = raffleStock.takeQueueValue();
+            if (null == strategyAwardStockKeyVO) return;
+            log.info("定时任务，更新奖品消耗库存 strategyId:{} awardId:{}",
+                    strategyAwardStockKeyVO.getStrategyId(),
+                    strategyAwardStockKeyVO.getAwardId()
+            );
+            raffleStock.updateStrategyAwardStock(
+                    strategyAwardStockKeyVO.getStrategyId(),
+                    strategyAwardStockKeyVO.getAwardId()
+            );
+        } catch (Exception e) {
+            log.error("定时任务，更新奖品消耗库存异常", e);
+        }
+
+
+    }
 
 
 }

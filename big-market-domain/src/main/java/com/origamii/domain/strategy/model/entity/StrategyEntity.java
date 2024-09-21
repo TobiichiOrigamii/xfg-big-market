@@ -34,8 +34,7 @@ public class StrategyEntity {
 
     // 以,分割装配好的抽奖规则模型
     public String[] ruleModels() {
-        if (StringUtils.isBlank(ruleModels))
-            return null;
+        if (StringUtils.isBlank(ruleModels)) return null;
         return ruleModels.split(Constants.SPLIT);
     }
 

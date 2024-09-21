@@ -2,7 +2,7 @@ package com.origamii.domain.strategy.service.rule.chain;
 
 /**
  * @author Origami
- * @description
+ * @description 抽奖策略责任链，判断走那种抽奖策略。如；默认抽象、权重抽奖、黑名单抽奖
  * @create 2024-09-12 14:04
  **/
 public abstract class AbstractLogicChain implements ILogicChain {

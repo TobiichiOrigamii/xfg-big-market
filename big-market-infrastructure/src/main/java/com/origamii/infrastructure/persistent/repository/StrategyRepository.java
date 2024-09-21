@@ -42,7 +42,6 @@ public class StrategyRepository implements IStrategyRepository {
     @Autowired
     private IStrategyAwardDao strategyAwardDao;
 
-
     // 注入 Redis 缓存服务，用于获取和存储缓存数据
     @Autowired
     private IRedisService redisService;
@@ -229,7 +228,7 @@ public class StrategyRepository implements IStrategyRepository {
         strategyAward.setAwardId(awardId);
         String ruleModel = strategyAwardDao.queryStrategyAwardRuleModel(strategyAward);
         return StrategyAwardRuleModelVO.builder()
-                .ruleModel(ruleModel)
+                .ruleModels(ruleModel)
                 .build();
     }
 
@@ -287,8 +286,6 @@ public class StrategyRepository implements IStrategyRepository {
 
     }
 
-
-
     @Override
     public Boolean subtractionAwardStock(String cacheKey) {
         long surplus = redisService.decr(cacheKey);
@@ -309,19 +306,32 @@ public class StrategyRepository implements IStrategyRepository {
 
     @Override
     public void cacheStrategyAwardCount(String cacheKey, Integer awardCount) {
-        Long cacheAwardCount = redisService.getAtomicLong(cacheKey);
-        if (null != cacheAwardCount) return;
+        if (redisService.isExists(cacheKey)) return;
         redisService.setAtomicLong(cacheKey, awardCount);
     }
 
-
     @Override
     public void awardStockConsumeSendQueue(StrategyAwardStockKeyVO strategyAwardStockKeyVO) {
-        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_QUERY_KEY;
+        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_QUEUE_KEY;
         RBlockingQueue<StrategyAwardStockKeyVO> blockingQueue = redisService.getBlockingQueue(cacheKey);
         RDelayedQueue<StrategyAwardStockKeyVO> delayedQueue = redisService.getDelayedQueue(blockingQueue);
         delayedQueue.offer(strategyAwardStockKeyVO, 3, TimeUnit.SECONDS);
 
+    }
+
+    @Override
+    public StrategyAwardStockKeyVO takeQueueValue() {
+        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_QUEUE_KEY;
+        RBlockingQueue<StrategyAwardStockKeyVO> destinationQueue = redisService.getBlockingQueue(cacheKey);
+        return destinationQueue.poll();
+    }
+
+    @Override
+    public void updateStrategyAwardStock(Long strategyId, Integer awardId) {
+        StrategyAward strategyAward = new StrategyAward();
+        strategyAward.setStrategyId(strategyId);
+        strategyAward.setAwardId(awardId);
+        strategyAwardDao.updateStrategyAwardStock(strategyAward);
     }
 
 
