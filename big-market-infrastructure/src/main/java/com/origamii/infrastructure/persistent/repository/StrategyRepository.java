@@ -200,14 +200,13 @@ public class StrategyRepository implements IStrategyRepository {
         String cacheKey = Constants.RedisKey.STRATEGY_KEY + strategyId;
         StrategyEntity strategyEntity = redisService.getValue(cacheKey);
 
-
         // 判断缓存中是否有策略实体，如果缓存不为空且有数据，则直接返回缓存中的数据
-        if (null != strategyEntity) {
-            return strategyEntity;
-        }
+        if (null != strategyEntity) return strategyEntity;
 
         // 如果缓存中没有对应数据，则从数据库中查询策略实体
         Strategy strategy = strategyDao.queryStrategyByStrategyId(strategyId);
+        if (null == strategy) return StrategyEntity.builder().build();
+
         strategyEntity = StrategyEntity.builder()
                 .strategyId(strategy.getStrategyId())
                 .strategyDesc(strategy.getStrategyDesc())

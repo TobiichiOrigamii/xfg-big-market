@@ -35,6 +35,7 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy {
     @Override
     public DefaultTreeFactory.StrategyAwardVO raffleLogicTree(String userId, Long strategyId, Integer awardId) {
         StrategyAwardRuleModelVO strategyAwardRuleModel = repository.queryStrategyAwardRuleModel(strategyId, awardId);
+
         if (null == strategyAwardRuleModel) {
             return DefaultTreeFactory.StrategyAwardVO.builder().awardId(awardId).build();
         }

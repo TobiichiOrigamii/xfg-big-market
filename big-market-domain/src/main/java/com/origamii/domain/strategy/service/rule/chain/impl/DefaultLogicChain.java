@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @create 2024-09-12 14:13
  **/
 @Slf4j
-@Component("default")
+@Component("rule_default")
 public class DefaultLogicChain extends AbstractLogicChain {
 
     @Autowired

@@ -74,7 +74,8 @@ public class DecisionTreeEngine implements IDecisionTreeEngine {
                 return nodeLine.getRuleNodeTo();
             }
         }
-        throw new RuntimeException("决策树引擎，nextNode方法，未找到匹配的节点");
+        //throw new RuntimeException("决策树引擎，nextNode方法，未找到匹配的节点");
+        return null;
     }
 
 

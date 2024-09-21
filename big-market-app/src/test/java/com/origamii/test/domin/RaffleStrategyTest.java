@@ -65,7 +65,9 @@ public class RaffleStrategyTest {
                     .userId("origami")
                     .strategyId(100006L)
                     .build();
+
             RaffleAwardEntity raffleAwardEntity = raffleStrategy.performRaffle(raffleFactorEntity);
+
             log.info("请求参数:{}", JSON.toJSONString(raffleFactorEntity));
             log.info("抽奖结果:{}", JSON.toJSONString(raffleAwardEntity));
 

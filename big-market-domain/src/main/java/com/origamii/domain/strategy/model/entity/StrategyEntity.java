@@ -38,16 +38,13 @@ public class StrategyEntity {
         return ruleModels.split(Constants.SPLIT);
     }
 
-    // 判断是否装配了抽奖权重规则
     public String getRuleWeight() {
         String[] ruleModels = this.ruleModels();
         if (null == ruleModels) return null;
-        for (String ruleModel : ruleModels)
-            if ("rule_weight".equals(ruleModel))
-                return ruleModel;
+        for (String ruleModel : ruleModels) {
+            if ("rule_weight".equals(ruleModel)) return ruleModel;
+        }
         return null;
     }
-
-
 
 }
