@@ -1,10 +1,13 @@
 package com.origamii.domain.strategy.service.raffle;
 
+import com.origamii.domain.strategy.model.entity.StrategyAwardEntity;
 import com.origamii.domain.strategy.model.valobj.RuleTreeVO;
 import com.origamii.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 import com.origamii.domain.strategy.model.valobj.StrategyAwardStockKeyVO;
 import com.origamii.domain.strategy.repository.IStrategyRepository;
 import com.origamii.domain.strategy.service.AbstractRaffleStrategy;
+import com.origamii.domain.strategy.service.IRaffleAward;
+import com.origamii.domain.strategy.service.IRaffleStock;
 import com.origamii.domain.strategy.service.armory.IStrategyDispatch;
 import com.origamii.domain.strategy.service.rule.chain.ILogicChain;
 import com.origamii.domain.strategy.service.rule.chain.factory.DefaultChainFactory;
@@ -13,6 +16,8 @@ import com.origamii.domain.strategy.service.rule.tree.factory.engine.IDecisionTr
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author Origami
  * @description
@@ -20,7 +25,7 @@ import org.springframework.stereotype.Service;
  **/
 @Slf4j
 @Service
-public class DefaultRaffleStrategy extends AbstractRaffleStrategy {
+public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRaffleAward, IRaffleStock {
 
     public DefaultRaffleStrategy(IStrategyRepository repository, IStrategyDispatch strategyDispatch, DefaultChainFactory defaultChainFactory, DefaultTreeFactory defaultTreeFactory) {
         super(repository, strategyDispatch, defaultChainFactory, defaultTreeFactory);
@@ -57,5 +62,9 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy {
         repository.updateStrategyAwardStock(strategyId, awardId);
     }
 
+    @Override
+    public List<StrategyAwardEntity> queryRaffleStrategyAwardList(Long strategyId) {
+        return repository.queryStrategyAwardList(strategyId);
+    }
 }
 

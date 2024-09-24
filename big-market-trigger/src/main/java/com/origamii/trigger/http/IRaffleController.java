@@ -1,6 +1,11 @@
 package com.origamii.trigger.http;
 
 import com.alibaba.fastjson.JSON;
+import com.origamii.domain.strategy.model.entity.RaffleAwardEntity;
+import com.origamii.domain.strategy.model.entity.RaffleFactorEntity;
+import com.origamii.domain.strategy.model.entity.StrategyAwardEntity;
+import com.origamii.domain.strategy.service.IRaffleAward;
+import com.origamii.domain.strategy.service.IRaffleStrategy;
 import com.origamii.domain.strategy.service.armory.IStrategyArmory;
 import com.origamii.trigger.api.IRaffleService;
 import com.origamii.trigger.api.dto.RaffleAwardListRequestDTO;
@@ -8,14 +13,13 @@ import com.origamii.trigger.api.dto.RaffleAwardListResponseDTO;
 import com.origamii.trigger.api.dto.RaffleRequestDTO;
 import com.origamii.trigger.api.dto.RaffleResponseDTO;
 import com.origamii.types.enums.ResponseCode;
+import com.origamii.types.exception.AppException;
 import com.origamii.types.model.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,6 +36,12 @@ public class IRaffleController implements IRaffleService {
     @Autowired
     private IStrategyArmory strategyArmory;
 
+    @Autowired
+    private IRaffleAward raffleAward;
+
+    @Autowired
+    private IRaffleStrategy raffleStrategy;
+
     /**
      * 策略装配接口
      *
@@ -39,7 +49,7 @@ public class IRaffleController implements IRaffleService {
      * @return 装配结果
      */
     @Override
-    @GetMapping("strategy-amory")
+    @GetMapping("strategy_armory")
     public Response<Boolean> strategyAmory(Long strategyId) {
 
         try {
@@ -70,8 +80,39 @@ public class IRaffleController implements IRaffleService {
      * @return 奖品列表数据
      */
     @Override
-    public Response<List<RaffleAwardListResponseDTO>> queryRaffleAwardList(RaffleAwardListRequestDTO requestDTO) {
-        return null;
+    @PostMapping("query_raffle_award_list")
+    public Response<List<RaffleAwardListResponseDTO>> queryRaffleAwardList(@RequestBody RaffleAwardListRequestDTO requestDTO) {
+
+        try {
+            log.info("查询抽奖奖品列表开始 strategyId:{}", requestDTO.getStrategyId());
+            List<StrategyAwardEntity> strategyAwardEntities = raffleAward.queryRaffleStrategyAwardList(requestDTO.getStrategyId());
+            ArrayList<RaffleAwardListResponseDTO> raffleAwardListResponseDTOS = new ArrayList<>(strategyAwardEntities.size());
+            for (StrategyAwardEntity strategyAwardEntity : strategyAwardEntities) {
+                raffleAwardListResponseDTOS.add(RaffleAwardListResponseDTO.builder()
+                        .awardId(strategyAwardEntity.getAwardId())
+                        .awardTitle(strategyAwardEntity.getAwardTitle())
+                        .awardSubTitle(strategyAwardEntity.getAwardSubTitle())
+                        .sort(strategyAwardEntity.getSort())
+                        .build());
+            }
+            Response<List<RaffleAwardListResponseDTO>> response = Response.<List<RaffleAwardListResponseDTO>>builder()
+                    .code(ResponseCode.SUCCESS.getCode())
+                    .info(ResponseCode.SUCCESS.getInfo())
+                    .data(raffleAwardListResponseDTOS)
+                    .build();
+
+            log.info("查询抽奖奖品列表完成 strategyId:{} response:{}", requestDTO.getStrategyId(), JSON.toJSONString(response));
+            return response;
+
+        } catch (Exception e) {
+
+            log.error("查询抽奖奖品列表失败 strategyId:{}", requestDTO.getStrategyId());
+            return Response.<List<RaffleAwardListResponseDTO>>builder()
+                    .code(ResponseCode.UN_ERROR.getCode())
+                    .info(ResponseCode.UN_ERROR.getInfo())
+                    .build();
+
+        }
     }
 
 
@@ -82,7 +123,39 @@ public class IRaffleController implements IRaffleService {
      * @return 抽奖结果
      */
     @Override
-    public Response<RaffleResponseDTO> randomRaffle(RaffleRequestDTO requestDTO) {
-        return null;
+    @PostMapping("random_raffle")
+    public Response<RaffleResponseDTO> randomRaffle(@RequestBody RaffleRequestDTO requestDTO) {
+        try {
+            log.info("随机抽奖开始 strategyId: {}", requestDTO.getStrategyId());
+            // 调用抽奖接口
+            RaffleAwardEntity raffleAwardEntity = raffleStrategy.performRaffle(RaffleFactorEntity.builder()
+                    .userId("system")
+                    .strategyId(requestDTO.getStrategyId())
+                    .build());
+            // 封装返回结果
+            Response<RaffleResponseDTO> response = Response.<RaffleResponseDTO>builder()
+                    .code(ResponseCode.SUCCESS.getCode())
+                    .info(ResponseCode.SUCCESS.getInfo())
+                    .data(RaffleResponseDTO.builder()
+                            .awardId(raffleAwardEntity.getAwardId())
+                            .awardIndex(raffleAwardEntity.getSort())
+                            .build())
+                    .build();
+            log.info("随机抽奖完成 strategyId: {} response: {}", requestDTO.getStrategyId(), JSON.toJSONString(response));
+            return response;
+        } catch (AppException e) {
+            log.error("随机抽奖失败 strategyId：{} {}", requestDTO.getStrategyId(), e.getInfo());
+            return Response.<RaffleResponseDTO>builder()
+                    .code(e.getCode())
+                    .info(e.getInfo())
+                    .build();
+        } catch (Exception e) {
+            log.error("随机抽奖失败 strategyId：{}", requestDTO.getStrategyId(), e);
+            return Response.<RaffleResponseDTO>builder()
+                    .code(ResponseCode.UN_ERROR.getCode())
+                    .info(ResponseCode.UN_ERROR.getInfo())
+                    .build();
+        }
+
     }
 }

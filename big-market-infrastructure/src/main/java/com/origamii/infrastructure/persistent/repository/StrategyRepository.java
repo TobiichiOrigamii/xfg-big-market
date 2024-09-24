@@ -9,6 +9,7 @@ import com.origamii.infrastructure.persistent.dao.*;
 import com.origamii.infrastructure.persistent.po.*;
 import com.origamii.infrastructure.persistent.redis.IRedisService;
 import com.origamii.types.common.Constants;
+import com.origamii.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RBlockingQueue;
 import org.redisson.api.RDelayedQueue;
@@ -20,6 +21,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import static com.origamii.types.enums.ResponseCode.UN_ASSEMBLE_STRATEGY_ARMORY;
 
 /**
  * @author Origami
@@ -130,7 +133,10 @@ public class StrategyRepository implements IStrategyRepository {
 
     @Override
     public int getRateRange(String key) {
-        return redisService.getValue(Constants.RedisKey.STRATEGY_RATE_RANGE_KEY + key);
+        String cacheKey = Constants.RedisKey.STRATEGY_RATE_RANGE_KEY + key;
+        if (!redisService.isExists(cacheKey))
+            throw new AppException(UN_ASSEMBLE_STRATEGY_ARMORY.getCode() + cacheKey + Constants.COLON + UN_ASSEMBLE_STRATEGY_ARMORY.getInfo());
+        return redisService.getValue(cacheKey);
     }
 
 
@@ -336,6 +342,44 @@ public class StrategyRepository implements IStrategyRepository {
         strategyAwardDao.updateStrategyAwardStock(strategyAward);
     }
 
+    /**
+     * 根据策略ID+奖品ID的唯一组合 查询奖品信息
+     *
+     * @param strategyId 策略ID
+     * @param awardId    奖品ID
+     * @return 奖品信息
+     */
+    @Override
+    public StrategyAwardEntity queryStrategyAwardEntity(Long strategyId, Integer awardId) {
+        // 优先从缓存中获取
+        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_KEY + strategyId + Constants.UNDERLINE + awardId;
+        StrategyAwardEntity strategyAwardEntity = redisService.getValue(cacheKey);
+        // 判断缓存中是否有奖品信息，如果缓存不为空且有数据，则直接返回缓存中的数据
+        if (null != strategyAwardEntity) return strategyAwardEntity;
+
+        // 如果缓存中没有对应数据，则从数据库中查询奖品信息
+        StrategyAward strategyAwardReq = new StrategyAward();
+        strategyAwardReq.setStrategyId(strategyId);
+        strategyAwardReq.setAwardId(awardId);
+        StrategyAward strategyAwardRes = strategyAwardDao.queryStrategyAward(strategyAwardReq);
+
+        // 转换为实体类
+        strategyAwardEntity = StrategyAwardEntity.builder()
+                .strategyId(strategyAwardRes.getStrategyId())
+                .awardId(strategyAwardRes.getAwardId())
+                .awardTitle(strategyAwardRes.getAwardTitle())
+                .awardSubTitle(strategyAwardRes.getAwardSubtitle())
+                .awardCount(strategyAwardRes.getAwardCount())
+                .awardCountSurplus(strategyAwardRes.getAwardCountSurplus())
+                .awardRate(strategyAwardRes.getAwardRate())
+                .sort(strategyAwardRes.getSort())
+                .build();
+
+        // 将奖品信息存入Redis缓存
+        redisService.setValue(cacheKey, strategyAwardEntity);
+        // 返回奖品信息
+        return strategyAwardEntity;
+    }
 
 }
 
