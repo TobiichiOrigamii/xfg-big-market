@@ -28,7 +28,6 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
 
     public Long userScore = 0L;
 
-
     /**
      * 权重责任链过滤：
      * 1. 权重规则格式 4000： 102 103 104 105
@@ -45,7 +44,6 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
         String ruleValue = repository.queryStrategyRuleValue(strategyId, ruleModel());
 
         // 1.根据用户ID查询用户抽奖消耗的积分值，本章节先写死为固定值，后续需要从数据库查询
-        // TODO: 从数据库查询用户积分值
         Map<Long, String> analyticalValueGroup = getAnalyticalValue(ruleValue);
         if (null == analyticalValueGroup || analyticalValueGroup.isEmpty())
             return null;
@@ -75,12 +73,22 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
         return next().logic(userId, strategyId);
     }
 
-
+    /**
+     * 返回当前规则模型
+     *
+     * @return 规则模型代码
+     */
     @Override
     protected String ruleModel() {
         return DefaultChainFactory.LogicModel.RULE_WEIGHT.getCode();
     }
 
+    /**
+     * 解析规则值，并将其转换为键值对的映射。
+     *
+     * @param ruleValue 规则值字符串
+     * @return 键值对映射
+     */
     private Map<Long, String> getAnalyticalValue(String ruleValue) {
         String[] ruleValueGroups = ruleValue.split(Constants.SPACE);
         Map<Long,String> ruleValueMap = new HashMap<>();

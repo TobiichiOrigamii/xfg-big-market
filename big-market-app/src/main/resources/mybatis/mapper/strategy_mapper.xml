@@ -11,13 +11,14 @@
         <result column="update_time" property="updateTime"/>
     </resultMap>
 
-
+    <!-- 查询策略列表，返回策略ID -->
     <select id="queryStrategyList" parameterType="java.lang.String" resultMap="dataMap">
         SELECT strategy_id
         FROM strategy
         limit 10
     </select>
 
+    <!-- 根据策略ID查询策略的详细信息 -->
     <select id="queryStrategyByStrategyId" parameterType="java.lang.Long" resultMap="dataMap">
         select strategy_id, strategy_desc, rule_models
         from strategy

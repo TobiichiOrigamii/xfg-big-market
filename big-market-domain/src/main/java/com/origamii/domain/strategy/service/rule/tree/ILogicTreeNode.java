@@ -9,6 +9,14 @@ import com.origamii.domain.strategy.service.rule.tree.factory.DefaultTreeFactory
  **/
 public interface ILogicTreeNode {
 
+    /**
+     * 根据规则值进行逻辑判断
+     * @param userId     用户id
+     * @param strategyId 策略id
+     * @param awardId    奖品id
+     * @param ruleValue  规则值
+     * @return 返回树节点的动作
+     */
     DefaultTreeFactory.TreeActionEntity logic(String userId, Long strategyId, Integer awardId, String ruleValue);
 
 }

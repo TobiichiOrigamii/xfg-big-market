@@ -16,7 +16,7 @@ import java.util.*;
 
 /**
  * @author Origami
- * @description
+ * @description 权重规则过滤器
  * @create 2024-09-10 10:27
  **/
 @Slf4j
@@ -95,7 +95,12 @@ public class RuleWeightLogicFilter implements ILogicFilter<RuleActionEntity.Raff
                 .build();
     }
 
-
+    /**
+     * 解析权重规则值为键值对
+     *
+     * @param ruleValue 规则值字符串
+     * @return 解析后的键值对映射
+     */
     private Map<Long, String> getAnalyticalValue(String ruleValue) {
         String[] ruleValueGroups = ruleValue.split(Constants.SPACE);
         Map<Long, String> ruleValueMap = new HashMap<>();

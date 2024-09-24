@@ -25,7 +25,14 @@ public class RuleStockLogicTreeNode implements ILogicTreeNode {
     @Autowired
     private IStrategyRepository strategyRepository;
 
-
+    /**
+     * 库存节点
+     * @param userId     用户ID
+     * @param strategyId 策略ID
+     * @param awardId    奖品ID
+     * @param ruleValue  规则值
+     * @return 规则树
+     */
     @Override
     public DefaultTreeFactory.TreeActionEntity logic(String userId, Long strategyId, Integer awardId, String ruleValue) {
         log.info("规则过滤-库存扣减 userId:{},strategyId:{},awardId:{}", userId, strategyId, awardId);
@@ -61,8 +68,5 @@ public class RuleStockLogicTreeNode implements ILogicTreeNode {
                 .ruleLogicCheckType(RuleLogicCheckTypeVO.ALLOW)
                 .build();
     }
-
-
-
 
 }

@@ -12,6 +12,7 @@
         <result column="update_time" property="updateTime"/>
     </resultMap>
 
+    <!-- 查询奖项列表，返回Award对象列表 -->
     <select id="queryAwardList" parameterType="java.lang.String" resultMap="dataMap">
         SELECT award_id,award_key,award_config,award_desc
         FROM award

@@ -19,9 +19,11 @@ public interface IStrategyRepository {
 
     /**
      * 查询策略配置
+     * 该方法通过策略 ID 查询与该策略关联的奖项列表，优先从缓存中获取，
+     * 如果缓存中没有数据，则从数据库中查询，并将结果存入缓存。
      *
-     * @param strategyId 策略ID
-     * @return 策略奖项实体列表
+     * @param strategyId 策略ID，用于确定需要查询的策略奖项列表
+     * @return 返回与指定策略ID关联的奖项实体列表
      */
     List<StrategyAwardEntity> queryStrategyAwardList(Long strategyId);
 
@@ -35,45 +37,81 @@ public interface IStrategyRepository {
     void storeStrategyAwardRateSearchTables(String key, Integer rateRange, HashMap<Integer, Integer> shuffleStrategyAwardRateSearchTables);
 
     /**
-     * @param strategyId
-     * @return
+     * 获取指定策略ID的概率范围
+     *
+     * @param strategyId 策略ID
+     * @return 概率范围
      */
     int getRateRange(Long strategyId);
 
     /**
-     * @param key
-     * @return
+     * 根据键获取概率范围
+     *
+     * @param key 键
+     * @return 概率范围
      */
     int getRateRange(String key);
 
     /**
-     * @param key
-     * @param rateKey
-     * @return
+     * 根据键和概率键获取策略奖品组合
+     *
+     * @param key     键
+     * @param rateKey 概率键
+     * @return 策略奖励组合
      */
     Integer getStrategyAwardAssemble(String key, Integer rateKey);
 
     /**
-     * @param strategyId
-     * @return
+     * 查询指定策略ID的策略实体
+     *
+     * @param strategyId 策略ID
+     * @return 策略实体
      */
     StrategyEntity queryStrategyEntityByStrategy(Long strategyId);
 
     /**
      * 查询策略规则
      *
-     * @param strategyId
-     * @param ruleModel
-     * @return
+     * @param strategyId 策略ID
+     * @param ruleModel  规则模型
+     * @return 策略规则实体
      */
     StrategyRuleEntity queryStrategyRule(Long strategyId, String ruleModel);
 
+    /**
+     * 根据策略ID和奖品ID查询规则值
+     *
+     * @param strategyId 策略ID
+     * @param awardId    奖品ID
+     * @param ruleModel  规则模型
+     * @return 规则值
+     */
     String queryStrategyRuleValue(Long strategyId, Integer awardId, String ruleModel);
 
+    /**
+     * 根据策略ID查询规则值
+     *
+     * @param strategyId 策略ID
+     * @param ruleModel  规则模型
+     * @return 规则值
+     */
     String queryStrategyRuleValue(Long strategyId, String ruleModel);
 
+    /**
+     * 通过策略ID查询策略实体
+     *
+     * @param strategyId 策略ID
+     * @return 策略实体
+     */
     StrategyEntity queryStrategyEntityByStrategyId(Long strategyId);
 
+    /**
+     * 查询策略奖项规则模型
+     *
+     * @param strategyId 策略ID
+     * @param awardId    奖品ID
+     * @return 策略奖项规则模型
+     */
     StrategyAwardRuleModelVO queryStrategyAwardRuleModel(Long strategyId, Integer awardId);
 
     /**
@@ -83,7 +121,6 @@ public interface IStrategyRepository {
      * @return 树结构信息
      */
     RuleTreeVO queryRuleTreeVOByTreeId(String treeId);
-
 
     /**
      * 缓存key decr 方式扣减库存

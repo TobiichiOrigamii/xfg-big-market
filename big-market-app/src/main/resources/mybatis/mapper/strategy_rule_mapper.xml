@@ -13,12 +13,14 @@
         <result column="create_time" property="createTime"/>
     </resultMap>
 
+    <!-- 查询策略规则列表，返回策略ID -->
     <select id="queryStrategyRuleList" parameterType="java.lang.String" resultMap="dataMap">
         SELECT strategy_id
         FROM strategy_rule
         limit 10
     </select>
 
+    <!-- 查询单个策略规则，返回策略规则对象 -->
     <select id="queryStrategyRule" resultType="com.origamii.infrastructure.persistent.po.StrategyRule"
             resultMap="dataMap">
         select strategy_id, award_id, rule_type, rule_model, rule_value, rule_desc
@@ -26,6 +28,7 @@
         where strategy_id = #{strategyId} and rule_model = #{ruleModel}
     </select>
 
+    <!-- 查询策略规则的规则值，根据策略ID、规则模型和可选的奖励ID过滤 -->
     <select id="queryStrategyRuleValue" parameterType="com.origamii.infrastructure.persistent.po.StrategyRule" resultType="java.lang.String">
         select rule_value from strategy_rule
         where strategy_id = #{strategyId} and rule_model = #{ruleModel}

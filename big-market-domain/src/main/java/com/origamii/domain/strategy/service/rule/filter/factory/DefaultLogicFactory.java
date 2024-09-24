@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author Origami
- * @description
+ * @description 默认逻辑工厂，用于管理和提供逻辑过滤器
  * @create 2024-09-09 22:13
  **/
 @Service
@@ -22,6 +22,10 @@ public class DefaultLogicFactory {
 
     public Map<String, ILogicFilter<?>> logicFilterMap = new ConcurrentHashMap<>();
 
+    /**
+     * DefaultLogicFactory 构造函数 用于初始化逻辑过滤器映射
+     * @param logicFilters 逻辑过滤器列表
+     */
     public DefaultLogicFactory(List<ILogicFilter<?>> logicFilters) {
         logicFilters.forEach(logic -> {
             LogicStrategy strategy = AnnotationUtils.findAnnotation(logic.getClass(), LogicStrategy.class);
@@ -31,6 +35,11 @@ public class DefaultLogicFactory {
         });
     }
 
+    /**
+     * 打开逻辑过滤器
+     * @param <T> 规则动作实体的子类
+     * @return 逻辑过滤器映射
+     */
     public <T extends RuleActionEntity.RaffleEntity> Map<String, ILogicFilter<T>> openLogicFilter() {
         return (Map<String, ILogicFilter<T>>) (Map<?, ?>) logicFilterMap;
     }
@@ -49,13 +58,14 @@ public class DefaultLogicFactory {
         private final String info;
         private final String type;
 
-        // 判断传过来的code是否是during类型
+        /**
+         * 检查给定的代码是否属于" during "类型
+         * @param code 逻辑模型代码
+         * @return 是否为" during "类型
+         */
         public static boolean isCenter(String code){
             return "during".equals(LogicModel.valueOf(code.toUpperCase()).getType());
         }
-
-
-
 
     }
 

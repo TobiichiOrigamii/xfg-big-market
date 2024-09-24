@@ -1,14 +1,16 @@
 package com.origamii.domain.strategy.service.rule.chain;
 
 /**
- * @author Fuzhengwei bugstack.cn @小傅哥
- * @description 责任链装配
- * @create 2024-01-20 11:53
- */
+ * @author Origami
+ * @description 装配接口
+ * @create 2024-09-13 16:18
+ **/
 public interface ILogicChainArmory {
 
-    ILogicChain next();
-
+    //设置下一个责任链
     ILogicChain setNext(ILogicChain next);
+
+    //获取下一个责任链
+    ILogicChain next();
 
 }

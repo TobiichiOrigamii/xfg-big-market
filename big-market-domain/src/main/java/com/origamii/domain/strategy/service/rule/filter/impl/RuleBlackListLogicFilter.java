@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 
 /**
  * @author Origami
- * @description
+ * @description 规则黑名单逻辑过滤器
  * @create 2024-09-09 22:39
  **/
 @Slf4j
@@ -26,6 +26,12 @@ public class RuleBlackListLogicFilter implements ILogicFilter<RuleActionEntity.R
     @Resource
     private IStrategyRepository strategyRepository;
 
+    /**
+     * 过滤规则方法
+     *
+     * @param ruleMatterEntity 规则事项实体
+     * @return 规则行动实体
+     */
     @Override
     public RuleActionEntity<RuleActionEntity.RaffleBeforeEntity> filter(RuleMatterEntity ruleMatterEntity) {
         log.info("规则过滤-黑名单 userId:{},ruleModel:{}", ruleMatterEntity.getUserId(), ruleMatterEntity.getRuleModel());

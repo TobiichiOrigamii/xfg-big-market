@@ -8,22 +8,28 @@ package com.origamii.domain.strategy.service.armory;
 public interface IStrategyDispatch {
 
     /**
-     * 获得随机奖品ID
+     * 获取抽奖策略装配的随机结果
      *
      * @param strategyId 策略ID
-     * @return
+     * @return 抽奖结果
      */
     Integer getRandomAwardId(Long strategyId);
 
     /**
-     * 获得随机奖品ID 根据规则权重
+     * 获取抽奖策略装配的随机结果
      *
-     * @param strategyId
-     * @param ruleWeightValue
-     * @return
+     * @param strategyId 权重ID
+     * @return 抽奖结果
      */
     Integer getRandomAwardId(Long strategyId, String ruleWeightValue);
 
+    /**
+     * 获取抽奖策略装配的随机结果
+     *
+     * @param key = strategyId + _ + ruleWeightValue；
+     * @return 抽奖结果
+     */
+    Integer getRandomAwardId(String key);
 
     /**
      * 根据策略ID和奖品ID，扣减奖品缓存库存
@@ -33,8 +39,5 @@ public interface IStrategyDispatch {
      * @return 扣减结果
      */
     Boolean subtractionAwardStock(Long strategyId, Integer awardId);
-
-
-
 
 }

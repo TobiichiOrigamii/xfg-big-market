@@ -20,17 +20,25 @@ import java.util.Map;
 @Slf4j
 public class DecisionTreeEngine implements IDecisionTreeEngine {
 
-
-
+    // 逻辑树节点组
     private final Map<String, ILogicTreeNode> logicTreeNodeGroup;
+
+    // 规则树对象
     private final RuleTreeVO ruleTreeVO;
+
 
     public DecisionTreeEngine(Map<String, ILogicTreeNode> logicTreeNodeGroup, RuleTreeVO ruleTreeVO) {
         this.logicTreeNodeGroup = logicTreeNodeGroup;
         this.ruleTreeVO = ruleTreeVO;
     }
 
-
+    /**
+     * 处理决策树的逻辑，返回策略奖项
+     * @param userId        用户ID
+     * @param strategyId    策略ID
+     * @param awardId       奖项ID
+     * @return 策略奖项数据
+     */
     @Override
     public DefaultTreeFactory.StrategyAwardVO process(String userId, Long strategyId, Integer awardId) {
         DefaultTreeFactory.StrategyAwardVO strategyAwardData = null;
@@ -64,7 +72,12 @@ public class DecisionTreeEngine implements IDecisionTreeEngine {
         return strategyAwardData;
     }
 
-
+    /**
+     * 根据当前的值和节点线列表获取下一个节点
+     * @param matterValue            当前值
+     * @param ruleTreeNodeLineVOList 规则树节点线列表
+     * @return 下一个节点
+     */
     private String nextNode(String matterValue, List<RuleTreeNodeLineVO> ruleTreeNodeLineVOList) {
         if (null == ruleTreeNodeLineVOList || ruleTreeNodeLineVOList.isEmpty()) {
             return null;
@@ -78,7 +91,12 @@ public class DecisionTreeEngine implements IDecisionTreeEngine {
         return null;
     }
 
-
+    /**
+     * 决策逻辑判断
+     * @param matterValue        当前值
+     * @param ruleTreeNodeLineVO 规则树节点线对象
+     * @return 是否符合决策逻辑
+     */
     public boolean decisionLogic(String matterValue, RuleTreeNodeLineVO ruleTreeNodeLineVO) {
         switch (ruleTreeNodeLineVO.getRuleLimitType()) {
             case EQUAL:
@@ -92,6 +110,5 @@ public class DecisionTreeEngine implements IDecisionTreeEngine {
                 return false;
         }
     }
-
 
 }

@@ -1,7 +1,6 @@
 package com.origamii.domain.strategy.service.rule.chain;
 
 import com.origamii.domain.strategy.service.rule.chain.factory.DefaultChainFactory;
-import com.origamii.domain.strategy.service.rule.chain.impl.ILogicChainArmory;
 
 /**
  * @author Origami

@@ -121,16 +121,35 @@ public class StrategyRepository implements IStrategyRepository {
         cacheRateTable.putAll(shuffleStrategyAwardRateSearchTables);
     }
 
+    /**
+     * 根据键和概率键获取策略奖品组合
+     *
+     * @param key     键
+     * @param rateKey 概率键
+     * @return 策略奖励组合
+     */
     @Override
     public Integer getStrategyAwardAssemble(String key, Integer rateKey) {
         return redisService.getFromMap(Constants.RedisKey.STRATEGY_RATE_TABLE_KEY + key, rateKey);
     }
 
+    /**
+     * 获取指定策略ID的概率范围
+     *
+     * @param strategyId 策略ID
+     * @return 概率范围
+     */
     @Override
     public int getRateRange(Long strategyId) {
         return getRateRange(String.valueOf(strategyId));
     }
 
+    /**
+     * 根据键获取概率范围
+     *
+     * @param key 键
+     * @return 概率范围
+     */
     @Override
     public int getRateRange(String key) {
         String cacheKey = Constants.RedisKey.STRATEGY_RATE_RANGE_KEY + key;
@@ -139,7 +158,12 @@ public class StrategyRepository implements IStrategyRepository {
         return redisService.getValue(cacheKey);
     }
 
-
+    /**
+     * 查询指定策略ID的策略实体
+     *
+     * @param strategyId 策略ID
+     * @return 策略实体
+     */
     @Override
     public StrategyEntity queryStrategyEntityByStrategy(Long strategyId) {
         // 1.优先从Redis缓存中获取策略实体
@@ -167,9 +191,11 @@ public class StrategyRepository implements IStrategyRepository {
     }
 
     /**
-     * @param strategyId
-     * @param ruleModel
-     * @return
+     * 查询策略规则
+     *
+     * @param strategyId 策略ID
+     * @param ruleModel  规则模型
+     * @return 策略规则实体
      */
     @Override
     public StrategyRuleEntity queryStrategyRule(Long strategyId, String ruleModel) {
@@ -189,6 +215,14 @@ public class StrategyRepository implements IStrategyRepository {
                 .build();
     }
 
+    /**
+     * 根据策略ID和奖品ID查询规则值
+     *
+     * @param strategyId 策略ID
+     * @param awardId    奖品ID
+     * @param ruleModel  规则模型
+     * @return 规则值
+     */
     @Override
     public String queryStrategyRuleValue(Long strategyId, Integer awardId, String ruleModel) {
         StrategyRule strategyRule = new StrategyRule();
@@ -198,11 +232,24 @@ public class StrategyRepository implements IStrategyRepository {
         return strategyRuleDao.queryStrategyRuleValue(strategyRule);
     }
 
+    /**
+     * 根据策略ID查询规则值
+     *
+     * @param strategyId 策略ID
+     * @param ruleModel  规则模型
+     * @return 规则值
+     */
     @Override
     public String queryStrategyRuleValue(Long strategyId, String ruleModel) {
         return queryStrategyRuleValue(strategyId, null, ruleModel);
     }
 
+    /**
+     * 通过策略ID查询策略实体
+     *
+     * @param strategyId 策略ID
+     * @return 策略实体
+     */
     @Override
     public StrategyEntity queryStrategyEntityByStrategyId(Long strategyId) {
         // 优先从缓存中获取
@@ -229,6 +276,13 @@ public class StrategyRepository implements IStrategyRepository {
         return strategyEntity;
     }
 
+    /**
+     * 查询策略奖项规则模型
+     *
+     * @param strategyId 策略ID
+     * @param awardId    奖品ID
+     * @return 策略奖项规则模型
+     */
     @Override
     public StrategyAwardRuleModelVO queryStrategyAwardRuleModel(Long strategyId, Integer awardId) {
         StrategyAward strategyAward = new StrategyAward();
@@ -240,6 +294,12 @@ public class StrategyRepository implements IStrategyRepository {
                 .build();
     }
 
+    /**
+     * 根据规则树ID，查询树结构信息
+     *
+     * @param treeId 规则树ID
+     * @return 树结构信息
+     */
     @Override
     public RuleTreeVO queryRuleTreeVOByTreeId(String treeId) {
         // 优先从缓存获取
@@ -294,6 +354,12 @@ public class StrategyRepository implements IStrategyRepository {
 
     }
 
+    /**
+     * 缓存key decr 方式扣减库存
+     *
+     * @param cacheKey 缓存key
+     * @return 扣减结果
+     */
     @Override
     public Boolean subtractionAwardStock(String cacheKey) {
         long surplus = redisService.decr(cacheKey);
@@ -312,12 +378,23 @@ public class StrategyRepository implements IStrategyRepository {
         return lock;
     }
 
+    /**
+     * 缓存奖品库存
+     *
+     * @param cacheKey   key
+     * @param awardCount 库存值
+     */
     @Override
     public void cacheStrategyAwardCount(String cacheKey, Integer awardCount) {
         if (redisService.isExists(cacheKey)) return;
         redisService.setAtomicLong(cacheKey, awardCount);
     }
 
+    /**
+     * 写入奖品库存消费队列
+     *
+     * @param strategyAwardStockKeyVO 对象值对象
+     */
     @Override
     public void awardStockConsumeSendQueue(StrategyAwardStockKeyVO strategyAwardStockKeyVO) {
         String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_QUEUE_KEY;
@@ -327,6 +404,9 @@ public class StrategyRepository implements IStrategyRepository {
 
     }
 
+    /**
+     * 获取奖品库存消费队列
+     */
     @Override
     public StrategyAwardStockKeyVO takeQueueValue() {
         String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_QUEUE_KEY;
@@ -334,6 +414,12 @@ public class StrategyRepository implements IStrategyRepository {
         return destinationQueue.poll();
     }
 
+    /**
+     * 更新奖品库存消耗
+     *
+     * @param strategyId 策略ID
+     * @param awardId    奖品ID
+     */
     @Override
     public void updateStrategyAwardStock(Long strategyId, Integer awardId) {
         StrategyAward strategyAward = new StrategyAward();

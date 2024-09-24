@@ -108,7 +108,6 @@ public interface IRedisService {
      */
     long decrBy(String key, long delta);
 
-
     /**
      * 移除指定 key 的值
      *
@@ -261,7 +260,6 @@ public interface IRedisService {
      * @return 值
      */
     <K, V> RMap<K, V> getMap(String key);
-
 
     Boolean setNx(String key);
 

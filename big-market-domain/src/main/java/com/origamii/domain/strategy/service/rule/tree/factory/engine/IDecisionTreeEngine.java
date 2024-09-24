@@ -9,7 +9,13 @@ import com.origamii.domain.strategy.service.rule.tree.factory.DefaultTreeFactory
  **/
 public interface IDecisionTreeEngine {
 
+    /**
+     * 处理决策树的逻辑，返回策略奖项
+     * @param userId        用户ID
+     * @param strategyId    策略ID
+     * @param awardId       奖项ID
+     * @return 策略奖项数据
+     */
     DefaultTreeFactory.StrategyAwardVO process(String userId, Long strategyId, Integer awardId);
-
 
 }

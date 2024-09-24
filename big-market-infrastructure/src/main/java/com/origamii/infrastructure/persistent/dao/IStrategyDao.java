@@ -13,8 +13,18 @@ import java.util.List;
 @Mapper
 public interface IStrategyDao {
 
+    /**
+     * 查询所有策略
+     *
+     * @return 策略列表
+     */
     List<Strategy> queryStrategyList();
 
+    /**
+     * 根据策略 ID 查询策略
+     * @param strategyId 策略 ID
+     * @return 策略
+     */
     Strategy queryStrategyByStrategyId(Long strategyId);
 
 

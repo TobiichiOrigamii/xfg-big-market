@@ -12,12 +12,9 @@ import java.lang.annotation.Target;
  * @description
  * @create 2024-09-09 22:34
  **/
-
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface LogicStrategy {
 
     DefaultLogicFactory.LogicModel logicMode();
-
-
 }

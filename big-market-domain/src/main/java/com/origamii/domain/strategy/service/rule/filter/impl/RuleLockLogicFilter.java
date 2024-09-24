@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 
 /**
  * @author Origami
- * @description 用户抽奖n次后 对应奖品课解锁抽奖
+ * @description 用户抽奖n次后 对应奖品课解锁抽奖 过滤器
  * @create 2024-09-11 15:46
  **/
 @Slf4j
@@ -26,10 +26,15 @@ public class RuleLockLogicFilter implements ILogicFilter<RuleActionEntity.Raffle
     @Resource
     private IStrategyRepository strategyRepository;
 
-    // TODO 后续需要从数据库中获取用户的抽奖次数
+    // 用户的抽奖次数
     private Long userRaffleCount = 0L;
 
-
+    /**
+     * 过滤规则，根据用户的抽奖次数判断是否允许抽奖
+     *
+     * @param ruleMatterEntity 规则相关实体
+     * @return 规则动作实体
+     */
     @Override
     public RuleActionEntity<RuleActionEntity.RaffleDuringEntity> filter(RuleMatterEntity ruleMatterEntity) {
         log.info("规则过滤 - 次数锁 userId:{} strategyId:{} ruleModel:{}",

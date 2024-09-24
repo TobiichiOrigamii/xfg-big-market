@@ -15,16 +15,19 @@ import java.util.Map;
 @NoArgsConstructor
 public class RuleTreeVO {
 
-    /** 规则树ID */
+    // 规则树ID
     private String treeId;
-    /** 规则树名称 */
+
+    // 规则树名称
     private String treeName;
-    /** 规则树描述 */
+
+    // 规则树描述
     private String treeDesc;
-    /** 规则根节点 */
+
+    // 规则根节点
     private String treeRootRuleNode;
 
-    /** 规则节点 */
+    // 规则节点
     private Map<String, RuleTreeNodeVO> treeNodeMap;
 
 }

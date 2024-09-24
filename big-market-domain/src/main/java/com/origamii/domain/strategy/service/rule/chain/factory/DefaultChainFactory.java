@@ -59,9 +59,10 @@ public class DefaultChainFactory {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class StrategyAwardVO {
-        /** 抽奖奖品ID - 内部流转使用 */
+        // 抽奖奖品ID - 内部流转使用
         private Integer awardId;
-        /**  */
+
+        // 规则模型
         private String logicModel;
     }
 
@@ -78,7 +79,5 @@ public class DefaultChainFactory {
         private final String info;
 
     }
-
-
 
 }

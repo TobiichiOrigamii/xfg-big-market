@@ -17,19 +17,13 @@ import org.apache.commons.lang3.StringUtils;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StrategyEntity {
-    /**
-     * 抽奖策略ID
-     */
+    // 抽奖策略ID
     private Long strategyId;
 
-    /**
-     * 抽奖策略描述
-     */
+    // 抽奖策略描述
     private String strategyDesc;
 
-    /**
-     * 抽奖规则模型
-     */
+    // 抽奖规则模型
     private String ruleModels;
 
     // 以,分割装配好的抽奖规则模型

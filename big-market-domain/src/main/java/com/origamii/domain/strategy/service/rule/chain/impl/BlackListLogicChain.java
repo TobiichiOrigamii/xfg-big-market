@@ -20,6 +20,13 @@ public class BlackListLogicChain extends AbstractLogicChain {
     @Autowired
     private IStrategyRepository repository;
 
+    /**
+     * 判断用户是否在黑名单中
+     *
+     * @param userId     用户ID
+     * @param strategyId 策略ID
+     * @return 责任链结果
+     */
     @Override
     public DefaultChainFactory.StrategyAwardVO logic(String userId, Long strategyId) {
         log.info("抽奖责任链-黑名单开始 userId:{},strategyId:{},ruleModel:{}", userId, strategyId, ruleModel());
@@ -29,9 +36,9 @@ public class BlackListLogicChain extends AbstractLogicChain {
 
         // 过滤其他规则
         String[] userBlackIds = splitRuleValue[1].split(Constants.SPLIT);
-        for(String userBlackId : userBlackIds){
-            if (userId.equals(userBlackId)){
-                log.info("抽奖责任链-黑名单接管 userId:{},strategyId:{},ruleModel:{},awardId:{}",userId,strategyId,ruleModel(),awardId);
+        for (String userBlackId : userBlackIds) {
+            if (userId.equals(userBlackId)) {
+                log.info("抽奖责任链-黑名单接管 userId:{},strategyId:{},ruleModel:{},awardId:{}", userId, strategyId, ruleModel(), awardId);
                 return DefaultChainFactory.StrategyAwardVO.builder()
                         .awardId(awardId)
                         .logicModel(ruleModel())
@@ -39,10 +46,15 @@ public class BlackListLogicChain extends AbstractLogicChain {
             }
         }
         // 过滤其他责任链
-        log.info("抽奖责任链-黑名单放行 userId:{},strategyId:{},ruleModel:{}",userId,strategyId,ruleModel());
+        log.info("抽奖责任链-黑名单放行 userId:{},strategyId:{},ruleModel:{}", userId, strategyId, ruleModel());
         return next().logic(userId, strategyId);
     }
 
+    /**
+     * 返回黑名单规则的代码
+     *
+     * @return 黑名单规则的代码
+     */
     @Override
     protected String ruleModel() {
         return DefaultChainFactory.LogicModel.RULE_BLACKLIST.getCode();

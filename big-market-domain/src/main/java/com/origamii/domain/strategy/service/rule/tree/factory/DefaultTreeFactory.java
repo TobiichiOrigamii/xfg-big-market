@@ -25,10 +25,14 @@ public class DefaultTreeFactory {
     @Autowired
     private Map<String, ILogicTreeNode> logicTreeNodeGroup;
 
+    /**
+     * 开逻辑树并返回决策树引擎
+     * @param ruleTreeVO 规则树
+     * @return 决策树引擎
+     */
     public IDecisionTreeEngine openLogicTree(RuleTreeVO ruleTreeVO) {
         return new DecisionTreeEngine(logicTreeNodeGroup, ruleTreeVO);
     }
-
 
     @Data
     @Builder
@@ -39,15 +43,15 @@ public class DefaultTreeFactory {
         private StrategyAwardVO strategyAwardVO;
     }
 
-
     @Data
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
     public static class StrategyAwardVO {
+        // 抽奖奖品ID - 内部流转使用
         private Integer awardId;
+
+        // 抽奖奖品规则
         private String awardRuleValue;
     }
-
-
 }

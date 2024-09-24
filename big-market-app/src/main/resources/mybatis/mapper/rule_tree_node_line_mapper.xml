@@ -15,13 +15,11 @@
         <result column="update_time" property="updateTime"/>
     </resultMap>
 
+    <!--根据 treeId 查询规则树节点列表-->
     <select id="queryRuleTreeNodeLineListByTreeId" parameterType="java.lang.String" resultMap="dataMap">
         select tree_id, rule_node_from, rule_node_to, rule_limit_type, rule_limit_value
         from rule_tree_node_line
         where tree_id = #{treeId}
     </select>
-
-
-
 
 </mapper>

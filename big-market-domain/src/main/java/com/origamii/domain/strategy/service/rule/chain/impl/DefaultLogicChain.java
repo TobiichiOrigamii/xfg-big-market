@@ -19,6 +19,12 @@ public class DefaultLogicChain extends AbstractLogicChain {
     @Autowired
     protected IStrategyDispatch strategyDispatch;
 
+    /**
+     * 根据用户ID和策略ID获取随机奖品ID并返回相应的奖品信息
+     * @param userId 用户ID
+     * @param strategyId 策略ID
+     * @return 策略奖品信息
+     */
     @Override
     public DefaultChainFactory.StrategyAwardVO logic(String userId, Long strategyId) {
         Integer awardId = strategyDispatch.getRandomAwardId(strategyId);
@@ -29,6 +35,10 @@ public class DefaultLogicChain extends AbstractLogicChain {
                 .build();
     }
 
+    /**
+     * 获取当前规则模型的代码
+     * @return 当前规则模型的代码
+     */
     @Override
     protected String ruleModel() {
         return DefaultChainFactory.LogicModel.RULE_DEFAULT.getCode();

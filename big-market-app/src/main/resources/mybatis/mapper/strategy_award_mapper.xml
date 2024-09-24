@@ -17,27 +17,28 @@
         <result column="update_time" property="updateTime"/>
     </resultMap>
 
+    <!-- 查询策略奖励列表，返回前10条记录 -->
     <select id="queryStrategyAwardList" resultMap="dataMap">
         select strategy_id
         from strategy_award
         limit 10
     </select>
 
-    <!--从数据库中获取Key-->
+    <!-- 从数据库中获取Key -->
     <select id="queryStrategyAwardListByStrategyId" parameterType="java.lang.Long" resultMap="dataMap">
         select strategy_id, award_id, award_title, award_subtitle, award_count, award_count_surplus, award_rate, sort
         from strategy_award
         where strategy_id = #{strategy_id}
     </select>
 
-
+    <!-- 查询特定策略的规则模型 -->
     <select id="queryStrategyAwardRuleModel" resultType="java.lang.String"
             parameterType="com.origamii.infrastructure.persistent.po.StrategyAward">
         select rule_models from strategy_award
         where strategy_id = #{strategyId} and award_id = #{awardId}
     </select>
 
-
+    <!-- 更新策略奖励的剩余库存 -->
     <update id="updateStrategyAwardStock"
             parameterType="com.origamii.infrastructure.persistent.po.StrategyAward">
         update strategy_award
@@ -45,6 +46,7 @@
         where strategy_id = #{strategyId} and award_id = #{awardId} and award_count_surplus > 0
     </update>
 
+    <!-- 查询特定奖励的详细信息 -->
     <select id="queryStrategyAward" resultType="com.origamii.infrastructure.persistent.po.StrategyAward">
         select strategy_id,award_id,award_title,award_subtitle,award_count,award_count_surplus,award_rate,rule_models,sort
         from strategy_award

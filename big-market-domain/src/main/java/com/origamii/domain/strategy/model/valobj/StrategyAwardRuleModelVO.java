@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class StrategyAwardRuleModelVO {
 
+    // 规则模型
     private String ruleModels;
 
 

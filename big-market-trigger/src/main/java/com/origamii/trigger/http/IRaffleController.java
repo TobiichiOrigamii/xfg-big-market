@@ -72,7 +72,6 @@ public class IRaffleController implements IRaffleService {
         }
     }
 
-
     /**
      * 查询抽奖奖品列表配置
      *
@@ -114,7 +113,6 @@ public class IRaffleController implements IRaffleService {
 
         }
     }
-
 
     /**
      * 随机抽奖接口

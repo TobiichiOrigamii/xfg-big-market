@@ -18,6 +18,14 @@ public class RuleLockLogicTreeNode implements ILogicTreeNode {
     //TODO 用户抽奖次数，后续完成这部分开发流程 从redis/mysql中获取
     private Long userRaffleCount = 10L;
 
+    /**
+     *  规则过滤-次数锁
+     * @param userId     用户id
+     * @param strategyId 策略id
+     * @param awardId    奖品id
+     * @param ruleValue  规则值
+     * @return 规则结果
+     */
     @Override
     public DefaultTreeFactory.TreeActionEntity logic(String userId, Long strategyId, Integer awardId, String ruleValue) {
 
@@ -42,6 +50,5 @@ public class RuleLockLogicTreeNode implements ILogicTreeNode {
                 .ruleLogicCheckType(RuleLogicCheckTypeVO.TAKE_OVER)
                 .build();
     }
-
 
 }

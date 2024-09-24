@@ -5,7 +5,7 @@ import lombok.Getter;
 
 /**
  * @author Origami
- * @description
+ * @description 规则过滤校验类型值对象
  * @create 2024-09-09 21:22
  **/
 @Getter
