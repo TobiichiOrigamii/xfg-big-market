@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author Origami
- * @description 兜底
+ * @description 兜底奖品
  * @create 2024-09-12 14:13
  **/
 @Slf4j

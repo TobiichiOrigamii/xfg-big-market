@@ -67,7 +67,7 @@ public class StrategyRepository implements IStrategyRepository {
     @Override
     public List<StrategyAwardEntity> queryStrategyAwardList(Long strategyId) {
         // 1. 优先从缓存中获取 Key，Redis 的 key 由策略 ID 组成
-        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_KEY + strategyId;
+        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_LIST_KEY + strategyId;
         List<StrategyAwardEntity> strategyAwardEntities = redisService.getValue(cacheKey);
 
         // 2. 判断缓存中是否有 Key，如果缓存不为空且有数据，则直接返回缓存中的数据
@@ -83,9 +83,12 @@ public class StrategyRepository implements IStrategyRepository {
             StrategyAwardEntity strategyAwardEntity = StrategyAwardEntity.builder()
                     .strategyId(strategyAward.getStrategyId())         // 设置策略 ID
                     .awardId(strategyAward.getAwardId())               // 设置奖项 ID
-                    .awardCount(strategyAward.getAwardCount())         // 设置奖项总数量
+                    .awardTitle(strategyAward.getAwardTitle())          // 设置奖项标题
+                    .awardSubTitle(strategyAward.getAwardSubtitle())    // 设置奖项副标题
+                    .awardCount(strategyAward.getAwardCount())           // 设置奖项总数量
                     .awardCountSurplus(strategyAward.getAwardCountSurplus()) // 设置剩余奖项数量
                     .awardRate(strategyAward.getAwardRate())           // 设置中奖率
+                    .sort(strategyAward.getSort())                     // 设置排序
                     .build();
             // 将创建的实体添加到列表中
             strategyAwardEntities.add(strategyAwardEntity);
@@ -233,7 +236,7 @@ public class StrategyRepository implements IStrategyRepository {
 
     @Override
     public RuleTreeVO queryRuleTreeVOByTreeId(String treeId) {
-    // 优先从缓存获取
+        // 优先从缓存获取
         String cacheKey = Constants.RedisKey.RULE_TREE_VO_KEY + treeId;
         RuleTreeVO ruleTreeVOCache = redisService.getValue(cacheKey);
         if (null != ruleTreeVOCache) return ruleTreeVOCache;
@@ -299,7 +302,7 @@ public class StrategyRepository implements IStrategyRepository {
         String lockKey = cacheKey + Constants.UNDERLINE + surplus;
         Boolean lock = redisService.setNx(lockKey);
         if (!lock)
-            log.info("策略奖品库存加锁失败{}",lockKey);
+            log.info("策略奖品库存加锁失败{}", lockKey);
         return lock;
     }
 

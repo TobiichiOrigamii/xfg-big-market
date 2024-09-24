@@ -8,6 +8,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>big-market-api</module>
         <module>big-market-app</module>
         <module>big-market-domain</module>
         <module>big-market-trigger</module>
