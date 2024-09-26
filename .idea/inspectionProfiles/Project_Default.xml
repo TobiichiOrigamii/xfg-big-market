@@ -53,5 +53,39 @@
         </list>
       </option>
     </inspection_tool>
+    <inspection_tool class="SpringBootApplicationYaml" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="VulnerableLibrariesLocal" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="isIgnoringEnabled" value="true" />
+      <option name="ignoredModules">
+        <list>
+          <option value="big-market-app" />
+          <option value="big-market-app" />
+          <option value="big-market-app" />
+          <option value="big-market-app" />
+          <option value="big-market-app" />
+          <option value="big-market-app" />
+        </list>
+      </option>
+      <option name="ignoredPackages">
+        <list>
+          <option value="commons-collections:commons-collections:3.2.2" />
+          <option value="com.google.protobuf:protobuf-java:3.11.4" />
+          <option value="mysql:mysql-connector-java:8.0.22" />
+          <option value="io.netty:netty-handler:4.1.92.Final" />
+          <option value="com.thoughtworks.xstream:xstream:1.4.10" />
+          <option value="dom4j:dom4j:1.6.1" />
+        </list>
+      </option>
+      <option name="ignoredReasons">
+        <list>
+          <option value="其他" />
+          <option value="其他" />
+          <option value="其他" />
+          <option value="其他" />
+          <option value="其他" />
+          <option value="不可利用" />
+        </list>
+      </option>
+    </inspection_tool>
   </profile>
 </component>
