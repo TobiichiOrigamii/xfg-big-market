@@ -20,11 +20,12 @@
         <result column="update_time" property="updateTime"/>
     </resultMap>
 
-
-
-
-
-
+    <!-- 根据活动id查询抽奖活动 -->
+    <select id="queryRaffleActivityByActivityId" resultType="com.origamii.infrastructure.persistent.po.RaffleActivity">
+        select activity_id, activity_name, activity_desc, begin_date_time, end_date_time, stock_count, stock_count_surplus, activity_count_id, strategy_id, state
+        from raffle_activity
+        where activity_id = #{activityId}
+    </select>
 
 
 </mapper>
