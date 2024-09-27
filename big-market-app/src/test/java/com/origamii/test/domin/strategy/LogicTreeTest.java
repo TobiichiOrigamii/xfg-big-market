@@ -1,4 +1,4 @@
-package com.origamii.test.domin;
+package com.origamii.test.domin.strategy;
 
 import com.origamii.domain.strategy.model.valobj.*;
 import com.origamii.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;

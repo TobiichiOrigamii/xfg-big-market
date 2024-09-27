@@ -1,4 +1,4 @@
-package com.origamii.test.domin;
+package com.origamii.test.domin.strategy;
 
 import com.alibaba.fastjson.JSON;
 import com.origamii.domain.strategy.service.armory.IStrategyArmory;
