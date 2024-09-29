@@ -7,6 +7,6 @@ package com.origamii.domain.activity.service.rule;
  **/
 public interface IActionChainArmory {
 
-    I
+
 
 }
