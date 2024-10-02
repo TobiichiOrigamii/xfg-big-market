@@ -9,7 +9,7 @@ import com.origamii.domain.activity.model.entity.ActivitySkuEntity;
  * @description 下单规则过滤接口
  * @create 2024-09-28 10:53
  **/
-public interface IActionChain {
+public interface IActionChain extends IActionChainArmory{
 
     boolean action(ActivitySkuEntity activitySkuEntity, ActivityEntity activityEntity, ActivityCountEntity activityCountEntity);
 }

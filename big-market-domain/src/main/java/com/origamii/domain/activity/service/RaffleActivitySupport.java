@@ -4,6 +4,7 @@ import com.origamii.domain.activity.model.entity.ActivityCountEntity;
 import com.origamii.domain.activity.model.entity.ActivityEntity;
 import com.origamii.domain.activity.model.entity.ActivitySkuEntity;
 import com.origamii.domain.activity.repository.IActivityRepository;
+import com.origamii.domain.activity.service.rule.factory.DefaultActivityChainFactory;
 
 /**
  * @author Origami
@@ -12,10 +13,15 @@ import com.origamii.domain.activity.repository.IActivityRepository;
  **/
 public class RaffleActivitySupport {
 
+    // 注入IActivityRepository 仓储接口
     protected IActivityRepository repository;
+    // 注入DefaultActivityChainFactory 活动链工厂
+    protected DefaultActivityChainFactory defaultActivityChainFactory;
 
-    public RaffleActivitySupport(IActivityRepository repository) {
+
+    public RaffleActivitySupport(IActivityRepository repository, DefaultActivityChainFactory defaultActivityChainFactory) {
         this.repository = repository;
+        this.defaultActivityChainFactory = defaultActivityChainFactory;
     }
 
     public ActivitySkuEntity queryActivitySku(Long sku){
