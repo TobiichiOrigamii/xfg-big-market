@@ -18,6 +18,9 @@ public class RaffleActivityOrder {
     //用户ID
     private String userId;
 
+    //sku
+    private Long sku;
+
     //活动ID
     private Long activityId;
 
@@ -45,10 +48,15 @@ public class RaffleActivityOrder {
     //订单状态
     private String state;
 
+    //业务仿重ID - 外部透传 确保幂等
+    private String outBusinessNo;
+
     //创建时间
     private Date createTime;
 
     //更新时间
     private Date updateTime;
+
+
 
 }

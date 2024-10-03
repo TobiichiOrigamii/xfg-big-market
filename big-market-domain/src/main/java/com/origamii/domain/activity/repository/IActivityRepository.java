@@ -1,5 +1,6 @@
 package com.origamii.domain.activity.repository;
 
+import com.origamii.domain.activity.model.aggreate.CreateOrderAggregate;
 import com.origamii.domain.activity.model.entity.ActivityCountEntity;
 import com.origamii.domain.activity.model.entity.ActivityEntity;
 import com.origamii.domain.activity.model.entity.ActivitySkuEntity;
@@ -31,4 +32,10 @@ public interface IActivityRepository {
      * @return 活动计数实体
      */
     ActivityCountEntity queryRaffleActivityCountByActivityCountId(Long activityCountId);
+
+    /**
+     * 保存订单
+     * @param createOrderAggregate 订单聚合实体
+     */
+    void saveOrder(CreateOrderAggregate createOrderAggregate);
 }
