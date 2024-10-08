@@ -181,12 +181,10 @@ public class ActivityRepository implements IActivityRepository {
                     // 2.更新账户
                     int count = raffleActivityAccountDao.updateAccountQuota(raffleActivityAccount);
                     // 3.创建账户 - 更新为0 则账户不存在 创建新账户
-                    if (count == 0) {
+                    if (count == 0)
                         // 账户不存在，插入
                         raffleActivityAccountDao.insert(raffleActivityAccount);
-                    }
-
-
+                    return 1;
                 } catch (DuplicateKeyException e) {
                     status.setRollbackOnly();
                     log.error("写入订单记录，唯一索引冲突 userId:{} activityId:{} sku:{}",

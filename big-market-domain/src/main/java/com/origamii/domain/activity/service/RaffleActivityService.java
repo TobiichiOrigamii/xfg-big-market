@@ -32,11 +32,10 @@ public class RaffleActivityService extends AbstractRaffleActivity{
      * @param activityEntity 活动实体
      * @param activityCountEntity 次数实体
      * @param skuRechargeEntity sku充值实体
-     * @return
+     * @return 订单聚合对象
      */
     @Override
     protected CreateOrderAggregate buildOrderAggregate(ActivitySkuEntity activitySkuEntity, ActivityEntity activityEntity, ActivityCountEntity activityCountEntity, SkuRechargeEntity skuRechargeEntity) {
-
         // 订单实体对象
         ActivityOrderEntity activityOrderEntity = new ActivityOrderEntity();
         activityOrderEntity.setUserId(skuRechargeEntity.getUserId());

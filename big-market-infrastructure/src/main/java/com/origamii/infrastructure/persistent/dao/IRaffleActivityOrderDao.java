@@ -19,7 +19,6 @@ public interface IRaffleActivityOrderDao {
      *
      * @param raffleActivityOrder 抽奖活动单
      */
-    @DBRouter(key = "userId")
     void insert(RaffleActivityOrder raffleActivityOrder);
 
     /**

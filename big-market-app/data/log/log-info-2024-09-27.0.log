@@ -1,0 +1,173 @@
+24-09-27.16:25:53.277 [main            ] INFO  RaffleOrderTest        - Starting RaffleOrderTest using Java 19.0.1 on Legion-R9000P with PID 19724 (started by lenovo in E:\Code\Java\big-market\big-market-app)
+24-09-27.16:25:53.280 [main            ] INFO  RaffleOrderTest        - The following 1 profile is active: "dev"
+24-09-27.16:25:54.385 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-27.16:25:54.390 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-27.16:25:54.438 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 27 ms. Found 0 Redis repository interfaces.
+24-09-27.16:25:56.240 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-27.16:25:56.845 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:25:56.920 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:25:59.532 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-27.16:25:59.630 [main            ] INFO  RaffleOrderTest        - Started RaffleOrderTest in 6.882 seconds (JVM running for 7.861)
+24-09-27.16:26:00.006 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取】
+24-09-27.16:29:14.438 [main            ] INFO  RaffleOrderTest        - Starting RaffleOrderTest using Java 19.0.1 on Legion-R9000P with PID 20116 (started by lenovo in E:\Code\Java\big-market\big-market-app)
+24-09-27.16:29:14.439 [main            ] INFO  RaffleOrderTest        - The following 1 profile is active: "dev"
+24-09-27.16:29:15.375 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-27.16:29:15.378 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-27.16:29:15.416 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23 ms. Found 0 Redis repository interfaces.
+24-09-27.16:29:16.837 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-27.16:29:17.346 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:29:17.367 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:29:19.566 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-27.16:29:19.645 [main            ] INFO  RaffleOrderTest        - Started RaffleOrderTest in 5.641 seconds (JVM running for 6.448)
+24-09-27.16:29:20.013 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取】
+24-09-27.16:29:20.212 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-09-27.16:29:20.575 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-09-27.16:31:23.384 [main            ] INFO  RaffleOrderTest        - Starting RaffleOrderTest using Java 19.0.1 on Legion-R9000P with PID 4556 (started by lenovo in E:\Code\Java\big-market\big-market-app)
+24-09-27.16:31:23.385 [main            ] INFO  RaffleOrderTest        - The following 1 profile is active: "dev"
+24-09-27.16:31:24.267 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-27.16:31:24.271 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-27.16:31:24.314 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 22 ms. Found 0 Redis repository interfaces.
+24-09-27.16:31:25.790 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-27.16:31:26.273 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:31:26.293 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:31:28.520 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-27.16:31:28.599 [main            ] INFO  RaffleOrderTest        - Started RaffleOrderTest in 5.664 seconds (JVM running for 6.437)
+24-09-27.16:31:29.175 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-09-27.16:31:29.471 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-09-27.16:34:19.033 [main            ] INFO  RaffleOrderTest        - Starting RaffleOrderTest using Java 19.0.1 on Legion-R9000P with PID 21360 (started by lenovo in E:\Code\Java\big-market\big-market-app)
+24-09-27.16:34:19.034 [main            ] INFO  RaffleOrderTest        - The following 1 profile is active: "dev"
+24-09-27.16:34:19.918 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-27.16:34:19.920 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-27.16:34:19.956 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 20 ms. Found 0 Redis repository interfaces.
+24-09-27.16:34:21.379 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-27.16:34:21.884 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:34:21.906 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:34:24.132 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-27.16:34:24.201 [main            ] INFO  RaffleOrderTest        - Started RaffleOrderTest in 5.616 seconds (JVM running for 6.39)
+24-09-27.16:34:24.725 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-09-27.16:34:25.004 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取】
+24-09-27.16:34:25.058 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-09-27.16:35:21.540 [main            ] INFO  RaffleOrderTest        - Starting RaffleOrderTest using Java 19.0.1 on Legion-R9000P with PID 9336 (started by lenovo in E:\Code\Java\big-market\big-market-app)
+24-09-27.16:35:21.541 [main            ] INFO  RaffleOrderTest        - The following 1 profile is active: "dev"
+24-09-27.16:35:22.423 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-27.16:35:22.425 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-27.16:35:22.461 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 0 Redis repository interfaces.
+24-09-27.16:35:23.916 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-27.16:35:24.424 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:35:24.440 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:35:26.895 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-27.16:35:26.969 [main            ] INFO  RaffleOrderTest        - Started RaffleOrderTest in 5.865 seconds (JVM running for 6.632)
+24-09-27.16:35:27.485 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-09-27.16:35:27.788 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-09-27.16:38:07.790 [main            ] INFO  RaffleOrderTest        - Starting RaffleOrderTest using Java 19.0.1 on Legion-R9000P with PID 17808 (started by lenovo in E:\Code\Java\big-market\big-market-app)
+24-09-27.16:38:07.794 [main            ] INFO  RaffleOrderTest        - The following 1 profile is active: "dev"
+24-09-27.16:38:08.670 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-27.16:38:08.674 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-27.16:38:08.718 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 24 ms. Found 0 Redis repository interfaces.
+24-09-27.16:38:10.216 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-27.16:38:10.732 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:38:10.755 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:38:12.863 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-27.16:38:12.939 [main            ] INFO  RaffleOrderTest        - Started RaffleOrderTest in 5.596 seconds (JVM running for 6.415)
+24-09-27.16:38:13.480 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-09-27.16:38:13.798 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-09-27.16:39:52.471 [main            ] INFO  RaffleOrderTest        - Starting RaffleOrderTest using Java 19.0.1 on Legion-R9000P with PID 9128 (started by lenovo in E:\Code\Java\big-market\big-market-app)
+24-09-27.16:39:52.472 [main            ] INFO  RaffleOrderTest        - The following 1 profile is active: "dev"
+24-09-27.16:39:53.358 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-27.16:39:53.360 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-27.16:39:53.407 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 24 ms. Found 0 Redis repository interfaces.
+24-09-27.16:39:54.856 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-27.16:39:55.381 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:39:55.404 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:39:57.780 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-27.16:39:57.856 [main            ] INFO  RaffleOrderTest        - Started RaffleOrderTest in 5.834 seconds (JVM running for 6.625)
+24-09-27.16:39:58.385 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-09-27.16:39:58.707 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-09-27.16:40:44.565 [main            ] INFO  RaffleOrderTest        - Starting RaffleOrderTest using Java 19.0.1 on Legion-R9000P with PID 18796 (started by lenovo in E:\Code\Java\big-market\big-market-app)
+24-09-27.16:40:44.566 [main            ] INFO  RaffleOrderTest        - The following 1 profile is active: "dev"
+24-09-27.16:40:45.528 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-27.16:40:45.534 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-27.16:40:45.583 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 29 ms. Found 0 Redis repository interfaces.
+24-09-27.16:40:47.082 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-27.16:40:47.582 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:40:47.603 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:40:49.830 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-27.16:40:49.910 [main            ] INFO  RaffleOrderTest        - Started RaffleOrderTest in 5.78 seconds (JVM running for 6.583)
+24-09-27.16:40:52.819 [main            ] INFO  RaffleOrderTest        - Starting RaffleOrderTest using Java 19.0.1 on Legion-R9000P with PID 20084 (started by lenovo in E:\Code\Java\big-market\big-market-app)
+24-09-27.16:40:52.819 [main            ] INFO  RaffleOrderTest        - The following 1 profile is active: "dev"
+24-09-27.16:40:53.945 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-27.16:40:53.952 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-27.16:40:53.993 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23 ms. Found 0 Redis repository interfaces.
+24-09-27.16:40:55.670 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-27.16:40:56.205 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:40:56.224 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:40:59.283 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-27.16:40:59.362 [main            ] INFO  RaffleOrderTest        - Started RaffleOrderTest in 7.067 seconds (JVM running for 8.487)
+24-09-27.16:41:04.510 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取】
+24-09-27.16:41:04.635 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-09-27.16:41:05.010 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取】
+24-09-27.16:41:05.756 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-09-27.16:41:10.684 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取】
+24-09-27.16:41:36.457 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取】
+24-09-27.16:46:34.287 [main            ] INFO  RaffleOrderTest        - Starting RaffleOrderTest using Java 19.0.1 on Legion-R9000P with PID 19004 (started by lenovo in E:\Code\Java\big-market\big-market-app)
+24-09-27.16:46:34.288 [main            ] INFO  RaffleOrderTest        - The following 1 profile is active: "dev"
+24-09-27.16:46:35.222 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-27.16:46:35.227 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-27.16:46:35.267 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21 ms. Found 0 Redis repository interfaces.
+24-09-27.16:46:36.762 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-27.16:46:37.273 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:46:37.298 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:46:39.587 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-27.16:46:39.673 [main            ] INFO  RaffleOrderTest        - Started RaffleOrderTest in 5.824 seconds (JVM running for 6.631)
+24-09-27.16:46:40.008 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取】
+24-09-27.16:46:40.321 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-09-27.16:46:40.620 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-09-27.16:50:02.789 [main            ] INFO  RaffleOrderTest        - Starting RaffleOrderTest using Java 19.0.1 on Legion-R9000P with PID 19072 (started by lenovo in E:\Code\Java\big-market\big-market-app)
+24-09-27.16:50:02.791 [main            ] INFO  RaffleOrderTest        - The following 1 profile is active: "dev"
+24-09-27.16:50:03.859 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-27.16:50:03.862 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-27.16:50:03.901 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 22 ms. Found 0 Redis repository interfaces.
+24-09-27.16:50:05.497 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-27.16:50:06.051 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:50:06.071 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:50:08.966 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-27.16:50:09.054 [main            ] INFO  RaffleOrderTest        - Started RaffleOrderTest in 6.752 seconds (JVM running for 7.842)
+24-09-27.16:51:03.086 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取】
+24-09-27.16:51:03.118 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-09-27.16:51:03.467 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-09-27.16:52:10.297 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=1m36s830ms877µs300ns).
+24-09-27.16:52:10.297 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取】
+24-09-27.16:52:47.997 [main            ] INFO  RaffleOrderTest        - Starting RaffleOrderTest using Java 19.0.1 on Legion-R9000P with PID 6780 (started by lenovo in E:\Code\Java\big-market\big-market-app)
+24-09-27.16:52:47.998 [main            ] INFO  RaffleOrderTest        - The following 1 profile is active: "dev"
+24-09-27.16:52:48.993 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-27.16:52:48.995 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-27.16:52:49.031 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21 ms. Found 0 Redis repository interfaces.
+24-09-27.16:52:50.605 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-27.16:52:51.139 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:52:51.156 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:52:54.353 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-27.16:52:54.435 [main            ] INFO  RaffleOrderTest        - Started RaffleOrderTest in 6.929 seconds (JVM running for 7.974)
+24-09-27.16:53:34.688 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取】
+24-09-27.16:53:34.861 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-09-27.16:53:35.003 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取】
+24-09-27.16:53:36.010 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-09-27.16:53:41.466 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取】
+24-09-27.16:54:11.667 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取】
+24-09-27.16:54:31.222 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取】
+24-09-27.16:56:17.450 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=2m7s977ms681µs700ns).
+24-09-27.16:56:20.134 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取】
+24-09-27.16:56:35.372 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务，更新奖品消耗库存【延迟队列获取】
+24-09-27.16:57:30.164 [main            ] INFO  RaffleOrderTest        - Starting RaffleOrderTest using Java 19.0.1 on Legion-R9000P with PID 19084 (started by lenovo in E:\Code\Java\big-market\big-market-app)
+24-09-27.16:57:30.166 [main            ] INFO  RaffleOrderTest        - The following 1 profile is active: "dev"
+24-09-27.16:57:31.075 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-09-27.16:57:31.078 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-09-27.16:57:31.125 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 22 ms. Found 0 Redis repository interfaces.
+24-09-27.16:57:32.618 [main            ] INFO  Version                - Redisson 3.23.4
+24-09-27.16:57:33.106 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:57:33.126 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-09-27.16:57:35.614 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-09-27.16:57:35.683 [main            ] INFO  RaffleOrderTest        - Started RaffleOrderTest in 5.969 seconds (JVM running for 6.781)
+24-09-27.16:57:36.227 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-09-27.16:57:36.593 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-09-27.16:57:36.962 [main            ] INFO  AbstractRaffleActivity - 查询结果：{"activityCountId":11101,"activityId":100301,"sku":9011,"stockCount":0,"stockCountSurplus":0} {"activityDesc":"测试活动","activityId":100301,"activityName":"测试活动","beginDateTime":1709979310000,"endDateTime":2025512110000,"state":"create","strategyId":100006} {"activityCountId":11101,"dayCount":1,"monthCount":1,"totalCount":1}
+24-09-27.16:57:36.966 [main            ] INFO  RaffleOrderTest        - 测试结果：{}
