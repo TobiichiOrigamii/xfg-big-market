@@ -20,6 +20,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.annotation.Resource;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Origami
@@ -195,10 +197,56 @@ public class ActivityRepository implements IActivityRepository {
                 }
 
             });
-        }finally {
+        } finally {
             // 清除路由缓存
             dbRouter.clear();
         }
+    }
+
+    /**
+     * 查询活动sku库存
+     *
+     * @param cacheKey   缓存key
+     * @param stockCount 库存数量
+     */
+    @Override
+    public void cacheActivitySKuStockCount(String cacheKey, Integer stockCount) {
+        if (redisService.isExists(cacheKey)) return;
+        redisService.setAtomicLong(cacheKey, stockCount);
+    }
+
+    /**
+     * 减少活动sku库存
+     *
+     * @param sku         活动SKU
+     * @param cacheKey    缓存key
+     * @param endDateTime 结束时间
+     * @return 库存是否减少成功
+     */
+    @Override
+    public boolean subtractionActivityStock(Long sku, String cacheKey, Date endDateTime) {
+        long surplus = redisService.decr(cacheKey);
+        if (surplus == 0) {
+            // 库存不足 发送MQ消息 更新数据库库存
+            // TODO
+            return false;
+        } else if (surplus < 0) {
+            // 库存小于0 恢复为0个
+            redisService.setAtomicLong(cacheKey, 0);
+            return false;
+        }
+
+        // 1.按照cacheKey decr后的值，如99、98、97和Key组成为库存锁的Key进行使用
+        // 2.加锁是为了兜底 如果后续有恢复库存 手动处理等【运营是人来操作 会有这种情况发放 系统要做好防护】 也不会超卖 因为所有可用库存Key都被加锁了
+        // 3.设置加锁时间为活动到期+延迟1天 防止死锁
+        String lockKey = cacheKey +Constants.UNDERLINE + surplus;
+        long expireMillis = endDateTime.getTime() - System.currentTimeMillis() + TimeUnit.DAYS.toMillis(1);
+        boolean lock = redisService.setNx(lockKey, expireMillis, TimeUnit.MILLISECONDS);
+        if (!lock){
+            log.info("活动SKU库存加锁失败", lockKey);
+        }
+
+        return false;
     }
 
 

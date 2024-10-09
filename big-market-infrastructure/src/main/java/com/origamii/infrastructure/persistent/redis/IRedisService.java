@@ -2,6 +2,8 @@ package com.origamii.infrastructure.persistent.redis;
 
 import org.redisson.api.*;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Redis 服务
  *
@@ -184,7 +186,6 @@ public interface IRedisService {
      */
     <K, V> V getFromMap(String key, K field);
 
-
     /**
      * 将指定的值添加到有序集合中
      *
@@ -261,7 +262,21 @@ public interface IRedisService {
      */
     <K, V> RMap<K, V> getMap(String key);
 
+    /**
+     * 设置锁
+     *
+     * @param key 键
+     * @return true/false
+     */
     Boolean setNx(String key);
 
-
+    /**
+     * 设置锁
+     *
+     * @param key      键
+     * @param expire   过期时间
+     * @param timeUnit 时间单位
+     * @return true/false
+     */
+    boolean setNx(String key, long expire, TimeUnit timeUnit);
 }
