@@ -40,39 +40,30 @@ public class ActivityRepository implements IActivityRepository {
     // redis缓存服务
     @Resource
     private IRedisService redisService;
-
     // 活动Dao
     @Resource
     private IRaffleActivityDao raffleActivityDao;
-
     // 活动订单Dao
     @Resource
     private IRaffleActivityOrderDao raffleActivityOrderDao;
-
     // 活动账户Dao
     @Resource
     private IRaffleActivityAccountDao raffleActivityAccountDao;
-
     // 活动SKUDao
     @Resource
     private IRaffleActivitySkuDao raffleActivitySkuDao;
-
     // 活动次数Dao
     @Resource
     private IRaffleActivityCountDao raffleActivityCountDao;
-
     // 事务模板
     @Resource
     private TransactionTemplate transactionTemplate;
-
     // 数据库路由策略
     @Resource
     private IDBRouterStrategy dbRouter;
-
     // 延迟队列
     @Resource
     private EventPublisher eventPublisher;
-
     // 活动库存为0消息
     @Resource
     private ActivitySkuStockZeroMessageEvent activitySkuStockZeroMessageEvent;
@@ -252,10 +243,10 @@ public class ActivityRepository implements IActivityRepository {
         // 1.按照cacheKey decr后的值，如99、98、97和Key组成为库存锁的Key进行使用
         // 2.加锁是为了兜底 如果后续有恢复库存 手动处理等【运营是人来操作 会有这种情况发放 系统要做好防护】 也不会超卖 因为所有可用库存Key都被加锁了
         // 3.设置加锁时间为活动到期+延迟1天 防止死锁
-        String lockKey = cacheKey +Constants.UNDERLINE + surplus;
+        String lockKey = cacheKey + Constants.UNDERLINE + surplus;
         long expireMillis = endDateTime.getTime() - System.currentTimeMillis() + TimeUnit.DAYS.toMillis(1);
         boolean lock = redisService.setNx(lockKey, expireMillis, TimeUnit.MILLISECONDS);
-        if (!lock){
+        if (!lock) {
             log.info("活动SKU库存加锁失败 lockKey:{}", lockKey);
         }
         return lock;
@@ -278,6 +269,48 @@ public class ActivityRepository implements IActivityRepository {
 
         // 将活动 SKU 库存的 key 放入延迟队列，延迟时间为 3 秒
         delayedQueue.offer(activitySkuStockKeyVO, 3, TimeUnit.SECONDS);
+    }
+
+    /**
+     * 从队列中获取活动sku库存key
+     *
+     * @return 活动sku库存key
+     */
+    @Override
+    public ActivitySkuStockKeyVO takeQueueValue() {
+        String cacheKey = Constants.RedisKey.ACTIVITY_SKU_COUNT_QUEUE_KEY;
+        RBlockingQueue<ActivitySkuStockKeyVO> blockingQueue = redisService.getBlockingQueue(cacheKey);
+        return blockingQueue.poll();
+    }
+
+    /**
+     * 清除队列中的活动sku库存key
+     */
+    @Override
+    public void clearQueueValue() {
+        String cacheKey = Constants.RedisKey.ACTIVITY_SKU_COUNT_QUEUE_KEY;
+        RBlockingQueue<ActivitySkuStockKeyVO> blockingQueue = redisService.getBlockingQueue(cacheKey);
+        blockingQueue.clear();
+    }
+
+    /**
+     * 延迟队列+任务趋势更新活动sku库存
+     *
+     * @param sku 活动商品
+     */
+    @Override
+    public void updateActivitySkuStock(Long sku) {
+        raffleActivitySkuDao.updateActivitySkuStock(sku);
+    }
+
+    /**
+     * 存库存以消耗完毕 清空数据库库存
+     *
+     * @param sku 活动商品
+     */
+    @Override
+    public void clearActivitySkuStock(Long sku) {
+        raffleActivitySkuDao.clearActivitySkuStock(sku);
     }
 
 

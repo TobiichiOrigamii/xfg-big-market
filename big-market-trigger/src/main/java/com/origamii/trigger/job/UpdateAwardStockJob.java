@@ -23,10 +23,10 @@ public class UpdateAwardStockJob {
     @Scheduled(cron = "0/5 * * * * ?")
     public void exec() {
         try {
-            log.info("定时任务，更新奖品消耗库存【延迟队列获取】");
+            log.info("定时任务 - 更新奖品消耗库存【延迟队列获取】");
             StrategyAwardStockKeyVO strategyAwardStockKeyVO = raffleStock.takeQueueValue();
             if (null == strategyAwardStockKeyVO) return;
-            log.info("定时任务，更新奖品消耗库存 strategyId:{} awardId:{}",
+            log.info("定时任务 - 更新奖品消耗库存【延迟队列获取】 strategyId:{} awardId:{}",
                     strategyAwardStockKeyVO.getStrategyId(),
                     strategyAwardStockKeyVO.getAwardId()
             );
@@ -35,10 +35,8 @@ public class UpdateAwardStockJob {
                     strategyAwardStockKeyVO.getAwardId()
             );
         } catch (Exception e) {
-            log.error("定时任务，更新奖品消耗库存异常", e);
+            log.error("定时任务 - 更新奖品消耗库存【延迟队列获取】异常", e);
         }
-
-
     }
 
 

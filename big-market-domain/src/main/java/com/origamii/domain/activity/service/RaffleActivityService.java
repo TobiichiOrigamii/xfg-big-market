@@ -2,6 +2,7 @@ package com.origamii.domain.activity.service;
 
 import com.origamii.domain.activity.model.aggreate.CreateOrderAggregate;
 import com.origamii.domain.activity.model.entity.*;
+import com.origamii.domain.activity.model.valobj.ActivitySkuStockKeyVO;
 import com.origamii.domain.activity.model.valobj.OrderStateVO;
 import com.origamii.domain.activity.repository.IActivityRepository;
 import com.origamii.domain.activity.service.rule.factory.DefaultActivityChainFactory;
@@ -16,7 +17,7 @@ import java.util.Date;
  * @create 2024-09-27 15:59
  **/
 @Service
-public class RaffleActivityService extends AbstractRaffleActivity{
+public class RaffleActivityService extends AbstractRaffleActivity implements ISkuStock{
     /**
      * 构造函数
      * @param repository 仓储层
@@ -68,5 +69,44 @@ public class RaffleActivityService extends AbstractRaffleActivity{
     @Override
     protected void saveOrder(CreateOrderAggregate createOrderAggregate) {
         repository.saveOrder(createOrderAggregate);
+    }
+
+    /**
+     * 获取活动sku库存消耗队列
+     *
+     * @return 奖品库存key信息
+     * @throws InterruptedException 异常
+     */
+    @Override
+    public ActivitySkuStockKeyVO takeQueueValue() throws InterruptedException {
+        return repository.takeQueueValue();
+    }
+
+    /**
+     * 清空队列
+     */
+    @Override
+    public void clearQueueValue() {
+        repository.clearQueueValue();
+    }
+
+    /**
+     * 延迟队列+任务趋势更新活动sku库存
+     *
+     * @param sku 活动商品
+     */
+    @Override
+    public void updateActivitySkuStock(Long sku) {
+        repository.updateActivitySkuStock(sku);
+    }
+
+    /**
+     * 缓存库存以消耗完毕 清空数据库库存
+     *
+     * @param sku 活动商品
+     */
+    @Override
+    public void clearActivitySkuStock(Long sku) {
+         repository.clearActivitySkuStock(sku);
     }
 }
