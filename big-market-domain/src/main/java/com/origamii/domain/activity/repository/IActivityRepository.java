@@ -4,6 +4,7 @@ import com.origamii.domain.activity.model.aggreate.CreateOrderAggregate;
 import com.origamii.domain.activity.model.entity.ActivityCountEntity;
 import com.origamii.domain.activity.model.entity.ActivityEntity;
 import com.origamii.domain.activity.model.entity.ActivitySkuEntity;
+import com.origamii.domain.activity.model.valobj.ActivitySkuStockKeyVO;
 
 import java.util.Date;
 
@@ -63,4 +64,10 @@ public interface IActivityRepository {
      */
     boolean subtractionActivityStock(Long sku, String cacheKey, Date endDateTime);
 
+    /**
+     * 活动sku库存消费发送队列
+     *
+     * @param activitySkuStockKeyVO 活动sku库存key
+     */
+    void activitySkuStockConsumeSendQueue(ActivitySkuStockKeyVO activitySkuStockKeyVO);
 }

@@ -1,13 +1,16 @@
 package com.origamii.infrastructure.persistent.repository;
 
 import cn.bugstack.middleware.db.router.strategy.IDBRouterStrategy;
+import com.origamii.domain.activity.event.ActivitySkuStockZeroMessageEvent;
 import com.origamii.domain.activity.model.aggreate.CreateOrderAggregate;
 import com.origamii.domain.activity.model.entity.ActivityCountEntity;
 import com.origamii.domain.activity.model.entity.ActivityEntity;
 import com.origamii.domain.activity.model.entity.ActivityOrderEntity;
 import com.origamii.domain.activity.model.entity.ActivitySkuEntity;
+import com.origamii.domain.activity.model.valobj.ActivitySkuStockKeyVO;
 import com.origamii.domain.activity.model.valobj.ActivityStateVO;
 import com.origamii.domain.activity.repository.IActivityRepository;
+import com.origamii.infrastructure.event.EventPublisher;
 import com.origamii.infrastructure.persistent.dao.*;
 import com.origamii.infrastructure.persistent.po.*;
 import com.origamii.infrastructure.persistent.redis.IRedisService;
@@ -15,6 +18,8 @@ import com.origamii.types.common.Constants;
 import com.origamii.types.enums.ResponseCode;
 import com.origamii.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RBlockingQueue;
+import org.redisson.api.RDelayedQueue;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -63,6 +68,14 @@ public class ActivityRepository implements IActivityRepository {
     // 数据库路由策略
     @Resource
     private IDBRouterStrategy dbRouter;
+
+    // 延迟队列
+    @Resource
+    private EventPublisher eventPublisher;
+
+    // 活动库存为0消息
+    @Resource
+    private ActivitySkuStockZeroMessageEvent activitySkuStockZeroMessageEvent;
 
     /**
      * 查询活动sku
@@ -228,7 +241,7 @@ public class ActivityRepository implements IActivityRepository {
         long surplus = redisService.decr(cacheKey);
         if (surplus == 0) {
             // 库存不足 发送MQ消息 更新数据库库存
-            // TODO
+            eventPublisher.publish(activitySkuStockZeroMessageEvent.topic(), activitySkuStockZeroMessageEvent.buildEventMessage(sku));
             return false;
         } else if (surplus < 0) {
             // 库存小于0 恢复为0个
@@ -243,10 +256,28 @@ public class ActivityRepository implements IActivityRepository {
         long expireMillis = endDateTime.getTime() - System.currentTimeMillis() + TimeUnit.DAYS.toMillis(1);
         boolean lock = redisService.setNx(lockKey, expireMillis, TimeUnit.MILLISECONDS);
         if (!lock){
-            log.info("活动SKU库存加锁失败", lockKey);
+            log.info("活动SKU库存加锁失败 lockKey:{}", lockKey);
         }
+        return lock;
+    }
 
-        return false;
+    /**
+     * 活动sku库存消费发送队列
+     *
+     * @param activitySkuStockKeyVO 活动sku库存key
+     */
+    @Override
+    public void activitySkuStockConsumeSendQueue(ActivitySkuStockKeyVO activitySkuStockKeyVO) {
+        String cacheKey = Constants.RedisKey.ACTIVITY_SKU_COUNT_QUEUE_KEY;
+
+        // 获取阻塞队列
+        RBlockingQueue<ActivitySkuStockKeyVO> blockingQueue = redisService.getBlockingQueue(cacheKey);
+
+        // 转换为一个延迟队列，可以设置延迟时间
+        RDelayedQueue<ActivitySkuStockKeyVO> delayedQueue = redisService.getDelayedQueue(blockingQueue);
+
+        // 将活动 SKU 库存的 key 放入延迟队列，延迟时间为 3 秒
+        delayedQueue.offer(activitySkuStockKeyVO, 3, TimeUnit.SECONDS);
     }
 
 
