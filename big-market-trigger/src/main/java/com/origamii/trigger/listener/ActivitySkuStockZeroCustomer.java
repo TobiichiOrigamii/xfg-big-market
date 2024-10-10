@@ -2,7 +2,7 @@ package com.origamii.trigger.listener;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
-import com.origamii.domain.activity.service.ISkuStock;
+import com.origamii.domain.activity.service.IRaffleActivitySkuStockService;
 import com.origamii.types.event.BaseEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.Queue;
@@ -24,7 +24,7 @@ public class ActivitySkuStockZeroCustomer {
     private String topic;
 
     @Autowired
-    private ISkuStock skuStock;
+    private IRaffleActivitySkuStockService skuStock;
 
     @RabbitListener(queuesToDeclare = @Queue(value = "activity-sku-stock-zero"))
     public void listener(String message) {

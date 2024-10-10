@@ -1,4 +1,4 @@
-package com.origamii.domain.activity.service.rule;
+package com.origamii.domain.activity.service.quota.rule;
 
 /**
  * @author Origami

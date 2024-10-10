@@ -1,17 +1,17 @@
-package com.origamii.domain.activity.service;
+package com.origamii.domain.activity.service.quota;
 
 import com.origamii.domain.activity.model.entity.ActivityCountEntity;
 import com.origamii.domain.activity.model.entity.ActivityEntity;
 import com.origamii.domain.activity.model.entity.ActivitySkuEntity;
 import com.origamii.domain.activity.repository.IActivityRepository;
-import com.origamii.domain.activity.service.rule.factory.DefaultActivityChainFactory;
+import com.origamii.domain.activity.service.quota.rule.factory.DefaultActivityChainFactory;
 
 /**
  * @author Origami
  * @description 抽奖活动的支撑类
  * @create 2024-09-28 10:42
  **/
-public class RaffleActivitySupport {
+public class RaffleActivityAccountQuotaSupport {
 
     // 注入IActivityRepository 仓储接口
     protected IActivityRepository repository;
@@ -19,7 +19,7 @@ public class RaffleActivitySupport {
     protected DefaultActivityChainFactory defaultActivityChainFactory;
 
 
-    public RaffleActivitySupport(IActivityRepository repository, DefaultActivityChainFactory defaultActivityChainFactory) {
+    public RaffleActivityAccountQuotaSupport(IActivityRepository repository, DefaultActivityChainFactory defaultActivityChainFactory) {
         this.repository = repository;
         this.defaultActivityChainFactory = defaultActivityChainFactory;
     }

@@ -1,7 +1,7 @@
 package com.origamii.trigger.job;
 
 import com.origamii.domain.activity.model.valobj.ActivitySkuStockKeyVO;
-import com.origamii.domain.activity.service.ISkuStock;
+import com.origamii.domain.activity.service.IRaffleActivitySkuStockService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 public class UpdateActivitySkuStockJob {
 
     @Autowired
-    private ISkuStock skuStock;
+    private IRaffleActivitySkuStockService skuStock;
 
     @Scheduled(cron = "0/5 * * * * ?")
     public void exec(){

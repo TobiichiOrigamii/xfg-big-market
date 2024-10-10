@@ -1,4 +1,4 @@
-package com.origamii.domain.activity.service.rule;
+package com.origamii.domain.activity.service.quota.rule;
 
 import com.origamii.domain.activity.model.entity.ActivityCountEntity;
 import com.origamii.domain.activity.model.entity.ActivityEntity;

@@ -1,10 +1,10 @@
-package com.origamii.domain.activity.service.rule.impl;
+package com.origamii.domain.activity.service.quota.rule.impl;
 
 import com.origamii.domain.activity.model.entity.ActivityCountEntity;
 import com.origamii.domain.activity.model.entity.ActivityEntity;
 import com.origamii.domain.activity.model.entity.ActivitySkuEntity;
 import com.origamii.domain.activity.model.valobj.ActivityStateVO;
-import com.origamii.domain.activity.service.rule.AbstractActionChain;
+import com.origamii.domain.activity.service.quota.rule.AbstractActionChain;
 import com.origamii.types.enums.ResponseCode;
 import com.origamii.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;

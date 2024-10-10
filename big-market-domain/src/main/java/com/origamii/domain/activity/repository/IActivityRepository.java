@@ -96,4 +96,5 @@ public interface IActivityRepository {
      * @param sku 活动商品
      */
     void clearActivitySkuStock(Long sku);
+
 }

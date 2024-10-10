@@ -1,11 +1,12 @@
-package com.origamii.domain.activity.service;
+package com.origamii.domain.activity.service.quota;
 
 import com.origamii.domain.activity.model.aggreate.CreateOrderAggregate;
 import com.origamii.domain.activity.model.entity.*;
 import com.origamii.domain.activity.model.valobj.ActivitySkuStockKeyVO;
 import com.origamii.domain.activity.model.valobj.OrderStateVO;
 import com.origamii.domain.activity.repository.IActivityRepository;
-import com.origamii.domain.activity.service.rule.factory.DefaultActivityChainFactory;
+import com.origamii.domain.activity.service.IRaffleActivitySkuStockService;
+import com.origamii.domain.activity.service.quota.rule.factory.DefaultActivityChainFactory;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
 
@@ -17,13 +18,13 @@ import java.util.Date;
  * @create 2024-09-27 15:59
  **/
 @Service
-public class RaffleActivityService extends AbstractRaffleActivity implements ISkuStock{
+public class RaffleActivityAccountQuotaService extends AbstractRaffleActivityAccountQuota implements IRaffleActivitySkuStockService {
     /**
      * 构造函数
      * @param repository 仓储层
      * @param defaultActivityChainFactory 活动链工厂
      */
-    public RaffleActivityService(IActivityRepository repository, DefaultActivityChainFactory defaultActivityChainFactory) {
+    public RaffleActivityAccountQuotaService(IActivityRepository repository, DefaultActivityChainFactory defaultActivityChainFactory) {
         super(repository, defaultActivityChainFactory);
     }
 
