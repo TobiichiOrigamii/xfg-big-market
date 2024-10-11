@@ -60,12 +60,36 @@ public abstract class AbstractRaffleActivityPartake implements IRaffleActivityPa
         // 4.账户额度过滤 并返回账户构建对象
         CreatePartakeOrderAggregate createPartakeOrderAggregate = this.doFilterAccount(userId, activityId, currentDate);
 
+        // 5.构建订单
+        UserRaffleOrderEntity userRaffleOrder = this.buildUserRaffleOrder(userId, activityId, currentDate);
 
-        return null;
+        // 6.填充抽奖单实体对象
+        createPartakeOrderAggregate.setUserRaffleOrderEntity(userRaffleOrder);
+
+        // 7.保存订单聚合对象
+        repository.saveCreatePartakeOrderAggregate(createPartakeOrderAggregate);
+
+        return userRaffleOrder;
     }
 
-
+    /**
+     * 账户过滤器，抽象方法，由子类实现具体的账户过滤逻辑。
+     *
+     * @param userId      用户ID
+     * @param activityId  活动ID
+     * @param currentDate 当前时间
+     * @return 账户聚合对象
+     */
     protected abstract CreatePartakeOrderAggregate doFilterAccount(String userId, Long activityId, Date currentDate);
 
+    /**
+     * 构建订单
+     *
+     * @param userId      用户ID
+     * @param activityId  活动ID
+     * @param currentDate 当前时间
+     * @return 用户抽奖订单实体对象
+     */
+    protected abstract UserRaffleOrderEntity buildUserRaffleOrder(String userId, Long activityId, Date currentDate);
 
 }

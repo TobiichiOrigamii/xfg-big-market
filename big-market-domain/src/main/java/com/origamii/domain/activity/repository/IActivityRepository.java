@@ -1,6 +1,7 @@
 package com.origamii.domain.activity.repository;
 
-import com.origamii.domain.activity.model.aggreate.CreateOrderAggregate;
+import com.origamii.domain.activity.model.aggreate.CreatePartakeOrderAggregate;
+import com.origamii.domain.activity.model.aggreate.CreateQuotaOrderAggregate;
 import com.origamii.domain.activity.model.entity.ActivityCountEntity;
 import com.origamii.domain.activity.model.entity.ActivityEntity;
 import com.origamii.domain.activity.model.entity.ActivitySkuEntity;
@@ -42,9 +43,9 @@ public interface IActivityRepository {
     /**
      * 保存订单
      *
-     * @param createOrderAggregate 订单聚合实体
+     * @param createQuotaOrderAggregate 订单聚合实体
      */
-    void saveOrder(CreateOrderAggregate createOrderAggregate);
+    void saveOrder(CreateQuotaOrderAggregate createQuotaOrderAggregate);
 
     /**
      * 查询活动sku库存
@@ -97,4 +98,10 @@ public interface IActivityRepository {
      */
     void clearActivitySkuStock(Long sku);
 
+    /**
+     * 保存聚合对象
+     *
+     * @param createPartakeOrderAggregate 聚合对象
+     */
+    void saveCreatePartakeOrderAggregate(CreatePartakeOrderAggregate createPartakeOrderAggregate);
 }

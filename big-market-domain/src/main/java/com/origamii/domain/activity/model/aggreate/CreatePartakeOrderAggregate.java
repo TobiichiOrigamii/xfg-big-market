@@ -39,9 +39,9 @@ public class CreatePartakeOrderAggregate {
     private ActivityAccountMonthEntity activityAccountMonthEntity;
 
     // 日账户是否存在标识
-    private boolean isExistAccountDayEntity = true;
+    private boolean isExistAccountDay = true;
 
     // 月账户是否存在标识
-    private boolean isExistAccountMonthEntity = true;
+    private boolean isExistAccountMonth = true;
 
 }
