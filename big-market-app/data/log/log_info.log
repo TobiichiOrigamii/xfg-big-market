@@ -1451,3 +1451,189 @@ Caused by: org.redisson.client.RedisResponseTimeoutException: Redis server respo
 24-10-12.21:50:18.701 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
 24-10-12.21:50:18.794 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
 24-10-12.21:50:18.797 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+24-10-12.21:53:43.285 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - Starting RaffleActivityAccountQuotaServiceTest using Java 19.0.1 on Legion-R9000P with PID 36320 (started by lenovo in E:\Code\Java\big-market\big-market-app)
+24-10-12.21:53:43.285 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - The following 1 profile is active: "dev"
+24-10-12.21:53:44.319 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-10-12.21:53:44.323 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-10-12.21:53:44.364 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 26 ms. Found 0 Redis repository interfaces.
+24-10-12.21:53:46.039 [main            ] INFO  Version                - Redisson 3.23.4
+24-10-12.21:53:46.553 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-12.21:53:46.575 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-12.21:53:49.696 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-10-12.21:53:49.814 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.236.132:5672]
+24-10-12.21:53:49.877 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#4b5aa48b:0/SimpleConnection@47ab3688 [delegate=amqp://origami@192.168.236.132:5672/, localPort= 8360]
+24-10-12.21:53:49.968 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - Started RaffleActivityAccountQuotaServiceTest in 7.132 seconds (JVM running for 7.985)
+24-10-12.21:53:50.010 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-12.21:53:50.071 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-12.21:53:50.491 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-12.21:53:50.811 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-12.21:53:50.918 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 装配活动：false
+24-10-12.21:53:50.938 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:53:50.995 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+24-10-12.21:53:51.948 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+24-10-12.21:53:51.949 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+24-10-12.21:56:13.899 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - Starting RaffleActivityAccountQuotaServiceTest using Java 19.0.1 on Legion-R9000P with PID 4836 (started by lenovo in E:\Code\Java\big-market\big-market-app)
+24-10-12.21:56:13.900 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - The following 1 profile is active: "dev"
+24-10-12.21:56:15.029 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-10-12.21:56:15.032 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-10-12.21:56:15.078 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 29 ms. Found 0 Redis repository interfaces.
+24-10-12.21:56:16.949 [main            ] INFO  Version                - Redisson 3.23.4
+24-10-12.21:56:17.501 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-12.21:56:17.527 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-12.21:56:21.551 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-10-12.21:56:21.654 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.236.132:5672]
+24-10-12.21:56:21.716 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#780546f8:0/SimpleConnection@751b901a [delegate=amqp://origami@192.168.236.132:5672/, localPort= 8488]
+24-10-12.21:56:21.811 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - Started RaffleActivityAccountQuotaServiceTest in 8.511 seconds (JVM running for 9.642)
+24-10-12.21:56:22.312 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-12.21:56:22.603 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-12.21:56:22.734 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 装配活动：false
+24-10-12.21:58:19.875 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=1m57s170ms617µs100ns).
+24-10-12.21:58:19.875 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-12.21:58:19.891 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:19.893 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-12.21:58:19.935 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+24-10-12.21:58:20.009 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-12.21:58:20.011 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-12.21:58:20.885 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+24-10-12.21:58:20.887 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+24-10-12.21:58:24.663 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - Starting RaffleActivityAccountQuotaServiceTest using Java 19.0.1 on Legion-R9000P with PID 35316 (started by lenovo in E:\Code\Java\big-market\big-market-app)
+24-10-12.21:58:24.664 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - The following 1 profile is active: "dev"
+24-10-12.21:58:25.633 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-10-12.21:58:25.635 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-10-12.21:58:25.677 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 26 ms. Found 0 Redis repository interfaces.
+24-10-12.21:58:27.260 [main            ] INFO  Version                - Redisson 3.23.4
+24-10-12.21:58:27.771 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-12.21:58:27.790 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-12.21:58:31.188 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-10-12.21:58:31.346 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.236.132:5672]
+24-10-12.21:58:31.408 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#1df9f7c6:0/SimpleConnection@6ac0fd1d [delegate=amqp://origami@192.168.236.132:5672/, localPort= 14882]
+24-10-12.21:58:31.502 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - Started RaffleActivityAccountQuotaServiceTest in 7.283 seconds (JVM running for 8.21)
+24-10-12.21:58:32.050 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-12.21:58:32.277 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-12.21:58:32.380 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 装配活动：false
+24-10-12.21:58:32.392 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:32.392 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:32.414 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期 状态 库存（sku）】成功 sku:9011 activityId:100301
+24-10-12.21:58:32.473 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-12.21:58:32.503 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-12.21:58:32.589 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 测试结果：235024495287
+24-10-12.21:58:32.613 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+24-10-12.21:58:33.487 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+24-10-12.21:58:33.488 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+24-10-12.21:58:44.447 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - Starting RaffleActivityAccountQuotaServiceTest using Java 19.0.1 on Legion-R9000P with PID 16004 (started by lenovo in E:\Code\Java\big-market\big-market-app)
+24-10-12.21:58:44.448 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - The following 1 profile is active: "dev"
+24-10-12.21:58:45.463 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-10-12.21:58:45.466 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-10-12.21:58:45.508 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 28 ms. Found 0 Redis repository interfaces.
+24-10-12.21:58:47.200 [main            ] INFO  Version                - Redisson 3.23.4
+24-10-12.21:58:47.712 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-12.21:58:47.731 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-12.21:58:50.901 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-10-12.21:58:51.035 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.236.132:5672]
+24-10-12.21:58:51.124 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#4b5aa48b:0/SimpleConnection@47fbf95e [delegate=amqp://origami@192.168.236.132:5672/, localPort= 14927]
+24-10-12.21:58:51.226 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - Started RaffleActivityAccountQuotaServiceTest in 7.234 seconds (JVM running for 8.093)
+24-10-12.21:58:51.724 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-12.21:58:51.928 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-12.21:58:52.021 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 装配活动：false
+24-10-12.21:58:52.030 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:52.030 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:52.039 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期 状态 库存（sku）】成功 sku:9011 activityId:100301
+24-10-12.21:58:52.115 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-12.21:58:52.144 [main            ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-12.21:58:52.193 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 测试结果：620467377572
+24-10-12.21:58:52.200 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:52.200 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:52.205 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期 状态 库存（sku）】成功 sku:9011 activityId:100301
+24-10-12.21:58:52.221 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 测试结果：206730522519
+24-10-12.21:58:52.226 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:52.227 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:52.229 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期 状态 库存（sku）】成功 sku:9011 activityId:100301
+24-10-12.21:58:52.245 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 测试结果：510985009488
+24-10-12.21:58:52.252 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:52.252 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:52.255 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期 状态 库存（sku）】成功 sku:9011 activityId:100301
+24-10-12.21:58:52.277 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 测试结果：048932254308
+24-10-12.21:58:52.288 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:52.288 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:52.295 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期 状态 库存（sku）】成功 sku:9011 activityId:100301
+24-10-12.21:58:52.328 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 测试结果：956056263701
+24-10-12.21:58:52.336 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:52.336 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:52.340 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期 状态 库存（sku）】成功 sku:9011 activityId:100301
+24-10-12.21:58:52.366 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 测试结果：282094412190
+24-10-12.21:58:52.374 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:52.374 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:52.377 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期 状态 库存（sku）】成功 sku:9011 activityId:100301
+24-10-12.21:58:52.395 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 测试结果：779868017039
+24-10-12.21:58:52.402 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:52.402 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:52.407 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期 状态 库存（sku）】成功 sku:9011 activityId:100301
+24-10-12.21:58:52.427 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 测试结果：619527769892
+24-10-12.21:58:52.433 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:52.433 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:52.436 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期 状态 库存（sku）】成功 sku:9011 activityId:100301
+24-10-12.21:58:52.457 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 测试结果：340594312506
+24-10-12.21:58:52.463 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:52.463 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:52.467 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期 状态 库存（sku）】成功 sku:9011 activityId:100301
+24-10-12.21:58:52.487 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 测试结果：431644682356
+24-10-12.21:58:52.492 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:52.492 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:52.494 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期 状态 库存（sku）】成功 sku:9011 activityId:100301
+24-10-12.21:58:52.508 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 测试结果：899257732216
+24-10-12.21:58:52.513 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:52.514 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:52.517 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期 状态 库存（sku）】成功 sku:9011 activityId:100301
+24-10-12.21:58:52.536 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 测试结果：448327356852
+24-10-12.21:58:52.542 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:52.542 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:52.545 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期 状态 库存（sku）】成功 sku:9011 activityId:100301
+24-10-12.21:58:52.560 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 测试结果：739456627955
+24-10-12.21:58:52.566 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:52.566 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:52.569 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期 状态 库存（sku）】成功 sku:9011 activityId:100301
+24-10-12.21:58:52.585 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 测试结果：251703517556
+24-10-12.21:58:52.590 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:52.590 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:52.595 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期 状态 库存（sku）】成功 sku:9011 activityId:100301
+24-10-12.21:58:52.612 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 测试结果：428040709098
+24-10-12.21:58:52.619 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:52.620 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:52.621 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期 状态 库存（sku）】成功 sku:9011 activityId:100301
+24-10-12.21:58:52.637 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 测试结果：198779930728
+24-10-12.21:58:52.644 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:52.644 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:52.647 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期 状态 库存（sku）】成功 sku:9011 activityId:100301
+24-10-12.21:58:52.660 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 测试结果：747648319634
+24-10-12.21:58:52.664 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:52.664 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:52.667 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-商品库存处理【有效期 状态 库存（sku）】成功 sku:9011 activityId:100301
+24-10-12.21:58:52.683 [main            ] INFO  RaffleActivityAccountQuotaServiceTest - 测试结果：111442400429
+24-10-12.21:58:52.688 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:52.688 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:52.883 [main            ] INFO  EventPublisher         - 发送MQ消息 topic:activity_sku_stock_zero, message:{"data":9011,"id":"22850407209","timestamp":1728741532690}
+24-10-12.21:58:52.884 [main            ] WARN  RaffleActivityAccountQuotaServiceTest - 活动库存不足
+24-10-12.21:58:52.888 [main            ] INFO  ActivityBaseActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:9011 activityId:100301
+24-10-12.21:58:52.888 [main            ] INFO  ActivitySkuStockActionChain - 活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，sku:9011 activityId:100301
+24-10-12.21:58:52.890 [main            ] WARN  RaffleActivityAccountQuotaServiceTest - 活动库存不足
+24-10-12.21:58:55.007 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-12.21:58:55.025 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-12.21:58:55.026 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】sku sku:9011 activityId:100301
+24-10-12.21:59:00.001 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-12.21:59:00.003 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】sku sku:9011 activityId:100301
+24-10-12.21:59:00.011 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-12.21:59:05.004 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-12.21:59:05.006 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】sku sku:9011 activityId:100301
+24-10-12.21:59:05.010 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-12.21:59:10.007 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-12.21:59:10.008 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-12.21:59:10.010 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】sku sku:9011 activityId:100301
+24-10-12.21:59:15.015 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-12.21:59:15.016 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】sku sku:9011 activityId:100301
+24-10-12.21:59:15.023 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-12.21:59:20.006 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-12.21:59:20.007 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】sku sku:9011 activityId:100301
+24-10-12.21:59:20.018 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-12.21:59:23.650 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+24-10-12.21:59:24.444 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+24-10-12.21:59:24.446 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped

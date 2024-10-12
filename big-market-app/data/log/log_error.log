@@ -1115,3 +1115,6 @@ Caused by: org.redisson.client.RedisResponseTimeoutException: Redis server respo
 24-10-12.21:48:36.860 [main            ] WARN  RaffleActivityAccountQuotaServiceTest - 活动库存不足
 24-10-12.21:48:36.865 [main            ] WARN  RaffleActivityAccountQuotaServiceTest - 活动库存不足
 24-10-12.21:48:36.871 [main            ] WARN  RaffleActivityAccountQuotaServiceTest - 活动库存不足
+24-10-12.21:58:19.875 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=1m57s170ms617µs100ns).
+24-10-12.21:58:52.884 [main            ] WARN  RaffleActivityAccountQuotaServiceTest - 活动库存不足
+24-10-12.21:58:52.890 [main            ] WARN  RaffleActivityAccountQuotaServiceTest - 活动库存不足
