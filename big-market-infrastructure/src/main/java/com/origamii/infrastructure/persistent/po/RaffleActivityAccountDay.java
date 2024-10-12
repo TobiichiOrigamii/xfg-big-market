@@ -9,15 +9,14 @@ import java.util.Date;
 
 /**
  * @author Origami
- * @description 用户抽奖订单表
- * @create 2024-10-10 12:23
+ * @description 抽奖活动账户表-日次数
+ * @create 2024-10-12 18:18
  **/
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRaffleOrder {
-
+public class RaffleActivityAccountDay {
     // 自增ID
     private String id;
 
@@ -27,20 +26,14 @@ public class UserRaffleOrder {
     // 活动ID
     private Long activityId;
 
-    // 活动名称
-    private String activityName;
+    // 日期（yyyy-mm-dd）
+    private String day;
 
-    // 抽奖策略ID
-    private Long strategyId;
+    // 日次数
+    private Integer dayCount;
 
-    // 订单ID
-    private String orderId;
-
-    // 下单时间
-    private Date orderTime;
-
-    // 订单状态
-    private String orderState;
+    // 日次数-剩余
+    private Integer dayCountSurplus;
 
     // 创建时间
     private Date createTime;
@@ -49,3 +42,4 @@ public class UserRaffleOrder {
     private Date updateTime;
 
 }
+

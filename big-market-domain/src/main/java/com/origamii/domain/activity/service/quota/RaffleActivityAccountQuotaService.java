@@ -1,6 +1,6 @@
 package com.origamii.domain.activity.service.quota;
 
-import com.origamii.domain.activity.model.aggreate.CreateOrderAggregate;
+import com.origamii.domain.activity.model.aggreate.CreateQuotaOrderAggregate;
 import com.origamii.domain.activity.model.entity.*;
 import com.origamii.domain.activity.model.valobj.ActivitySkuStockKeyVO;
 import com.origamii.domain.activity.model.valobj.OrderStateVO;
@@ -37,7 +37,7 @@ public class RaffleActivityAccountQuotaService extends AbstractRaffleActivityAcc
      * @return 订单聚合对象
      */
     @Override
-    protected CreateOrderAggregate buildOrderAggregate(ActivitySkuEntity activitySkuEntity, ActivityEntity activityEntity, ActivityCountEntity activityCountEntity, SkuRechargeEntity skuRechargeEntity) {
+    protected CreateQuotaOrderAggregate buildOrderAggregate(ActivitySkuEntity activitySkuEntity, ActivityEntity activityEntity, ActivityCountEntity activityCountEntity, SkuRechargeEntity skuRechargeEntity) {
         // 订单实体对象
         ActivityOrderEntity activityOrderEntity = new ActivityOrderEntity();
         activityOrderEntity.setUserId(skuRechargeEntity.getUserId());
@@ -53,7 +53,7 @@ public class RaffleActivityAccountQuotaService extends AbstractRaffleActivityAcc
         activityOrderEntity.setMonthCount(activityCountEntity.getMonthCount());
         activityOrderEntity.setState(OrderStateVO.completed);
         activityOrderEntity.setOutBusinessNo(skuRechargeEntity.getOutBusinessNo());
-        return CreateOrderAggregate.builder()
+        return CreateQuotaOrderAggregate.builder()
                 .userId(skuRechargeEntity.getUserId())
                 .activityId(activitySkuEntity.getActivityId())
                 .totalCount(activityCountEntity.getTotalCount())
@@ -68,7 +68,7 @@ public class RaffleActivityAccountQuotaService extends AbstractRaffleActivityAcc
      * @param createOrderAggregate 订单聚合对象
      */
     @Override
-    protected void saveOrder(CreateOrderAggregate createOrderAggregate) {
+    protected void saveOrder(CreateQuotaOrderAggregate createOrderAggregate) {
         repository.saveOrder(createOrderAggregate);
     }
 

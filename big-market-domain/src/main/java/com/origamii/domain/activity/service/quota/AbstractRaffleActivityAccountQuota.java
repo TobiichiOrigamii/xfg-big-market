@@ -1,7 +1,7 @@
 package com.origamii.domain.activity.service.quota;
 
 import com.alibaba.fastjson.JSON;
-import com.origamii.domain.activity.model.aggreate.CreateOrderAggregate;
+import com.origamii.domain.activity.model.aggreate.CreateQuotaOrderAggregate;
 import com.origamii.domain.activity.model.entity.*;
 import com.origamii.domain.activity.repository.IActivityRepository;
 import com.origamii.domain.activity.service.IRaffleActivityAccountQuotaService;
@@ -69,13 +69,13 @@ public abstract class AbstractRaffleActivityAccountQuota extends RaffleActivityA
         actionChain.action(activitySkuEntity, activityEntity, activityCountEntity);
 
         // 4.构建订单聚合对象
-        CreateOrderAggregate createOrderAggregate = buildOrderAggregate(activitySkuEntity, activityEntity, activityCountEntity, skuRechargeEntity);
+        CreateQuotaOrderAggregate createquotaOrderAggregate = buildOrderAggregate(activitySkuEntity, activityEntity, activityCountEntity, skuRechargeEntity);
 
         // 5.保存订单
-        saveOrder(createOrderAggregate);
+        saveOrder(createquotaOrderAggregate);
 
         // 6.返回单号
-        return createOrderAggregate.getActivityOrderEntity().getOrderId();
+        return createquotaOrderAggregate.getActivityOrderEntity().getOrderId();
     }
 
     /**
@@ -86,11 +86,11 @@ public abstract class AbstractRaffleActivityAccountQuota extends RaffleActivityA
      * @param skuRechargeEntity sku充值实体
      * @return 订单聚合对象
      */
-    protected abstract CreateOrderAggregate buildOrderAggregate(ActivitySkuEntity activitySkuEntity, ActivityEntity activityEntity, ActivityCountEntity activityCountEntity, SkuRechargeEntity skuRechargeEntity);
+    protected abstract CreateQuotaOrderAggregate buildOrderAggregate(ActivitySkuEntity activitySkuEntity, ActivityEntity activityEntity, ActivityCountEntity activityCountEntity, SkuRechargeEntity skuRechargeEntity);
 
     /**
      * 保存订单
      * @param createOrderAggregate 订单聚合对象
      */
-    protected abstract void saveOrder(CreateOrderAggregate createOrderAggregate);
+    protected abstract void saveOrder(CreateQuotaOrderAggregate createOrderAggregate);
 }

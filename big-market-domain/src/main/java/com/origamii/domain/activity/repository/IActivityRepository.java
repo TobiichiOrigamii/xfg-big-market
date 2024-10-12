@@ -2,9 +2,7 @@ package com.origamii.domain.activity.repository;
 
 import com.origamii.domain.activity.model.aggreate.CreatePartakeOrderAggregate;
 import com.origamii.domain.activity.model.aggreate.CreateQuotaOrderAggregate;
-import com.origamii.domain.activity.model.entity.ActivityCountEntity;
-import com.origamii.domain.activity.model.entity.ActivityEntity;
-import com.origamii.domain.activity.model.entity.ActivitySkuEntity;
+import com.origamii.domain.activity.model.entity.*;
 import com.origamii.domain.activity.model.valobj.ActivitySkuStockKeyVO;
 
 import java.util.Date;
@@ -104,4 +102,41 @@ public interface IActivityRepository {
      * @param createPartakeOrderAggregate 聚合对象
      */
     void saveCreatePartakeOrderAggregate(CreatePartakeOrderAggregate createPartakeOrderAggregate);
+
+    /**
+     * 根据用户id和活动id查询活动账户
+     *
+     * @param userId     用户id
+     * @param activityId 活动id
+     * @return 活动账户实体
+     */
+    ActivityAccountEntity queryActivityAccountByUserId(String userId, Long activityId);
+
+    /**
+     * 根据用户id、活动id、月份查询活动账户月份
+     *
+     * @param userId     用户id
+     * @param activityId 活动id
+     * @param month      月份
+     * @return 活动账户月份实体
+     */
+    ActivityAccountMonthEntity queryActivityAccountMonthByUserId(String userId, Long activityId, String month);
+
+    /**
+     * 根据用户id、活动id、日期查询活动账户日
+     *
+     * @param userId     用户id
+     * @param activityId 活动id
+     * @param day        日期
+     * @return 活动账户日实体
+     */
+    ActivityAccountDayEntity queryActivityAccountDayByUserId(String userId, Long activityId, String day);
+
+    /**
+     * 根据用户id、活动id、日期查询用户参与活动订单
+     * @param partakeRaffleActivityEntity 参与活动实体
+     * @return 用户参与活动订单实体
+     */
+    UserRaffleOrderEntity queryNoUsedRaffleOrder(PartakeRaffleActivityEntity partakeRaffleActivityEntity);
+
 }

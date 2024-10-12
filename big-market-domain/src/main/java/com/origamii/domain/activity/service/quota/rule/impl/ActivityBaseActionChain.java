@@ -26,7 +26,7 @@ public class ActivityBaseActionChain extends AbstractActionChain {
         log.info("活动责任链-基础信息 【有效期 状态 库存（sku）】 校验开始，skuId:{} activityId:{}", activitySkuEntity.getSku(), activityEntity.getActivityId());
 
         // 校验：活动状态
-        if(!ActivityStateVO.open.equals(activityEntity.getState())){
+        if(!ActivityStateVO.open.equals(activityEntity.getActivityState())){
             throw new AppException(ResponseCode.ACTIVITY_STATE_ERROR.getCode(),ResponseCode.ACTIVITY_STATE_ERROR.getInfo());
         }
         // 校验：活动有效期
