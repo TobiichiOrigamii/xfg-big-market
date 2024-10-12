@@ -1118,3 +1118,79 @@ Caused by: org.redisson.client.RedisResponseTimeoutException: Redis server respo
 24-10-12.21:58:19.875 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=1m57s170ms617µs100ns).
 24-10-12.21:58:52.884 [main            ] WARN  RaffleActivityAccountQuotaServiceTest - 活动库存不足
 24-10-12.21:58:52.890 [main            ] WARN  RaffleActivityAccountQuotaServiceTest - 活动库存不足
+24-10-12.22:02:06.820 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=1m24s458ms247µs400ns).
+24-10-12.22:04:22.684 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=2m28s475ms336µs).
+24-10-12.22:09:48.585 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=4m52s294ms715µs600ns).
+24-10-12.22:09:48.588 [AMQP Connection 192.168.236.132:5672] WARN  ForgivingExceptionHandler - An unexpected connection driver error occurred (Exception message: Connection reset)
+24-10-12.22:11:27.708 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=1m19s967ms561µs200ns).
+24-10-12.22:13:14.300 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=1m24s364ms800µs400ns).
+24-10-12.22:14:46.375 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=1m18s317ms465µs400ns).
+24-10-12.22:14:46.375 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=54s774ms173µs600ns).
+24-10-12.22:15:35.609 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=49s234ms106µs200ns).
+24-10-12.22:15:35.612 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=49s234ms230µs500ns).
+24-10-12.22:19:52.814 [scheduling-1    ] ERROR UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】异常
+org.springframework.dao.QueryTimeoutException: Redis server response timeout (3000 ms) occured after 0 retry attempts, is non-idempotent command: true Check connection with Redis node: 192.168.236.132/192.168.236.132:16379 for TCP packet drops or bandwidth limits.  Try to increase nettyThreads and/or timeout settings. Command: (LPOP), params: [strategy_award_count_queue_key], channel: [id: 0x465cb854, L:/192.168.236.1:9049 - R:192.168.236.132/192.168.236.132:16379]; nested exception is org.redisson.client.RedisResponseTimeoutException: Redis server response timeout (3000 ms) occured after 0 retry attempts, is non-idempotent command: true Check connection with Redis node: 192.168.236.132/192.168.236.132:16379 for TCP packet drops or bandwidth limits.  Try to increase nettyThreads and/or timeout settings. Command: (LPOP), params: [strategy_award_count_queue_key], channel: [id: 0x465cb854, L:/192.168.236.1:9049 - R:192.168.236.132/192.168.236.132:16379]
+	at org.redisson.spring.data.connection.RedissonExceptionConverter.convert(RedissonExceptionConverter.java:48)
+	at org.redisson.spring.data.connection.RedissonExceptionConverter.convert(RedissonExceptionConverter.java:35)
+	at org.springframework.data.redis.PassThroughExceptionTranslationStrategy.translate(PassThroughExceptionTranslationStrategy.java:44)
+	at org.redisson.spring.data.connection.RedissonConnectionFactory.translateExceptionIfPossible(RedissonConnectionFactory.java:91)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:242)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:152)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at com.origamii.infrastructure.persistent.repository.StrategyRepository$$EnhancerBySpringCGLIB$$48a452ae.takeQueueValue(<generated>)
+	at com.origamii.domain.strategy.service.raffle.DefaultRaffleStrategy.takeQueueValue(DefaultRaffleStrategy.java:80)
+	at com.origamii.trigger.job.UpdateAwardStockJob.exec(UpdateAwardStockJob.java:27)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:95)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:577)
+	at java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:317)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1589)
+Caused by: org.redisson.client.RedisResponseTimeoutException: Redis server response timeout (3000 ms) occured after 0 retry attempts, is non-idempotent command: true Check connection with Redis node: 192.168.236.132/192.168.236.132:16379 for TCP packet drops or bandwidth limits.  Try to increase nettyThreads and/or timeout settings. Command: (LPOP), params: [strategy_award_count_queue_key], channel: [id: 0x465cb854, L:/192.168.236.1:9049 - R:192.168.236.132/192.168.236.132:16379]
+	at org.redisson.command.RedisExecutor.lambda$scheduleResponseTimeout$9(RedisExecutor.java:407)
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.run(HashedWheelTimer.java:715)
+	at io.netty.util.concurrent.ImmediateExecutor.execute(ImmediateExecutor.java:34)
+	at io.netty.util.HashedWheelTimer$HashedWheelTimeout.expire(HashedWheelTimer.java:703)
+	at io.netty.util.HashedWheelTimer$HashedWheelBucket.expireTimeouts(HashedWheelTimer.java:790)
+	at io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:503)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	... 1 common frames omitted
+24-10-12.22:24:20.929 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=1m57s81ms478µs300ns).
+24-10-12.22:35:11.491 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=7m21s981ms304µs200ns).
+24-10-12.22:35:11.494 [AMQP Connection 192.168.236.132:5672] WARN  ForgivingExceptionHandler - An unexpected connection driver error occurred (Exception message: Connection reset)
+24-10-12.22:37:23.961 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=1m4s186ms34µs300ns).
+24-10-12.22:39:17.620 [Retail_HikariCP housekeeper] WARN  HikariPool             - Retail_HikariCP - Thread starvation or clock leap detected (housekeeper delta=1m29s316ms868µs500ns).
+24-10-12.22:50:15.015 [scheduling-1    ] ERROR UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】异常
+org.springframework.beans.factory.BeanCreationNotAllowedException: Error creating bean with name 'redissonConnectionFactory': Singleton bean creation not allowed while singletons of this factory are in destruction (Do not request a bean from a BeanFactory in a destroy method implementation!)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:220)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory$1.orderedStream(DefaultListableBeanFactory.java:481)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.detectPersistenceExceptionTranslators(PersistenceExceptionTranslationInterceptor.java:167)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:149)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at com.origamii.infrastructure.persistent.repository.StrategyRepository$$EnhancerBySpringCGLIB$$d0b34998.takeQueueValue(<generated>)
+	at com.origamii.domain.strategy.service.raffle.DefaultRaffleStrategy.takeQueueValue(DefaultRaffleStrategy.java:80)
+	at com.origamii.trigger.job.UpdateAwardStockJob.exec(UpdateAwardStockJob.java:27)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:95)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:577)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1589)

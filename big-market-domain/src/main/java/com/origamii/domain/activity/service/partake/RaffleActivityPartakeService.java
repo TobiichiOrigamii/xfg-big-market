@@ -62,8 +62,8 @@ public class RaffleActivityPartakeService extends AbstractRaffleActivityPartake 
             activityAccountMonthEntity.setUserId(userId);
             activityAccountMonthEntity.setActivityId(activityId);
             activityAccountMonthEntity.setMonth(month);
-            activityAccountMonthEntity.setMonthCount(activityAccountMonthEntity.getMonthCount());
-            activityAccountMonthEntity.setMonthCountSurplus(activityAccountMonthEntity.getMonthCount());
+            activityAccountMonthEntity.setMonthCount(activityAccountEntity.getMonthCount());
+            activityAccountMonthEntity.setMonthCountSurplus(activityAccountEntity.getMonthCount());
         }
 
         // 查询日额度账户
@@ -72,18 +72,18 @@ public class RaffleActivityPartakeService extends AbstractRaffleActivityPartake 
             throw new AppException(ResponseCode.ACCOUNT_DAY_QUOTA_ERROR.getCode(), ResponseCode.ACCOUNT_DAY_QUOTA_ERROR.getInfo());
 
 
-        // 创建月账户余额 true - 存在月账户 false - 不存在月账户
+        // 创建日账户余额 true - 存在日账户 false - 不存在日账户
         boolean isExistAccountDay = null != activityAccountDayEntity;
         if (null == activityAccountDayEntity) {
             activityAccountDayEntity = new ActivityAccountDayEntity();
             activityAccountDayEntity.setUserId(userId);
             activityAccountDayEntity.setActivityId(activityId);
             activityAccountDayEntity.setDay(day);
-            activityAccountDayEntity.setDayCount(activityAccountDayEntity.getDayCount());
-            activityAccountDayEntity.setDayCountSurplus(activityAccountDayEntity.getDayCount());
+            activityAccountDayEntity.setDayCount(activityAccountEntity.getDayCount());
+            activityAccountDayEntity.setDayCountSurplus(activityAccountEntity.getDayCount());
         }
 
-        // 构建聚合对象
+        // 构建对象
         CreatePartakeOrderAggregate createPartakeOrderAggregate = new CreatePartakeOrderAggregate();
         createPartakeOrderAggregate.setUserId(userId);
         createPartakeOrderAggregate.setActivityId(activityId);
@@ -91,7 +91,7 @@ public class RaffleActivityPartakeService extends AbstractRaffleActivityPartake 
         createPartakeOrderAggregate.setActivityAccountMonthEntity(activityAccountMonthEntity);
         createPartakeOrderAggregate.setActivityAccountDayEntity(activityAccountDayEntity);
         createPartakeOrderAggregate.setExistAccountMonth(isExistAccountMonth);
-        createPartakeOrderAggregate.setExistAccountMonth(isExistAccountMonth);
+        createPartakeOrderAggregate.setExistAccountDay(isExistAccountDay);
         return createPartakeOrderAggregate;
     }
 
