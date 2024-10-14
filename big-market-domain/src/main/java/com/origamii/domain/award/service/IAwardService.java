@@ -1,5 +1,7 @@
 package com.origamii.domain.award.service;
 
+import com.origamii.domain.award.model.entity.UserAwardRecordEntity;
+
 /**
  * @author Origami
  * @description 奖品服务接口
@@ -7,7 +9,11 @@ package com.origamii.domain.award.service;
  **/
 public interface IAwardService {
 
-    void saveUserAwardRecord();
+    /**
+     * 保存用户奖品记录
+     * @param userAwardRecordEntity 用户奖品记录实体
+     */
+    void saveUserAwardRecord(UserAwardRecordEntity userAwardRecordEntity);
 
 
 }

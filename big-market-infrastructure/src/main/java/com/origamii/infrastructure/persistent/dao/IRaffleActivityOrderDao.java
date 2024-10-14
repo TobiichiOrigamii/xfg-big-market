@@ -1,6 +1,7 @@
 package com.origamii.infrastructure.persistent.dao;
 
 import cn.bugstack.middleware.db.router.annotation.DBRouter;
+import cn.bugstack.middleware.db.router.annotation.DBRouterStrategy;
 import com.origamii.infrastructure.persistent.po.RaffleActivityOrder;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * @create 2024-09-26 14:34
  **/
 @Mapper
+@DBRouterStrategy(splitTable = true)
 public interface IRaffleActivityOrderDao {
 
     /**

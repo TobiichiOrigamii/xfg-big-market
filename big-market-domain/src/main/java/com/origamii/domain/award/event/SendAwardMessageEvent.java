@@ -1,8 +1,13 @@
 package com.origamii.domain.award.event;
 
 import com.origamii.types.event.BaseEvent;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
@@ -11,9 +16,10 @@ import java.util.Date;
  * @description
  * @create 2024-10-14 13:23
  **/
+@Component
 public class SendAwardMessageEvent extends BaseEvent<SendAwardMessageEvent.SendAwardMessage> {
 
-    @Value("${spring.rabbitmq.topic.send_award")
+    @Value("${spring.rabbitmq.topic.send_award}")
     private String topic;
 
     @Override
@@ -30,11 +36,15 @@ public class SendAwardMessageEvent extends BaseEvent<SendAwardMessageEvent.SendA
         return topic;
     }
 
+    @Data
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class SendAwardMessage {
         // 用户ID
         private String userId;
         // 奖品ID
-        private String awardId;
+        private Integer awardId;
         // 奖品名称
         private String awardTitle;
     }
