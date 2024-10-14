@@ -134,6 +134,8 @@ spring:
         concurrency: 1 # 并发消费者数量
     topic:
       activity_sku_stock_zero: activity_sku_stock_zero # 主题名称
+      send_award: send_award
+
 
 # 日志配置
 logging:

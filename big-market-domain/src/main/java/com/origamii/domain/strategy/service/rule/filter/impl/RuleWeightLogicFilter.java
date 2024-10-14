@@ -43,7 +43,7 @@ public class RuleWeightLogicFilter implements ILogicFilter<RuleActionEntity.Raff
      */
     @Override
     public RuleActionEntity<RuleActionEntity.RaffleBeforeEntity> filter(RuleMatterEntity ruleMatterEntity) {
-        log.info("规则过滤-权重范围 userId:{} strateguyId:{} ruleModel:{}",
+        log.info("规则过滤-权重范围 userId:{} strategyId:{} ruleModel:{}",
                 ruleMatterEntity.getUserId(),
                 ruleMatterEntity.getStrategyId(),
                 ruleMatterEntity.getRuleModel()
