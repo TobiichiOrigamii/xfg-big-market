@@ -21,7 +21,25 @@ public class ActivityArmory implements IActivityArmory, IActivityDispatch {
     @Autowired
     private IActivityRepository repository;
 
+    /**
+     * 装配活动SKU
+     *
+     * @param activityId 活动ID
+     * @return 装配结果
+     */
+    @Override
+    public boolean assembleActivitySkuByActivityId(Long activityId) {
 
+
+        return false;
+    }
+
+    /**
+     * 装配活动SKU
+     *
+     * @param sku 活动SKU
+     * @return 装配结果
+     */
     @Override
     public boolean assembleActivitySku(Long sku) {
         ActivitySkuEntity activitySkuEntity = repository.queryActivitySku(sku);
@@ -49,7 +67,12 @@ public class ActivityArmory implements IActivityArmory, IActivityDispatch {
         return repository.subtractionActivityStock(sku, cacheKey, endDateTime);
     }
 
-
+    /**
+     * 缓存活动SKU库存
+     *
+     * @param sku        活动SKU
+     * @param stockCount 库存数量
+     */
     private void cacheActivitySkuStockCount(Long sku, Integer stockCount) {
         String cacheKey = Constants.RedisKey.ACTIVITY_SKU_STOCK_COUNT_KEY + sku;
         repository.cacheActivitySKuStockCount(cacheKey, stockCount);
