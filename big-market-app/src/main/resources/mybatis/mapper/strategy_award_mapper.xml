@@ -26,29 +26,35 @@
 
     <!-- 从数据库中获取Key -->
     <select id="queryStrategyAwardListByStrategyId" parameterType="java.lang.Long" resultMap="dataMap">
-        select strategy_id, award_id, award_title, award_subtitle, award_count, award_count_surplus, award_rate, sort
+        select strategy_id,
+               award_id,
+               award_title,
+               award_subtitle,
+               award_count,
+               award_count_surplus,
+               award_rate,
+               sort
         from strategy_award
-        where strategy_id = #{strategy_id}
+        where strategy_id = #{strategyId}
+        order by sort
     </select>
 
     <!-- 查询特定策略的规则模型 -->
-    <select id="queryStrategyAwardRuleModel" resultType="java.lang.String"
-            parameterType="com.origamii.infrastructure.persistent.po.StrategyAward">
+    <select id="queryStrategyAwardRuleModel" parameterType="com.origamii.infrastructure.persistent.po.StrategyAward" resultType="java.lang.String">
         select rule_models from strategy_award
         where strategy_id = #{strategyId} and award_id = #{awardId}
     </select>
 
     <!-- 更新策略奖励的剩余库存 -->
-    <update id="updateStrategyAwardStock"
-            parameterType="com.origamii.infrastructure.persistent.po.StrategyAward">
+    <update id="updateStrategyAwardStock" parameterType="com.origamii.infrastructure.persistent.po.StrategyAward">
         update strategy_award
         set award_count_surplus = award_count_surplus - 1
         where strategy_id = #{strategyId} and award_id = #{awardId} and award_count_surplus > 0
     </update>
 
     <!-- 查询特定奖励的详细信息 -->
-    <select id="queryStrategyAward" resultType="com.origamii.infrastructure.persistent.po.StrategyAward">
-        select strategy_id,award_id,award_title,award_subtitle,award_count,award_count_surplus,award_rate,rule_models,sort
+    <select id="queryStrategyAward" parameterType="com.origamii.infrastructure.persistent.po.StrategyAward" resultMap="dataMap">
+        select strategy_id, award_id, award_title, award_subtitle, award_count, award_count_surplus, award_rate, rule_models, sort
         from strategy_award
         where strategy_id = #{strategyId} and award_id = #{awardId}
     </select>

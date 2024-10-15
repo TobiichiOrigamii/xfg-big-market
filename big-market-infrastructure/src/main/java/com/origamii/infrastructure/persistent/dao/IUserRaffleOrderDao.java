@@ -28,6 +28,10 @@ public interface IUserRaffleOrderDao {
     @DBRouter
     UserRaffleOrder queryNoUsedRaffleOrder(UserRaffleOrder userRaffleOrder);
 
-
-
+    /**
+     * 更新用户抽奖订单状态为已使用
+     * @param userRaffleOrderReq 用户抽奖订单
+     * @return 更新数量
+     */
+    int updateUserRaffleOrderStateUsed(UserRaffleOrder userRaffleOrderReq);
 }

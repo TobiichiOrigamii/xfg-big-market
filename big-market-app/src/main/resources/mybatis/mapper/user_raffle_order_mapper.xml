@@ -25,6 +25,7 @@
                 now(), now())
     </insert>
 
+
     <!-- 根据用户id和抽奖id查询用户抽奖订单 -->
     <select id="queryNoUsedRaffleOrder" parameterType="com.origamii.infrastructure.persistent.po.UserRaffleOrder"
             resultMap="dataMap">
@@ -34,5 +35,16 @@
           and activity_id = #{activityId}
           and order_state = 'create'
     </select>
+
+    <!-- 更新用户抽奖订单状态为已使用 -->
+    <update id="updateUserRaffleOrderStateUsed"
+            parameterType="com.origamii.infrastructure.persistent.po.UserRaffleOrder">
+        update user_raffle_order
+        set order_state = 'used',
+            update_time = now()
+        where user_id = #{userId}
+          and order_id = #{orderId}
+          and order_state = 'create'
+    </update>
 
 </mapper>

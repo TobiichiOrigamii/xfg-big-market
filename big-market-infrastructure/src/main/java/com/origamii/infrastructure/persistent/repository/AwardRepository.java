@@ -9,8 +9,10 @@ import com.origamii.domain.award.repository.IAwardRepository;
 import com.origamii.infrastructure.event.EventPublisher;
 import com.origamii.infrastructure.persistent.dao.ITaskDao;
 import com.origamii.infrastructure.persistent.dao.IUserAwardRecordDao;
+import com.origamii.infrastructure.persistent.dao.IUserRaffleOrderDao;
 import com.origamii.infrastructure.persistent.po.Task;
 import com.origamii.infrastructure.persistent.po.UserAwardRecord;
+import com.origamii.infrastructure.persistent.po.UserRaffleOrder;
 import com.origamii.types.enums.ResponseCode;
 import com.origamii.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +34,8 @@ public class AwardRepository implements IAwardRepository {
     private ITaskDao taskDao;
     @Autowired
     private IUserAwardRecordDao userAwardRecordDao;
+    @Autowired
+    private IUserRaffleOrderDao userRaffleOrderDao;
     @Autowired
     private IDBRouterStrategy dbRouter;
     @Autowired
@@ -71,6 +75,11 @@ public class AwardRepository implements IAwardRepository {
         task.setMessage(JSON.toJSONString(taskEntity.getMessage()));
         task.setState(taskEntity.getState().getCode());
 
+        // 转换为PO对象 - 订单
+        UserRaffleOrder userRaffleOrderReq = new UserRaffleOrder();
+        userRaffleOrderReq.setUserId(userAwardRecordEntity.getUserId());
+        userRaffleOrderReq.setOrderId(userAwardRecordEntity.getOrderId());
+
         try {
             dbRouter.doRouter(userId);
             transactionTemplate.execute(status -> {
@@ -79,7 +88,13 @@ public class AwardRepository implements IAwardRepository {
                     userAwardRecordDao.insert(userAwardRecord);
                     // 写入任务
                     taskDao.insert(task);
-
+                    // 写入订单
+                    int count = userRaffleOrderDao.updateUserRaffleOrderStateUsed(userRaffleOrderReq);
+                    if (count != 1) {
+                        status.setRollbackOnly();
+                        log.error("写入中奖记录，用户抽奖单已使用过，不可重复抽奖 userId:{},activityId:{},awardId:{}", userId, activityId, awardId);
+                        throw new AppException(ResponseCode.ACTIVITY_ORDER_ERROR.getCode(), ResponseCode.ACTIVITY_ORDER_ERROR.getInfo());
+                    }
                     return 1;
                 } catch (DuplicateKeyException e) {
                     status.setRollbackOnly();
@@ -91,12 +106,12 @@ public class AwardRepository implements IAwardRepository {
             dbRouter.clear();
         }
 
-        try{
+        try {
             // 发送消息【在事务外执行 如果失败还有任务补偿机制】
             eventPublisher.publish(task.getTopic(), task.getMessage());
             // 更新数据库记录 task任务表
             taskDao.updateTaskSendMessageCompleted(task);
-        } catch (Exception e){
+        } catch (Exception e) {
             log.error("写入中奖记录，发送MQ消息失败 userId:{} topic:{}", userId, task.getTopic());
             taskDao.updateTaskSendMessageFail(task);
         }

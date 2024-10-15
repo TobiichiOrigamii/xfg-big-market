@@ -1,9 +1,11 @@
 package com.origamii.domain.strategy.service.rule.tree.impl;
 
 import com.origamii.domain.strategy.model.valobj.RuleLogicCheckTypeVO;
+import com.origamii.domain.strategy.repository.IStrategyRepository;
 import com.origamii.domain.strategy.service.rule.tree.ILogicTreeNode;
 import com.origamii.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -15,11 +17,12 @@ import org.springframework.stereotype.Component;
 @Component("rule_lock")
 public class RuleLockLogicTreeNode implements ILogicTreeNode {
 
-    //TODO 用户抽奖次数，后续完成这部分开发流程 从redis/mysql中获取
-    private Long userRaffleCount = 10L;
+    @Autowired
+    private IStrategyRepository repository;
 
     /**
-     *  规则过滤-次数锁
+     * 规则过滤-次数锁
+     *
      * @param userId     用户id
      * @param strategyId 策略id
      * @param awardId    奖品id
@@ -38,8 +41,14 @@ public class RuleLockLogicTreeNode implements ILogicTreeNode {
             throw new RuntimeException("规则过滤-次数锁异常 ruleValue: " + ruleValue + " 配置不正确");
         }
 
+        // 查询用户抽奖次数
+        Integer userRaffleCount = repository.queryTodayUserRaffleCount(userId, strategyId);
+
         // 用户抽奖次数大于规则限定值 允许抽奖
-        if(userRaffleCount >= raffleCount){
+        if (userRaffleCount >= raffleCount) {
+            log.info("用户抽奖次数大于规则限定值 允许抽奖 userId:{},strategyId:{},awardId:{},raffleCount:{},userRaffleCount:{}",
+                    userId, strategyId, awardId, raffleCount, userRaffleCount
+            );
             return DefaultTreeFactory.TreeActionEntity.builder()
                     .ruleLogicCheckType(RuleLogicCheckTypeVO.ALLOW)
                     .build();

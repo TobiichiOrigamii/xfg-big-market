@@ -173,5 +173,13 @@ public interface IStrategyRepository {
      * @return 策略ID
      */
     Long queryStrategyByActivityId(Long activityId);
+
+    /**
+     * 根据用户ID和策略ID查询今日抽奖次数
+     * @param userId 用户ID
+     * @param strategyId 策略ID
+     * @return 今日抽奖次数
+     */
+    Integer queryTodayUserRaffleCount(String userId, Long strategyId);
 }
 

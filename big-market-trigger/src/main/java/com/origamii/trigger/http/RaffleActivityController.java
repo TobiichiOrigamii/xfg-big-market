@@ -46,14 +46,20 @@ public class RaffleActivityController implements IRaffleActivityService {
     private IStrategyArmory strategyArmory;
 
     /**
-     * 活动装配 数据预热
+     * 活动装配 - 数据预热 | 把活动配置的对应的 sku 一起装配
      *
      * @param activityId 活动ID
      * @return 装配结果
+     * <p>
+     * 接口：<a href="http://localhost:8091/api/v1/raffle/activity/armory">/api/v1/raffle/activity/armory</a>
+     * 入参：{"activityId":100001,"userId":"xiaofuge"}
+     * curl --request GET \
+     *   --url 'http://localhost:8091/api/v1/raffle/activity/armory?activityId=100301'
      */
+
     @Override
-    @GetMapping("/armory")
-    public Response<Boolean> armory(@RequestBody Long activityId) {
+    @GetMapping("armory")
+    public Response<Boolean> armory(@RequestParam Long activityId) {
 
         try {
             log.info("活动装配 数据预热 开始 activityId:{}", activityId);
@@ -78,10 +84,28 @@ public class RaffleActivityController implements IRaffleActivityService {
         }
     }
 
+    /**
+     * 抽奖接口
+     *
+     * @param request 请求对象
+     * @return 抽奖结果
+     * <p>
+     * 接口：<a href="http://localhost:8091/api/v1/raffle/activity/draw">/api/v1/raffle/activity/draw</a>
+     * 入参：{"activityId":100001,"userId":"xiaofuge"}
+     *
+     * curl --request POST \
+     *   --url http://localhost:8091/api/v1/raffle/activity/draw \
+     *   --header 'content-type: application/json' \
+     *   --data '{
+     *     "userId":"origami",
+     *     "activityId": 100301
+     * }'
+     */
     @Override
-    public Response<ActivityDrawResponseDTO> draw(ActivityDrawRequestDTO request) {
+    @PostMapping("draw")
+    public Response<ActivityDrawResponseDTO> draw(@RequestBody ActivityDrawRequestDTO request) {
         try {
-            log.info("活动抽奖 user:{} activityId:{}", request.getUserId(), request.getActivityId());
+             log.info("活动抽奖 user:{} activityId:{}", request.getUserId(), request.getActivityId());
             // 1.参数校验
             if (StringUtils.isBlank(request.getUserId()) || null == request.getActivityId())
                 throw new AppException(ResponseCode.ILLEGAL_PARAMETER.getCode(), ResponseCode.ILLEGAL_PARAMETER.getInfo());
@@ -102,7 +126,8 @@ public class RaffleActivityController implements IRaffleActivityService {
 
             // 4.存放结果 - 写入中奖记录
             UserAwardRecordEntity userAwardRecord = UserAwardRecordEntity.builder()
-                    .userId(request.getUserId())
+                    .userId(orderEntity.getUserId())
+                    .activityId(orderEntity.getActivityId())
                     .orderId(orderEntity.getOrderId())
                     .awardId(raffleAwardEntity.getAwardId())
                     .strategyId(orderEntity.getStrategyId())
@@ -122,7 +147,12 @@ public class RaffleActivityController implements IRaffleActivityService {
                             .awardIndex(raffleAwardEntity.getSort())
                             .build())
                     .build();
-
+        } catch (AppException e) {
+            log.error("活动抽奖失败 userId:{} activityId:{}", request.getUserId(), request.getActivityId(), e);
+            return Response.<ActivityDrawResponseDTO>builder()
+                    .code(e.getCode())
+                    .info(e.getInfo())
+                    .build();
         } catch (Exception e) {
             log.error("活动抽奖失败 userId:{} activityId:{}", request.getUserId(), request.getActivityId(), e);
             return Response.<ActivityDrawResponseDTO>builder()

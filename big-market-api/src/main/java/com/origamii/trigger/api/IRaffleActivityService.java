@@ -20,7 +20,11 @@ public interface IRaffleActivityService {
      */
     Response<Boolean> armory(Long activityId);
 
-
+    /**
+     * 抽奖
+     * @param request 抽奖请求
+     * @return 抽奖结果
+     */
     Response<ActivityDrawResponseDTO> draw(ActivityDrawRequestDTO request);
 
 
