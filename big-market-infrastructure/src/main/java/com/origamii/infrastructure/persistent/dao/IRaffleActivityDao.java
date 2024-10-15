@@ -19,4 +19,11 @@ public interface IRaffleActivityDao {
      */
     RaffleActivity queryRaffleActivityByActivityId(Long activityId);
 
+    /**
+     * 根据活动id查询策略id
+     *
+     * @param activityId 活动id
+     * @return 策略id
+     */
+    Long queryStrategyIdByActivityId(Long activityId);
 }

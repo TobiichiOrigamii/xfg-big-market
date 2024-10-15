@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Origami
@@ -22,16 +23,23 @@ public class ActivityArmory implements IActivityArmory, IActivityDispatch {
     private IActivityRepository repository;
 
     /**
-     * 装配活动SKU
+     * 根据活动ID装配活动SKU
      *
      * @param activityId 活动ID
      * @return 装配结果
      */
     @Override
     public boolean assembleActivitySkuByActivityId(Long activityId) {
+        List<ActivitySkuEntity> activitySkuEntities = repository.queryActivitySkuListByActivityId(activityId);
+        for (ActivitySkuEntity activitySkuEntity : activitySkuEntities) {
+            cacheActivitySkuStockCount(activitySkuEntity.getSku(), activitySkuEntity.getStockCountSurplus());
+            // 预热活动次数【查询时预热到缓存】
+            repository.queryRaffleActivityCountByActivityCountId(activitySkuEntity.getActivityCountId());
+        }
+        // 预热活动【查询时预热到缓存】
+        repository.queryRaffleActivityByActivityId(activityId);
 
-
-        return false;
+        return true;
     }
 
     /**

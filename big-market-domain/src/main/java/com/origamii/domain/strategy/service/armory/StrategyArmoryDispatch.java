@@ -32,6 +32,18 @@ public class StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispatc
     private final SecureRandom secureRandom = new SecureRandom();
 
     /**
+     * 根据活动ID装配策略
+     *
+     * @param activityId 活动ID
+     * @return 装配结果
+     */
+    @Override
+    public boolean assembleLotteryStrategyByActivityId(Long activityId) {
+        Long strategyId = repository.queryStrategyByActivityId(activityId);
+        return assembleLotteryStrategy(strategyId);
+    }
+
+    /**
      * 策略装配库
      *
      * @param strategyId 策略ID
@@ -45,7 +57,7 @@ public class StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispatc
         for (StrategyAwardEntity strategyAwardEntity : strategyAwardEntities) {
             Integer awardId = strategyAwardEntity.getAwardId();
             Integer awardCount = strategyAwardEntity.getAwardCount();
-            cacheStrategyAwardCount(strategyId,awardId, awardCount);
+            cacheStrategyAwardCount(strategyId, awardId, awardCount);
         }
 
         // 3.1 默认装配配置【全局抽奖概率】
@@ -98,7 +110,7 @@ public class StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispatc
     /**
      * 获取随机奖品ID（带权重规则）
      *
-     * @param strategyId 策略ID
+     * @param strategyId      策略ID
      * @param ruleWeightValue 权重规则值
      * @return 随机奖品ID
      */
@@ -142,7 +154,7 @@ public class StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispatc
     /**
      * 装配抽奖策略
      *
-     * @param key 装配键
+     * @param key                   装配键
      * @param strategyAwardEntities 奖品实体列表
      */
     private void assembleLotteryStrategy(String key, List<StrategyAwardEntity> strategyAwardEntities) {

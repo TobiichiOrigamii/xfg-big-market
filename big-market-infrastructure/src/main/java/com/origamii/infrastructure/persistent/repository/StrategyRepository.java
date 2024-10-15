@@ -33,30 +33,22 @@ import static com.origamii.types.enums.ResponseCode.UN_ASSEMBLE_STRATEGY_ARMORY;
 @Repository
 public class StrategyRepository implements IStrategyRepository {
 
-    // 注入抽奖策略的数据访问对象，用于从数据库中查询策略数据
-    @Autowired
-    private IStrategyDao strategyDao;
-
-    // 注入抽奖规则的数据访问对象，用于从数据库中查询规则数据
-    @Autowired
-    private IStrategyRuleDao strategyRuleDao;
-
-    // 注入策略奖项的数据访问对象，用于从数据库中查询策略奖项数据
-    @Autowired
-    private IStrategyAwardDao strategyAwardDao;
-
-    // 注入 Redis 缓存服务，用于获取和存储缓存数据
     @Autowired
     private IRedisService redisService;
-
+    @Autowired
+    private IStrategyDao strategyDao;
+    @Autowired
+    private IStrategyRuleDao strategyRuleDao;
+    @Autowired
+    private IStrategyAwardDao strategyAwardDao;
     @Autowired
     private IRuleTreeDao ruleTreeDao;
-
     @Autowired
     private IRuleTreeNodeDao ruleTreeNodeDao;
-
     @Autowired
     private IRuleTreeNodeLineDao ruleTreeNodeLineDao;
+    @Autowired
+    private IRaffleActivityDao raffleActivityDao;
 
 
     /**
@@ -465,6 +457,16 @@ public class StrategyRepository implements IStrategyRepository {
         redisService.setValue(cacheKey, strategyAwardEntity);
         // 返回奖品信息
         return strategyAwardEntity;
+    }
+
+    /**
+     * 根据策略ID查询策略
+     * @param activityId 活动ID
+     * @return 策略ID
+     */
+    @Override
+    public Long queryStrategyByActivityId(Long activityId) {
+        return raffleActivityDao.queryStrategyIdByActivityId(activityId);
     }
 
 }

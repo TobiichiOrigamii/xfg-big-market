@@ -1,9 +1,18 @@
 package com.origamii.trigger.api.dto;
 
+import lombok.Data;
+
 /**
  * @author Origami
- * @description
+ * @description 活动抽奖请求对象
  * @create 2024-10-15 13:20
  **/
+@Data
 public class ActivityDrawRequestDTO {
+
+    // 用户ID
+    private String userId;
+    // 活动ID
+    private Long activityId;
+
 }

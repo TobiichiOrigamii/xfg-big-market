@@ -8,6 +8,13 @@ package com.origamii.domain.strategy.service.armory;
 public interface IStrategyArmory {
 
     /**
+     * 装配抽奖策略配置【触发的时机可以为活动审核通过后进行调用】
+     * @param activityId 活动ID
+     * @return boolean 装配结果
+     */
+    boolean assembleLotteryStrategyByActivityId(Long activityId);
+
+    /**
      * 策略装配库 通过策略ID装配策略
      *
      * @param strategyId 策略ID

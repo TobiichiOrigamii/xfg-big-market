@@ -3,6 +3,8 @@ package com.origamii.infrastructure.persistent.dao;
 import com.origamii.infrastructure.persistent.po.RaffleActivitySku;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * @author Origami
  * @description 商品sku dao
@@ -32,4 +34,10 @@ public interface IRaffleActivitySkuDao {
      * @param sku 活动商品
      */
     void clearActivitySkuStock(Long sku);
+
+    /**
+     * 根据活动id查询活动商品sku列表
+     * @param activityId 活动id
+     */
+    List<RaffleActivitySku> queryActivitySkuListByActivityId(Long activityId);
 }

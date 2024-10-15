@@ -6,6 +6,7 @@ import com.origamii.domain.activity.model.entity.*;
 import com.origamii.domain.activity.model.valobj.ActivitySkuStockKeyVO;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Origami
@@ -139,4 +140,10 @@ public interface IActivityRepository {
      */
     UserRaffleOrderEntity queryNoUsedRaffleOrder(PartakeRaffleActivityEntity partakeRaffleActivityEntity);
 
+    /**
+     * 根据活动ID查询活动SKU列表
+     * @param activityId 活动ID
+     * @return 活动SKU列表
+     */
+    List<ActivitySkuEntity> queryActivitySkuListByActivityId(Long activityId);
 }
