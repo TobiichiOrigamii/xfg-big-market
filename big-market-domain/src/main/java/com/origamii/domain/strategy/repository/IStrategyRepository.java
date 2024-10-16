@@ -9,6 +9,7 @@ import com.origamii.domain.strategy.model.valobj.StrategyAwardStockKeyVO;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Origami
@@ -25,7 +26,7 @@ public interface IStrategyRepository {
      * @param strategyId 策略ID，用于确定需要查询的策略奖项列表
      * @return 返回与指定策略ID关联的奖项实体列表
      */
-    List<StrategyAwardEntity> queryStrategyAwardList(Long strategyId);
+    List<StrategyAwardEntity> queryStrategyAwardListByStrategyId(Long strategyId);
 
     /**
      * 存储策略奖励比例搜索表到 Redis 中
@@ -169,6 +170,7 @@ public interface IStrategyRepository {
 
     /**
      * 根据活动ID查询策略ID
+     *
      * @param activityId 活动ID
      * @return 策略ID
      */
@@ -176,10 +178,19 @@ public interface IStrategyRepository {
 
     /**
      * 根据用户ID和策略ID查询今日抽奖次数
-     * @param userId 用户ID
+     *
+     * @param userId     用户ID
      * @param strategyId 策略ID
      * @return 今日抽奖次数
      */
     Integer queryTodayUserRaffleCount(String userId, Long strategyId);
+
+    /**
+     * 查询奖品规则锁定次数
+     *
+     * @param treeIds 奖品规则ID
+     * @return 奖品规则锁定次数
+     */
+    Map<String, Integer> queryAwardRuleLockCount(String[] treeIds);
 }
 

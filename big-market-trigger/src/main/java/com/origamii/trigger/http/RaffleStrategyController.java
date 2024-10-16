@@ -5,6 +5,7 @@ import com.origamii.domain.strategy.model.entity.RaffleAwardEntity;
 import com.origamii.domain.strategy.model.entity.RaffleFactorEntity;
 import com.origamii.domain.strategy.model.entity.StrategyAwardEntity;
 import com.origamii.domain.strategy.service.IRaffleAward;
+import com.origamii.domain.strategy.service.IRaffleRule;
 import com.origamii.domain.strategy.service.IRaffleStrategy;
 import com.origamii.domain.strategy.service.armory.IStrategyArmory;
 import com.origamii.trigger.api.IRaffleStrategyService;
@@ -16,11 +17,13 @@ import com.origamii.types.enums.ResponseCode;
 import com.origamii.types.exception.AppException;
 import com.origamii.types.model.Response;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Origami
@@ -35,12 +38,12 @@ public class RaffleStrategyController implements IRaffleStrategyService {
 
     @Autowired
     private IStrategyArmory strategyArmory;
-
     @Autowired
     private IRaffleAward raffleAward;
-
     @Autowired
     private IRaffleStrategy raffleStrategy;
+    @Autowired
+    private IRaffleRule raffleRule;
 
     /**
      * 策略装配接口
@@ -75,17 +78,40 @@ public class RaffleStrategyController implements IRaffleStrategyService {
     /**
      * 查询抽奖奖品列表配置
      *
-     * @param requestDTO 抽奖奖品列表查询请求参数
+     * @param request 抽奖奖品列表查询请求参数
      * @return 奖品列表数据
      */
     @Override
     @PostMapping("query_raffle_award_list")
-    public Response<List<RaffleAwardListResponseDTO>> queryRaffleAwardList(@RequestBody RaffleAwardListRequestDTO requestDTO) {
+    public Response<List<RaffleAwardListResponseDTO>> queryRaffleAwardList(@RequestBody RaffleAwardListRequestDTO request) {
 
         try {
-            log.info("查询抽奖奖品列表开始 strategyId:{}", requestDTO.getStrategyId());
-            List<StrategyAwardEntity> strategyAwardEntities = raffleAward.queryRaffleStrategyAwardList(requestDTO.getStrategyId());
-            ArrayList<RaffleAwardListResponseDTO> raffleAwardListResponseDTOS = new ArrayList<>(strategyAwardEntities.size());
+            log.info("查询抽奖奖品列表开始 strategyId:{}", request.getStrategyId());
+
+            // 1.参数校验
+            if (StringUtils.isBlank(request.getUserId()) || null == request.getActivityId()){
+                return Response.<List<RaffleAwardListResponseDTO>>builder()
+                        .code(ResponseCode.ILLEGAL_PARAMETER.getCode())
+                        .info(ResponseCode.ILLEGAL_PARAMETER.getInfo())
+                        .build();
+            }
+
+            // 2.查询奖品配置
+            List<StrategyAwardEntity> strategyAwardEntities = raffleAward.queryRaffleStrategyAwardListByActivityId(request.getActivityId());
+
+            // 3.获取规则配置
+            String[] treeIds = strategyAwardEntities.stream()
+                    .map(StrategyAwardEntity::getRuleModels)
+                    .filter(ruleModel -> null != ruleModel && !ruleModel.isEmpty())
+                    .toArray(String[]::new);
+
+            // 4.查询规则配置 - 获取奖品的解锁限制 抽奖n次后解锁
+            Map<String, Integer> ruleLockCountMap = raffleRule.queryAwardRuleLockCount(treeIds);
+
+            // 5.查询抽奖次数 -
+
+
+            List<RaffleAwardListResponseDTO> raffleAwardListResponseDTOS = new ArrayList<>(strategyAwardEntities.size());
             for (StrategyAwardEntity strategyAwardEntity : strategyAwardEntities) {
                 raffleAwardListResponseDTOS.add(RaffleAwardListResponseDTO.builder()
                         .awardId(strategyAwardEntity.getAwardId())
@@ -100,12 +126,12 @@ public class RaffleStrategyController implements IRaffleStrategyService {
                     .data(raffleAwardListResponseDTOS)
                     .build();
 
-            log.info("查询抽奖奖品列表完成 strategyId:{} response:{}", requestDTO.getStrategyId(), JSON.toJSONString(response));
+            log.info("查询抽奖奖品列表完成 strategyId:{} response:{}", request.getStrategyId(), JSON.toJSONString(response));
             return response;
 
         } catch (Exception e) {
 
-            log.error("查询抽奖奖品列表失败 strategyId:{}", requestDTO.getStrategyId());
+            log.error("查询抽奖奖品列表失败 strategyId:{}", request.getStrategyId());
             return Response.<List<RaffleAwardListResponseDTO>>builder()
                     .code(ResponseCode.UN_ERROR.getCode())
                     .info(ResponseCode.UN_ERROR.getInfo())

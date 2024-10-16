@@ -7,6 +7,7 @@ import com.origamii.domain.strategy.model.valobj.StrategyAwardStockKeyVO;
 import com.origamii.domain.strategy.repository.IStrategyRepository;
 import com.origamii.domain.strategy.service.AbstractRaffleStrategy;
 import com.origamii.domain.strategy.service.IRaffleAward;
+import com.origamii.domain.strategy.service.IRaffleRule;
 import com.origamii.domain.strategy.service.IRaffleStock;
 import com.origamii.domain.strategy.service.armory.IStrategyDispatch;
 import com.origamii.domain.strategy.service.rule.chain.ILogicChain;
@@ -17,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Origami
@@ -25,7 +27,7 @@ import java.util.List;
  **/
 @Slf4j
 @Service
-public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRaffleAward, IRaffleStock {
+public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRaffleAward, IRaffleStock, IRaffleRule {
 
     // 构造函数，初始化策略仓库、策略调度、逻辑链工厂和逻辑树工厂
     public DefaultRaffleStrategy(IStrategyRepository repository,
@@ -73,6 +75,7 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRa
 
     /**
      * 从仓库中获取队列值
+     *
      * @return 队列值
      */
     @Override
@@ -82,6 +85,7 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRa
 
     /**
      * 更新策略奖品库存
+     *
      * @param strategyId 策略ID
      * @param awardId    奖品ID
      */
@@ -91,13 +95,35 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRa
     }
 
     /**
-     * 查询策略奖品列表
+     * 根据策略ID查询奖品列表
+     *
      * @param strategyId 策略ID
-     * @return
+     * @return 奖品列表
      */
     @Override
-    public List<StrategyAwardEntity> queryRaffleStrategyAwardList(Long strategyId) {
-        return repository.queryStrategyAwardList(strategyId);
+    public List<StrategyAwardEntity> queryRaffleStrategyAwardListByStrategyId(Long strategyId) {
+        return repository.queryStrategyAwardListByStrategyId(strategyId);
+    }
+
+    /**
+     * 根据活动ID查询抽奖奖品列表配置
+     * @param ActivityId 活动ID
+     * @return 奖品列表
+     */
+    @Override
+    public List<StrategyAwardEntity> queryRaffleStrategyAwardListByActivityId(Long ActivityId) {
+        Long strategyId = repository.queryStrategyByActivityId(ActivityId);
+        return queryRaffleStrategyAwardListByStrategyId(strategyId);
+    }
+
+    /**
+     * 查询奖品规则
+     * @param treeIds 奖品规则ID数组
+     * @return 奖品规则
+     */
+    @Override
+    public Map<String, Integer> queryAwardRuleLockCount(String[] treeIds) {
+        return repository.queryAwardRuleLockCount(treeIds);
     }
 }
 

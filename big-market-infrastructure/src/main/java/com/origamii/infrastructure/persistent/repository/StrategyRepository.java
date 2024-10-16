@@ -61,7 +61,7 @@ public class StrategyRepository implements IStrategyRepository {
      * @return 返回与指定策略ID关联的奖项实体列表
      */
     @Override
-    public List<StrategyAwardEntity> queryStrategyAwardList(Long strategyId) {
+    public List<StrategyAwardEntity> queryStrategyAwardListByStrategyId(Long strategyId) {
         // 1. 优先从缓存中获取 Key，Redis 的 key 由策略 ID 组成
         String cacheKey = Constants.RedisKey.STRATEGY_AWARD_LIST_KEY + strategyId;
         List<StrategyAwardEntity> strategyAwardEntities = redisService.getValue(cacheKey);
@@ -85,6 +85,7 @@ public class StrategyRepository implements IStrategyRepository {
                     .awardCountSurplus(strategyAward.getAwardCountSurplus()) // 设置剩余奖项数量
                     .awardRate(strategyAward.getAwardRate())           // 设置中奖率
                     .sort(strategyAward.getSort())                     // 设置排序
+                    .ruleModels(strategyAward.getRuleModels())         // 设置奖项规则模型
                     .build();
             // 将创建的实体添加到列表中
             strategyAwardEntities.add(strategyAwardEntity);
@@ -494,6 +495,26 @@ public class StrategyRepository implements IStrategyRepository {
         // 今日参与的 = 总次数 - 剩余的
         return raffleActivityAccountDay.getDayCount() - raffleActivityAccountDay.getDayCountSurplus();
     }
+
+    /**
+     * 查询奖品规则锁定次数
+     *
+     * @param treeIds 奖品规则ID
+     * @return 奖品规则锁定次数
+     */
+    @Override
+    public Map<String, Integer> queryAwardRuleLockCount(String[] treeIds) {
+        if(null == treeIds || treeIds.length == 0){
+            return new HashMap<>();
+        }
+        List<RuleTreeNode> ruleTreeNodes =ruleTreeNodeDao.queryRuleLocks(treeIds);
+        Map<String, Integer> resultMap = new HashMap<>();
+        for(RuleTreeNode ruleTreeNode : ruleTreeNodes){
+            resultMap.put(ruleTreeNode.getRuleKey(), Integer.valueOf(ruleTreeNode.getRuleValue()));
+        }
+        return resultMap;
+    }
+
 
 
 }

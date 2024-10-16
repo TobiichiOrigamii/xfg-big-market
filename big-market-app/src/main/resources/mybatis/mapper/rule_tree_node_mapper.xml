@@ -21,4 +21,13 @@
         where tree_id = #{treeId}
     </select>
 
+    <!-- 查询规则次数锁 -->
+    <select id="queryRuleLocks" resultMap="dataMap">
+        select tree_id,rule_value
+        from rule_tree_node
+        where rule_key = 'rule_lock' and tree_id in
+        <foreach collection="array" item="treeId" index="index" open="(" separator="," close=")">
+        #{treeId}
+    </select>
+
 </mapper>

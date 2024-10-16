@@ -1,0 +1,747 @@
+24-10-15.23:43:30.130 [main            ] INFO  Application            - Starting Application using Java 19.0.1 on Legion-R9000P with PID 29432 (E:\Code\Java\big-market\big-market-app\target\classes started by lenovo in E:\Code\Java\big-market)
+24-10-15.23:43:30.132 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+24-10-15.23:43:31.582 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-10-15.23:43:31.587 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-10-15.23:43:31.651 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 38 ms. Found 0 Redis repository interfaces.
+24-10-15.23:43:33.179 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+24-10-15.23:43:33.189 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+24-10-15.23:43:33.189 [main            ] INFO  StandardService        - Starting service [Tomcat]
+24-10-15.23:43:33.189 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+24-10-15.23:43:33.322 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+24-10-15.23:43:33.322 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3125 ms
+24-10-15.23:43:33.764 [main            ] INFO  Version                - Redisson 3.23.4
+24-10-15.23:43:33.902 [main            ] INFO  Application            - Starting Application using Java 19.0.1 on Legion-R9000P with PID 18376 (E:\Code\Java\big-market\big-market-app\target\classes started by lenovo in E:\Code\Java\big-market)
+24-10-15.23:43:33.903 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+24-10-15.23:43:34.322 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-15.23:43:34.411 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-15.23:43:35.008 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-10-15.23:43:35.012 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-10-15.23:43:35.063 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 33 ms. Found 0 Redis repository interfaces.
+24-10-15.23:43:36.299 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+24-10-15.23:43:36.312 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+24-10-15.23:43:36.312 [main            ] INFO  StandardService        - Starting service [Tomcat]
+24-10-15.23:43:36.312 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+24-10-15.23:43:36.391 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-10-15.23:43:36.431 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+24-10-15.23:43:36.431 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2476 ms
+24-10-15.23:43:36.494 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+24-10-15.23:43:36.513 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+24-10-15.23:43:36.516 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.236.132:5672]
+24-10-15.23:43:36.842 [main            ] INFO  Version                - Redisson 3.23.4
+24-10-15.23:43:37.248 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#366b4a7b:0/SimpleConnection@55a2f08b [delegate=amqp://origami@192.168.236.132:5672/, localPort= 11256]
+24-10-15.23:43:37.368 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-15.23:43:37.436 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-15.23:43:37.539 [main            ] INFO  Application            - Started Application in 8.019 seconds (JVM running for 9.423)
+24-10-15.23:43:38.126 [RMI TCP Connection(4)-192.168.236.1] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+24-10-15.23:43:38.126 [RMI TCP Connection(4)-192.168.236.1] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+24-10-15.23:43:38.128 [RMI TCP Connection(4)-192.168.236.1] INFO  DispatcherServlet      - Completed initialization in 2 ms
+24-10-15.23:43:38.177 [RMI TCP Connection(5)-192.168.236.1] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-15.23:43:38.959 [RMI TCP Connection(5)-192.168.236.1] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-15.23:43:38.982 [RMI TCP Connection(5)-192.168.236.1] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-15.23:43:39.022 [RMI TCP Connection(5)-192.168.236.1] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-15.23:43:39.127 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-10-15.23:43:39.240 [main            ] WARN  AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8091 is already in use
+24-10-15.23:43:40.015 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:43:40.037 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:43:45.007 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:43:45.038 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:43:47.013 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+24-10-15.23:43:47.041 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+24-10-15.23:43:48.282 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+24-10-15.23:43:48.301 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+24-10-15.23:43:48.349 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+24-10-15.23:43:48.351 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+24-10-15.23:43:53.563 [main            ] INFO  Application            - Starting Application using Java 19.0.1 on Legion-R9000P with PID 31576 (E:\Code\Java\big-market\big-market-app\target\classes started by lenovo in E:\Code\Java\big-market)
+24-10-15.23:43:53.564 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+24-10-15.23:43:54.492 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-10-15.23:43:54.494 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-10-15.23:43:54.542 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 33 ms. Found 0 Redis repository interfaces.
+24-10-15.23:43:55.482 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+24-10-15.23:43:55.490 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+24-10-15.23:43:55.491 [main            ] INFO  StandardService        - Starting service [Tomcat]
+24-10-15.23:43:55.491 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+24-10-15.23:43:55.614 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+24-10-15.23:43:55.614 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2004 ms
+24-10-15.23:43:56.005 [main            ] INFO  Version                - Redisson 3.23.4
+24-10-15.23:43:56.484 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-15.23:43:56.506 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-15.23:43:58.070 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-10-15.23:43:58.179 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+24-10-15.23:43:58.194 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+24-10-15.23:43:58.196 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.236.132:5672]
+24-10-15.23:43:58.560 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#58afecfd:0/SimpleConnection@6d2f910b [delegate=amqp://origami@192.168.236.132:5672/, localPort= 11309]
+24-10-15.23:43:58.632 [main            ] INFO  Application            - Started Application in 5.543 seconds (JVM running for 6.637)
+24-10-15.23:43:58.914 [RMI TCP Connection(1)-192.168.236.1] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-15.23:43:58.947 [RMI TCP Connection(3)-192.168.236.1] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+24-10-15.23:43:58.947 [RMI TCP Connection(3)-192.168.236.1] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+24-10-15.23:43:58.949 [RMI TCP Connection(3)-192.168.236.1] INFO  DispatcherServlet      - Completed initialization in 2 ms
+24-10-15.23:43:59.347 [RMI TCP Connection(1)-192.168.236.1] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-15.23:43:59.372 [RMI TCP Connection(1)-192.168.236.1] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-15.23:43:59.397 [RMI TCP Connection(1)-192.168.236.1] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-15.23:44:00.009 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:44:00.035 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:44:05.007 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:44:05.025 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:44:10.010 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:44:10.022 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:44:15.009 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:44:15.030 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:44:20.009 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:44:20.017 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:44:25.001 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:44:25.018 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:44:30.006 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:44:30.008 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:44:35.004 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:44:35.010 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:44:40.012 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:44:40.020 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:44:45.010 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:44:45.011 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:44:50.011 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:44:50.014 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:44:55.001 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:44:55.003 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:45:00.014 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:45:00.018 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:45:05.012 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:45:05.013 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:45:10.009 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:45:10.011 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:45:15.014 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:45:15.015 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:45:20.014 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:45:20.022 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:45:25.012 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:45:25.014 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:45:30.003 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:45:30.005 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:45:35.010 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:45:35.011 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:45:40.009 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:45:40.010 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:45:45.010 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:45:45.011 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:45:50.013 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:45:50.014 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:45:55.007 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:45:55.008 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:46:00.012 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:46:00.013 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:46:05.004 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:46:05.005 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:46:10.009 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:46:10.010 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:46:15.013 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:46:15.016 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:46:20.013 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:46:20.015 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:46:25.010 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:46:25.012 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:46:30.003 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:46:30.004 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:46:35.007 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:46:35.021 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:46:40.013 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:46:40.014 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:46:45.006 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:46:45.008 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:46:50.014 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:46:50.016 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:46:55.004 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:46:55.005 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:47:00.003 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:47:00.004 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:47:05.013 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:47:05.014 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:47:10.010 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:47:10.012 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:47:15.005 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:47:15.006 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:47:20.004 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:47:20.005 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:47:25.012 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:47:25.014 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:47:30.014 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:47:30.015 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:47:35.009 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:47:35.010 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:47:40.001 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:47:40.002 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:47:45.005 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:47:45.007 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:47:50.013 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:47:50.014 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:47:55.004 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:47:55.005 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:48:00.004 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:48:00.006 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:48:05.014 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:48:05.016 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:48:10.001 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:48:10.003 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:48:15.001 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:48:15.001 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:48:20.006 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:48:20.006 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:48:25.003 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:48:25.004 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:48:30.012 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:48:30.013 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:48:35.006 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:48:35.008 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:48:40.011 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:48:40.012 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:48:44.423 [http-nio-8091-exec-2] WARN  DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.origamii.types.model.Response<java.lang.Boolean> com.origamii.trigger.http.RaffleActivityController.armory(java.lang.Long)]
+24-10-15.23:48:45.003 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:48:45.004 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:48:50.001 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:48:50.002 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:48:55.011 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:48:55.012 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:49:00.006 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:49:00.008 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:49:05.015 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:49:05.016 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:49:10.007 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:49:10.008 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:49:15.012 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:49:15.014 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:49:20.013 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:49:20.015 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:49:25.006 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:49:25.008 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:49:30.001 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:49:30.002 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:49:35.009 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:49:35.009 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:49:40.004 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:49:40.006 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:49:45.014 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:49:45.016 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:49:50.014 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:49:50.016 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:49:55.001 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:49:55.002 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:50:00.013 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:50:00.015 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:50:05.010 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:50:05.013 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:50:10.014 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:50:10.015 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:50:14.879 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+24-10-15.23:50:14.883 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+24-10-15.23:50:15.004 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:50:15.005 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:50:15.788 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+24-10-15.23:50:15.828 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+24-10-15.23:50:15.871 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+24-10-15.23:50:15.872 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+24-10-15.23:50:20.392 [main            ] INFO  Application            - Starting Application using Java 19.0.1 on Legion-R9000P with PID 30040 (E:\Code\Java\big-market\big-market-app\target\classes started by lenovo in E:\Code\Java\big-market)
+24-10-15.23:50:20.393 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+24-10-15.23:50:21.280 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-10-15.23:50:21.283 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-10-15.23:50:21.323 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 27 ms. Found 0 Redis repository interfaces.
+24-10-15.23:50:22.236 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+24-10-15.23:50:22.244 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+24-10-15.23:50:22.244 [main            ] INFO  StandardService        - Starting service [Tomcat]
+24-10-15.23:50:22.245 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+24-10-15.23:50:22.354 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+24-10-15.23:50:22.354 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1920 ms
+24-10-15.23:50:22.701 [main            ] INFO  Version                - Redisson 3.23.4
+24-10-15.23:50:23.164 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-15.23:50:23.183 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-15.23:50:24.698 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-10-15.23:50:24.788 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+24-10-15.23:50:24.802 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+24-10-15.23:50:24.803 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.236.132:5672]
+24-10-15.23:50:24.901 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#2c4be45f:0/SimpleConnection@43414b88 [delegate=amqp://origami@192.168.236.132:5672/, localPort= 11715]
+24-10-15.23:50:24.977 [main            ] INFO  Application            - Started Application in 5.051 seconds (JVM running for 6.039)
+24-10-15.23:50:25.002 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:50:25.019 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:50:25.022 [pool-3-thread-1 ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-15.23:50:25.023 [pool-3-thread-2 ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-15.23:50:25.278 [pool-3-thread-1 ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-15.23:50:25.278 [pool-3-thread-2 ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-15.23:50:25.406 [RMI TCP Connection(2)-192.168.236.1] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+24-10-15.23:50:25.406 [RMI TCP Connection(2)-192.168.236.1] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+24-10-15.23:50:25.409 [RMI TCP Connection(2)-192.168.236.1] INFO  DispatcherServlet      - Completed initialization in 2 ms
+24-10-15.23:50:30.000 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:50:30.002 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:50:35.004 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:50:35.006 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:50:36.021 [http-nio-8091-exec-2] WARN  DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.origamii.types.model.Response<java.lang.Boolean> com.origamii.trigger.http.RaffleActivityController.armory(java.lang.Long)]
+24-10-15.23:50:40.013 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:50:40.014 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:50:45.014 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:50:45.015 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:50:45.959 [http-nio-8091-exec-4] WARN  DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.origamii.types.model.Response<java.lang.Boolean> com.origamii.trigger.http.RaffleActivityController.armory(java.lang.Long)]
+24-10-15.23:50:50.004 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:50:50.005 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:50:55.002 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:50:55.003 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:51:00.004 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:51:00.005 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:51:05.010 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:51:05.013 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:51:10.000 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:51:10.001 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:51:12.501 [http-nio-8091-exec-6] INFO  RaffleStrategyController - 抽奖策略装配开始 strategyId:100006
+24-10-15.23:51:12.514 [http-nio-8091-exec-6] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-15.23:51:12.585 [http-nio-8091-exec-6] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-15.23:51:12.972 [http-nio-8091-exec-6] INFO  RaffleStrategyController - 抽奖策略装配完成 strategyId:100006 response:{"code":"0000","data":true,"info":"成功"}
+24-10-15.23:51:15.004 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:51:15.006 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:51:20.014 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:51:20.016 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:51:25.010 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:51:25.012 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:51:26.139 [http-nio-8091-exec-7] INFO  RaffleStrategyController - 随机抽奖开始 strategyId: 100006
+24-10-15.23:51:26.152 [http-nio-8091-exec-7] INFO  DefaultLogicChain      - 抽奖责任链-默认处理 userId: system strategyId: 100006 ruleModel: rule_default awardId: 104
+24-10-15.23:51:26.153 [http-nio-8091-exec-7] INFO  AbstractRaffleStrategy - 抽奖策略计算-责任链 system 100006 104 rule_default
+24-10-15.23:51:26.260 [http-nio-8091-exec-7] INFO  RuleStockLogicTreeNode - 规则过滤-库存扣减 userId:system,strategyId:100006,awardId:104
+24-10-15.23:51:26.263 [http-nio-8091-exec-7] INFO  RuleStockLogicTreeNode - 规则过滤-扣减库存-成功 userId:system,strategyId:100006,awardId:104
+24-10-15.23:51:26.299 [http-nio-8091-exec-7] INFO  DecisionTreeEngine     - 决策树引擎【规则树-兜底奖励】，treeId：tree_luck_award，node：rule_stock，code：0001
+24-10-15.23:51:26.299 [http-nio-8091-exec-7] INFO  AbstractRaffleStrategy - 抽奖策略计算-规则树 system 100006 104 
+24-10-15.23:51:26.311 [http-nio-8091-exec-7] INFO  RaffleStrategyController - 随机抽奖完成 strategyId: 100006 response: {"code":"0000","data":{"awardId":104,"awardIndex":4},"info":"成功"}
+24-10-15.23:51:30.010 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:51:30.011 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:51:30.013 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】 strategyId:100006 awardId:104
+24-10-15.23:51:35.004 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:51:35.006 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:51:40.011 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:51:40.012 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:51:45.005 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:51:45.007 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:51:50.014 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:51:50.016 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:51:55.005 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:51:55.007 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:52:00.001 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:52:00.003 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:52:04.053 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+24-10-15.23:52:04.054 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+24-10-15.23:52:04.827 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+24-10-15.23:52:04.872 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+24-10-15.23:52:04.926 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+24-10-15.23:52:04.926 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+24-10-15.23:52:09.270 [main            ] INFO  Application            - Starting Application using Java 19.0.1 on Legion-R9000P with PID 29496 (E:\Code\Java\big-market\big-market-app\target\classes started by lenovo in E:\Code\Java\big-market)
+24-10-15.23:52:09.271 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+24-10-15.23:52:10.177 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-10-15.23:52:10.179 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-10-15.23:52:10.221 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 27 ms. Found 0 Redis repository interfaces.
+24-10-15.23:52:11.078 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+24-10-15.23:52:11.086 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+24-10-15.23:52:11.086 [main            ] INFO  StandardService        - Starting service [Tomcat]
+24-10-15.23:52:11.086 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+24-10-15.23:52:11.190 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+24-10-15.23:52:11.190 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1878 ms
+24-10-15.23:52:11.585 [main            ] INFO  Version                - Redisson 3.23.4
+24-10-15.23:52:12.062 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-15.23:52:12.080 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-15.23:52:13.597 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-10-15.23:52:13.698 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+24-10-15.23:52:13.716 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+24-10-15.23:52:13.718 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.236.132:5672]
+24-10-15.23:52:13.769 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#163fbbc9:0/SimpleConnection@4a7c8cb7 [delegate=amqp://origami@192.168.236.132:5672/, localPort= 11850]
+24-10-15.23:52:13.840 [main            ] INFO  Application            - Started Application in 5.006 seconds (JVM running for 5.937)
+24-10-15.23:52:14.202 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+24-10-15.23:52:14.203 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+24-10-15.23:52:14.826 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+24-10-15.23:52:14.839 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+24-10-15.23:52:14.884 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+24-10-15.23:52:14.886 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+24-10-15.23:52:19.373 [main            ] INFO  Application            - Starting Application using Java 19.0.1 on Legion-R9000P with PID 22068 (E:\Code\Java\big-market\big-market-app\target\classes started by lenovo in E:\Code\Java\big-market)
+24-10-15.23:52:19.374 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+24-10-15.23:52:20.285 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-10-15.23:52:20.288 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-10-15.23:52:20.326 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25 ms. Found 0 Redis repository interfaces.
+24-10-15.23:52:21.182 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+24-10-15.23:52:21.191 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+24-10-15.23:52:21.191 [main            ] INFO  StandardService        - Starting service [Tomcat]
+24-10-15.23:52:21.191 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+24-10-15.23:52:21.295 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+24-10-15.23:52:21.296 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1879 ms
+24-10-15.23:52:21.684 [main            ] INFO  Version                - Redisson 3.23.4
+24-10-15.23:52:22.175 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-15.23:52:22.193 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-15.23:52:23.642 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-10-15.23:52:23.737 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+24-10-15.23:52:23.754 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+24-10-15.23:52:23.756 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.236.132:5672]
+24-10-15.23:52:23.807 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#2c4be45f:0/SimpleConnection@f451970 [delegate=amqp://origami@192.168.236.132:5672/, localPort= 11866]
+24-10-15.23:52:23.911 [main            ] INFO  Application            - Started Application in 5.026 seconds (JVM running for 6.136)
+24-10-15.23:52:24.293 [RMI TCP Connection(3)-192.168.236.1] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+24-10-15.23:52:24.293 [RMI TCP Connection(3)-192.168.236.1] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+24-10-15.23:52:24.295 [RMI TCP Connection(3)-192.168.236.1] INFO  DispatcherServlet      - Completed initialization in 2 ms
+24-10-15.23:52:24.299 [RMI TCP Connection(2)-192.168.236.1] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-15.23:52:24.585 [RMI TCP Connection(2)-192.168.236.1] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-15.23:52:24.602 [RMI TCP Connection(2)-192.168.236.1] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-15.23:52:24.625 [RMI TCP Connection(2)-192.168.236.1] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-15.23:52:25.010 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:52:25.023 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:52:30.007 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:52:30.008 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:52:59.220 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:52:59.223 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:52:59.224 [http-nio-8091-exec-2] INFO  RaffleActivityController - 活动装配 数据预热 开始 activityId:100301
+24-10-15.23:52:59.225 [http-nio-8091-exec-2] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-15.23:52:59.290 [http-nio-8091-exec-2] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-15.23:52:59.448 [http-nio-8091-exec-2] INFO  RaffleActivityController - 活动装配 数据预热 结束 activityId:100301
+24-10-15.23:53:00.002 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:53:00.003 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:53:05.007 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:53:05.008 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:53:12.849 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:53:12.851 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:53:12.889 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+24-10-15.23:53:12.890 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+24-10-15.23:53:15.558 [main            ] INFO  Application            - Starting Application using Java 19.0.1 on Legion-R9000P with PID 27568 (E:\Code\Java\big-market\big-market-app\target\classes started by lenovo in E:\Code\Java\big-market)
+24-10-15.23:53:15.561 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+24-10-15.23:53:16.386 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-10-15.23:53:16.389 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-10-15.23:53:16.428 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25 ms. Found 0 Redis repository interfaces.
+24-10-15.23:53:17.251 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+24-10-15.23:53:17.259 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+24-10-15.23:53:17.259 [main            ] INFO  StandardService        - Starting service [Tomcat]
+24-10-15.23:53:17.259 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+24-10-15.23:53:17.374 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+24-10-15.23:53:17.375 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1769 ms
+24-10-15.23:53:17.720 [main            ] INFO  Version                - Redisson 3.23.4
+24-10-15.23:53:18.192 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-15.23:53:18.213 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-15.23:53:19.600 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-10-15.23:53:19.681 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+24-10-15.23:53:19.695 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+24-10-15.23:53:19.697 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.236.132:5672]
+24-10-15.23:53:19.759 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#61ce238e:0/SimpleConnection@7dd847a2 [delegate=amqp://origami@192.168.236.132:5672/, localPort= 11964]
+24-10-15.23:53:19.830 [main            ] INFO  Application            - Started Application in 4.761 seconds (JVM running for 5.446)
+24-10-15.23:53:20.011 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:53:20.029 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:53:20.032 [pool-3-thread-1 ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-15.23:53:20.032 [pool-3-thread-2 ] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-15.23:53:20.189 [RMI TCP Connection(1)-192.168.236.1] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+24-10-15.23:53:20.189 [RMI TCP Connection(1)-192.168.236.1] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+24-10-15.23:53:20.192 [RMI TCP Connection(1)-192.168.236.1] INFO  DispatcherServlet      - Completed initialization in 3 ms
+24-10-15.23:53:20.289 [pool-3-thread-2 ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-15.23:53:20.289 [pool-3-thread-1 ] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-15.23:53:25.014 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:53:25.016 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:53:30.006 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:53:30.008 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:53:35.005 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:53:35.006 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:53:40.008 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:53:40.010 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:53:45.015 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:53:45.016 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:53:50.011 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:53:50.013 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:53:50.520 [http-nio-8091-exec-2] INFO  RaffleActivityController - 活动装配 数据预热 开始 activityId:100301
+24-10-15.23:53:50.521 [http-nio-8091-exec-2] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-15.23:53:50.584 [http-nio-8091-exec-2] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-15.23:53:50.680 [http-nio-8091-exec-2] INFO  RaffleActivityController - 活动装配 数据预热 结束 activityId:100301
+24-10-15.23:53:55.004 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:53:55.006 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:54:00.015 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:54:00.017 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:54:05.001 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:54:05.003 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:54:10.013 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:54:10.015 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:54:15.011 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:54:15.012 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:54:20.007 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:54:20.007 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:54:25.005 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:54:25.007 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:54:30.009 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:54:30.011 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:54:35.015 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:54:35.016 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:54:40.003 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:54:40.014 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:54:45.011 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:54:45.013 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:54:46.094 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+24-10-15.23:54:46.095 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+24-10-15.23:54:46.519 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+24-10-15.23:54:46.563 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+24-10-15.23:54:46.604 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+24-10-15.23:54:46.604 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+24-10-15.23:54:50.955 [main            ] INFO  Application            - Starting Application using Java 19.0.1 on Legion-R9000P with PID 25328 (E:\Code\Java\big-market\big-market-app\target\classes started by lenovo in E:\Code\Java\big-market)
+24-10-15.23:54:50.957 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+24-10-15.23:54:51.775 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-10-15.23:54:51.777 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-10-15.23:54:51.814 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25 ms. Found 0 Redis repository interfaces.
+24-10-15.23:54:52.645 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+24-10-15.23:54:52.652 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+24-10-15.23:54:52.652 [main            ] INFO  StandardService        - Starting service [Tomcat]
+24-10-15.23:54:52.652 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+24-10-15.23:54:52.746 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+24-10-15.23:54:52.746 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1743 ms
+24-10-15.23:54:53.069 [main            ] INFO  Version                - Redisson 3.23.4
+24-10-15.23:54:53.508 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-15.23:54:53.527 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-15.23:54:54.966 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-10-15.23:54:55.071 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+24-10-15.23:54:55.084 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+24-10-15.23:54:55.088 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.236.132:5672]
+24-10-15.23:54:55.135 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#49ea13b6:0/SimpleConnection@7dd847a2 [delegate=amqp://origami@192.168.236.132:5672/, localPort= 12102]
+24-10-15.23:54:55.206 [main            ] INFO  Application            - Started Application in 4.652 seconds (JVM running for 5.304)
+24-10-15.23:54:55.759 [RMI TCP Connection(3)-192.168.236.1] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+24-10-15.23:54:55.759 [RMI TCP Connection(3)-192.168.236.1] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+24-10-15.23:54:55.759 [RMI TCP Connection(2)-192.168.236.1] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-15.23:54:55.761 [RMI TCP Connection(3)-192.168.236.1] INFO  DispatcherServlet      - Completed initialization in 2 ms
+24-10-15.23:54:56.061 [RMI TCP Connection(2)-192.168.236.1] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-15.23:54:56.083 [RMI TCP Connection(2)-192.168.236.1] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-15.23:54:56.102 [RMI TCP Connection(2)-192.168.236.1] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-15.23:55:00.010 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:55:00.022 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:55:02.464 [http-nio-8091-exec-2] INFO  RaffleActivityController - 活动抽奖 user:origami activityId:100301
+24-10-15.23:55:02.651 [http-nio-8091-exec-2] INFO  RaffleActivityController - 活动抽奖 创建订单 userId:origami activityId:100301 orderId:951635479379
+24-10-15.23:55:02.663 [http-nio-8091-exec-2] INFO  DefaultLogicChain      - 抽奖责任链-默认处理 userId: origami strategyId: 100006 ruleModel: rule_default awardId: 105
+24-10-15.23:55:02.664 [http-nio-8091-exec-2] INFO  AbstractRaffleStrategy - 抽奖策略计算-责任链 origami 100006 105 rule_default
+24-10-15.23:55:02.664 [http-nio-8091-exec-2] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-15.23:55:02.681 [http-nio-8091-exec-2] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-15.23:55:02.689 [http-nio-8091-exec-2] INFO  RuleStockLogicTreeNode - 规则过滤-库存扣减 userId:origami,strategyId:100006,awardId:105
+24-10-15.23:55:02.693 [http-nio-8091-exec-2] INFO  RuleStockLogicTreeNode - 规则过滤-扣减库存-成功 userId:origami,strategyId:100006,awardId:105
+24-10-15.23:55:02.715 [http-nio-8091-exec-2] INFO  DecisionTreeEngine     - 决策树引擎【规则树-兜底奖励】，treeId：tree_luck_award，node：rule_stock，code：0001
+24-10-15.23:55:02.716 [http-nio-8091-exec-2] INFO  AbstractRaffleStrategy - 抽奖策略计算-规则树 origami 100006 105 
+24-10-15.23:55:02.929 [http-nio-8091-exec-2] ERROR RaffleActivityController - 活动抽奖失败 userId:origami activityId:100301
+org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'activity_id' cannot be null
+### The error may exist in file [E:\Code\Java\big-market\big-market-app\target\classes\mybatis\mapper\user_award_record_mapper.xml]
+### The error may involve com.origamii.infrastructure.persistent.dao.IUserAwardRecordDao.insert-Inline
+### The error occurred while setting parameters
+### SQL: insert into user_award_record_000(user_id, activity_id, strategy_id, order_id, award_id, award_title, award_time,                                       award_state, create_time, update_time)         values (?, ?, ?, ?, ?, ?, ?,                 ?, now(), now())
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'activity_id' cannot be null
+; Column 'activity_id' cannot be null; nested exception is java.sql.SQLIntegrityConstraintViolationException: Column 'activity_id' cannot be null
+	at org.springframework.jdbc.support.SQLExceptionSubclassTranslator.doTranslate(SQLExceptionSubclassTranslator.java:87)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:70)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:79)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:91)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:441)
+	at jdk.proxy2/jdk.proxy2.$Proxy110.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:272)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:62)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:152)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:85)
+	at jdk.proxy2/jdk.proxy2.$Proxy136.insert(Unknown Source)
+	at com.origamii.infrastructure.persistent.repository.AwardRepository.lambda$saveUserAwardRecord$0(AwardRepository.java:88)
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140)
+	at com.origamii.infrastructure.persistent.repository.AwardRepository.saveUserAwardRecord(AwardRepository.java:85)
+	at com.origamii.infrastructure.persistent.repository.AwardRepository$$FastClassBySpringCGLIB$$ef9e8803.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at com.origamii.infrastructure.persistent.repository.AwardRepository$$EnhancerBySpringCGLIB$$4c1309e0.saveUserAwardRecord(<generated>)
+	at com.origamii.domain.award.service.AwardService.saveUserAwardRecord(AwardService.java:56)
+	at com.origamii.trigger.http.RaffleActivityController.draw(RaffleActivityController.java:138)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:1589)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Column 'activity_id' cannot be null
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:47)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:63)
+	at jdk.proxy2/jdk.proxy2.$Proxy183.update(Unknown Source)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:197)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:184)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	... 73 common frames omitted
+24-10-15.23:55:05.014 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:55:05.016 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:55:10.012 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:55:10.014 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】 strategyId:100006 awardId:105
+24-10-15.23:55:10.022 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:55:15.008 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:55:15.009 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:55:20.003 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:55:20.009 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:55:25.011 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:55:25.012 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:55:30.015 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:55:30.016 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:55:35.010 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:55:35.011 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:55:40.006 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:55:40.006 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:55:45.014 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:55:45.016 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:55:50.006 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:55:50.008 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:55:55.008 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:55:55.009 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:56:00.006 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:56:00.007 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:56:05.014 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:56:05.016 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:56:10.000 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:56:10.002 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:56:15.016 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:56:15.018 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:56:20.012 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:56:20.020 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:56:25.001 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:56:25.002 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:56:30.003 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:56:30.005 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:56:35.006 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:56:35.008 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:56:40.011 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:56:40.013 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:56:45.005 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:56:45.007 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:56:50.013 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:56:50.014 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:56:55.003 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:56:55.004 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:57:00.009 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:57:00.011 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:57:05.010 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:57:05.011 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:57:10.015 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:57:10.017 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:57:15.003 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:57:15.004 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:57:20.002 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:57:20.003 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:57:25.015 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:57:25.015 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:57:30.001 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:57:30.003 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:57:35.011 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:57:35.013 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:57:40.015 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:57:40.016 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:57:45.002 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:57:45.003 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:57:50.012 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:57:50.013 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:57:55.014 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:57:55.015 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:58:00.014 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:58:00.016 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:58:05.006 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:58:05.008 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:58:10.005 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:58:10.006 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:58:15.001 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:58:15.002 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:58:20.014 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:58:20.015 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:58:21.679 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+24-10-15.23:58:21.681 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Waiting for workers to finish.
+24-10-15.23:58:22.021 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+24-10-15.23:58:22.081 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] INFO  SimpleMessageListenerContainer - Successfully waited for workers to finish.
+24-10-15.23:58:22.119 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+24-10-15.23:58:22.120 [SpringApplicationShutdownHook] INFO  SimpleMessageListenerContainer - Shutdown ignored - container is already stopped
+24-10-15.23:58:26.237 [main            ] INFO  Application            - Starting Application using Java 19.0.1 on Legion-R9000P with PID 29284 (E:\Code\Java\big-market\big-market-app\target\classes started by lenovo in E:\Code\Java\big-market)
+24-10-15.23:58:26.239 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+24-10-15.23:58:27.102 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+24-10-15.23:58:27.104 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+24-10-15.23:58:27.150 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 30 ms. Found 0 Redis repository interfaces.
+24-10-15.23:58:28.044 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+24-10-15.23:58:28.053 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+24-10-15.23:58:28.053 [main            ] INFO  StandardService        - Starting service [Tomcat]
+24-10-15.23:58:28.053 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+24-10-15.23:58:28.167 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+24-10-15.23:58:28.167 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1884 ms
+24-10-15.23:58:28.535 [main            ] INFO  Version                - Redisson 3.23.4
+24-10-15.23:58:29.081 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-15.23:58:29.101 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 192.168.236.132/192.168.236.132:16379
+24-10-15.23:58:30.503 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+24-10-15.23:58:30.593 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+24-10-15.23:58:30.608 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+24-10-15.23:58:30.609 [main            ] INFO  CachingConnectionFactory - Attempting to connect to: [192.168.236.132:5672]
+24-10-15.23:58:30.665 [main            ] INFO  CachingConnectionFactory - Created new connection: rabbitConnectionFactory#2c4be45f:0/SimpleConnection@43414b88 [delegate=amqp://origami@192.168.236.132:5672/, localPort= 12302]
+24-10-15.23:58:30.737 [main            ] INFO  Application            - Started Application in 4.983 seconds (JVM running for 5.938)
+24-10-15.23:58:31.200 [RMI TCP Connection(2)-192.168.236.1] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+24-10-15.23:58:31.200 [RMI TCP Connection(2)-192.168.236.1] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+24-10-15.23:58:31.202 [RMI TCP Connection(2)-192.168.236.1] INFO  DispatcherServlet      - Completed initialization in 2 ms
+24-10-15.23:58:31.203 [RMI TCP Connection(1)-192.168.236.1] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-15.23:58:31.499 [RMI TCP Connection(1)-192.168.236.1] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-15.23:58:31.538 [RMI TCP Connection(1)-192.168.236.1] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-15.23:58:31.584 [RMI TCP Connection(1)-192.168.236.1] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-15.23:58:35.011 [scheduling-1    ] INFO  UpdateActivitySkuStockJob - 定时任务 - 更新活动sku库存【延迟队列获取】
+24-10-15.23:58:35.022 [scheduling-1    ] INFO  UpdateAwardStockJob    - 定时任务 - 更新奖品消耗库存【延迟队列获取】
+24-10-15.23:58:38.186 [http-nio-8091-exec-2] INFO  RaffleActivityController - 活动抽奖 user:origami activityId:100301
+24-10-15.23:58:38.444 [http-nio-8091-exec-2] INFO  AbstractRaffleActivityPartake - 创建参与活动订单【已存在 未消费】 userId:origami, activityId:100301, userRaffleOrderEntity:{"activityId":100301,"activityName":"测试活动","orderId":"951635479379","orderState":"create","orderTime":1729007702000,"strategyId":100006,"userId":"origami"}
+24-10-15.23:58:38.445 [http-nio-8091-exec-2] INFO  RaffleActivityController - 活动抽奖 创建订单 userId:origami activityId:100301 orderId:951635479379
+24-10-15.23:58:38.460 [http-nio-8091-exec-2] INFO  DefaultLogicChain      - 抽奖责任链-默认处理 userId: origami strategyId: 100006 ruleModel: rule_default awardId: 105
+24-10-15.23:58:38.460 [http-nio-8091-exec-2] INFO  AbstractRaffleStrategy - 抽奖策略计算-责任链 origami 100006 105 rule_default
+24-10-15.23:58:38.461 [http-nio-8091-exec-2] INFO  HikariDataSource       - Retail_HikariCP - Starting...
+24-10-15.23:58:38.484 [http-nio-8091-exec-2] INFO  HikariDataSource       - Retail_HikariCP - Start completed.
+24-10-15.23:58:38.500 [http-nio-8091-exec-2] INFO  RuleStockLogicTreeNode - 规则过滤-库存扣减 userId:origami,strategyId:100006,awardId:105
+24-10-15.23:58:38.505 [http-nio-8091-exec-2] INFO  RuleStockLogicTreeNode - 规则过滤-扣减库存-成功 userId:origami,strategyId:100006,awardId:105
+24-10-15.23:58:38.530 [http-nio-8091-exec-2] INFO  DecisionTreeEngine     - 决策树引擎【规则树-兜底奖励】，treeId：tree_luck_award，node：rule_stock，code：0001
+24-10-15.23:58:38.531 [http-nio-8091-exec-2] INFO  AbstractRaffleStrategy - 抽奖策略计算-规则树 origami 100006 105 
