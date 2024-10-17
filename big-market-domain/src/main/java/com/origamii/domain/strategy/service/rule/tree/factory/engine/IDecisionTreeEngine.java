@@ -2,6 +2,8 @@ package com.origamii.domain.strategy.service.rule.tree.factory.engine;
 
 import com.origamii.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;
 
+import java.util.Date;
+
 /**
  * @author Origami
  * @description 规则树组合接口
@@ -16,6 +18,6 @@ public interface IDecisionTreeEngine {
      * @param awardId       奖项ID
      * @return 策略奖项数据
      */
-    DefaultTreeFactory.StrategyAwardVO process(String userId, Long strategyId, Integer awardId);
+    DefaultTreeFactory.StrategyAwardVO process(String userId, Long strategyId, Integer awardId, Date endDateTime);
 
 }

@@ -7,6 +7,7 @@ import com.origamii.domain.strategy.model.valobj.RuleTreeVO;
 import com.origamii.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 import com.origamii.domain.strategy.model.valobj.StrategyAwardStockKeyVO;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -129,7 +130,7 @@ public interface IStrategyRepository {
      * @param cacheKey 缓存key
      * @return 扣减结果
      */
-    Boolean subtractionAwardStock(String cacheKey);
+    Boolean subtractionAwardStock(String cacheKey, Date endDateTime);
 
     /**
      * 缓存奖品库存

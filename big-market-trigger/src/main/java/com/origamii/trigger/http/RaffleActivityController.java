@@ -54,9 +54,8 @@ public class RaffleActivityController implements IRaffleActivityService {
      * 接口：<a href="http://localhost:8091/api/v1/raffle/activity/armory">/api/v1/raffle/activity/armory</a>
      * 入参：{"activityId":100001,"userId":"xiaofuge"}
      * curl --request GET \
-     *   --url 'http://localhost:8091/api/v1/raffle/activity/armory?activityId=100301'
+     * --url 'http://localhost:8091/api/v1/raffle/activity/armory?activityId=100301'
      */
-
     @Override
     @GetMapping("armory")
     public Response<Boolean> armory(@RequestParam Long activityId) {
@@ -92,20 +91,20 @@ public class RaffleActivityController implements IRaffleActivityService {
      * <p>
      * 接口：<a href="http://localhost:8091/api/v1/raffle/activity/draw">/api/v1/raffle/activity/draw</a>
      * 入参：{"activityId":100001,"userId":"xiaofuge"}
-     *
+     * <p>
      * curl --request POST \
-     *   --url http://localhost:8091/api/v1/raffle/activity/draw \
-     *   --header 'content-type: application/json' \
-     *   --data '{
-     *     "userId":"origami",
-     *     "activityId": 100301
+     * --url http://localhost:8091/api/v1/raffle/activity/draw \
+     * --header 'content-type: application/json' \
+     * --data '{
+     * "userId":"origami",
+     * "activityId": 100301
      * }'
      */
     @Override
     @PostMapping("draw")
     public Response<ActivityDrawResponseDTO> draw(@RequestBody ActivityDrawRequestDTO request) {
         try {
-             log.info("活动抽奖 user:{} activityId:{}", request.getUserId(), request.getActivityId());
+            log.info("活动抽奖 user:{} activityId:{}", request.getUserId(), request.getActivityId());
             // 1.参数校验
             if (StringUtils.isBlank(request.getUserId()) || null == request.getActivityId())
                 throw new AppException(ResponseCode.ILLEGAL_PARAMETER.getCode(), ResponseCode.ILLEGAL_PARAMETER.getInfo());
@@ -122,6 +121,7 @@ public class RaffleActivityController implements IRaffleActivityService {
             RaffleAwardEntity raffleAwardEntity = raffleStrategy.performRaffle(RaffleFactorEntity.builder()
                     .userId(request.getUserId())
                     .strategyId(orderEntity.getStrategyId())
+                    .endDateTime(orderEntity.getEndDateTime())
                     .build());
 
             // 4.存放结果 - 写入中奖记录

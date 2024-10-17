@@ -51,7 +51,7 @@ public class StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispatc
     @Override
     public boolean assembleLotteryStrategy(Long strategyId) {
         // 1.查询策略配置 获取与策略ID关联的奖品信息
-        List<StrategyAwardEntity> strategyAwardEntities = repository.queryStrategyAwardList(strategyId);
+        List<StrategyAwardEntity> strategyAwardEntities = repository.queryStrategyAwardListByStrategyId(strategyId);
 
         // 2.缓存奖品库存【用于decr扣减库存使用】
         for (StrategyAwardEntity strategyAwardEntity : strategyAwardEntities) {
@@ -146,9 +146,9 @@ public class StrategyArmoryDispatch implements IStrategyArmory, IStrategyDispatc
      * @return 是否成功
      */
     @Override
-    public Boolean subtractionAwardStock(Long strategyId, Integer awardId) {
+    public Boolean subtractionAwardStock(Long strategyId, Integer awardId, Date endDateTime) {
         String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_KEY + strategyId + Constants.UNDERLINE + awardId;
-        return repository.subtractionAwardStock(cacheKey);
+        return repository.subtractionAwardStock(cacheKey, endDateTime);
     }
 
     /**

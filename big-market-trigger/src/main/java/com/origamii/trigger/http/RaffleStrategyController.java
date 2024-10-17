@@ -1,6 +1,7 @@
 package com.origamii.trigger.http;
 
 import com.alibaba.fastjson.JSON;
+import com.origamii.domain.activity.service.IRaffleActivityAccountQuotaService;
 import com.origamii.domain.strategy.model.entity.RaffleAwardEntity;
 import com.origamii.domain.strategy.model.entity.RaffleFactorEntity;
 import com.origamii.domain.strategy.model.entity.StrategyAwardEntity;
@@ -44,6 +45,9 @@ public class RaffleStrategyController implements IRaffleStrategyService {
     private IRaffleStrategy raffleStrategy;
     @Autowired
     private IRaffleRule raffleRule;
+    @Autowired
+    private IRaffleActivityAccountQuotaService raffleActivityAccountQuotaService;
+
 
     /**
      * 策略装配接口
@@ -86,10 +90,10 @@ public class RaffleStrategyController implements IRaffleStrategyService {
     public Response<List<RaffleAwardListResponseDTO>> queryRaffleAwardList(@RequestBody RaffleAwardListRequestDTO request) {
 
         try {
-            log.info("查询抽奖奖品列表开始 strategyId:{}", request.getStrategyId());
+            log.info("查询抽奖奖品列表开始 userId:{} activityId:{}", request.getUserId(), request.getActivityId());
 
             // 1.参数校验
-            if (StringUtils.isBlank(request.getUserId()) || null == request.getActivityId()){
+            if (StringUtils.isBlank(request.getUserId()) || null == request.getActivityId()) {
                 return Response.<List<RaffleAwardListResponseDTO>>builder()
                         .code(ResponseCode.ILLEGAL_PARAMETER.getCode())
                         .info(ResponseCode.ILLEGAL_PARAMETER.getInfo())
@@ -108,16 +112,21 @@ public class RaffleStrategyController implements IRaffleStrategyService {
             // 4.查询规则配置 - 获取奖品的解锁限制 抽奖n次后解锁
             Map<String, Integer> ruleLockCountMap = raffleRule.queryAwardRuleLockCount(treeIds);
 
-            // 5.查询抽奖次数 -
+            // 5.查询抽奖次数 - 用户已经参与抽奖的次数
+            Integer dayPartakeCount = raffleActivityAccountQuotaService.queryRaffleActivityAccountDayPartakeCount(request.getActivityId(), request.getUserId());
 
-
+            // 6.遍历填充数据
             List<RaffleAwardListResponseDTO> raffleAwardListResponseDTOS = new ArrayList<>(strategyAwardEntities.size());
             for (StrategyAwardEntity strategyAwardEntity : strategyAwardEntities) {
+                Integer awardRuleLockCount = ruleLockCountMap.get(strategyAwardEntity.getRuleModels());
                 raffleAwardListResponseDTOS.add(RaffleAwardListResponseDTO.builder()
                         .awardId(strategyAwardEntity.getAwardId())
                         .awardTitle(strategyAwardEntity.getAwardTitle())
                         .awardSubTitle(strategyAwardEntity.getAwardSubTitle())
                         .sort(strategyAwardEntity.getSort())
+                        .awardRuleLockCount(awardRuleLockCount)
+                        .isAwardUnlock(null == awardRuleLockCount || dayPartakeCount > awardRuleLockCount)
+                        .waitUnlockCount(null == awardRuleLockCount || dayPartakeCount <= awardRuleLockCount ? 0 : awardRuleLockCount - dayPartakeCount)
                         .build());
             }
             Response<List<RaffleAwardListResponseDTO>> response = Response.<List<RaffleAwardListResponseDTO>>builder()
@@ -126,12 +135,11 @@ public class RaffleStrategyController implements IRaffleStrategyService {
                     .data(raffleAwardListResponseDTOS)
                     .build();
 
-            log.info("查询抽奖奖品列表完成 strategyId:{} response:{}", request.getStrategyId(), JSON.toJSONString(response));
+            log.info("查询抽奖奖品列表完成 userId:{} activityId:{}  response:{}", request.getUserId(), request.getActivityId(), JSON.toJSONString(response));
             return response;
 
         } catch (Exception e) {
-
-            log.error("查询抽奖奖品列表失败 strategyId:{}", request.getStrategyId());
+            log.error("查询抽奖奖品列表失败 userId:{} activityId:{}", request.getUserId(), request.getActivityId(), e);
             return Response.<List<RaffleAwardListResponseDTO>>builder()
                     .code(ResponseCode.UN_ERROR.getCode())
                     .info(ResponseCode.UN_ERROR.getInfo())

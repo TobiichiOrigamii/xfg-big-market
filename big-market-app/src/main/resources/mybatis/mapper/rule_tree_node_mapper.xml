@@ -28,6 +28,7 @@
         where rule_key = 'rule_lock' and tree_id in
         <foreach collection="array" item="treeId" index="index" open="(" separator="," close=")">
         #{treeId}
+        </foreach>
     </select>
 
 </mapper>

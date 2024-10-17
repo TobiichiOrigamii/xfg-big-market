@@ -14,6 +14,7 @@ public interface IRaffleActivityAccountDayDao {
 
     /**
      * 查询活动账户日表
+     *
      * @param raffleActivityAccountDay 月账户表
      * @return 月账户表
      */
@@ -34,5 +35,13 @@ public interface IRaffleActivityAccountDayDao {
      * @param raffleActivityAccountDay 账户日数据
      */
     void insertActivityAccountDay(RaffleActivityAccountDay raffleActivityAccountDay);
-    
+
+    /**
+     * 查询用户当日抽奖次数
+     *
+     * @param raffleActivityAccountDay 用户信息
+     * @return 用户当日抽奖次数
+     */
+    @DBRouter
+    Integer queryRaffleActivityAccountDayPartakeCount(RaffleActivityAccountDay raffleActivityAccountDay);
 }

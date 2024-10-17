@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 /**
  * @author Origami
  * @description 库存节点
@@ -34,11 +36,11 @@ public class RuleStockLogicTreeNode implements ILogicTreeNode {
      * @return 规则树
      */
     @Override
-    public DefaultTreeFactory.TreeActionEntity logic(String userId, Long strategyId, Integer awardId, String ruleValue) {
+    public DefaultTreeFactory.TreeActionEntity logic(String userId, Long strategyId, Integer awardId, String ruleValue, Date endDateTime) {
         log.info("规则过滤-库存扣减 userId:{},strategyId:{},awardId:{}", userId, strategyId, awardId);
 
         // 扣减库存
-        Boolean status = strategyDispatch.subtractionAwardStock(strategyId, awardId);
+        Boolean status = strategyDispatch.subtractionAwardStock(strategyId, awardId, endDateTime);
 
         // true:库存扣减成功，TAKE_OVER规则节点接管 返回奖品ID，奖品规则配置
         if (status){

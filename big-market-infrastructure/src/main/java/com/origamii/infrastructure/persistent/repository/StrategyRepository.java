@@ -16,10 +16,7 @@ import org.redisson.api.RDelayedQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 import static com.origamii.types.enums.ResponseCode.UN_ASSEMBLE_STRATEGY_ARMORY;
@@ -355,7 +352,7 @@ public class StrategyRepository implements IStrategyRepository {
      * @return 扣减结果
      */
     @Override
-    public Boolean subtractionAwardStock(String cacheKey) {
+    public Boolean subtractionAwardStock(String cacheKey, Date endDateTime) {
         long surplus = redisService.decr(cacheKey);
         if (surplus < 0) {
             // 库存小于0 恢复为0个
@@ -366,7 +363,13 @@ public class StrategyRepository implements IStrategyRepository {
         // 1.按照cacheKey decr后的值，如99、98、97 和 key 组成为库存所的key进行使用
         // 2.加锁为了兜底，如果后续有回复库存，手动处理等，也不会超卖。因为所有的可用库存Key，都被加锁了
         String lockKey = cacheKey + Constants.UNDERLINE + surplus;
-        Boolean lock = redisService.setNx(lockKey);
+        Boolean lock = false;
+        if (null != endDateTime) {
+            long expireMillis = endDateTime.getTime() - System.currentTimeMillis() + TimeUnit.DAYS.toMillis(1);
+            lock = redisService.setNx(lockKey, expireMillis, TimeUnit.MILLISECONDS);
+        } else {
+            lock = redisService.setNx(lockKey);
+        }
         if (!lock)
             log.info("策略奖品库存加锁失败{}", lockKey);
         return lock;
@@ -504,17 +507,16 @@ public class StrategyRepository implements IStrategyRepository {
      */
     @Override
     public Map<String, Integer> queryAwardRuleLockCount(String[] treeIds) {
-        if(null == treeIds || treeIds.length == 0){
+        if (null == treeIds || treeIds.length == 0) {
             return new HashMap<>();
         }
-        List<RuleTreeNode> ruleTreeNodes =ruleTreeNodeDao.queryRuleLocks(treeIds);
+        List<RuleTreeNode> ruleTreeNodes = ruleTreeNodeDao.queryRuleLocks(treeIds);
         Map<String, Integer> resultMap = new HashMap<>();
-        for(RuleTreeNode ruleTreeNode : ruleTreeNodes){
+        for (RuleTreeNode ruleTreeNode : ruleTreeNodes) {
             resultMap.put(ruleTreeNode.getRuleKey(), Integer.valueOf(ruleTreeNode.getRuleValue()));
         }
         return resultMap;
     }
-
 
 
 }

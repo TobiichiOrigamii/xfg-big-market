@@ -17,6 +17,7 @@ import com.origamii.domain.strategy.service.rule.tree.factory.engine.IDecisionTr
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -30,10 +31,7 @@ import java.util.Map;
 public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRaffleAward, IRaffleStock, IRaffleRule {
 
     // 构造函数，初始化策略仓库、策略调度、逻辑链工厂和逻辑树工厂
-    public DefaultRaffleStrategy(IStrategyRepository repository,
-                                 IStrategyDispatch strategyDispatch,
-                                 DefaultChainFactory defaultChainFactory,
-                                 DefaultTreeFactory defaultTreeFactory) {
+    public DefaultRaffleStrategy(IStrategyRepository repository, IStrategyDispatch strategyDispatch, DefaultChainFactory defaultChainFactory, DefaultTreeFactory defaultTreeFactory) {
         super(repository, strategyDispatch, defaultChainFactory, defaultTreeFactory);
     }
 
@@ -60,6 +58,20 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRa
      */
     @Override
     public DefaultTreeFactory.StrategyAwardVO raffleLogicTree(String userId, Long strategyId, Integer awardId) {
+        return raffleLogicTree(userId, strategyId, awardId, null);
+    }
+
+    /**
+     * 根据用户ID、策略ID、奖品ID和活动结束时间执行逻辑树，返回抽奖结果
+     *
+     * @param userId      用户ID
+     * @param strategyId  策略ID
+     * @param awardId     奖品ID
+     * @param endDateTime 抽奖结束时间
+     * @return 抽奖结果
+     */
+    @Override
+    public DefaultTreeFactory.StrategyAwardVO raffleLogicTree(String userId, Long strategyId, Integer awardId, Date endDateTime) {
         StrategyAwardRuleModelVO strategyAwardRuleModel = repository.queryStrategyAwardRuleModel(strategyId, awardId);
 
         if (null == strategyAwardRuleModel) {
@@ -70,7 +82,7 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRa
             throw new RuntimeException("存在抽奖策略配置的规则模型 Key，未在库表 rule_tree、rule_tree_node、rule_tree_line 配置对应的规则树信息 " + strategyAwardRuleModel.getRuleModels());
         }
         IDecisionTreeEngine treeEngine = defaultTreeFactory.openLogicTree(ruleTreeVO);
-        return treeEngine.process(userId, strategyId, awardId);
+        return treeEngine.process(userId, strategyId, awardId, endDateTime);
     }
 
     /**
@@ -107,6 +119,7 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRa
 
     /**
      * 根据活动ID查询抽奖奖品列表配置
+     *
      * @param ActivityId 活动ID
      * @return 奖品列表
      */
@@ -118,6 +131,7 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRa
 
     /**
      * 查询奖品规则
+     *
      * @param treeIds 奖品规则ID数组
      * @return 奖品规则
      */

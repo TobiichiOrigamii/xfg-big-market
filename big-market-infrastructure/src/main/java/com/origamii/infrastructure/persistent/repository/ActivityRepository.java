@@ -1,6 +1,7 @@
 package com.origamii.infrastructure.persistent.repository;
 
 import cn.bugstack.middleware.db.router.strategy.IDBRouterStrategy;
+import com.alibaba.fastjson2.JSON;
 import com.origamii.domain.activity.event.ActivitySkuStockZeroMessageEvent;
 import com.origamii.domain.activity.model.aggreate.CreatePartakeOrderAggregate;
 import com.origamii.domain.activity.model.aggreate.CreateQuotaOrderAggregate;
@@ -120,7 +121,7 @@ public class ActivityRepository implements IActivityRepository {
                 .strategyId(raffleActivity.getStrategyId())
                 .activityState(ActivityStateVO.valueOf(raffleActivity.getState()))
                 .build();
-        redisService.setValue(cacheKey, activityEntity);
+        redisService.setValue(cacheKey, JSON.toJSONString(activityEntity));
         return activityEntity;
     }
 
@@ -573,6 +574,22 @@ public class ActivityRepository implements IActivityRepository {
             activitySkuEntities.add(activitySkuEntity);
         }
         return activitySkuEntities;
+    }
+
+    /**
+     * 查询用户当日抽奖次数
+     * @param activityId 活动ID
+     * @param userId 用户ID
+     * @return 用户当日抽奖次数
+     */
+    @Override
+    public Integer queryRaffleActivityAccountDayPartakeCount(Long activityId, String userId) {
+        RaffleActivityAccountDay raffleActivityAccountDay = new RaffleActivityAccountDay();
+        raffleActivityAccountDay.setActivityId(activityId);
+        raffleActivityAccountDay.setUserId(userId);
+        raffleActivityAccountDay.setDay(raffleActivityAccountDay.currentDay());
+        Integer dayPartakeCount = raffleActivityAccountDayDao.queryRaffleActivityAccountDayPartakeCount(raffleActivityAccountDay);
+        return null == dayPartakeCount? 0 : dayPartakeCount;
     }
 
 

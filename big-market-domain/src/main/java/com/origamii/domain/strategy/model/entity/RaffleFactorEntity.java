@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 /**
  * @author Origami
  * @description 抽奖因子实体
@@ -22,8 +24,7 @@ public class RaffleFactorEntity {
     // 策略ID
     private Long strategyId;
 
-    // 奖品ID
-    private Integer awardId;
-
+    // 活动结束时间
+    private Date endDateTime;
 
 }
