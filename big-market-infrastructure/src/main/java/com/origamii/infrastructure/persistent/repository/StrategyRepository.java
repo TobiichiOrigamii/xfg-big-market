@@ -59,39 +59,28 @@ public class StrategyRepository implements IStrategyRepository {
      */
     @Override
     public List<StrategyAwardEntity> queryStrategyAwardListByStrategyId(Long strategyId) {
-        // 1. 优先从缓存中获取 Key，Redis 的 key 由策略 ID 组成
+        // 优先从缓存获取
         String cacheKey = Constants.RedisKey.STRATEGY_AWARD_LIST_KEY + strategyId;
         List<StrategyAwardEntity> strategyAwardEntities = redisService.getValue(cacheKey);
-
-        // 2. 判断缓存中是否有 Key，如果缓存不为空且有数据，则直接返回缓存中的数据
-        if (null != strategyAwardEntities && !strategyAwardEntities.isEmpty())
-            return strategyAwardEntities;
-
-        // 3. 如果缓存中没有对应数据，则从数据库中查询策略奖项列表
+        if (null != strategyAwardEntities && !strategyAwardEntities.isEmpty()) return strategyAwardEntities;
+        // 从库中获取数据
         List<StrategyAward> strategyAwards = strategyAwardDao.queryStrategyAwardListByStrategyId(strategyId);
-
-        // 4. 将数据库查询结果转换为策略奖项实体类列表
         strategyAwardEntities = new ArrayList<>(strategyAwards.size());
         for (StrategyAward strategyAward : strategyAwards) {
             StrategyAwardEntity strategyAwardEntity = StrategyAwardEntity.builder()
-                    .strategyId(strategyAward.getStrategyId())         // 设置策略 ID
-                    .awardId(strategyAward.getAwardId())               // 设置奖项 ID
-                    .awardTitle(strategyAward.getAwardTitle())          // 设置奖项标题
-                    .awardSubTitle(strategyAward.getAwardSubtitle())    // 设置奖项副标题
-                    .awardCount(strategyAward.getAwardCount())           // 设置奖项总数量
-                    .awardCountSurplus(strategyAward.getAwardCountSurplus()) // 设置剩余奖项数量
-                    .awardRate(strategyAward.getAwardRate())           // 设置中奖率
-                    .sort(strategyAward.getSort())                     // 设置排序
-                    .ruleModels(strategyAward.getRuleModels())         // 设置奖项规则模型
+                    .strategyId(strategyAward.getStrategyId())
+                    .awardId(strategyAward.getAwardId())
+                    .awardTitle(strategyAward.getAwardTitle())
+                    .awardSubTitle(strategyAward.getAwardSubTitle())
+                    .awardCount(strategyAward.getAwardCount())
+                    .awardCountSurplus(strategyAward.getAwardCountSurplus())
+                    .awardRate(strategyAward.getAwardRate())
+                    .sort(strategyAward.getSort())
+                    .ruleModels(strategyAward.getRuleModels())
                     .build();
-            // 将创建的实体添加到列表中
             strategyAwardEntities.add(strategyAwardEntity);
         }
-
-        // 5. 将查询结果存入缓存，便于后续请求直接从缓存中获取数据
         redisService.setValue(cacheKey, strategyAwardEntities);
-
-        // 6. 返回从数据库中查询并缓存的数据
         return strategyAwardEntities;
     }
 
@@ -451,7 +440,7 @@ public class StrategyRepository implements IStrategyRepository {
                 .strategyId(strategyAwardRes.getStrategyId())
                 .awardId(strategyAwardRes.getAwardId())
                 .awardTitle(strategyAwardRes.getAwardTitle())
-                .awardSubTitle(strategyAwardRes.getAwardSubtitle())
+                .awardSubTitle(strategyAwardRes.getAwardSubTitle())
                 .awardCount(strategyAwardRes.getAwardCount())
                 .awardCountSurplus(strategyAwardRes.getAwardCountSurplus())
                 .awardRate(strategyAwardRes.getAwardRate())

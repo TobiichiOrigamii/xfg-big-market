@@ -36,6 +36,7 @@ public class ActivityArmory implements IActivityArmory, IActivityDispatch {
             // 预热活动次数【查询时预热到缓存】
             repository.queryRaffleActivityCountByActivityCountId(activitySkuEntity.getActivityCountId());
         }
+
         // 预热活动【查询时预热到缓存】
         repository.queryRaffleActivityByActivityId(activityId);
 

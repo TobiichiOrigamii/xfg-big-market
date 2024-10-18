@@ -22,10 +22,10 @@ public class UpdateActivitySkuStockJob {
     @Scheduled(cron = "0/5 * * * * ?")
     public void exec(){
         try{
-            log.info("定时任务 - 更新活动sku库存【延迟队列获取】");
+            // log.info("定时任务 - 更新活动sku库存【延迟队列获取】");
             ActivitySkuStockKeyVO activitySkuStockKeyVO = skuStock.takeQueueValue();
             if (null == activitySkuStockKeyVO) return;
-            log.info("定时任务 - 更新活动sku库存【延迟队列获取】sku sku:{} activityId:{}",activitySkuStockKeyVO.getSku(),activitySkuStockKeyVO.getActivityId());
+            // log.info("定时任务 - 更新活动sku库存【延迟队列获取】sku sku:{} activityId:{}",activitySkuStockKeyVO.getSku(),activitySkuStockKeyVO.getActivityId());
             skuStock.updateActivitySkuStock(activitySkuStockKeyVO.getSku());
         }catch (Exception e){
             log.error("定时任务 - 更新活动sku库存【延迟队列获取】异常",e);
