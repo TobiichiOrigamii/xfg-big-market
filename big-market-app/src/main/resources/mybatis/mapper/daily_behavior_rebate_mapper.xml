@@ -15,9 +15,12 @@
         <result column="update_time" property="updateTime"/>
     </resultMap>
 
-
-
-
+    <!-- 查询日常行为返利活动配置 -->
+    <select id="queryDailyBehaviorRebateConfigBehaviorType" parameterType="java.lang.String" resultMap="dateMap">
+        select behavior_type, rebate_desc, rebate_type, rebate_config
+        from daily_behavior_rebate
+        where state = 'open'
+    </select>
 
 
 </mapper>

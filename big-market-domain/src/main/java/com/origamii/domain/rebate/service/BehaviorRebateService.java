@@ -66,10 +66,19 @@ public class BehaviorRebateService implements IBehaviorRebateService {
                     .build();
             orderIds.add(behaviorRebateOrderEntity.getOrderId());
 
-            // 5.MQ消息
+            // 5.MQ消息对象
+            SendRebateMessageEvent.RebateMessage rebateMessage = SendRebateMessageEvent.RebateMessage.builder()
+                    .userId(behaviorEntity.getUserId())
+                    .rebateDesc(dailyBehaviorRebateVO.getRebateDesc())
+                    .rebateType(dailyBehaviorRebateVO.getRebateType())
+                    .bizId(bizId)
+                    .build();
+
+            // 6.组装MQ消息对象
             BaseEvent.EventMessage<SendRebateMessageEvent.RebateMessage> rebateMessageEventMessage = sendRebateMessageEvent.buildEventMessage(rebateMessage);
 
-            // 6.组装任务对象
+
+            // 7.组装任务对象
             TaskEntity taskEntity = new TaskEntity();
             taskEntity.setUserId(behaviorEntity.getUserId());
             taskEntity.setTopic(sendRebateMessageEvent.topic());
@@ -77,7 +86,7 @@ public class BehaviorRebateService implements IBehaviorRebateService {
             taskEntity.setMessage(rebateMessageEventMessage);
             taskEntity.setState(TaskStateVO.create);
 
-            // 7.创建聚合对象
+            // 8.创建聚合对象
             BehaviorRebateAggregate behaviorRebateAggregate = BehaviorRebateAggregate.builder()
                     .userId(behaviorEntity.getUserId())
                     .behaviorRebateOrderEntity(behaviorRebateOrderEntity)
@@ -86,10 +95,10 @@ public class BehaviorRebateService implements IBehaviorRebateService {
 
             behaviorRebateAggregates.add(behaviorRebateAggregate);
          }
-        // 8.存储聚合对象数据
+        // 9.存储聚合对象数据
         repository.saveUserRebateRecord(behaviorEntity.getUserId(), behaviorRebateAggregates);
 
-        // 9.返回订单ID集合
+        // 10.返回订单ID集合
         return orderIds;
     }
 
