@@ -33,7 +33,9 @@ public interface IRaffleActivityAccountMonthDao {
      */
     void insertActivityAccountMonth(RaffleActivityAccountMonth raffleActivityAccountMonth);
 
-
-
-
+    /**
+     * 更新活动账户月表
+     * @param raffleActivityAccountMonth 月账户表
+     */
+    void addAccountQuota(RaffleActivityAccountMonth raffleActivityAccountMonth);
 }

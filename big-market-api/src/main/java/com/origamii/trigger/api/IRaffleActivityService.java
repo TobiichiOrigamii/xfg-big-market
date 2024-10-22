@@ -22,11 +22,18 @@ public interface IRaffleActivityService {
 
     /**
      * 抽奖
+     *
      * @param request 抽奖请求
      * @return 抽奖结果
      */
     Response<ActivityDrawResponseDTO> draw(ActivityDrawRequestDTO request);
 
-
+    /**
+     * 签到返利
+     *
+     * @param userId 用户ID
+     * @return 签到结果
+     */
+    Response<Boolean> calendarSignRebate(String userId);
 
 }

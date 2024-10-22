@@ -41,5 +41,11 @@ public class RaffleActivityControllerTest {
         log.info("测试结果：{}", JSON.toJSONString(response));
     }
 
+    @Test
+    public void test_calendarSignRebate(){
+        Response<Boolean> response = raffleActivityService.calendarSignRebate("origami");
+        log.info("测试结果：{}", JSON.toJSONString(response));
+    }
+
 
 }

@@ -1,11 +1,15 @@
 package com.origamii.trigger.http;
 
+import com.alibaba.fastjson2.JSON;
 import com.origamii.domain.activity.model.entity.UserRaffleOrderEntity;
 import com.origamii.domain.activity.service.IRaffleActivityPartakeService;
 import com.origamii.domain.activity.service.armory.IActivityArmory;
 import com.origamii.domain.award.model.entity.UserAwardRecordEntity;
 import com.origamii.domain.award.model.valobj.AwardStateVO;
 import com.origamii.domain.award.service.IAwardService;
+import com.origamii.domain.rebate.model.entity.BehaviorEntity;
+import com.origamii.domain.rebate.model.valobj.BehaviorTypeVO;
+import com.origamii.domain.rebate.service.IBehaviorRebateService;
 import com.origamii.domain.strategy.model.entity.RaffleAwardEntity;
 import com.origamii.domain.strategy.model.entity.RaffleFactorEntity;
 import com.origamii.domain.strategy.service.IRaffleStrategy;
@@ -21,7 +25,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Origami
@@ -44,6 +50,10 @@ public class RaffleActivityController implements IRaffleActivityService {
     private IActivityArmory activityArmory;
     @Autowired
     private IStrategyArmory strategyArmory;
+    @Autowired
+    private IBehaviorRebateService behaviorRebateService;
+
+    private final SimpleDateFormat dateFormatDay = new SimpleDateFormat("yyyy-MM-dd");
 
     /**
      * 活动装配 - 数据预热 | 把活动配置的对应的 sku 一起装配
@@ -52,7 +62,7 @@ public class RaffleActivityController implements IRaffleActivityService {
      * @return 装配结果
      * <p>
      * 接口：<a href="http://localhost:8091/api/v1/raffle/activity/armory">/api/v1/raffle/activity/armory</a>
-     * 入参：{"activityId":100001,"userId":"xiaofuge"}
+     * 入参：{"activityId":100001,"userId":"origami"}
      * curl --request GET \
      * --url 'http://localhost:8091/api/v1/raffle/activity/armory?activityId=100301'
      */
@@ -90,7 +100,7 @@ public class RaffleActivityController implements IRaffleActivityService {
      * @return 抽奖结果
      * <p>
      * 接口：<a href="http://localhost:8091/api/v1/raffle/activity/draw">/api/v1/raffle/activity/draw</a>
-     * 入参：{"activityId":100001,"userId":"xiaofuge"}
+     * 入参：{"activityId":100001,"userId":"origami"}
      * <p>
      * curl --request POST \
      * --url http://localhost:8091/api/v1/raffle/activity/draw \
@@ -161,5 +171,48 @@ public class RaffleActivityController implements IRaffleActivityService {
                     .build();
         }
     }
+
+    /**
+     * 活动签到返利
+     * <p>
+     * 接口：<a href="http://localhost:8091/api/v1/raffle/activity/calendar_sign_rebate">/api/v1/raffle/activity/calendar_sign_rebate</a>
+     * 入参：{"userId":"origami"}
+     * <p>
+     *
+     * @param userId 用户ID
+     * @return 签到结果
+     */
+    @Override
+    @PostMapping("calendar_sign_rebate")
+    public Response<Boolean> calendarSignRebate(String userId) {
+        try {
+            log.info("活动签到返利开始 userId:{}", userId);
+            BehaviorEntity behaviorEntity = BehaviorEntity.builder()
+                    .userId(userId)
+                    .behaviorTypeVO(BehaviorTypeVO.SIGN)
+                    .outBusinessNo(dateFormatDay.format(new Date()))
+                    .build();
+            List<String> orderIds = behaviorRebateService.createOrder(behaviorEntity);
+            log.info("活动签到返利完成 userId:{} orderIds:{}", userId, JSON.toJSONString(orderIds));
+            return Response.<Boolean>builder()
+                    .code(ResponseCode.SUCCESS.getCode())
+                    .info(ResponseCode.SUCCESS.getInfo())
+                    .data(true)
+                    .build();
+        } catch (AppException e) {
+            log.error("活动签到返利异常 userId:{}", userId, e);
+            return Response.<Boolean>builder()
+                    .code(e.getCode())
+                    .info(e.getInfo())
+                    .build();
+        } catch (Exception e) {
+            log.error("活动签到返利失败 userId:{}", userId, e);
+            return Response.<Boolean>builder()
+                    .code(ResponseCode.UN_ERROR.getCode())
+                    .info(ResponseCode.UN_ERROR.getInfo())
+                    .build();
+        }
+    }
+
 
 }

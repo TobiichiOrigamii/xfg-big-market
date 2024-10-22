@@ -172,7 +172,7 @@ public class ActivityRepository implements IActivityRepository {
         raffleActivityOrder.setState(activityOrderEntity.getState().getCode());
         raffleActivityOrder.setOutBusinessNo(activityOrderEntity.getOutBusinessNo());
 
-        // 账户对象
+        // 账户对象 - 总账户
         RaffleActivityAccount raffleActivityAccount = new RaffleActivityAccount();
         raffleActivityAccount.setUserId(createQuotaOrderAggregate.getUserId());
         raffleActivityAccount.setActivityId(createQuotaOrderAggregate.getActivityId());
@@ -183,13 +183,28 @@ public class ActivityRepository implements IActivityRepository {
         raffleActivityAccount.setMonthCount(createQuotaOrderAggregate.getMonthCount());
         raffleActivityAccount.setMonthCountSurplus(createQuotaOrderAggregate.getMonthCount());
 
+        // 账户对象 - 月
+        RaffleActivityAccountMonth raffleActivityAccountMonth = new RaffleActivityAccountMonth();
+        raffleActivityAccountMonth.setUserId(createQuotaOrderAggregate.getUserId());
+        raffleActivityAccountMonth.setActivityId(createQuotaOrderAggregate.getActivityId());
+        raffleActivityAccountMonth.setMonth(raffleActivityAccountMonth.currentMonth());
+        raffleActivityAccountMonth.setMonthCount(createQuotaOrderAggregate.getMonthCount());
+        raffleActivityAccountMonth.setMonthCountSurplus(createQuotaOrderAggregate.getMonthCount());
+
+        // 账户对象 - 日
+        RaffleActivityAccountDay raffleActivityAccountDay = new RaffleActivityAccountDay();
+        raffleActivityAccountDay.setUserId(createQuotaOrderAggregate.getUserId());
+        raffleActivityAccountDay.setActivityId(createQuotaOrderAggregate.getActivityId());
+        raffleActivityAccountDay.setDay(raffleActivityAccountDay.currentDay());
+        raffleActivityAccountDay.setDayCount(createQuotaOrderAggregate.getDayCount());
+        raffleActivityAccountDay.setDayCountSurplus(createQuotaOrderAggregate.getDayCount());
+
         // try-catch 包裹，保证事务一致性
         try {
             // 保存订单 以用户ID作为分库键 通过doRouter设定路由
             dbRouter.doRouter(createQuotaOrderAggregate.getUserId());
             // 编程式事务
             transactionTemplate.execute(status -> {
-
                 try {
                     // 1.写入订单
                     raffleActivityOrderDao.insert(raffleActivityOrder);
@@ -199,6 +214,10 @@ public class ActivityRepository implements IActivityRepository {
                     if (count == 0)
                         // 账户不存在，插入
                         raffleActivityAccountDao.insert(raffleActivityAccount);
+                    // 4. 更新账户 - 月
+                    raffleActivityAccountMonthDao.addAccountQuota(raffleActivityAccountMonth);
+                    // 5. 更新账户 - 日
+                    raffleActivityAccountDayDao.addAccountQuota(raffleActivityAccountDay);
                     return 1;
                 } catch (DuplicateKeyException e) {
                     status.setRollbackOnly();
@@ -208,7 +227,6 @@ public class ActivityRepository implements IActivityRepository {
                             activityOrderEntity.getSku());
                     throw new AppException(ResponseCode.INDEX_DUP.getCode());
                 }
-
             });
         } finally {
             // 清除路由缓存

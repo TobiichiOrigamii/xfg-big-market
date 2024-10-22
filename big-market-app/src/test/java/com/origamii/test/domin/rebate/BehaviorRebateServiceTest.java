@@ -27,7 +27,7 @@ public class BehaviorRebateServiceTest {
     private IBehaviorRebateService behaviorRebateService;
 
     @Test
-    public void testCalculateRebate() {
+    public void test_create_order() {
         BehaviorEntity behaviorEntity = new BehaviorEntity();
         behaviorEntity.setUserId("origami");
         behaviorEntity.setBehaviorTypeVO(BehaviorTypeVO.SIGN);
