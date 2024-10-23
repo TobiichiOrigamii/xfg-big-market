@@ -25,6 +25,7 @@ public class Constants {
         public static String STRATEGY_RATE_RANGE_KEY = "big_market_strategy_rate_range_key_";
         public static String STRATEGY_AWARD_COUNT_KEY = "strategy_award_count_key_";
         public static String STRATEGY_AWARD_COUNT_QUEUE_KEY = "strategy_award_count_queue_key";
+        public static String STRATEGY_RULE_WEIGHT_KEY = "strategy_rule_weight_key_";
 
     }
 

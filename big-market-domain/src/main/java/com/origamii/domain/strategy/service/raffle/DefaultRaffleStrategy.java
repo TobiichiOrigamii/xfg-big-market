@@ -2,6 +2,7 @@ package com.origamii.domain.strategy.service.raffle;
 
 import com.origamii.domain.strategy.model.entity.StrategyAwardEntity;
 import com.origamii.domain.strategy.model.valobj.RuleTreeVO;
+import com.origamii.domain.strategy.model.valobj.RuleWeightVO;
 import com.origamii.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 import com.origamii.domain.strategy.model.valobj.StrategyAwardStockKeyVO;
 import com.origamii.domain.strategy.repository.IStrategyRepository;
@@ -139,5 +140,17 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRa
     public Map<String, Integer> queryAwardRuleLockCount(String[] treeIds) {
         return repository.queryAwardRuleLockCount(treeIds);
     }
+
+    @Override
+    public List<RuleWeightVO> queryAwardRuleWeight(Long strategyId) {
+        return repository.queryAwardRuleWeight(strategyId);
+    }
+
+    @Override
+    public List<RuleWeightVO> queryAwardRuleWeightByActivityId(Long activityId) {
+        Long strategyId = repository.queryStrategyByActivityId(activityId);
+        return queryAwardRuleWeight(strategyId);
+    }
+
 }
 

@@ -26,7 +26,6 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
     @Autowired
     private IStrategyDispatch strategyDispatch;
 
-    public Long userScore = 0L;
 
     /**
      * 权重责任链过滤：
@@ -52,6 +51,9 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
         List<Long> analyticalSortedKeys = new ArrayList<>(analyticalValueGroup.keySet());
         Collections.sort(analyticalSortedKeys);
 
+        // 3.查询用户当前积分值
+        Integer userScore = repository.queryActivityAccountTotalUseCount(userId, strategyId);
+
         // 3.找出最小符合的值
         Long nextValue = analyticalSortedKeys.stream()
                 .sorted(Comparator.reverseOrder())
@@ -59,9 +61,11 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
                 .findFirst()
                 .orElse(null);
 
-        if(null != nextValue){
+
+
+        if (null != nextValue) {
             Integer awardId = strategyDispatch.getRandomAwardId(strategyId, analyticalValueGroup.get(nextValue));
-            log.info("抽奖责任链-权重接管 userId:{}, strategyId:{}, ruleModel:{}, awardId:{}",userId,strategyId,ruleModel(),awardId);
+            log.info("抽奖责任链-权重接管 userId:{}, strategyId:{}, ruleModel:{}, awardId:{}", userId, strategyId, ruleModel(), awardId);
             return DefaultChainFactory.StrategyAwardVO.builder()
                     .awardId(awardId)
                     .logicModel(ruleModel())
@@ -69,7 +73,7 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
         }
 
         // 4.过滤其他责任链
-        log.info("抽奖责任链-权重放行 userId:{}, strategyId:{}, ruleModel:{}",userId,strategyId,ruleModel());
+        log.info("抽奖责任链-权重放行 userId:{}, strategyId:{}, ruleModel:{}", userId, strategyId, ruleModel());
         return next().logic(userId, strategyId);
     }
 
@@ -91,18 +95,18 @@ public class RuleWeightLogicChain extends AbstractLogicChain {
      */
     private Map<Long, String> getAnalyticalValue(String ruleValue) {
         String[] ruleValueGroups = ruleValue.split(Constants.SPACE);
-        Map<Long,String> ruleValueMap = new HashMap<>();
-        for(String ruleValueKey : ruleValueGroups){
+        Map<Long, String> ruleValueMap = new HashMap<>();
+        for (String ruleValueKey : ruleValueGroups) {
             // 检查输入是否为空
-            if(null == ruleValueKey || ruleValueKey.isEmpty()){
+            if (null == ruleValueKey || ruleValueKey.isEmpty()) {
                 return ruleValueMap;
             }
             // 分割字符串以获取键和值
             String[] parts = ruleValueKey.split(Constants.COLON);
-            if(parts.length!= 2){
-                throw new IllegalArgumentException("rule_weight rule_rule invalid input format"+ ruleValueKey);
+            if (parts.length != 2) {
+                throw new IllegalArgumentException("rule_weight rule_rule invalid input format" + ruleValueKey);
             }
-            ruleValueMap.put(Long.parseLong(parts[0]),ruleValueKey);
+            ruleValueMap.put(Long.parseLong(parts[0]), ruleValueKey);
         }
         return ruleValueMap;
     }

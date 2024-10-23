@@ -4,6 +4,7 @@ import com.origamii.domain.strategy.model.entity.StrategyAwardEntity;
 import com.origamii.domain.strategy.model.entity.StrategyEntity;
 import com.origamii.domain.strategy.model.entity.StrategyRuleEntity;
 import com.origamii.domain.strategy.model.valobj.RuleTreeVO;
+import com.origamii.domain.strategy.model.valobj.RuleWeightVO;
 import com.origamii.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 import com.origamii.domain.strategy.model.valobj.StrategyAwardStockKeyVO;
 
@@ -193,5 +194,22 @@ public interface IStrategyRepository {
      * @return 奖品规则锁定次数
      */
     Map<String, Integer> queryAwardRuleLockCount(String[] treeIds);
+
+    /**
+     * 查询活动账户总使用次数
+     *
+     * @param userId     用户ID
+     * @param strategyId 策略ID
+     * @return 活动账户总使用次数
+     */
+    Integer queryActivityAccountTotalUseCount(String userId, Long strategyId);
+
+    /**
+     * 查询奖品权重配置
+     *
+     * @param strategyId 策略ID
+     * @return 权重规则
+     */
+    List<RuleWeightVO> queryAwardRuleWeight(Long strategyId);
 }
 

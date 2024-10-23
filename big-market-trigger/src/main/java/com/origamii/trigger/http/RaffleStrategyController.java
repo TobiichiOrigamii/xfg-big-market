@@ -5,15 +5,13 @@ import com.origamii.domain.activity.service.IRaffleActivityAccountQuotaService;
 import com.origamii.domain.strategy.model.entity.RaffleAwardEntity;
 import com.origamii.domain.strategy.model.entity.RaffleFactorEntity;
 import com.origamii.domain.strategy.model.entity.StrategyAwardEntity;
+import com.origamii.domain.strategy.model.valobj.RuleWeightVO;
 import com.origamii.domain.strategy.service.IRaffleAward;
 import com.origamii.domain.strategy.service.IRaffleRule;
 import com.origamii.domain.strategy.service.IRaffleStrategy;
 import com.origamii.domain.strategy.service.armory.IStrategyArmory;
 import com.origamii.trigger.api.IRaffleStrategyService;
-import com.origamii.trigger.api.dto.RaffleAwardListRequestDTO;
-import com.origamii.trigger.api.dto.RaffleAwardListResponseDTO;
-import com.origamii.trigger.api.dto.RaffleStrategyRequestDTO;
-import com.origamii.trigger.api.dto.RaffleStrategyResponseDTO;
+import com.origamii.trigger.api.dto.*;
 import com.origamii.types.enums.ResponseCode;
 import com.origamii.types.exception.AppException;
 import com.origamii.types.model.Response;
@@ -137,6 +135,62 @@ public class RaffleStrategyController implements IRaffleStrategyService {
     }
 
     /**
+     * 查询抽奖策略权重规则，给用户展示出抽奖N次后必中奖奖品范围
+     *
+     * @param request 请求对象
+     * @return 权重奖品配置列表「这里会返回全部，前端可按需展示一条已达标的，或者一条要达标的」
+     */
+    @Override
+    @PostMapping("query_raffle_strategy_rule_weight")
+    public Response<List<RaffleStrategyRuleWeightResponseDTO>> queryRaffleStrategyRuleWeight(RaffleStrategyRuleWeightRequestDTO request) {
+        try {
+            log.info("查询抽奖策略权重规则配置开始 activityId: {}", request.getActivityId());
+            // 1. 参数校验
+            if (null == request.getActivityId() || StringUtils.isBlank(request.getUserId())) {
+                throw new AppException(ResponseCode.ILLEGAL_PARAMETER.getCode(), ResponseCode.ILLEGAL_PARAMETER.getInfo());
+            }
+
+            // 2. 查询用户抽奖总次数
+            Integer userActivityAccountTotalUseCount = raffleActivityAccountQuotaService.queryRaffleActivityAccountDayPartakeCount(request.getActivityId(), request.getUserId());
+
+            // 3. 查询规则
+            List<RaffleStrategyRuleWeightResponseDTO> raffleStrategyRuleWeigghtList = new ArrayList<>();
+            List<RuleWeightVO> ruleWeightVOList = raffleRule.queryAwardRuleWeightByActivityId(request.getActivityId());
+            for (RuleWeightVO ruleWeightVO : ruleWeightVOList) {
+                // 转换对象
+                List<RaffleStrategyRuleWeightResponseDTO.StrategyAward> strategyAwards = new ArrayList<>();
+                List<RuleWeightVO.Award> awardList = ruleWeightVO.getAwardList();
+                for (RuleWeightVO.Award award : awardList) {
+                    RaffleStrategyRuleWeightResponseDTO.StrategyAward strategyAward = new RaffleStrategyRuleWeightResponseDTO.StrategyAward();
+                    strategyAward.setAwardId(award.getAwardId());
+                    strategyAward.setAwardTitle(award.getAwardTitle());
+                    strategyAwards.add(strategyAward);
+                }
+                // 封装对象
+                RaffleStrategyRuleWeightResponseDTO raffleStrategyRuleWeightResponseDTO = RaffleStrategyRuleWeightResponseDTO.builder()
+                        .strategyAwards(strategyAwards)
+                        .ruleWeightCount(ruleWeightVO.getWeight())
+                        .userActivityAccountTotalUseCount(userActivityAccountTotalUseCount)
+                        .build();
+                raffleStrategyRuleWeigghtList.add(raffleStrategyRuleWeightResponseDTO);
+            }
+            Response<List<RaffleStrategyRuleWeightResponseDTO>> response = Response.<List<RaffleStrategyRuleWeightResponseDTO>>builder()
+                    .code(ResponseCode.SUCCESS.getCode())
+                    .info(ResponseCode.SUCCESS.getInfo())
+                    .data(raffleStrategyRuleWeigghtList)
+                    .build();
+            log.info("查询抽奖策略权重规则配置完成 userId:{} activityId：{} response: {}", request.getUserId(), request.getActivityId(), JSON.toJSONString(response));
+            return response;
+        } catch (Exception e) {
+            log.error("查询抽奖策略权重规则配置失败 userId:{} activityId：{}", request.getUserId(), request.getActivityId(), e);
+            return Response.<List<RaffleStrategyRuleWeightResponseDTO>>builder()
+                    .code(ResponseCode.UN_ERROR.getCode())
+                    .info(ResponseCode.UN_ERROR.getInfo())
+                    .build();
+        }
+    }
+
+    /**
      * 随机抽奖接口
      *
      * @param requestDTO 请求参数
@@ -178,4 +232,5 @@ public class RaffleStrategyController implements IRaffleStrategyService {
         }
 
     }
+
 }
