@@ -257,7 +257,7 @@ public class RaffleActivityController implements IRaffleActivityService {
      */
     @Override
     @PostMapping("query_activity_account")
-    public Response<UserActivityAccountResponseDTO> queryActivityAccount(UserActivityAccountRequestDTO request) {
+    public Response<UserActivityAccountResponseDTO> queryUserActivityAccount(UserActivityAccountRequestDTO request) {
         try {
             log.info("查询用户活动账户信息开始 userId:{} activityId:{}", request.getUserId(), request.getActivityId());
             if (StringUtils.isBlank(request.getUserId()) || null == request.getActivityId())

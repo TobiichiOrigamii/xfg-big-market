@@ -52,6 +52,6 @@ public interface IRaffleActivityService {
      * @param request 查询请求
      * @return 用户活动账户信息
      */
-    Response<UserActivityAccountResponseDTO> queryActivityAccount(UserActivityAccountRequestDTO request);
+    Response<UserActivityAccountResponseDTO> queryUserActivityAccount(UserActivityAccountRequestDTO request);
 
 }

@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.origamii.trigger.api.IRaffleActivityService;
 import com.origamii.trigger.api.dto.ActivityDrawRequestDTO;
 import com.origamii.trigger.api.dto.ActivityDrawResponseDTO;
+import com.origamii.trigger.api.dto.UserActivityAccountRequestDTO;
+import com.origamii.trigger.api.dto.UserActivityAccountResponseDTO;
 import com.origamii.types.model.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -47,5 +49,22 @@ public class RaffleActivityControllerTest {
         log.info("测试结果：{}", JSON.toJSONString(response));
     }
 
+    @Test
+    public void test_isCalendarSignRebate() {
+        Response<Boolean> response = raffleActivityService.isCalendarSignRebate("origami");
+        log.info("测试结果：{}", JSON.toJSONString(response));
+    }
 
+    @Test
+    public void test_queryUserActivityAccount() {
+        UserActivityAccountRequestDTO request = new UserActivityAccountRequestDTO();
+        request.setActivityId(100301L);
+        request.setUserId("origami");
+
+        // 查询数据
+        Response<UserActivityAccountResponseDTO> response = raffleActivityService.queryUserActivityAccount(request);
+
+        log.info("请求参数：{}", JSON.toJSONString(request));
+        log.info("测试结果：{}", JSON.toJSONString(response));
+    }
 }
