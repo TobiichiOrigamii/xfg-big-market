@@ -3,6 +3,8 @@ package com.origamii.trigger.api;
 
 import com.origamii.trigger.api.dto.ActivityDrawRequestDTO;
 import com.origamii.trigger.api.dto.ActivityDrawResponseDTO;
+import com.origamii.trigger.api.dto.UserActivityAccountRequestDTO;
+import com.origamii.trigger.api.dto.UserActivityAccountResponseDTO;
 import com.origamii.types.model.Response;
 
 /**
@@ -35,5 +37,21 @@ public interface IRaffleActivityService {
      * @return 签到结果
      */
     Response<Boolean> calendarSignRebate(String userId);
+
+    /**
+     * 判断是否完成日历签到返利
+     *
+     * @param userId 用户ID
+     * @return 是否完成日历签到返利
+     */
+    Response<Boolean> isCalendarSignRebate(String userId);
+
+    /**
+     * 查询用户活动账户信息
+     *
+     * @param request 查询请求
+     * @return 用户活动账户信息
+     */
+    Response<UserActivityAccountResponseDTO> queryActivityAccount(UserActivityAccountRequestDTO request);
 
 }

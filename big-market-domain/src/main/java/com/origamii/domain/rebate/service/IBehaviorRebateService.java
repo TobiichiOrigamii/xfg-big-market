@@ -1,6 +1,7 @@
 package com.origamii.domain.rebate.service;
 
 import com.origamii.domain.rebate.model.entity.BehaviorEntity;
+import com.origamii.domain.rebate.model.entity.BehaviorRebateOrderEntity;
 
 import java.util.List;
 
@@ -18,6 +19,15 @@ public interface IBehaviorRebateService {
      * @return 订单行为
      */
     List<String> createOrder(BehaviorEntity behaviorEntity);
+
+    /**
+     * 根据外部单号查询订单
+     *
+     * @param userId        用户id
+     * @param outBusinessNo 外部单号
+     * @return 订单列表
+     */
+    List<BehaviorRebateOrderEntity> queryOrderByOutBusinessNo(String userId, String outBusinessNo);
 
 
 }

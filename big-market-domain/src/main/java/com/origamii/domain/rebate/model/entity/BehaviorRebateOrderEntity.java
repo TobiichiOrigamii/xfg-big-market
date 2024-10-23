@@ -34,6 +34,9 @@ public class BehaviorRebateOrderEntity {
     // 返利配置 sku值，积分值
     private String rebateConfig;
 
+    // 防重ID 外部透传
+    private String outBusinessNo;
+
     // 业务ID 拼接的唯一值
     private String bizId;
 

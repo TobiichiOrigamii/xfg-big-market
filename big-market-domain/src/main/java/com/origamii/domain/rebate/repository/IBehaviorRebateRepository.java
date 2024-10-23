@@ -1,6 +1,7 @@
 package com.origamii.domain.rebate.repository;
 
 import com.origamii.domain.rebate.model.aggregate.BehaviorRebateAggregate;
+import com.origamii.domain.rebate.model.entity.BehaviorRebateOrderEntity;
 import com.origamii.domain.rebate.model.valobj.BehaviorTypeVO;
 import com.origamii.domain.rebate.model.valobj.DailyBehaviorRebateVO;
 
@@ -28,4 +29,14 @@ public interface IBehaviorRebateRepository {
      * @param behaviorRebateAggregates 返利记录
      */
     void saveUserRebateRecord(String userId, List<BehaviorRebateAggregate> behaviorRebateAggregates);
+
+    /**
+     * 根据外部单号查询订单
+     *
+     * @param userId        用户id
+     * @param outBusinessNo 外部单号
+     * @return 订单列表
+     */
+    List<BehaviorRebateOrderEntity> queryOrderByOutBusinessNo(String userId, String outBusinessNo);
+
 }

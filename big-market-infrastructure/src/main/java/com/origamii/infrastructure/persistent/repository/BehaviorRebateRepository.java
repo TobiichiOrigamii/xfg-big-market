@@ -92,6 +92,7 @@ public class BehaviorRebateRepository implements IBehaviorRebateRepository {
                         userBehaviorRebateOrder.setRebateDesc(behaviorRebateOrderEntity.getRebateDesc());
                         userBehaviorRebateOrder.setRebateType(behaviorRebateOrderEntity.getRebateType());
                         userBehaviorRebateOrder.setRebateConfig(behaviorRebateOrderEntity.getRebateConfig());
+                        userBehaviorRebateOrder.setOutBusinessNo(behaviorRebateOrderEntity.getOutBusinessNo());
                         userBehaviorRebateOrder.setBizId(behaviorRebateOrderEntity.getBizId());
                         userBehaviorRebateOrderDao.insert(userBehaviorRebateOrder);
 
@@ -132,6 +133,41 @@ public class BehaviorRebateRepository implements IBehaviorRebateRepository {
                 taskDao.updateTaskSendMessageFail(task);
             }
         }
+    }
+
+    /**
+     * 根据外部单号查询订单
+     *
+     * @param userId        用户id
+     * @param outBusinessNo 外部单号
+     * @return 订单列表
+     */
+    @Override
+    public List<BehaviorRebateOrderEntity> queryOrderByOutBusinessNo(String userId, String outBusinessNo) {
+        // 1.请求对象
+        UserBehaviorRebateOrder userBehaviorRebateOrderReq = new UserBehaviorRebateOrder();
+        userBehaviorRebateOrderReq.setUserId(userId);
+        userBehaviorRebateOrderReq.setOutBusinessNo(outBusinessNo);
+
+        // 2.查询数据库
+        List<UserBehaviorRebateOrder> userBehaviorRebateOrderResList = userBehaviorRebateOrderDao.queryOrderByOutBusinessNo(userBehaviorRebateOrderReq);
+
+        // 3.转换对象
+        List<BehaviorRebateOrderEntity> behaviorRebateOrderEntityList = new ArrayList<>(userBehaviorRebateOrderResList.size());
+        for (UserBehaviorRebateOrder userBehaviorRebateOrderRes : userBehaviorRebateOrderResList) {
+            BehaviorRebateOrderEntity behaviorRebateOrderEntity = BehaviorRebateOrderEntity.builder()
+                    .userId(userBehaviorRebateOrderRes.getUserId())
+                    .orderId(userBehaviorRebateOrderRes.getOrderId())
+                    .behaviorType(userBehaviorRebateOrderRes.getBehaviorType())
+                    .rebateDesc(userBehaviorRebateOrderRes.getRebateDesc())
+                    .rebateType(userBehaviorRebateOrderRes.getRebateType())
+                    .rebateConfig(userBehaviorRebateOrderRes.getRebateConfig())
+                    .outBusinessNo(userBehaviorRebateOrderRes.getOutBusinessNo())
+                    .bizId(userBehaviorRebateOrderRes.getBizId())
+                    .build();
+            behaviorRebateOrderEntityList.add(behaviorRebateOrderEntity);
+        }
+        return behaviorRebateOrderEntityList;
     }
 
 

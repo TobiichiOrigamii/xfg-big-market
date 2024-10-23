@@ -154,4 +154,13 @@ public interface IActivityRepository {
      * @return 用户当日抽奖次数
      */
     Integer queryRaffleActivityAccountDayPartakeCount(Long activityId, String userId);
+
+    /**
+     * 查询用户活动账户信息
+     *
+     * @param activityId 活动ID
+     * @param userId     用户ID
+     * @return 用户活动账户信息
+     */
+    ActivityAccountEntity queryActivityAccount(Long activityId, String userId);
 }

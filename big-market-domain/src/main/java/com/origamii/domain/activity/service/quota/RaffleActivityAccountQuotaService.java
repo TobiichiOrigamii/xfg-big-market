@@ -121,4 +121,16 @@ public class RaffleActivityAccountQuotaService extends AbstractRaffleActivityAcc
     public Integer queryRaffleActivityAccountDayPartakeCount(Long activityId, String userId) {
         return repository.queryRaffleActivityAccountDayPartakeCount(activityId, userId);
     }
+
+    /**
+     * 查询用户活动账户信息
+     *
+     * @param activityId 活动ID
+     * @param userId     用户ID
+     * @return 用户活动账户信息
+     */
+    @Override
+    public ActivityAccountEntity queryActivityAccount(Long activityId, String userId) {
+        return repository.queryActivityAccount(activityId, userId);
+    }
 }

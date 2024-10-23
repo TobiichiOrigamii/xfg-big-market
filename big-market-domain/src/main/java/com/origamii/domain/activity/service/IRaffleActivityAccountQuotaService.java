@@ -1,5 +1,6 @@
 package com.origamii.domain.activity.service;
 
+import com.origamii.domain.activity.model.entity.ActivityAccountEntity;
 import com.origamii.domain.activity.model.entity.ActivityOrderEntity;
 import com.origamii.domain.activity.model.entity.ActivityShopCartEntity;
 import com.origamii.domain.activity.model.entity.SkuRechargeEntity;
@@ -31,10 +32,20 @@ public interface IRaffleActivityAccountQuotaService {
 
     /**
      * 查询用户当日抽奖次数
+     *
      * @param activityId 活动ID
-     * @param userId 用户ID
+     * @param userId     用户ID
      * @return 当日抽奖次数
      */
     Integer queryRaffleActivityAccountDayPartakeCount(Long activityId, String userId);
+
+    /**
+     * 查询用户活动账户信息
+     *
+     * @param activityId 活动ID
+     * @param userId     用户ID
+     * @return 用户活动账户信息
+     */
+    ActivityAccountEntity queryActivityAccount(Long activityId, String userId);
 
 }
