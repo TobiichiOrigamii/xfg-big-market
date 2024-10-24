@@ -11,7 +11,7 @@
  Target Server Version : 80032 (8.0.32)
  File Encoding         : 65001
 
- Date: 21/10/2024 23:20:07
+ Date: 24/10/2024 21:37:41
 */
 
 SET NAMES utf8mb4;
@@ -35,12 +35,13 @@ CREATE TABLE `raffle_activity_account`  (
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uq_user_id_activity_id`(`user_id` ASC, `activity_id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '抽奖活动账户表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '抽奖活动账户表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of raffle_activity_account
 -- ----------------------------
-INSERT INTO `raffle_activity_account` VALUES (3, 'origami', 100301, 10000, 10000, 10000, 10000, 10000, 10000, '2024-03-23 16:38:57', '2024-04-27 15:49:56');
+INSERT INTO `raffle_activity_account` VALUES (3, 'origami', 100301, 8890, 27, 90, 66, 90, 66, '2024-03-23 16:38:57', '2024-10-24 00:28:50');
+INSERT INTO `raffle_activity_account` VALUES (4, '12345', 100301, 10, 10, 10, 10, 10, 10, '2024-05-01 15:28:50', '2024-05-01 15:28:50');
 
 -- ----------------------------
 -- Table structure for raffle_activity_account_day
@@ -57,7 +58,7 @@ CREATE TABLE `raffle_activity_account_day`  (
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uq_user_id_activity_id_day`(`user_id` ASC, `activity_id` ASC, `day` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '抽奖活动账户表-日次数' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '抽奖活动账户表-日次数' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of raffle_activity_account_day
@@ -66,6 +67,9 @@ INSERT INTO `raffle_activity_account_day` VALUES (2, 'origami', 100301, '2024-04
 INSERT INTO `raffle_activity_account_day` VALUES (3, 'origami', 100301, '2024-04-08', 45, 44, '2024-04-08 22:52:47', '2024-04-08 22:52:47');
 INSERT INTO `raffle_activity_account_day` VALUES (4, 'origami', 100301, '2024-04-13', 45, 23, '2024-04-13 11:44:10', '2024-04-20 10:51:09');
 INSERT INTO `raffle_activity_account_day` VALUES (7, 'origami', 100301, '2024-04-20', 45, 13, '2024-04-20 16:50:38', '2024-04-20 16:50:38');
+INSERT INTO `raffle_activity_account_day` VALUES (11, 'origami', 100301, '2024-05-01', 60, 40, '2024-05-01 14:51:45', '2024-05-01 17:45:10');
+INSERT INTO `raffle_activity_account_day` VALUES (12, 'origami', 100301, '2024-05-03', 90, 86, '2024-05-03 09:00:28', '2024-05-03 13:28:42');
+INSERT INTO `raffle_activity_account_day` VALUES (13, 'origami', 100301, '2024-10-24', 90, 89, '2024-10-24 00:28:50', '2024-10-24 00:28:50');
 
 -- ----------------------------
 -- Table structure for raffle_activity_account_flow
@@ -212,11 +216,13 @@ CREATE TABLE `raffle_activity_account_month`  (
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uq_user_id_activity_id_month`(`user_id` ASC, `activity_id` ASC, `month` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '抽奖活动账户表-月次数' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '抽奖活动账户表-月次数' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of raffle_activity_account_month
 -- ----------------------------
+INSERT INTO `raffle_activity_account_month` VALUES (7, 'origami', 100301, '2024-05', 70, 46, '2024-05-01 14:51:45', '2024-05-03 13:28:42');
+INSERT INTO `raffle_activity_account_month` VALUES (8, 'origami', 100301, '2024-10', 90, 89, '2024-10-24 00:28:50', '2024-10-24 00:28:50');
 
 -- ----------------------------
 -- Table structure for raffle_activity_order
@@ -322,7 +328,7 @@ CREATE TABLE `raffle_activity_order_001`  (
   UNIQUE INDEX `uq_order_id`(`order_id` ASC) USING BTREE,
   UNIQUE INDEX `uq_out_business_no`(`out_business_no` ASC) USING BTREE,
   INDEX `idx_user_id_activity_id`(`user_id` ASC, `activity_id` ASC, `state` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 76 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '抽奖活动单' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4235 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '抽奖活动单' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of raffle_activity_order_001
@@ -332,6 +338,15 @@ INSERT INTO `raffle_activity_order_001` VALUES (72, 'origami', 9011, 100301, '�
 INSERT INTO `raffle_activity_order_001` VALUES (73, 'origami', 9011, 100301, '测试活动', 100006, '766742523760', '2024-04-21 10:40:25', 1, 1, 1, 'completed', '649099837249', '2024-04-21 18:40:25', '2024-04-21 18:40:25');
 INSERT INTO `raffle_activity_order_001` VALUES (74, 'origami', 9011, 100301, '测试活动', 100006, '856474163547', '2024-04-21 10:40:25', 1, 1, 1, 'completed', '652903372986', '2024-04-21 18:40:25', '2024-04-21 18:40:25');
 INSERT INTO `raffle_activity_order_001` VALUES (75, 'origami', 9011, 100301, '测试活动', 100006, '668775949799', '2024-04-21 10:40:25', 1, 1, 1, 'completed', '097066347980', '2024-04-21 18:40:25', '2024-04-21 18:40:25');
+INSERT INTO `raffle_activity_order_001` VALUES (76, 'origami', 9011, 100301, '测试活动', 100006, '164452591012', '2024-05-01 06:44:26', 10, 10, 10, 'completed', 'origami_sku_2024042903', '2024-05-01 14:44:26', '2024-05-01 14:44:26');
+INSERT INTO `raffle_activity_order_001` VALUES (77, 'origami', 9011, 100301, '测试活动', 100006, '492597085813', '2024-05-01 06:51:45', 10, 10, 10, 'completed', 'origami_sku_2024042904', '2024-05-01 14:51:45', '2024-05-01 14:51:45');
+INSERT INTO `raffle_activity_order_001` VALUES (78, 'origami', 9011, 100301, '测试活动', 100006, '031706643902', '2024-05-01 06:54:36', 10, 10, 10, 'completed', 'origami_sku_2024042905', '2024-05-01 14:54:36', '2024-05-01 14:54:36');
+INSERT INTO `raffle_activity_order_001` VALUES (79, 'origami', 9011, 100301, '测试活动', 100006, '460855930969', '2024-05-01 07:00:12', 10, 10, 10, 'completed', 'origami_sku_2024042906', '2024-05-01 15:00:12', '2024-05-01 15:00:12');
+INSERT INTO `raffle_activity_order_001` VALUES (1096, 'origami', 9011, 100301, '测试活动', 100006, '364757830401', '2024-05-01 09:14:43', 10, 10, 10, 'completed', 'origami_sku_20240501', '2024-05-01 17:14:43', '2024-05-01 17:14:43');
+INSERT INTO `raffle_activity_order_001` VALUES (1097, 'origami', 9011, 100301, '测试活动', 100006, '157026402583', '2024-05-01 09:39:40', 10, 10, 10, 'completed', 'origami_sku_20240420', '2024-05-01 17:39:40', '2024-05-01 17:39:40');
+INSERT INTO `raffle_activity_order_001` VALUES (1098, 'origami', 9011, 100301, '测试活动', 100006, '481116019750', '2024-05-01 09:41:53', 10, 10, 10, 'completed', 'origami_sku_20240401', '2024-05-01 17:41:53', '2024-05-01 17:41:53');
+INSERT INTO `raffle_activity_order_001` VALUES (1099, 'origami', 9011, 100301, '测试活动', 100006, '639151059221', '2024-05-01 09:45:10', 10, 10, 10, 'completed', 'origami_sku_20240402', '2024-05-01 17:45:10', '2024-05-01 17:45:10');
+INSERT INTO `raffle_activity_order_001` VALUES (4234, 'origami', 9011, 100301, '测试活动', 100006, '129360973197', '2024-05-03 05:28:43', 10, 10, 10, 'completed', 'origami_sku_20240503', '2024-05-03 13:28:42', '2024-05-03 13:28:42');
 
 -- ----------------------------
 -- Table structure for raffle_activity_order_002
@@ -410,7 +425,7 @@ CREATE TABLE `task`  (
   UNIQUE INDEX `uq_message_id`(`message_id` ASC) USING BTREE,
   INDEX `idx_state`(`state` ASC) USING BTREE,
   INDEX `idx_create_time`(`update_time` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 86 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '任务表，发送MQ' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 146 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '任务表，发送MQ' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of task
@@ -500,6 +515,66 @@ INSERT INTO `task` VALUES (82, 'origami', 'send_award', '05612212348', '{\"data\
 INSERT INTO `task` VALUES (83, 'origami', 'send_rebate', '35170430024', '{\"data\":{\"bizId\":\"origami_sku_20240430\",\"rebateConfig\":\"9011\",\"rebateType\":\"sign\",\"userId\":\"origami\"},\"id\":\"35170430024\",\"timestamp\":1714471292871}', 'completed', '2024-04-30 18:01:33', '2024-04-30 18:01:33');
 INSERT INTO `task` VALUES (84, 'origami', 'send_rebate', '33541289034', '{\"data\":{\"bizId\":\"origami_sku_20240430\",\"rebateConfig\":\"9011\",\"rebateType\":\"sign\",\"userId\":\"origami\"},\"id\":\"33541289034\",\"timestamp\":1714471544134}', 'completed', '2024-04-30 18:05:44', '2024-04-30 18:05:44');
 INSERT INTO `task` VALUES (85, 'origami', 'send_rebate', '42019106000', '{\"data\":{\"bizId\":\"origami_integral_20240430\",\"rebateConfig\":\"10\",\"rebateType\":\"sign\",\"userId\":\"origami\"},\"id\":\"42019106000\",\"timestamp\":1714471544137}', 'completed', '2024-04-30 18:05:44', '2024-04-30 18:05:44');
+INSERT INTO `task` VALUES (86, 'origami', 'send_rebate', '19381004535', '{\"data\":{\"bizId\":\"origami_sku_20240429\",\"rebateConfig\":\"9011\",\"rebateType\":\"sign\",\"userId\":\"origami\"},\"id\":\"19381004535\",\"timestamp\":1714472470563}', 'completed', '2024-04-30 18:21:10', '2024-04-30 18:21:10');
+INSERT INTO `task` VALUES (87, 'origami', 'send_rebate', '64076325441', '{\"data\":{\"bizId\":\"origami_integral_20240429\",\"rebateConfig\":\"10\",\"rebateType\":\"sign\",\"userId\":\"origami\"},\"id\":\"64076325441\",\"timestamp\":1714472470567}', 'completed', '2024-04-30 18:21:10', '2024-04-30 18:21:10');
+INSERT INTO `task` VALUES (88, 'origami', 'send_rebate', '68231201640', '{\"data\":{\"bizId\":\"origami_sku_20240501\",\"rebateConfig\":\"9011\",\"rebateType\":\"sign\",\"userId\":\"origami\"},\"id\":\"68231201640\",\"timestamp\":1714528145559}', 'completed', '2024-05-01 09:49:06', '2024-05-01 09:50:45');
+INSERT INTO `task` VALUES (89, 'origami', 'send_rebate', '50111005352', '{\"data\":{\"bizId\":\"origami_integral_20240501\",\"rebateConfig\":\"10\",\"rebateType\":\"sign\",\"userId\":\"origami\"},\"id\":\"50111005352\",\"timestamp\":1714528145563}', 'completed', '2024-05-01 09:49:06', '2024-05-01 09:50:45');
+INSERT INTO `task` VALUES (90, 'origami', 'send_rebate', '75682316589', '{\"data\":{\"bizId\":\"origami_sku_20240502\",\"rebateConfig\":\"9011\",\"rebateType\":\"sign\",\"userId\":\"origami\"},\"id\":\"75682316589\",\"timestamp\":1714528244315}', 'completed', '2024-05-01 09:50:44', '2024-05-01 09:50:44');
+INSERT INTO `task` VALUES (91, 'origami', 'send_rebate', '15910602537', '{\"data\":{\"bizId\":\"origami_integral_20240502\",\"rebateConfig\":\"10\",\"rebateType\":\"sign\",\"userId\":\"origami\"},\"id\":\"15910602537\",\"timestamp\":1714528244322}', 'completed', '2024-05-01 09:50:44', '2024-05-01 09:50:44');
+INSERT INTO `task` VALUES (92, 'origami', 'send_rebate', '84186056749', '{\"data\":{\"bizId\":\"origami_sku_2024042901\",\"rebateConfig\":\"9011\",\"rebateType\":\"sign\",\"userId\":\"origami\"},\"id\":\"84186056749\",\"timestamp\":1714543316732}', 'completed', '2024-05-01 14:01:57', '2024-05-01 14:01:57');
+INSERT INTO `task` VALUES (93, 'origami', 'send_rebate', '96465813570', '{\"data\":{\"bizId\":\"origami_integral_2024042901\",\"rebateConfig\":\"10\",\"rebateType\":\"sign\",\"userId\":\"origami\"},\"id\":\"96465813570\",\"timestamp\":1714543316735}', 'completed', '2024-05-01 14:01:57', '2024-05-01 14:01:57');
+INSERT INTO `task` VALUES (94, 'origami', 'send_rebate', '52282173291', '{\"data\":{\"bizId\":\"origami_sku_2024042902\",\"rebateConfig\":\"9011\",\"rebateType\":\"sign\",\"userId\":\"origami\"},\"id\":\"52282173291\",\"timestamp\":1714545280296}', 'completed', '2024-05-01 14:34:40', '2024-05-01 14:34:40');
+INSERT INTO `task` VALUES (95, 'origami', 'send_rebate', '57252028754', '{\"data\":{\"bizId\":\"origami_integral_2024042902\",\"rebateConfig\":\"10\",\"rebateType\":\"sign\",\"userId\":\"origami\"},\"id\":\"57252028754\",\"timestamp\":1714545280298}', 'completed', '2024-05-01 14:34:40', '2024-05-01 14:34:40');
+INSERT INTO `task` VALUES (96, 'origami', 'send_rebate', '49677315112', '{\"data\":{\"bizId\":\"origami_sku_2024042903\",\"rebateConfig\":\"9011\",\"rebateType\":\"sku\",\"userId\":\"origami\"},\"id\":\"49677315112\",\"timestamp\":1714545434013}', 'completed', '2024-05-01 14:37:14', '2024-05-01 14:37:14');
+INSERT INTO `task` VALUES (97, 'origami', 'send_rebate', '29687183027', '{\"data\":{\"bizId\":\"origami_integral_2024042903\",\"rebateConfig\":\"10\",\"rebateType\":\"integral\",\"userId\":\"origami\"},\"id\":\"29687183027\",\"timestamp\":1714545434017}', 'completed', '2024-05-01 14:37:14', '2024-05-01 14:37:14');
+INSERT INTO `task` VALUES (98, 'origami', 'send_rebate', '55494780983', '{\"data\":{\"bizId\":\"origami_sku_2024042904\",\"rebateConfig\":\"9011\",\"rebateType\":\"sku\",\"userId\":\"origami\"},\"id\":\"55494780983\",\"timestamp\":1714546304733}', 'completed', '2024-05-01 14:51:45', '2024-05-01 14:51:45');
+INSERT INTO `task` VALUES (99, 'origami', 'send_rebate', '63676464061', '{\"data\":{\"bizId\":\"origami_integral_2024042904\",\"rebateConfig\":\"10\",\"rebateType\":\"integral\",\"userId\":\"origami\"},\"id\":\"63676464061\",\"timestamp\":1714546304736}', 'completed', '2024-05-01 14:51:45', '2024-05-01 14:51:45');
+INSERT INTO `task` VALUES (100, 'origami', 'send_rebate', '97069945042', '{\"data\":{\"bizId\":\"origami_sku_2024042905\",\"rebateConfig\":\"9011\",\"rebateType\":\"sku\",\"userId\":\"origami\"},\"id\":\"97069945042\",\"timestamp\":1714546475883}', 'completed', '2024-05-01 14:54:36', '2024-05-01 14:54:36');
+INSERT INTO `task` VALUES (101, 'origami', 'send_rebate', '25711583274', '{\"data\":{\"bizId\":\"origami_integral_2024042905\",\"rebateConfig\":\"10\",\"rebateType\":\"integral\",\"userId\":\"origami\"},\"id\":\"25711583274\",\"timestamp\":1714546475885}', 'completed', '2024-05-01 14:54:36', '2024-05-01 14:54:36');
+INSERT INTO `task` VALUES (102, 'origami', 'send_award', '42156280709', '{\"data\":{\"awardId\":108,\"awardTitle\":\"暴走玩偶\",\"userId\":\"origami\"},\"id\":\"42156280709\",\"timestamp\":1714546659050}', 'completed', '2024-05-01 14:57:39', '2024-05-01 14:57:39');
+INSERT INTO `task` VALUES (103, 'origami', 'send_award', '78085050648', '{\"data\":{\"awardId\":101,\"awardTitle\":\"随机积分\",\"userId\":\"origami\"},\"id\":\"78085050648\",\"timestamp\":1714546688551}', 'completed', '2024-05-01 14:58:08', '2024-05-01 14:58:08');
+INSERT INTO `task` VALUES (104, 'origami', 'send_award', '55842869580', '{\"data\":{\"awardId\":107,\"awardTitle\":\"小霸王游戏机\",\"userId\":\"origami\"},\"id\":\"55842869580\",\"timestamp\":1714546773027}', 'completed', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `task` VALUES (105, 'origami', 'send_award', '86587566543', '{\"data\":{\"awardId\":103,\"awardTitle\":\"支付优惠券\",\"userId\":\"origami\"},\"id\":\"86587566543\",\"timestamp\":1714546773422}', 'completed', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `task` VALUES (106, 'origami', 'send_award', '88267642020', '{\"data\":{\"awardId\":101,\"awardTitle\":\"随机积分\",\"userId\":\"origami\"},\"id\":\"88267642020\",\"timestamp\":1714546773490}', 'completed', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `task` VALUES (107, 'origami', 'send_award', '03348496593', '{\"data\":{\"awardId\":106,\"awardTitle\":\"轻奢办公椅\",\"userId\":\"origami\"},\"id\":\"03348496593\",\"timestamp\":1714546773570}', 'completed', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `task` VALUES (108, 'origami', 'send_award', '20140993483', '{\"data\":{\"awardId\":104,\"awardTitle\":\"小米台灯\",\"userId\":\"origami\"},\"id\":\"20140993483\",\"timestamp\":1714546773661}', 'completed', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `task` VALUES (109, 'origami', 'send_award', '95682596295', '{\"data\":{\"awardId\":107,\"awardTitle\":\"小霸王游戏机\",\"userId\":\"origami\"},\"id\":\"95682596295\",\"timestamp\":1714546773713}', 'completed', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `task` VALUES (110, 'origami', 'send_award', '95939034377', '{\"data\":{\"awardId\":107,\"awardTitle\":\"小霸王游戏机\",\"userId\":\"origami\"},\"id\":\"95939034377\",\"timestamp\":1714546773772}', 'completed', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `task` VALUES (111, 'origami', 'send_award', '28569395651', '{\"data\":{\"awardId\":103,\"awardTitle\":\"支付优惠券\",\"userId\":\"origami\"},\"id\":\"28569395651\",\"timestamp\":1714546773829}', 'completed', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `task` VALUES (112, 'origami', 'send_award', '37713199996', '{\"data\":{\"awardId\":108,\"awardTitle\":\"暴走玩偶\",\"userId\":\"origami\"},\"id\":\"37713199996\",\"timestamp\":1714546773889}', 'completed', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `task` VALUES (113, 'origami', 'send_award', '39729736863', '{\"data\":{\"awardId\":108,\"awardTitle\":\"暴走玩偶\",\"userId\":\"origami\"},\"id\":\"39729736863\",\"timestamp\":1714546773937}', 'completed', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `task` VALUES (114, 'origami', 'send_award', '63571397739', '{\"data\":{\"awardId\":108,\"awardTitle\":\"暴走玩偶\",\"userId\":\"origami\"},\"id\":\"63571397739\",\"timestamp\":1714546774008}', 'completed', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `task` VALUES (115, 'origami', 'send_award', '41779666583', '{\"data\":{\"awardId\":107,\"awardTitle\":\"小霸王游戏机\",\"userId\":\"origami\"},\"id\":\"41779666583\",\"timestamp\":1714546774083}', 'completed', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `task` VALUES (116, 'origami', 'send_award', '35122333142', '{\"data\":{\"awardId\":107,\"awardTitle\":\"小霸王游戏机\",\"userId\":\"origami\"},\"id\":\"35122333142\",\"timestamp\":1714546774144}', 'completed', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `task` VALUES (117, 'origami', 'send_award', '07007092150', '{\"data\":{\"awardId\":102,\"awardTitle\":\"OpenAI会员卡\",\"userId\":\"origami\"},\"id\":\"07007092150\",\"timestamp\":1714546774211}', 'completed', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `task` VALUES (118, 'origami', 'send_award', '08460963032', '{\"data\":{\"awardId\":101,\"awardTitle\":\"随机积分\",\"userId\":\"origami\"},\"id\":\"08460963032\",\"timestamp\":1714546774278}', 'completed', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `task` VALUES (119, 'origami', 'send_award', '06210115971', '{\"data\":{\"awardId\":108,\"awardTitle\":\"暴走玩偶\",\"userId\":\"origami\"},\"id\":\"06210115971\",\"timestamp\":1714546774344}', 'completed', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `task` VALUES (120, 'origami', 'send_award', '78110342017', '{\"data\":{\"awardId\":104,\"awardTitle\":\"小米台灯\",\"userId\":\"origami\"},\"id\":\"78110342017\",\"timestamp\":1714546774404}', 'completed', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `task` VALUES (121, 'origami', 'send_award', '34349719655', '{\"data\":{\"awardId\":101,\"awardTitle\":\"随机积分\",\"userId\":\"origami\"},\"id\":\"34349719655\",\"timestamp\":1714546774481}', 'completed', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `task` VALUES (122, 'origami', 'send_award', '16795012327', '{\"data\":{\"awardId\":108,\"awardTitle\":\"暴走玩偶\",\"userId\":\"origami\"},\"id\":\"16795012327\",\"timestamp\":1714546774537}', 'completed', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `task` VALUES (123, 'origami', 'send_rebate', '01343683507', '{\"data\":{\"bizId\":\"origami_sku_2024042906\",\"rebateConfig\":\"9011\",\"rebateType\":\"sku\",\"userId\":\"origami\"},\"id\":\"01343683507\",\"timestamp\":1714546811980}', 'completed', '2024-05-01 15:00:12', '2024-05-01 15:00:12');
+INSERT INTO `task` VALUES (124, 'origami', 'send_rebate', '22675851113', '{\"data\":{\"bizId\":\"origami_integral_2024042906\",\"rebateConfig\":\"10\",\"rebateType\":\"integral\",\"userId\":\"origami\"},\"id\":\"22675851113\",\"timestamp\":1714546811983}', 'completed', '2024-05-01 15:00:12', '2024-05-01 15:00:12');
+INSERT INTO `task` VALUES (125, 'origami', 'send_rebate', '72790041499', '{\"data\":{\"bizId\":\"origami_sku_20240501\",\"rebateConfig\":\"9011\",\"rebateType\":\"sku\",\"userId\":\"origami\"},\"id\":\"72790041499\",\"timestamp\":1714547646310}', 'completed', '2024-05-01 15:14:06', '2024-05-01 15:14:06');
+INSERT INTO `task` VALUES (126, 'origami', 'send_rebate', '07532513295', '{\"data\":{\"bizId\":\"origami_integral_20240501\",\"rebateConfig\":\"10\",\"rebateType\":\"integral\",\"userId\":\"origami\"},\"id\":\"07532513295\",\"timestamp\":1714547646312}', 'completed', '2024-05-01 15:14:06', '2024-05-01 15:14:06');
+INSERT INTO `task` VALUES (127, '12345', 'send_rebate', '44168301206', '{\"data\":{\"bizId\":\"12345_sku_20240501\",\"rebateConfig\":\"9011\",\"rebateType\":\"sku\",\"userId\":\"12345\"},\"id\":\"44168301206\",\"timestamp\":1714548524834}', 'completed', '2024-05-01 15:28:45', '2024-05-01 15:28:45');
+INSERT INTO `task` VALUES (128, '12345', 'send_rebate', '77696087444', '{\"data\":{\"bizId\":\"12345_integral_20240501\",\"rebateConfig\":\"10\",\"rebateType\":\"integral\",\"userId\":\"12345\"},\"id\":\"77696087444\",\"timestamp\":1714548524845}', 'completed', '2024-05-01 15:28:45', '2024-05-01 15:28:45');
+INSERT INTO `task` VALUES (129, 'origami', 'send_rebate', '53358221321', '{\"data\":{\"bizId\":\"origami_sku_20240501\",\"rebateConfig\":\"9011\",\"rebateType\":\"sku\",\"userId\":\"origami\"},\"id\":\"53358221321\",\"timestamp\":1714554815882}', 'completed', '2024-05-01 17:13:36', '2024-05-01 17:13:36');
+INSERT INTO `task` VALUES (130, 'origami', 'send_rebate', '29895043546', '{\"data\":{\"bizId\":\"origami_integral_20240501\",\"rebateConfig\":\"10\",\"rebateType\":\"integral\",\"userId\":\"origami\"},\"id\":\"29895043546\",\"timestamp\":1714554815884}', 'completed', '2024-05-01 17:13:36', '2024-05-01 17:13:36');
+INSERT INTO `task` VALUES (131, 'origami', 'send_rebate', '97779206565', '{\"data\":{\"bizId\":\"origami_sku_20240420\",\"rebateConfig\":\"9011\",\"rebateType\":\"sku\",\"userId\":\"origami\"},\"id\":\"97779206565\",\"timestamp\":1714556371985}', 'completed', '2024-05-01 17:39:32', '2024-05-01 17:39:35');
+INSERT INTO `task` VALUES (132, 'origami', 'send_rebate', '63122692373', '{\"data\":{\"bizId\":\"origami_integral_20240420\",\"rebateConfig\":\"10\",\"rebateType\":\"integral\",\"userId\":\"origami\"},\"id\":\"63122692373\",\"timestamp\":1714556371994}', 'completed', '2024-05-01 17:39:32', '2024-05-01 17:39:35');
+INSERT INTO `task` VALUES (133, 'origami', 'send_rebate', '64655129366', '{\"data\":{\"bizId\":\"origami_sku_20240401\",\"rebateConfig\":\"9011\",\"rebateType\":\"sku\",\"userId\":\"origami\"},\"id\":\"64655129366\",\"timestamp\":1714556504378}', 'completed', '2024-05-01 17:41:45', '2024-05-01 17:41:45');
+INSERT INTO `task` VALUES (134, 'origami', 'send_rebate', '38396244073', '{\"data\":{\"bizId\":\"origami_integral_20240401\",\"rebateConfig\":\"10\",\"rebateType\":\"integral\",\"userId\":\"origami\"},\"id\":\"38396244073\",\"timestamp\":1714556504389}', 'completed', '2024-05-01 17:41:45', '2024-05-01 17:41:45');
+INSERT INTO `task` VALUES (135, 'origami', 'send_rebate', '08184105296', '{\"data\":{\"bizId\":\"origami_sku_20240402\",\"rebateConfig\":\"9011\",\"rebateType\":\"sku\",\"userId\":\"origami\"},\"id\":\"08184105296\",\"timestamp\":1714556709389}', 'completed', '2024-05-01 17:45:09', '2024-05-01 17:45:09');
+INSERT INTO `task` VALUES (136, 'origami', 'send_rebate', '16417473546', '{\"data\":{\"bizId\":\"origami_integral_20240402\",\"rebateConfig\":\"10\",\"rebateType\":\"integral\",\"userId\":\"origami\"},\"id\":\"16417473546\",\"timestamp\":1714556709391}', 'completed', '2024-05-01 17:45:09', '2024-05-01 17:45:09');
+INSERT INTO `task` VALUES (137, 'origami', 'send_rebate', '04164162705', '{\"data\":{\"bizId\":\"origami_sku_20240501\",\"rebateConfig\":\"9011\",\"rebateType\":\"sku\",\"userId\":\"origami\"},\"id\":\"04164162705\",\"timestamp\":1714557266867}', 'completed', '2024-05-01 17:54:27', '2024-05-01 17:54:27');
+INSERT INTO `task` VALUES (138, 'origami', 'send_rebate', '79924892493', '{\"data\":{\"bizId\":\"origami_integral_20240501\",\"rebateConfig\":\"10\",\"rebateType\":\"integral\",\"userId\":\"origami\"},\"id\":\"79924892493\",\"timestamp\":1714557266870}', 'completed', '2024-05-01 17:54:27', '2024-05-01 17:54:27');
+INSERT INTO `task` VALUES (139, 'origami', 'send_award', '90576859616', '{\"data\":{\"awardId\":104,\"awardTitle\":\"小米台灯\",\"userId\":\"origami\"},\"id\":\"90576859616\",\"timestamp\":1714698137578}', 'completed', '2024-05-03 09:02:17', '2024-05-03 09:02:17');
+INSERT INTO `task` VALUES (140, 'origami', 'send_award', '65620335186', '{\"data\":{\"awardId\":101,\"awardTitle\":\"随机积分\",\"userId\":\"origami\"},\"id\":\"65620335186\",\"timestamp\":1714698596791}', 'completed', '2024-05-03 09:09:57', '2024-05-03 09:09:57');
+INSERT INTO `task` VALUES (141, 'origami', 'send_award', '37556739286', '{\"data\":{\"awardId\":102,\"awardTitle\":\"OpenAI会员卡\",\"userId\":\"origami\"},\"id\":\"37556739286\",\"timestamp\":1714698634894}', 'completed', '2024-05-03 09:10:35', '2024-05-03 09:10:35');
+INSERT INTO `task` VALUES (142, 'origami', 'send_award', '55348135802', '{\"data\":{\"awardId\":102,\"awardTitle\":\"OpenAI会员卡\",\"userId\":\"origami\"},\"id\":\"55348135802\",\"timestamp\":1714698697948}', 'completed', '2024-05-03 09:11:38', '2024-05-03 09:11:38');
+INSERT INTO `task` VALUES (143, 'origami', 'send_rebate', '72638302928', '{\"data\":{\"bizId\":\"origami_sku_20240503\",\"rebateConfig\":\"9011\",\"rebateType\":\"sku\",\"userId\":\"origami\"},\"id\":\"72638302928\",\"timestamp\":1714714122098}', 'completed', '2024-05-03 13:28:42', '2024-05-03 13:28:42');
+INSERT INTO `task` VALUES (144, 'origami', 'send_rebate', '72714070579', '{\"data\":{\"bizId\":\"origami_integral_20240503\",\"rebateConfig\":\"10\",\"rebateType\":\"integral\",\"userId\":\"origami\"},\"id\":\"72714070579\",\"timestamp\":1714714122101}', 'completed', '2024-05-03 13:28:42', '2024-05-03 13:28:42');
+INSERT INTO `task` VALUES (145, 'origami', 'send_award', '25941931244', '{\"data\":{\"awardId\":101,\"awardTitle\":\"随机积分\",\"userId\":\"origami\"},\"id\":\"25941931244\",\"timestamp\":1729701141474}', 'completed', '2024-10-24 00:32:21', '2024-10-24 00:32:21');
 
 -- ----------------------------
 -- Table structure for user_award_record_000
@@ -522,11 +597,12 @@ CREATE TABLE `user_award_record_000`  (
   INDEX `idx_user_id`(`user_id` ASC) USING BTREE,
   INDEX `idx_activity_id`(`activity_id` ASC) USING BTREE,
   INDEX `idx_award_id`(`strategy_id` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户中奖记录表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户中奖记录表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_award_record_000
 -- ----------------------------
+INSERT INTO `user_award_record_000` VALUES (1, 'origami', 100301, 100006, '697931079666', 101, '随机积分', '2024-10-23 16:32:21', 'create', '2024-10-24 00:32:21', '2024-10-24 00:32:21');
 
 -- ----------------------------
 -- Table structure for user_award_record_001
@@ -549,7 +625,7 @@ CREATE TABLE `user_award_record_001`  (
   INDEX `idx_user_id`(`user_id` ASC) USING BTREE,
   INDEX `idx_activity_id`(`activity_id` ASC) USING BTREE,
   INDEX `idx_award_id`(`strategy_id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 86 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户中奖记录表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 111 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户中奖记录表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_award_record_001
@@ -636,6 +712,31 @@ INSERT INTO `user_award_record_001` VALUES (82, 'origami', 100301, 100006, '4107
 INSERT INTO `user_award_record_001` VALUES (83, 'origami', 100301, 100006, '521226371540', 101, '随机积分', '2024-04-27 06:59:56', 'create', '2024-04-27 14:59:56', '2024-04-27 14:59:56');
 INSERT INTO `user_award_record_001` VALUES (84, 'origami', 100301, 100006, '167000751553', 102, 'OpenAI会员卡', '2024-04-27 07:00:14', 'create', '2024-04-27 15:00:14', '2024-04-27 15:00:14');
 INSERT INTO `user_award_record_001` VALUES (85, 'origami', 100301, 100006, '685179511666', 104, '小米台灯', '2024-04-27 07:00:23', 'create', '2024-04-27 15:00:22', '2024-04-27 15:00:22');
+INSERT INTO `user_award_record_001` VALUES (86, 'origami', 100301, 100006, '308424817839', 108, '暴走玩偶', '2024-05-01 06:57:39', 'create', '2024-05-01 14:57:39', '2024-05-01 14:57:39');
+INSERT INTO `user_award_record_001` VALUES (87, 'origami', 100301, 100006, '116865823300', 101, '随机积分', '2024-05-01 06:58:09', 'create', '2024-05-01 14:58:08', '2024-05-01 14:58:08');
+INSERT INTO `user_award_record_001` VALUES (88, 'origami', 100301, 100006, '272157347851', 107, '小霸王游戏机', '2024-05-01 06:59:33', 'create', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `user_award_record_001` VALUES (89, 'origami', 100301, 100006, '400772556300', 103, '支付优惠券', '2024-05-01 06:59:33', 'create', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `user_award_record_001` VALUES (90, 'origami', 100301, 100006, '494705137752', 101, '随机积分', '2024-05-01 06:59:33', 'create', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `user_award_record_001` VALUES (91, 'origami', 100301, 100006, '728609897262', 106, '轻奢办公椅', '2024-05-01 06:59:34', 'create', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `user_award_record_001` VALUES (92, 'origami', 100301, 100006, '085750418120', 104, '小米台灯', '2024-05-01 06:59:34', 'create', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `user_award_record_001` VALUES (93, 'origami', 100301, 100006, '884615410376', 107, '小霸王游戏机', '2024-05-01 06:59:34', 'create', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `user_award_record_001` VALUES (94, 'origami', 100301, 100006, '380693771158', 107, '小霸王游戏机', '2024-05-01 06:59:34', 'create', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `user_award_record_001` VALUES (95, 'origami', 100301, 100006, '801793933954', 103, '支付优惠券', '2024-05-01 06:59:34', 'create', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `user_award_record_001` VALUES (96, 'origami', 100301, 100006, '153569048026', 108, '暴走玩偶', '2024-05-01 06:59:34', 'create', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `user_award_record_001` VALUES (97, 'origami', 100301, 100006, '239541957386', 108, '暴走玩偶', '2024-05-01 06:59:34', 'create', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `user_award_record_001` VALUES (98, 'origami', 100301, 100006, '417247136950', 108, '暴走玩偶', '2024-05-01 06:59:34', 'create', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `user_award_record_001` VALUES (99, 'origami', 100301, 100006, '556248667355', 107, '小霸王游戏机', '2024-05-01 06:59:34', 'create', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `user_award_record_001` VALUES (100, 'origami', 100301, 100006, '828955445464', 107, '小霸王游戏机', '2024-05-01 06:59:34', 'create', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `user_award_record_001` VALUES (101, 'origami', 100301, 100006, '756110942449', 102, 'OpenAI会员卡', '2024-05-01 06:59:34', 'create', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `user_award_record_001` VALUES (102, 'origami', 100301, 100006, '440069371435', 101, '随机积分', '2024-05-01 06:59:34', 'create', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `user_award_record_001` VALUES (103, 'origami', 100301, 100006, '421594084633', 108, '暴走玩偶', '2024-05-01 06:59:34', 'create', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `user_award_record_001` VALUES (104, 'origami', 100301, 100006, '500905040429', 104, '小米台灯', '2024-05-01 06:59:34', 'create', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `user_award_record_001` VALUES (105, 'origami', 100301, 100006, '712386571628', 101, '随机积分', '2024-05-01 06:59:34', 'create', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `user_award_record_001` VALUES (106, 'origami', 100301, 100006, '095923542021', 108, '暴走玩偶', '2024-05-01 06:59:35', 'create', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `user_award_record_001` VALUES (107, 'origami', 100301, 100006, '306233708878', 104, '小米台灯', '2024-05-03 01:02:18', 'create', '2024-05-03 09:02:17', '2024-05-03 09:02:17');
+INSERT INTO `user_award_record_001` VALUES (108, 'origami', 100301, 100006, '690124733440', 101, '随机积分', '2024-05-03 01:09:57', 'create', '2024-05-03 09:09:57', '2024-05-03 09:09:57');
+INSERT INTO `user_award_record_001` VALUES (109, 'origami', 100301, 100006, '190487161872', 102, 'OpenAI会员卡', '2024-05-03 01:10:35', 'create', '2024-05-03 09:10:35', '2024-05-03 09:10:35');
+INSERT INTO `user_award_record_001` VALUES (110, 'origami', 100301, 100006, '693117324295', 102, 'OpenAI会员卡', '2024-05-03 01:11:38', 'create', '2024-05-03 09:11:38', '2024-05-03 09:11:38');
 
 -- ----------------------------
 -- Table structure for user_award_record_002
@@ -692,6 +793,32 @@ CREATE TABLE `user_award_record_003`  (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for user_behavior_rebate_order
+-- ----------------------------
+DROP TABLE IF EXISTS `user_behavior_rebate_order`;
+CREATE TABLE `user_behavior_rebate_order`  (
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+  `user_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '用户ID',
+  `order_id` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '订单ID',
+  `behavior_type` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '行为类型（sign 签到、openai_pay 支付）',
+  `rebate_desc` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '返利描述',
+  `rebate_type` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '返利类型（sku 活动库存充值商品、integral 用户活动积分）',
+  `rebate_config` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '返利配置【sku值，积分值】',
+  `out_business_no` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '业务仿重ID - 外部透传，方便查询使用',
+  `biz_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '业务ID - 拼接的唯一值。拼接 out_business_no + 自身枚举',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `uq_order_id`(`order_id` ASC) USING BTREE,
+  UNIQUE INDEX `uq_biz_id`(`biz_id` ASC) USING BTREE,
+  INDEX `idx_user_id`(`user_id` ASC) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户行为返利流水订单表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user_behavior_rebate_order
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for user_behavior_rebate_order_000
 -- ----------------------------
 DROP TABLE IF EXISTS `user_behavior_rebate_order_000`;
@@ -703,7 +830,8 @@ CREATE TABLE `user_behavior_rebate_order_000`  (
   `rebate_desc` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '返利描述',
   `rebate_type` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '返利类型（sku 活动库存充值商品、integral 用户活动积分）',
   `rebate_config` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '返利配置【sku值，积分值】',
-  `biz_id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '业务ID - 拼接的唯一值',
+  `out_business_no` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '业务仿重ID - 外部透传，方便查询使用',
+  `biz_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '业务ID - 拼接的唯一值。拼接 out_business_no + 自身枚举',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
@@ -728,20 +856,21 @@ CREATE TABLE `user_behavior_rebate_order_001`  (
   `rebate_desc` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '返利描述',
   `rebate_type` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '返利类型（sku 活动库存充值商品、integral 用户活动积分）',
   `rebate_config` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '返利配置【sku值，积分值】',
-  `biz_id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '业务ID - 拼接的唯一值',
+  `out_business_no` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '业务仿重ID - 外部透传，方便查询使用',
+  `biz_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '业务ID - 拼接的唯一值。拼接 out_business_no + 自身枚举',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uq_order_id`(`order_id` ASC) USING BTREE,
   UNIQUE INDEX `uq_biz_id`(`biz_id` ASC) USING BTREE,
   INDEX `idx_user_id`(`user_id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户行为返利流水订单表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户行为返利流水订单表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_behavior_rebate_order_001
 -- ----------------------------
-INSERT INTO `user_behavior_rebate_order_001` VALUES (1, 'origami', '833814327101', 'sign', '签到返利', 'sku', '9011', 'origami_sku_20240430', '2024-04-30 18:01:32', '2024-04-30 18:01:32');
-INSERT INTO `user_behavior_rebate_order_001` VALUES (3, 'origami', '509399206701', 'sign', '签到返利-积分', 'integral', '10', 'origami_integral_20240430', '2024-04-30 18:05:44', '2024-04-30 18:05:44');
+INSERT INTO `user_behavior_rebate_order_001` VALUES (5, 'origami', '630841674684', 'sign', '签到返利-sku额度', 'sku', '9011', '20240503', 'origami_sku_20240503', '2024-05-03 13:28:42', '2024-05-03 13:28:42');
+INSERT INTO `user_behavior_rebate_order_001` VALUES (6, 'origami', '552413408368', 'sign', '签到返利-积分', 'integral', '10', '20240503', 'origami_integral_20240503', '2024-05-03 13:28:42', '2024-05-03 13:28:42');
 
 -- ----------------------------
 -- Table structure for user_behavior_rebate_order_002
@@ -755,7 +884,8 @@ CREATE TABLE `user_behavior_rebate_order_002`  (
   `rebate_desc` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '返利描述',
   `rebate_type` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '返利类型（sku 活动库存充值商品、integral 用户活动积分）',
   `rebate_config` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '返利配置【sku值，积分值】',
-  `biz_id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '业务ID - 拼接的唯一值',
+  `out_business_no` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '业务仿重ID - 外部透传，方便查询使用',
+  `biz_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '业务ID - 拼接的唯一值。拼接 out_business_no + 自身枚举',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
@@ -780,7 +910,8 @@ CREATE TABLE `user_behavior_rebate_order_003`  (
   `rebate_desc` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '返利描述',
   `rebate_type` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '返利类型（sku 活动库存充值商品、integral 用户活动积分）',
   `rebate_config` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '返利配置【sku值，积分值】',
-  `biz_id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '业务ID - 拼接的唯一值',
+  `out_business_no` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '业务仿重ID - 外部透传，方便查询使用',
+  `biz_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '业务ID - 拼接的唯一值。拼接 out_business_no + 自身枚举',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
@@ -811,11 +942,12 @@ CREATE TABLE `user_raffle_order_000`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uq_order_id`(`order_id` ASC) USING BTREE,
   INDEX `idx_user_id_activity_id`(`user_id` ASC, `activity_id` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户抽奖订单表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户抽奖订单表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_raffle_order_000
 -- ----------------------------
+INSERT INTO `user_raffle_order_000` VALUES (1, 'origami', 100301, '测试活动', 100006, '697931079666', '2024-10-23 16:28:50', 'used', '2024-10-24 00:28:50', '2024-10-24 00:32:21');
 
 -- ----------------------------
 -- Table structure for user_raffle_order_001
@@ -835,7 +967,7 @@ CREATE TABLE `user_raffle_order_001`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uq_order_id`(`order_id` ASC) USING BTREE,
   INDEX `idx_user_id_activity_id`(`user_id` ASC, `activity_id` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 52 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户抽奖订单表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 77 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户抽奖订单表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_raffle_order_001
@@ -887,6 +1019,31 @@ INSERT INTO `user_raffle_order_001` VALUES (48, 'origami', 100301, '测试活动
 INSERT INTO `user_raffle_order_001` VALUES (49, 'origami', 100301, '测试活动', 100006, '521226371540', '2024-04-27 06:59:56', 'used', '2024-04-27 14:59:56', '2024-04-27 14:59:56');
 INSERT INTO `user_raffle_order_001` VALUES (50, 'origami', 100301, '测试活动', 100006, '167000751553', '2024-04-27 07:00:14', 'used', '2024-04-27 15:00:14', '2024-04-27 15:00:14');
 INSERT INTO `user_raffle_order_001` VALUES (51, 'origami', 100301, '测试活动', 100006, '685179511666', '2024-04-27 07:00:23', 'used', '2024-04-27 15:00:22', '2024-04-27 15:00:22');
+INSERT INTO `user_raffle_order_001` VALUES (52, 'origami', 100301, '测试活动', 100006, '308424817839', '2024-05-01 06:33:42', 'used', '2024-05-01 14:33:43', '2024-05-01 14:57:39');
+INSERT INTO `user_raffle_order_001` VALUES (53, 'origami', 100301, '测试活动', 100006, '116865823300', '2024-05-01 06:58:08', 'used', '2024-05-01 14:58:08', '2024-05-01 14:58:08');
+INSERT INTO `user_raffle_order_001` VALUES (54, 'origami', 100301, '测试活动', 100006, '272157347851', '2024-05-01 06:59:32', 'used', '2024-05-01 14:59:32', '2024-05-01 14:59:33');
+INSERT INTO `user_raffle_order_001` VALUES (55, 'origami', 100301, '测试活动', 100006, '400772556300', '2024-05-01 06:59:33', 'used', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `user_raffle_order_001` VALUES (56, 'origami', 100301, '测试活动', 100006, '494705137752', '2024-05-01 06:59:33', 'used', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `user_raffle_order_001` VALUES (57, 'origami', 100301, '测试活动', 100006, '728609897262', '2024-05-01 06:59:34', 'used', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `user_raffle_order_001` VALUES (58, 'origami', 100301, '测试活动', 100006, '085750418120', '2024-05-01 06:59:34', 'used', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `user_raffle_order_001` VALUES (59, 'origami', 100301, '测试活动', 100006, '884615410376', '2024-05-01 06:59:34', 'used', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `user_raffle_order_001` VALUES (60, 'origami', 100301, '测试活动', 100006, '380693771158', '2024-05-01 06:59:34', 'used', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `user_raffle_order_001` VALUES (61, 'origami', 100301, '测试活动', 100006, '801793933954', '2024-05-01 06:59:34', 'used', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `user_raffle_order_001` VALUES (62, 'origami', 100301, '测试活动', 100006, '153569048026', '2024-05-01 06:59:34', 'used', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `user_raffle_order_001` VALUES (63, 'origami', 100301, '测试活动', 100006, '239541957386', '2024-05-01 06:59:34', 'used', '2024-05-01 14:59:33', '2024-05-01 14:59:33');
+INSERT INTO `user_raffle_order_001` VALUES (64, 'origami', 100301, '测试活动', 100006, '417247136950', '2024-05-01 06:59:34', 'used', '2024-05-01 14:59:33', '2024-05-01 14:59:34');
+INSERT INTO `user_raffle_order_001` VALUES (65, 'origami', 100301, '测试活动', 100006, '556248667355', '2024-05-01 06:59:34', 'used', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `user_raffle_order_001` VALUES (66, 'origami', 100301, '测试活动', 100006, '828955445464', '2024-05-01 06:59:34', 'used', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `user_raffle_order_001` VALUES (67, 'origami', 100301, '测试活动', 100006, '756110942449', '2024-05-01 06:59:34', 'used', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `user_raffle_order_001` VALUES (68, 'origami', 100301, '测试活动', 100006, '440069371435', '2024-05-01 06:59:34', 'used', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `user_raffle_order_001` VALUES (69, 'origami', 100301, '测试活动', 100006, '421594084633', '2024-05-01 06:59:34', 'used', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `user_raffle_order_001` VALUES (70, 'origami', 100301, '测试活动', 100006, '500905040429', '2024-05-01 06:59:34', 'used', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `user_raffle_order_001` VALUES (71, 'origami', 100301, '测试活动', 100006, '712386571628', '2024-05-01 06:59:34', 'used', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `user_raffle_order_001` VALUES (72, 'origami', 100301, '测试活动', 100006, '095923542021', '2024-05-01 06:59:34', 'used', '2024-05-01 14:59:34', '2024-05-01 14:59:34');
+INSERT INTO `user_raffle_order_001` VALUES (73, 'origami', 100301, '测试活动', 100006, '306233708878', '2024-05-03 01:00:27', 'used', '2024-05-03 09:00:28', '2024-05-03 09:02:17');
+INSERT INTO `user_raffle_order_001` VALUES (74, 'origami', 100301, '测试活动', 100006, '690124733440', '2024-05-03 01:09:42', 'used', '2024-05-03 09:09:42', '2024-05-03 09:09:57');
+INSERT INTO `user_raffle_order_001` VALUES (75, 'origami', 100301, '测试活动', 100006, '190487161872', '2024-05-03 01:10:28', 'used', '2024-05-03 09:10:28', '2024-05-03 09:10:35');
+INSERT INTO `user_raffle_order_001` VALUES (76, 'origami', 100301, '测试活动', 100006, '693117324295', '2024-05-03 01:11:32', 'used', '2024-05-03 09:11:32', '2024-05-03 09:11:38');
 
 -- ----------------------------
 -- Table structure for user_raffle_order_002

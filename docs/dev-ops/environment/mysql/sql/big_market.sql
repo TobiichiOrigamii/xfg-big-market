@@ -11,7 +11,7 @@
  Target Server Version : 80032 (8.0.32)
  File Encoding         : 65001
 
- Date: 21/10/2024 23:19:57
+ Date: 24/10/2024 21:37:31
 */
 
 SET NAMES utf8mb4;
@@ -94,7 +94,7 @@ CREATE TABLE `raffle_activity`  (
 -- ----------------------------
 -- Records of raffle_activity
 -- ----------------------------
-INSERT INTO `raffle_activity` VALUES (1, 100301, '测试活动', '测试活动', '2024-03-09 10:15:10', '2034-03-09 10:15:10', 100006, 'open', '2024-03-09 10:15:10', '2024-03-30 12:07:36');
+INSERT INTO `raffle_activity` VALUES (1, 100301, '测试活动', '测试活动', '2024-03-09 10:15:10', '2034-03-09 10:15:10', 100001, 'open', '2024-03-09 10:15:10', '2024-10-24 21:35:11');
 
 -- ----------------------------
 -- Table structure for raffle_activity_count
@@ -258,7 +258,7 @@ CREATE TABLE `strategy_award`  (
   `strategy_id` bigint NOT NULL COMMENT '抽奖策略ID',
   `award_id` int NOT NULL COMMENT '抽奖奖品ID - 内部流转使用',
   `award_title` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '抽奖奖品标题',
-  `award_subtitle` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '抽奖奖品副标题',
+  `award_sub_title` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '抽奖奖品副标题',
   `award_count` int NOT NULL DEFAULT 0 COMMENT '奖品库存总量',
   `award_count_surplus` int NOT NULL DEFAULT 0 COMMENT '奖品库存剩余',
   `award_rate` decimal(6, 4) NOT NULL COMMENT '奖品中奖概率',
@@ -295,7 +295,7 @@ INSERT INTO `strategy_award` VALUES (19, 100005, 103, '随机积分', NULL, 8000
 INSERT INTO `strategy_award` VALUES (20, 100005, 104, '随机积分', NULL, 80000, 80000, 0.0300, 'tree_luck_award', 1, '2023-12-09 09:38:31', '2024-02-15 07:42:51');
 INSERT INTO `strategy_award` VALUES (21, 100005, 105, '随机积分', NULL, 80000, 80000, 0.0010, 'tree_luck_award', 1, '2023-12-09 09:38:31', '2024-02-15 07:42:52');
 INSERT INTO `strategy_award` VALUES (22, 100006, 101, '随机积分', NULL, 100, 61, 0.0200, 'tree_luck_award', 1, '2023-12-09 09:38:31', '2024-04-27 13:38:05');
-INSERT INTO `strategy_award` VALUES (23, 100006, 102, 'OpenAI会员卡', NULL, 100, 19, 0.0300, 'tree_luck_award', 2, '2023-12-09 09:38:31', '2024-04-27 15:00:20');
+INSERT INTO `strategy_award` VALUES (23, 100006, 102, 'OpenAI会员卡', NULL, 100, 18, 0.0300, 'tree_luck_award', 2, '2023-12-09 09:38:31', '2024-10-24 00:34:25');
 INSERT INTO `strategy_award` VALUES (24, 100006, 103, '支付优惠券', NULL, 100, 43, 0.0300, 'tree_luck_award', 3, '2023-12-09 09:38:31', '2024-04-27 13:29:35');
 INSERT INTO `strategy_award` VALUES (25, 100006, 104, '小米台灯', NULL, 100, 36, 0.0300, 'tree_luck_award', 4, '2023-12-09 09:38:31', '2024-04-27 15:00:30');
 INSERT INTO `strategy_award` VALUES (26, 100006, 105, '小米su7周体验', '抽奖3次后解锁', 100, 38, 0.0300, 'tree_lock_3', 5, '2023-12-09 09:38:31', '2024-04-27 13:08:16');
@@ -324,7 +324,7 @@ CREATE TABLE `strategy_rule`  (
 -- ----------------------------
 -- Records of strategy_rule
 -- ----------------------------
-INSERT INTO `strategy_rule` VALUES (13, 100001, NULL, 1, 'rule_weight', '4000:102,103,104,105 5000:102,103,104,105,106,107 6000:102,103,104,105,106,107,108,109', '消耗6000分，必中奖范围', '2023-12-09 10:30:43', '2023-12-31 14:51:50');
-INSERT INTO `strategy_rule` VALUES (14, 100001, NULL, 1, 'rule_blacklist', '101:user001,user002,user003', '黑名单抽奖，积分兜底', '2023-12-09 12:59:45', '2024-02-14 18:16:20');
+INSERT INTO `strategy_rule` VALUES (13, 100001, NULL, 1, 'rule_weight', '4000:102,103,104,105 5000:102,103,104,105,106,107 6000:102,103,104,105,106,107,108,109', '消耗6000分，必中奖范围', '2023-12-09 10:30:43', '2024-10-24 21:35:43');
+INSERT INTO `strategy_rule` VALUES (14, 100001, NULL, 1, 'rule_blacklist', '101:user001,user002,user003', '黑名单抽奖，积分兜底', '2023-12-09 12:59:45', '2024-10-24 21:35:46');
 
 SET FOREIGN_KEY_CHECKS = 1;
