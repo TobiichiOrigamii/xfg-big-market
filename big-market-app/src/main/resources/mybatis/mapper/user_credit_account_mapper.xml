@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.origamii.infrastructure.persistent.dao.IUserCreditAccountDao">
+
+    <resultMap id="dataMap" type="com.origamii.infrastructure.persistent.po.UserCreditAccount">
+        <id column="id" property="id"/>
+        <id column="user_id" property="userId"/>
+        <id column="total_amount" property="totalAmount"/>
+        <id column="available_amount" property="availableAmount"/>
+        <id column="account_status" property="accountStatus"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+
+    <!-- 更新用户积分账户 -->
+    <update id="updateAddAmount" parameterType="com.origamii.infrastructure.persistent.po.UserCreditAccount">
+        update user_credit_account
+        set total_amount     = total_amount + #{totalAmount},
+            available_amount = available_amount + #{availableAmount}
+            where user_id = #{userId}
+    </update>
+
+    <!-- 插入用户积分账户 -->
+    <insert id="insert" parameterType="com.origamii.infrastructure.persistent.po.UserCreditAccount">
+        insert into user_credit_account(user_id, total_amount, available_amount, account_status, create_time,
+                                        update_time)
+        VALUES (#{userId}, #{totalAmount}, #{availableAmount}, #{accountStatus}, now(), now())
+    </insert>
+
+
+
+
+</mapper>

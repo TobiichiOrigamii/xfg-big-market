@@ -20,5 +20,10 @@ public interface IUserAwardRecordDao {
      */
     void insert(UserAwardRecord userAwardRecord);
 
-
+    /**
+     * 更新奖品记录状态为已完成
+     * @param userAwardRecordReq 用户中奖记录
+     * @return 更新结果
+     */
+    int updateAwardRecordCompletedState(UserAwardRecord userAwardRecordReq);
 }

@@ -14,9 +14,25 @@
 
     <!-- 查询奖项列表，返回Award对象列表 -->
     <select id="queryAwardList" parameterType="java.lang.String" resultMap="dataMap">
-        SELECT award_id,award_key,award_config,award_desc
+        SELECT award_id, award_key, award_config, award_desc
         FROM award
         limit 10
     </select>
+
+
+    <!-- 根据奖品ID查询奖品配置信息 -->
+    <select id="queryAwardConfig" parameterType="java.lang.Integer" resultType="java.lang.String">
+        select award_config
+        from award
+        where award_id = #{awardId}
+    </select>
+
+    <!-- 根据奖品ID查询奖品Key -->
+    <select id="queryAwardKey" parameterType="java.lang.Integer" resultType="java.lang.String">
+        select award_key
+        from award
+        where award_id = #{awardId}
+    </select>
+
 
 </mapper>

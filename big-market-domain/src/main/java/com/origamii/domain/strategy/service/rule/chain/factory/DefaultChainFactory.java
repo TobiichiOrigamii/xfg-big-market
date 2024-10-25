@@ -61,9 +61,10 @@ public class DefaultChainFactory {
     public static class StrategyAwardVO {
         // 抽奖奖品ID - 内部流转使用
         private Integer awardId;
-
         // 规则模型
         private String logicModel;
+        // 抽奖奖品规则
+        private String awardRuleValue;
     }
 
     @Getter

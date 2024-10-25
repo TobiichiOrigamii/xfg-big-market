@@ -11,6 +11,7 @@ import com.origamii.types.enums.ResponseCode;
 import com.origamii.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
 
@@ -23,23 +24,17 @@ import java.util.Date;
 public abstract class AbstractRaffleStrategy implements IRaffleStrategy {
 
     // 策略仓储服务 - domin层是生产线 仓储层提供原材料
+    @Autowired
     protected IStrategyRepository repository;
-
     // 策略调度服务 - 只负责抽奖处理 通过新增接口的方式 隔离职责 不需要使用方关心或者调用抽奖的初始化
+    @Autowired
     protected IStrategyDispatch strategyDispatch;
-
     // 责任链工厂 - 从抽奖的规则中 解耦出前置规则为责任链处理
-    protected final DefaultChainFactory defaultChainFactory;
-
+    @Autowired
+    protected DefaultChainFactory defaultChainFactory;
     // 树工厂 - 从抽奖的规则中 解耦出抽奖树的构建
-    protected final DefaultTreeFactory defaultTreeFactory;
-
-    public AbstractRaffleStrategy(IStrategyRepository repository, IStrategyDispatch strategyDispatch, DefaultChainFactory defaultChainFactory, DefaultTreeFactory defaultTreeFactory) {
-        this.repository = repository;
-        this.strategyDispatch = strategyDispatch;
-        this.defaultChainFactory = defaultChainFactory;
-        this.defaultTreeFactory = defaultTreeFactory;
-    }
+    @Autowired
+    protected DefaultTreeFactory defaultTreeFactory;
 
     /**
      * 抽奖策略抽象方法
@@ -60,8 +55,7 @@ public abstract class AbstractRaffleStrategy implements IRaffleStrategy {
         DefaultChainFactory.StrategyAwardVO chainStrategyAwardVO = raffleLogicChain(userId, strategyId);
         log.info("抽奖策略计算-责任链 {} {} {} {}", userId, strategyId, chainStrategyAwardVO.getAwardId(), chainStrategyAwardVO.getLogicModel());
         if (!DefaultChainFactory.LogicModel.RULE_DEFAULT.getCode().equals(chainStrategyAwardVO.getLogicModel())) {
-            // TODO awardConfig 暂时为空。黑名单指定积分奖品，后续需要在库表中配置上对应的1积分值，并获取到。
-            return buildRaffleAwardEntity(strategyId, chainStrategyAwardVO.getAwardId(), null);
+            return buildRaffleAwardEntity(strategyId, chainStrategyAwardVO.getAwardId(), chainStrategyAwardVO.getAwardRuleValue());
         }
 
         // 3. 规则树抽奖过滤【奖品ID，会根据抽奖次数判断、库存判断、兜底兜里返回最终的可获得奖品信息】

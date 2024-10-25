@@ -20,4 +20,20 @@ public interface IAwardDao {
      */
     List<Award> queryAwardList();
 
+    /**
+     * 根据奖品ID查询奖品配置
+     * @param awardId 奖品ID
+     * @return 奖品配置
+     */
+    String queryAwardConfig(Integer awardId);
+
+    /**
+     * 根据奖品ID查询奖品key
+     * @param awardId 奖品ID
+     * @return 奖品key
+     */
+    String queryAwardKey(Integer awardId);
+
+
+
 }

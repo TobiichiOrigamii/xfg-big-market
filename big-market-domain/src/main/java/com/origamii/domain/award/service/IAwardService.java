@@ -1,5 +1,6 @@
 package com.origamii.domain.award.service;
 
+import com.origamii.domain.award.model.entity.DistributeAwardEntity;
 import com.origamii.domain.award.model.entity.UserAwardRecordEntity;
 
 /**
@@ -15,5 +16,10 @@ public interface IAwardService {
      */
     void saveUserAwardRecord(UserAwardRecordEntity userAwardRecordEntity);
 
+    /**
+     * 发放奖品
+     * @param distributeAwardEntity 奖品发放实体
+     */
+    void distributeAward(DistributeAwardEntity distributeAwardEntity);
 
 }

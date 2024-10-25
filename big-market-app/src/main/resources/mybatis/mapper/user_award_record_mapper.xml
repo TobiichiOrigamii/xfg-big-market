@@ -26,5 +26,12 @@
                 #{awardState}, now(), now())
     </insert>
 
+    <!-- 更新用户中奖记录状态为已完成 -->
+    <update id="updateAwardRecordCompletedState" parameterType="com.origamii.infrastructure.persistent.po.UserAwardRecord">
+        update user_award_record
+        set award_state = 'completed'
+        where user_id = #{userId} and order_id = #{orderId} and award_state = 'create'
+    </update>
+
 
 </mapper>
