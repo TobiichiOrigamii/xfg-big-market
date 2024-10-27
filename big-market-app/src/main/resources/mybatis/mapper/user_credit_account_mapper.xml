@@ -20,7 +20,7 @@
         update user_credit_account
         set total_amount     = total_amount + #{totalAmount},
             available_amount = available_amount + #{availableAmount}
-            where user_id = #{userId}
+        where user_id = #{userId}
     </update>
 
     <!-- 插入用户积分账户 -->
@@ -30,7 +30,13 @@
         VALUES (#{userId}, #{totalAmount}, #{availableAmount}, #{accountStatus}, now(), now())
     </insert>
 
-
+    <!-- 查询用户积分账户 -->
+    <select id="queryUserCreditAccount" parameterType="com.origamii.infrastructure.persistent.po.UserCreditAccount"
+            resultMap="dataMap">
+        select user_id, total_amount, available_amount, account_status
+        from user_credit_account
+        where user_id = #{userId}
+    </select>
 
 
 </mapper>

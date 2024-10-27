@@ -23,4 +23,12 @@ public interface IUserCreditAccountDao {
      * @param userCreditAccountReq 用户积分账户
      */
     void insert(UserCreditAccount userCreditAccountReq);
+
+    /**
+     * 查询用户积分账户
+     * @param userCreditAccountReq 用户积分账户
+     * @return 用户积分账户
+     */
+    UserCreditAccount queryUserCreditAccount(UserCreditAccount userCreditAccountReq);
+
 }
