@@ -13,9 +13,10 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum OrderStateVO {
 
+    wait_pay("wait_pay", "待支付"),
     completed("completed", "已完成"),
     ;
 
-    private String code;
-    private String desc;
+    private final String code;
+    private final String desc;
 }

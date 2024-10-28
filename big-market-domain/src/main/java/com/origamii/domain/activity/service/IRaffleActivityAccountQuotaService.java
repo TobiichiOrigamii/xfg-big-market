@@ -1,9 +1,6 @@
 package com.origamii.domain.activity.service;
 
-import com.origamii.domain.activity.model.entity.ActivityAccountEntity;
-import com.origamii.domain.activity.model.entity.ActivityOrderEntity;
-import com.origamii.domain.activity.model.entity.ActivityShopCartEntity;
-import com.origamii.domain.activity.model.entity.SkuRechargeEntity;
+import com.origamii.domain.activity.model.entity.*;
 
 /**
  * @author Origami
@@ -31,6 +28,13 @@ public interface IRaffleActivityAccountQuotaService {
     String createOrder(SkuRechargeEntity skuRechargeEntity);
 
     /**
+     * 订单出货 - 积分充值
+     *
+     * @param deliveryOrderEntity 出货订单实体
+     */
+    void updateOrder(DeliveryOrderEntity deliveryOrderEntity);
+
+    /**
      * 查询用户当日抽奖次数
      *
      * @param activityId 活动ID
@@ -47,5 +51,6 @@ public interface IRaffleActivityAccountQuotaService {
      * @return 用户活动账户信息
      */
     ActivityAccountEntity queryActivityAccount(Long activityId, String userId);
+
 
 }

@@ -57,4 +57,11 @@ public interface IRaffleActivityAccountDao {
      * @param raffleActivityAccount 账户信息
      */
     void updateActivityAccountDaySurplusImageQuota(RaffleActivityAccount raffleActivityAccount);
+
+    /**
+     * 根据用户id查询账户信息
+     * @param raffleActivityAccount 账户信息
+     * @return 账户信息
+     */
+    RaffleActivityAccount queryAccountByUserId(RaffleActivityAccount raffleActivityAccount);
 }

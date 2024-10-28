@@ -1,5 +1,6 @@
 package com.origamii.domain.activity.model.entity;
 
+import com.origamii.domain.activity.model.valobj.OrderTradeTypeVO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,5 +25,8 @@ public class SkuRechargeEntity {
 
     //幂等业务单号 外部谁充值谁透传 防止重复充值
     private String outBusinessNo;
+
+    // 订单支付类型
+    private OrderTradeTypeVO orderTradeType = OrderTradeTypeVO.rebate_no_pay_trade;
 
 }

@@ -5,12 +5,15 @@ import com.origamii.domain.activity.model.aggreate.CreateQuotaOrderAggregate;
 import com.origamii.domain.activity.model.entity.*;
 import com.origamii.domain.activity.repository.IActivityRepository;
 import com.origamii.domain.activity.service.IRaffleActivityAccountQuotaService;
+import com.origamii.domain.activity.service.quota.policy.ITradePolicy;
 import com.origamii.domain.activity.service.quota.rule.IActionChain;
 import com.origamii.domain.activity.service.quota.rule.factory.DefaultActivityChainFactory;
 import com.origamii.types.enums.ResponseCode;
 import com.origamii.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.Map;
 
 /**
  * @author Origami
@@ -20,8 +23,11 @@ import org.apache.commons.lang3.StringUtils;
 @Slf4j
 public abstract class AbstractRaffleActivityAccountQuota extends RaffleActivityAccountQuotaSupport implements IRaffleActivityAccountQuotaService {
 
-    public AbstractRaffleActivityAccountQuota(IActivityRepository repository, DefaultActivityChainFactory defaultActivityChainFactory) {
+    private final Map<String, ITradePolicy> tradePolicyMap;
+
+    public AbstractRaffleActivityAccountQuota(IActivityRepository repository, DefaultActivityChainFactory defaultActivityChainFactory, Map<String, ITradePolicy> tradePolicyMap) {
         super(repository, defaultActivityChainFactory);
+        this.tradePolicyMap = tradePolicyMap;
     }
 
     /**
@@ -70,8 +76,10 @@ public abstract class AbstractRaffleActivityAccountQuota extends RaffleActivityA
         // 4.构建订单聚合对象
         CreateQuotaOrderAggregate createquotaOrderAggregate = buildOrderAggregate(activitySkuEntity, activityEntity, activityCountEntity, skuRechargeEntity);
 
-        // 5.保存订单
-        saveOrder(createquotaOrderAggregate);
+        // 5. 交易策略 - 【积分兑换，支付类订单】【返利无支付交易订单，直接充值到账】【订单状态变更交易类型策略】
+        ITradePolicy tradePolicy = tradePolicyMap.get(skuRechargeEntity.getOrderTradeType().getCode());
+        tradePolicy.trade(createquotaOrderAggregate);
+
 
         // 6.返回单号
         return createquotaOrderAggregate.getActivityOrderEntity().getOrderId();
@@ -87,9 +95,9 @@ public abstract class AbstractRaffleActivityAccountQuota extends RaffleActivityA
      */
     protected abstract CreateQuotaOrderAggregate buildOrderAggregate(ActivitySkuEntity activitySkuEntity, ActivityEntity activityEntity, ActivityCountEntity activityCountEntity, SkuRechargeEntity skuRechargeEntity);
 
-    /**
-     * 保存订单
-     * @param createOrderAggregate 订单聚合对象
-     */
-    protected abstract void saveOrder(CreateQuotaOrderAggregate createOrderAggregate);
+//    /**
+//     * 保存订单
+//     * @param createOrderAggregate 订单聚合对象
+//     */
+//    protected abstract void saveOrder(CreateQuotaOrderAggregate createOrderAggregate);
 }
