@@ -809,6 +809,37 @@ public class ActivityRepository implements IActivityRepository {
         }
     }
 
+    /**
+     * 根据活动ID查询活动SKU商品列表
+     * @param activityId 活动ID
+     * @return 活动SKU商品列表
+     */
+    @Override
+    public List<SkuProductEntity> querySkuProductEntityListByActivityId(Long activityId) {
+        List<RaffleActivitySku> raffleActivitySkus = raffleActivitySkuDao.queryActivitySkuListByActivityId(activityId);
+        List<SkuProductEntity> skuProductEntities = new ArrayList<>(raffleActivitySkus.size());
+        for (RaffleActivitySku raffleActivitySku : raffleActivitySkus) {
+            RaffleActivityCount raffleActivityCount = raffleActivityCountDao.queryRaffleActivityCountByActivityCountId(raffleActivitySku.getActivityCountId());
+
+            SkuProductEntity.ActivityCount activityCount = SkuProductEntity.ActivityCount.builder()
+                    .totalCount(raffleActivityCount.getTotalCount())
+                    .monthCount(raffleActivityCount.getMonthCount())
+                    .dayCount(raffleActivityCount.getDayCount())
+                    .build();
+
+            skuProductEntities.add(SkuProductEntity.builder()
+                    .sku(raffleActivitySku.getSku())
+                    .activityId(raffleActivitySku.getActivityId())
+                    .activityCountId(raffleActivitySku.getActivityCountId())
+                    .stockCount(raffleActivitySku.getStockCount())
+                    .stockCountSurplus(raffleActivitySku.getStockCountSurplus())
+                    .productAmount(raffleActivitySku.getProductAmount())
+                    .activityCount(activityCount)
+                    .build());
+        }
+        return skuProductEntities;
+
+    }
 
 
 }

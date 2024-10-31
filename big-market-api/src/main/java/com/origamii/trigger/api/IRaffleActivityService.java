@@ -1,11 +1,12 @@
 package com.origamii.trigger.api;
 
 
-import com.origamii.trigger.api.dto.ActivityDrawRequestDTO;
-import com.origamii.trigger.api.dto.ActivityDrawResponseDTO;
-import com.origamii.trigger.api.dto.UserActivityAccountRequestDTO;
-import com.origamii.trigger.api.dto.UserActivityAccountResponseDTO;
+import com.origamii.trigger.api.dto.*;
 import com.origamii.types.model.Response;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * @author Origami
@@ -54,4 +55,23 @@ public interface IRaffleActivityService {
      */
     Response<UserActivityAccountResponseDTO> queryUserActivityAccount(UserActivityAccountRequestDTO request);
 
+    /**
+     * 查询活动SKU商品列表
+     * @param activityId 活动ID
+     * @return 活动SKU商品列表
+     */
+    Response<List<SkuProductResponseDTO>> querySkuProductListByActivityId(Long activityId);
+
+    /**
+     * 查询用户积分
+     * @param userId 用户ID
+     * @return 用户积分
+     */
+    Response<BigDecimal> queryUserCreditAccount(String userId);
+
+    /**
+     * 积分兑换商品SKU
+     * @return 积分兑换商品SKU结果
+     */
+    Response<Boolean> creditPayExchangeSku(@RequestBody SkuProductShopCartRequestDTO request);
 }

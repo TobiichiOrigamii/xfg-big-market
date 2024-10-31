@@ -52,7 +52,7 @@ public abstract class AbstractRaffleActivityAccountQuota extends RaffleActivityA
 
 
     @Override
-    public String createOrder(SkuRechargeEntity skuRechargeEntity) {
+    public UnpaidActivityOrderEntity  createOrder(SkuRechargeEntity skuRechargeEntity) {
 
         // 1.参数校验
         String userId = skuRechargeEntity.getUserId();
@@ -80,9 +80,14 @@ public abstract class AbstractRaffleActivityAccountQuota extends RaffleActivityA
         ITradePolicy tradePolicy = tradePolicyMap.get(skuRechargeEntity.getOrderTradeType().getCode());
         tradePolicy.trade(createquotaOrderAggregate);
 
+        ActivityOrderEntity activityOrderEntity = createquotaOrderAggregate.getActivityOrderEntity();
+        return UnpaidActivityOrderEntity.builder()
+                .userId(userId)
+                .orderId(activityOrderEntity.getOrderId())
+                .outBusinessNo(activityOrderEntity.getOutBusinessNo())
+                .payAmount(activityOrderEntity.getPayAmount())
+                .build();
 
-        // 6.返回单号
-        return createquotaOrderAggregate.getActivityOrderEntity().getOrderId();
     }
 
     /**

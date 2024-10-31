@@ -175,4 +175,10 @@ public interface IActivityRepository {
      */
     void updateOder(DeliveryOrderEntity deliveryOrderEntity);
 
+    /**
+     * 根据活动ID查询活动SKU商品列表
+     * @param activityId 活动ID
+     * @return 活动SKU商品列表
+     */
+    List<SkuProductEntity> querySkuProductEntityListByActivityId(Long activityId);
 }

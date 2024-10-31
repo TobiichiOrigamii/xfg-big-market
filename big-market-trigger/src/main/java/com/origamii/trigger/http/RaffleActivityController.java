@@ -1,14 +1,20 @@
 package com.origamii.trigger.http;
 
 import com.alibaba.fastjson2.JSON;
-import com.origamii.domain.activity.model.entity.ActivityAccountEntity;
-import com.origamii.domain.activity.model.entity.UserRaffleOrderEntity;
+import com.origamii.domain.activity.model.entity.*;
+import com.origamii.domain.activity.model.valobj.OrderTradeTypeVO;
 import com.origamii.domain.activity.service.IRaffleActivityAccountQuotaService;
 import com.origamii.domain.activity.service.IRaffleActivityPartakeService;
+import com.origamii.domain.activity.service.IRaffleActivitySkuProductService;
 import com.origamii.domain.activity.service.armory.IActivityArmory;
 import com.origamii.domain.award.model.entity.UserAwardRecordEntity;
 import com.origamii.domain.award.model.valobj.AwardStateVO;
 import com.origamii.domain.award.service.IAwardService;
+import com.origamii.domain.credit.model.entity.CreditAccountEntity;
+import com.origamii.domain.credit.model.entity.TradeEntity;
+import com.origamii.domain.credit.model.valobj.TradeNameVO;
+import com.origamii.domain.credit.model.valobj.TradeTypeVO;
+import com.origamii.domain.credit.service.ICreditAdjustService;
 import com.origamii.domain.rebate.model.entity.BehaviorEntity;
 import com.origamii.domain.rebate.model.entity.BehaviorRebateOrderEntity;
 import com.origamii.domain.rebate.model.valobj.BehaviorTypeVO;
@@ -18,19 +24,19 @@ import com.origamii.domain.strategy.model.entity.RaffleFactorEntity;
 import com.origamii.domain.strategy.service.IRaffleStrategy;
 import com.origamii.domain.strategy.service.armory.IStrategyArmory;
 import com.origamii.trigger.api.IRaffleActivityService;
-import com.origamii.trigger.api.dto.ActivityDrawRequestDTO;
-import com.origamii.trigger.api.dto.ActivityDrawResponseDTO;
-import com.origamii.trigger.api.dto.UserActivityAccountRequestDTO;
-import com.origamii.trigger.api.dto.UserActivityAccountResponseDTO;
+import com.origamii.trigger.api.dto.*;
 import com.origamii.types.enums.ResponseCode;
 import com.origamii.types.exception.AppException;
 import com.origamii.types.model.Response;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -50,6 +56,8 @@ public class RaffleActivityController implements IRaffleActivityService {
     @Autowired
     private IRaffleActivityAccountQuotaService raffleActivityAccountQuotaService;
     @Autowired
+    private IRaffleActivitySkuProductService raffleActivitySkuProductService;
+    @Autowired
     private IRaffleStrategy raffleStrategy;
     @Autowired
     private IAwardService awardService;
@@ -59,6 +67,8 @@ public class RaffleActivityController implements IRaffleActivityService {
     private IStrategyArmory strategyArmory;
     @Autowired
     private IBehaviorRebateService behaviorRebateService;
+    @Autowired
+    private ICreditAdjustService creditAdjustService;
 
     private final SimpleDateFormat dateFormatDay = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -283,6 +293,126 @@ public class RaffleActivityController implements IRaffleActivityService {
             return Response.<UserActivityAccountResponseDTO>builder()
                     .code(ResponseCode.UN_ERROR.getCode())
                     .info(ResponseCode.UN_ERROR.getInfo())
+                    .build();
+        }
+    }
+
+    /**
+     * 查询活动SKU商品列表
+     *
+     * @param activityId 活动ID
+     * @return 活动SKU商品列表
+     */
+    @Override
+    public Response<List<SkuProductResponseDTO>> querySkuProductListByActivityId(Long activityId) {
+        try {
+            log.info("查询活动SKU商品列表开始 activityId:{}", activityId);
+            // 1. 参数校验
+            if (null == activityId)
+                throw new AppException(ResponseCode.ILLEGAL_PARAMETER.getCode(), ResponseCode.ILLEGAL_PARAMETER.getInfo());
+            // 2. 查询商品并封装数据
+            List<SkuProductEntity> skuProductEntities = raffleActivitySkuProductService.querySkuProductEntityListByActivityId(activityId);
+            List<SkuProductResponseDTO> skuProductResponseDTOS = new ArrayList<>(skuProductEntities.size());
+            for (SkuProductEntity skuProductEntity : skuProductEntities) {
+                SkuProductResponseDTO.ActivityCount activityCount = SkuProductResponseDTO.ActivityCount.builder()
+                        .totalCount(skuProductEntity.getActivityCount().getTotalCount())
+                        .dayCount(skuProductEntity.getActivityCount().getDayCount())
+                        .monthCount(skuProductEntity.getActivityCount().getMonthCount())
+                        .build();
+
+                SkuProductResponseDTO skuProductResponseDTO = SkuProductResponseDTO.builder()
+                        .sku(skuProductEntity.getSku())
+                        .activityId(skuProductEntity.getActivityId())
+                        .activityCountId(skuProductEntity.getActivityCountId())
+                        .stockCount(skuProductEntity.getStockCount())
+                        .stockCountSurplus(skuProductEntity.getStockCountSurplus())
+                        .productAmount(skuProductEntity.getProductAmount())
+                        .activityCount(activityCount)
+                        .build();
+                skuProductResponseDTOS.add(skuProductResponseDTO);
+            }
+            log.info("查询sku商品集合完成 activityId:{} skuProductResponseDTOS:{}", activityId, JSON.toJSONString(skuProductResponseDTOS));
+            return Response.<List<SkuProductResponseDTO>>builder()
+                    .code(ResponseCode.SUCCESS.getCode())
+                    .info(ResponseCode.SUCCESS.getInfo())
+                    .data(skuProductResponseDTOS)
+                    .build();
+        } catch (Exception e) {
+            log.error("查询活动SKU商品列表失败 activityId:{}", activityId, e);
+            return Response.<List<SkuProductResponseDTO>>builder()
+                    .code(ResponseCode.UN_ERROR.getCode())
+                    .info(ResponseCode.UN_ERROR.getInfo())
+                    .build();
+        }
+    }
+
+    /**
+     * 查询用户积分
+     *
+     * @param userId 用户ID
+     * @return 用户积分
+     */
+    @Override
+    public Response<BigDecimal> queryUserCreditAccount(String userId) {
+        try {
+            log.info("查询用户积分值开始 userId:{}", userId);
+            CreditAccountEntity creditAccountEntity = creditAdjustService.queryUserCreditAccount(userId);
+            log.info("查询用户积分值完成 userId:{} adjustAmount:{}", userId, creditAccountEntity.getAdjustAmount());
+            return Response.<BigDecimal>builder()
+                    .code(ResponseCode.SUCCESS.getCode())
+                    .info(ResponseCode.SUCCESS.getInfo())
+                    .data(creditAccountEntity.getAdjustAmount())
+                    .build();
+        } catch (Exception e) {
+            log.error("查询用户积分值失败 userId:{}", userId, e);
+            return Response.<BigDecimal>builder()
+                    .code(ResponseCode.UN_ERROR.getCode())
+                    .info(ResponseCode.UN_ERROR.getInfo())
+                    .build();
+        }
+    }
+
+    /**
+     * 积分兑换商品SKU
+     *
+     * @return 积分兑换商品SKU结果
+     */
+    @Override
+    @PostMapping("credit_pay_exchange_sku")
+    public Response<Boolean> creditPayExchangeSku(@RequestBody SkuProductShopCartRequestDTO request) {
+        try {
+            log.info("积分兑换商品开始 userId:{} sku:{}", request.getUserId(), request.getSku());
+            // 1. 创建兑换商品sku订单，outBusinessNo 每次创建出一个单号。
+            UnpaidActivityOrderEntity unpaidActivityOrder = raffleActivityAccountQuotaService.createOrder(SkuRechargeEntity.builder()
+                    .userId(request.getUserId())
+                    .sku(request.getSku())
+                    .outBusinessNo(RandomStringUtils.randomNumeric(12))
+                    .orderTradeType(OrderTradeTypeVO.credit_pay_trade)
+                    .build());
+
+            log.info("积分兑换商品，创建订单完成 userId:{} sku:{} outBusinessNo:{}", request.getUserId(), request.getSku(), unpaidActivityOrder.getOutBusinessNo());
+
+            // 2.支付兑换商品
+            String orderId = creditAdjustService.createOrder(TradeEntity.builder()
+                    .userId(unpaidActivityOrder.getUserId())
+                    .tradeName(TradeNameVO.CONVERT_SKU)
+                    .tradeType(TradeTypeVO.REVERSE)
+                    .amount(unpaidActivityOrder.getPayAmount().negate())
+                    .outBusinessNo(unpaidActivityOrder.getOutBusinessNo())
+                    .build());
+            log.info("积分兑换商品，支付订单完成  userId:{} sku:{} orderId:{}", request.getUserId(), request.getSku(), orderId);
+
+            return Response.<Boolean>builder()
+                    .code(ResponseCode.SUCCESS.getCode())
+                    .info(ResponseCode.SUCCESS.getInfo())
+                    .data(true)
+                    .build();
+        } catch (Exception e) {
+            log.error("积分兑换商品失败 userId:{} sku:{}", request.getUserId(), request.getSku(), e);
+            return Response.<Boolean>builder()
+                    .code(ResponseCode.UN_ERROR.getCode())
+                    .info(ResponseCode.UN_ERROR.getInfo())
+                    .data(false)
                     .build();
         }
     }
