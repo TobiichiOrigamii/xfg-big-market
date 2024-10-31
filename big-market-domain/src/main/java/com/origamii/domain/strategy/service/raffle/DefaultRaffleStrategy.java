@@ -32,6 +32,11 @@ import java.util.Map;
 public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRaffleAward, IRaffleStock, IRaffleRule {
 
     // 构造函数，初始化策略仓库、策略调度、逻辑链工厂和逻辑树工厂
+//    public DefaultRaffleStrategy(IStrategyRepository repository, IStrategyDispatch strategyDispatch, DefaultChainFactory defaultChainFactory, DefaultTreeFactory defaultTreeFactory) {
+//        super(repository, strategyDispatch, defaultChainFactory, defaultTreeFactory);
+//    }
+
+
     public DefaultRaffleStrategy(IStrategyRepository repository, IStrategyDispatch strategyDispatch, DefaultChainFactory defaultChainFactory, DefaultTreeFactory defaultTreeFactory) {
         super(repository, strategyDispatch, defaultChainFactory, defaultTreeFactory);
     }

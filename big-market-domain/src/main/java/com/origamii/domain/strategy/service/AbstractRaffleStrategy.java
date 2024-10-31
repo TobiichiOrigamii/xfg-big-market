@@ -36,6 +36,9 @@ public abstract class AbstractRaffleStrategy implements IRaffleStrategy {
     @Autowired
     protected DefaultTreeFactory defaultTreeFactory;
 
+    public AbstractRaffleStrategy(IStrategyRepository repository, IStrategyDispatch strategyDispatch, DefaultChainFactory defaultChainFactory, DefaultTreeFactory defaultTreeFactory) {
+    }
+
     /**
      * 抽奖策略抽象方法
      *
