@@ -16,10 +16,10 @@ import com.origamii.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.math.BigDecimal;
 
 /**
@@ -33,21 +33,19 @@ public class RebateMessageCustomer {
 
     @Value("${spring.rabbitmq.topic.send_rebate}")
     private String topic;
-    @Autowired
+    @Resource
     private IRaffleActivityAccountQuotaService raffleActivityAccountQuotaService;
-    @Autowired
+    @Resource
     private ICreditAdjustService creditAdjustService;
 
     @RabbitListener(queuesToDeclare = @Queue(value = "${spring.rabbitmq.topic.send_rebate}"))
     public void listener(String message) {
         try {
-            log.info("【监听活动】用户行为返利消息 topic:{}, message:{}", topic, message);
-            // 1.转换对象
+            log.info("监听用户行为返利消息 topic: {} message: {}", topic, message);
+            // 1. 转换消息
             BaseEvent.EventMessage<SendRebateMessageEvent.RebateMessage> eventMessage = JSON.parseObject(message, new TypeReference<BaseEvent.EventMessage<SendRebateMessageEvent.RebateMessage>>() {
             }.getType());
-
             SendRebateMessageEvent.RebateMessage rebateMessage = eventMessage.getData();
-
 
             // 2. 入账奖励
             switch (rebateMessage.getRebateType()) {
@@ -71,15 +69,14 @@ public class RebateMessageCustomer {
             }
         } catch (AppException e) {
             if (ResponseCode.INDEX_DUP.getCode().equals(e.getCode())) {
-                log.info("【监听活动】用户行为返利消息 重复消费 topic:{}, message:{}", topic, message, e);
+                log.warn("监听用户行为返利消息，消费重复 topic: {} message: {}", topic, message, e);
+                return;
             }
             throw e;
         } catch (Exception e) {
-            log.error("【监听活动】用户行为返利消息 消费失败 topic:{}, message:{}", topic, message, e);
+            log.error("监听用户行为返利消息，消费失败 topic: {} message: {}", topic, message, e);
             throw e;
         }
-
-
     }
 
 

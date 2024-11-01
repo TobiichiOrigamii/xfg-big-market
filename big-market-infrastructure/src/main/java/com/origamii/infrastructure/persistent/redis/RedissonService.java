@@ -48,7 +48,7 @@ public class RedissonService implements IRedisService {
     }
 
     @Override
-    public void setAtomicLong(String key,Integer value) {
+    public void setAtomicLong(String key, long value) {
         redissonClient.getAtomicLong(key).set(value);
     }
 

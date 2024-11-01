@@ -37,6 +37,7 @@ public interface IRaffleActivityOrderDao {
      * @param raffleActivityOrderReq 抽奖活动单请求
      * @return 抽奖活动单
      */
+    @DBRouter
     RaffleActivityOrder queryRaffleActivityOrder(RaffleActivityOrder raffleActivityOrderReq);
 
     /**
@@ -45,4 +46,12 @@ public interface IRaffleActivityOrderDao {
      * @return 更新结果
      */
     int updateOrderCompleted(RaffleActivityOrder raffleActivityOrderReq);
+
+    /**
+     * 查询未支付的活动订单
+     * @param raffleActivityOrderReq 订单请求
+     * @return 未支付的活动订单
+     */
+    @DBRouter
+    RaffleActivityOrder queryUnpaidActivityOrder(RaffleActivityOrder raffleActivityOrderReq);
 }

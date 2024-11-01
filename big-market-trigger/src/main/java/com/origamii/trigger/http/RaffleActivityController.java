@@ -267,7 +267,7 @@ public class RaffleActivityController implements IRaffleActivityService {
      * @return 用户活动账户信息
      */
     @Override
-    @PostMapping("query_activity_account")
+    @PostMapping("query_user_activity_account")
     public Response<UserActivityAccountResponseDTO> queryUserActivityAccount(UserActivityAccountRequestDTO request) {
         try {
             log.info("查询用户活动账户信息开始 userId:{} activityId:{}", request.getUserId(), request.getActivityId());
@@ -304,6 +304,7 @@ public class RaffleActivityController implements IRaffleActivityService {
      * @return 活动SKU商品列表
      */
     @Override
+    @PostMapping("query_sku_product_list_by_activity_id")
     public Response<List<SkuProductResponseDTO>> querySkuProductListByActivityId(Long activityId) {
         try {
             log.info("查询活动SKU商品列表开始 activityId:{}", activityId);
@@ -353,6 +354,7 @@ public class RaffleActivityController implements IRaffleActivityService {
      * @return 用户积分
      */
     @Override
+    @PostMapping("query_user_credit_account")
     public Response<BigDecimal> queryUserCreditAccount(String userId) {
         try {
             log.info("查询用户积分值开始 userId:{}", userId);

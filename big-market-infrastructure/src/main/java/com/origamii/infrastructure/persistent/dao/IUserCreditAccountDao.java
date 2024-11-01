@@ -19,6 +19,13 @@ public interface IUserCreditAccountDao {
      int updateAddAmount(UserCreditAccount userCreditAccountReq);
 
     /**
+     * 减少
+     * @param userCreditAccountReq 用户积分账户
+     * @return 更新结果
+     */
+    int updateSubtractionAmount(UserCreditAccount userCreditAccountReq);
+
+    /**
      * 插入用户积分账户
      * @param userCreditAccountReq 用户积分账户
      */

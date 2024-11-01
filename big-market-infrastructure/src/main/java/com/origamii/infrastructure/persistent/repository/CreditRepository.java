@@ -16,6 +16,8 @@ import com.origamii.infrastructure.persistent.po.UserCreditAccount;
 import com.origamii.infrastructure.persistent.po.UserCreditOrder;
 import com.origamii.infrastructure.persistent.redis.IRedisService;
 import com.origamii.types.common.Constants;
+import com.origamii.types.enums.ResponseCode;
+import com.origamii.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.support.TransactionTemplate;
 
+import java.math.BigDecimal;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -52,6 +55,7 @@ public class CreditRepository implements ICreditRepository {
 
     /**
      * 保存交易聚合对象
+     *
      * @param tradeAggregate 交易聚合对象
      */
     @Override
@@ -98,7 +102,16 @@ public class CreditRepository implements ICreditRepository {
                     if (null == userCreditAccount) {
                         userCreditAccountDao.insert(userCreditAccountReq);
                     } else {
-                        userCreditAccountDao.updateAddAmount(userCreditAccountReq);
+                        BigDecimal availableAmount = userCreditAccountReq.getAvailableAmount();
+                        if (availableAmount.compareTo(BigDecimal.ZERO) >= 0) {
+                            userCreditAccountDao.updateAddAmount(userCreditAccountReq);
+                        } else {
+                            int subtractionCount = userCreditAccountDao.updateSubtractionAmount(userCreditAccountReq);
+                            if (1 != subtractionCount) {
+                                status.setRollbackOnly();
+                                throw new AppException(ResponseCode.USER_CREDIT_ACCOUNT_NO_AVAILABLE_AMOUNT.getCode(), ResponseCode.USER_CREDIT_ACCOUNT_NO_AVAILABLE_AMOUNT.getInfo());
+                            }
+                        }
                     }
                     // 2. 保存账户订单
                     userCreditOrderDao.insert(userCreditOrderReq);
@@ -118,6 +131,7 @@ public class CreditRepository implements ICreditRepository {
             lock.unlock();
         }
 
+
         try {
             // 发送消息【在事务外执行，如果失败还有任务补偿】
             eventPublisher.publish(task.getTopic(), task.getMessage());
@@ -133,6 +147,7 @@ public class CreditRepository implements ICreditRepository {
 
     /**
      * 查询用户积分账户
+     *
      * @param userId 用户id
      * @return 用户积分账户
      */
@@ -143,7 +158,13 @@ public class CreditRepository implements ICreditRepository {
         try {
             dbRouter.doRouter(userId);
             UserCreditAccount userCreditAccount = userCreditAccountDao.queryUserCreditAccount(userCreditAccountReq);
-            return CreditAccountEntity.builder().userId(userId).adjustAmount(userCreditAccount.getAvailableAmount()).build();
+            BigDecimal availableAmount = userCreditAccount.getAvailableAmount();
+            if (null != availableAmount)
+                availableAmount = userCreditAccount.getAvailableAmount();
+            return CreditAccountEntity.builder()
+                    .userId(userId)
+                    .adjustAmount(availableAmount)
+                    .build();
         } finally {
             dbRouter.clear();
         }

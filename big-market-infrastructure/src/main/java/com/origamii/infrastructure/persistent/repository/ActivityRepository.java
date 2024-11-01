@@ -20,11 +20,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RBlockingQueue;
 import org.redisson.api.RDelayedQueue;
 import org.redisson.api.RLock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.support.TransactionTemplate;
 
-import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,44 +41,49 @@ import java.util.concurrent.TimeUnit;
 public class ActivityRepository implements IActivityRepository {
 
     // redis缓存服务
-    @Resource
+    @Autowired
     private IRedisService redisService;
-    // 活动Dao
-    @Resource
-    private IRaffleActivityDao raffleActivityDao;
-    // 活动订单Dao
-    @Resource
-    private IRaffleActivityOrderDao raffleActivityOrderDao;
-    // 活动账户Dao
-    @Resource
-    private IRaffleActivityAccountDao raffleActivityAccountDao;
-    // 活动账户月Dao
-    @Resource
-    private IRaffleActivityAccountMonthDao raffleActivityAccountMonthDao;
-    // 活动账户日Dao
-    @Resource
-    private IRaffleActivityAccountDayDao raffleActivityAccountDayDao;
-    // 活动SKUDao
-    @Resource
-    private IRaffleActivitySkuDao raffleActivitySkuDao;
-    // 活动次数Dao
-    @Resource
-    private IRaffleActivityCountDao raffleActivityCountDao;
     // 事务模板
-    @Resource
+    @Autowired
     private TransactionTemplate transactionTemplate;
     // 数据库路由策略
-    @Resource
+    @Autowired
     private IDBRouterStrategy dbRouter;
     // 延迟队列
-    @Resource
+    @Autowired
     private EventPublisher eventPublisher;
     // 活动库存为0消息
-    @Resource
+    @Autowired
     private ActivitySkuStockZeroMessageEvent activitySkuStockZeroMessageEvent;
     // 用户参与活动订单Dao
-    @Resource
+    @Autowired
     private IUserRaffleOrderDao userRaffleOrderDao;
+    // 活动Dao
+    @Autowired
+    private IRaffleActivityDao raffleActivityDao;
+    // 活动订单Dao
+    @Autowired
+    private IRaffleActivityOrderDao raffleActivityOrderDao;
+    // 活动账户Dao
+    @Autowired
+    private IRaffleActivityAccountDao raffleActivityAccountDao;
+    // 活动账户月Dao
+    @Autowired
+    private IRaffleActivityAccountMonthDao raffleActivityAccountMonthDao;
+    // 活动账户日Dao
+    @Autowired
+    private IRaffleActivityAccountDayDao raffleActivityAccountDayDao;
+    // 活动SKUDao
+    @Autowired
+    private IRaffleActivitySkuDao raffleActivitySkuDao;
+    // 活动次数Dao
+    @Autowired
+    private IRaffleActivityCountDao raffleActivityCountDao;
+    // 用户信用账户Dao
+    @Autowired
+    private IUserCreditAccountDao userCreditAccountDao;
+
+
 
     /**
      * 查询活动sku
@@ -102,6 +108,7 @@ public class ActivityRepository implements IActivityRepository {
                 .productAmount(raffleActivitySku.getProductAmount())
                 .build();
     }
+
 
     /**
      * 根据活动id查询活动
@@ -297,7 +304,7 @@ public class ActivityRepository implements IActivityRepository {
      * @param stockCount 库存数量
      */
     @Override
-    public void cacheActivitySKuStockCount(String cacheKey, Integer stockCount) {
+    public void cacheActivitySkuStockCount(String cacheKey, Integer stockCount) {
         if (redisService.isExists(cacheKey)) return;
         redisService.setAtomicLong(cacheKey, stockCount);
     }
@@ -316,7 +323,7 @@ public class ActivityRepository implements IActivityRepository {
         if (surplus == 0) {
             // 库存不足 发送MQ消息 更新数据库库存
             eventPublisher.publish(activitySkuStockZeroMessageEvent.topic(), activitySkuStockZeroMessageEvent.buildEventMessage(sku));
-            return false;
+
         } else if (surplus < 0) {
             // 库存小于0 恢复为0个
             redisService.setAtomicLong(cacheKey, 0);
@@ -328,9 +335,9 @@ public class ActivityRepository implements IActivityRepository {
         // 3.设置加锁时间为活动到期+延迟1天 防止死锁
         String lockKey = cacheKey + Constants.UNDERLINE + surplus;
         long expireMillis = endDateTime.getTime() - System.currentTimeMillis() + TimeUnit.DAYS.toMillis(1);
-        boolean lock = redisService.setNx(lockKey, expireMillis, TimeUnit.MILLISECONDS);
+        Boolean lock = redisService.setNx(lockKey, expireMillis, TimeUnit.MILLISECONDS);
         if (!lock) {
-            log.info("活动SKU库存加锁失败 lockKey:{}", lockKey);
+            log.info("活动sku库存加锁失败 {}", lockKey);
         }
         return lock;
     }
@@ -736,11 +743,10 @@ public class ActivityRepository implements IActivityRepository {
      * @param deliveryOrderEntity 出货订单实体
      */
     @Override
-    public void updateOder(DeliveryOrderEntity deliveryOrderEntity) {
+    public void updateOrder(DeliveryOrderEntity deliveryOrderEntity) {
         RLock lock = redisService.getLock(Constants.RedisKey.ACTIVITY_ACCOUNT_UPDATE_LOCK + deliveryOrderEntity.getUserId());
         try {
             lock.lock(3, TimeUnit.SECONDS);
-
             // 查询订单
             RaffleActivityOrder raffleActivityOrderReq = new RaffleActivityOrder();
             raffleActivityOrderReq.setUserId(deliveryOrderEntity.getUserId());
@@ -805,7 +811,9 @@ public class ActivityRepository implements IActivityRepository {
             });
         } finally {
             dbRouter.clear();
-            lock.unlock();
+            if (lock.isHeldByCurrentThread()) { // 确保锁是当前线程持有的
+                lock.unlock();
+            }
         }
     }
 
@@ -840,6 +848,46 @@ public class ActivityRepository implements IActivityRepository {
         return skuProductEntities;
 
     }
+
+    /**
+     * 查询未支付的活动订单
+     * @param skuRechargeEntity 充值实体
+     * @return 未支付的活动订单
+     */
+    @Override
+    public UnpaidActivityOrderEntity queryUnpaidActivityOrder(SkuRechargeEntity skuRechargeEntity) {
+        RaffleActivityOrder raffleActivityOrderReq = new RaffleActivityOrder();
+        raffleActivityOrderReq.setUserId(skuRechargeEntity.getUserId());
+        raffleActivityOrderReq.setSku(skuRechargeEntity.getSku());
+        RaffleActivityOrder raffleActivityOrderRes = raffleActivityOrderDao.queryUnpaidActivityOrder(raffleActivityOrderReq);
+        if (null == raffleActivityOrderRes) return null;
+        return UnpaidActivityOrderEntity.builder()
+                .userId(raffleActivityOrderRes.getUserId())
+                .orderId(raffleActivityOrderRes.getOrderId())
+                .outBusinessNo(raffleActivityOrderRes.getOutBusinessNo())
+                .payAmount(raffleActivityOrderRes.getPayAmount())
+                .build();
+    }
+
+    /**
+     * 查询用户账户余额
+     * @param userId 用户ID
+     * @return 用户账户余额
+     */
+    @Override
+    public BigDecimal queryUserCreditAccountAmount(String userId) {
+        try {
+            dbRouter.doRouter(userId);
+            UserCreditAccount userCreditAccountReq = new UserCreditAccount();
+            userCreditAccountReq.setUserId(userId);
+            UserCreditAccount userCreditAccount = userCreditAccountDao.queryUserCreditAccount(userCreditAccountReq);
+            if (null == userCreditAccount) return BigDecimal.ZERO;
+            return userCreditAccount.getAvailableAmount();
+        } finally {
+            dbRouter.clear();
+        }
+    }
+
 
 
 }

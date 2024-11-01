@@ -15,13 +15,18 @@ import com.origamii.infrastructure.persistent.po.Task;
 import com.origamii.infrastructure.persistent.po.UserAwardRecord;
 import com.origamii.infrastructure.persistent.po.UserCreditAccount;
 import com.origamii.infrastructure.persistent.po.UserRaffleOrder;
+import com.origamii.infrastructure.persistent.redis.IRedisService;
+import com.origamii.types.common.Constants;
 import com.origamii.types.enums.ResponseCode;
 import com.origamii.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.support.TransactionTemplate;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Origami
@@ -40,6 +45,8 @@ public class AwardRepository implements IAwardRepository {
     private TransactionTemplate transactionTemplate;
     @Autowired
     private EventPublisher eventPublisher;
+    @Autowired
+    private IRedisService redisService;
     @Autowired
     private IUserAwardRecordDao userAwardRecordDao;
     @Autowired
@@ -161,16 +168,20 @@ public class AwardRepository implements IAwardRepository {
                 .availableAmount(userCreditAwardEntity.getCreditAmount())
                 .accountStatus(AccountStatusVO.open.getCode())
                 .build();
-
+        RLock lock = redisService.getLock(Constants.RedisKey.ACTIVITY_ACCOUNT_LOCK + userId);
         try {
-            dbRouter.doRouter(userId);
+            lock.lock(3, TimeUnit.SECONDS);
+            dbRouter.doRouter(giveOutPrizesAggregate.getUserId());
             transactionTemplate.execute(status -> {
                 try {
                     // 更新积分 || 创建积分账户
-                    int updateAccountCount = userCreditAccountDao.updateAddAmount(userCreditAccountReq);
-                    if (0 == updateAccountCount) {
+                    UserCreditAccount userCreditAccountRes = userCreditAccountDao.queryUserCreditAccount(userCreditAccountReq);
+                    if (null == userCreditAccountRes) {
                         userCreditAccountDao.insert(userCreditAccountReq);
+                    } else {
+                        userCreditAccountDao.updateAddAmount(userCreditAccountReq);
                     }
+
                     // 更新奖品记录
                     int updateAwardCount = userAwardRecordDao.updateAwardRecordCompletedState(userAwardRecordReq);
                     if (0 == updateAwardCount) {
@@ -180,12 +191,13 @@ public class AwardRepository implements IAwardRepository {
                     return 1;
                 } catch (DuplicateKeyException e){
                     status.setRollbackOnly();
-                    log.error("更新中奖记录 唯一索引冲突 userId:{}", userId, e);
+                    log.error("更新中奖记录，唯一索引冲突 userId: {} ", userId, e);
                     throw new AppException(ResponseCode.INDEX_DUP.getCode(), e);
                 }
             });
         } finally {
             dbRouter.clear();
+            lock.unlock();
         }
     }
 

@@ -13,14 +13,15 @@
         <result column="strategy_id" property="strategyId"/>
         <result column="order_id" property="orderId"/>
         <result column="order_time" property="orderTime"/>
-        <result column="pay_amount" property="payAmount"/>
         <result column="total_count" property="totalCount"/>
         <result column="day_count" property="dayCount"/>
         <result column="month_count" property="monthCount"/>
+        <result column="pay_amount" property="payAmount"/>
         <result column="state" property="state"/>
         <result column="out_business_no" property="outBusinessNo"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
+
     </resultMap>
 
     <!-- 插入订单 -->
@@ -52,6 +53,15 @@
         from raffle_activity_order
         where user_id = #{userId} and out_business_no = #{outBusinessNo}
     </select>
+
+    <!-- 查询未支付的活动订单 -->
+    <select id="queryUnpaidActivityOrder" parameterType="com.origamii.infrastructure.persistent.po.RaffleActivityOrder" resultMap="dataMap">
+        select user_id, order_id, out_business_no, pay_amount
+        from raffle_activity_order
+        where user_id = #{userId} and sku = #{sku} and state = 'wait_pay' and order_time >= NOW() - INTERVAL 1 MONTH
+        limit 1
+    </select>
+
 
 
 </mapper>

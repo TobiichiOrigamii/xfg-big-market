@@ -5,6 +5,7 @@ import com.origamii.domain.activity.model.aggreate.CreateQuotaOrderAggregate;
 import com.origamii.domain.activity.model.entity.*;
 import com.origamii.domain.activity.model.valobj.ActivitySkuStockKeyVO;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -57,7 +58,7 @@ public interface IActivityRepository {
      * @param cacheKey   缓存key
      * @param stockCount 库存数量
      */
-    void cacheActivitySKuStockCount(String cacheKey, Integer stockCount);
+    void cacheActivitySkuStockCount(String cacheKey, Integer stockCount);
 
     /**
      * 减少活动sku库存
@@ -173,7 +174,7 @@ public interface IActivityRepository {
      * 更新订单
      * @param deliveryOrderEntity 出货订单实体
      */
-    void updateOder(DeliveryOrderEntity deliveryOrderEntity);
+    void updateOrder(DeliveryOrderEntity deliveryOrderEntity);
 
     /**
      * 根据活动ID查询活动SKU商品列表
@@ -181,4 +182,18 @@ public interface IActivityRepository {
      * @return 活动SKU商品列表
      */
     List<SkuProductEntity> querySkuProductEntityListByActivityId(Long activityId);
+
+    /**
+     * 查询未支付的活动订单
+     * @param skuRechargeEntity 充值实体
+     * @return 未支付的活动订单
+     */
+    UnpaidActivityOrderEntity queryUnpaidActivityOrder(SkuRechargeEntity skuRechargeEntity);
+
+    /**
+     * 查询用户账户余额
+     * @param userId 用户ID
+     * @return 用户账户余额
+     */
+    BigDecimal queryUserCreditAccountAmount(String userId);
 }

@@ -69,7 +69,7 @@ public interface IRedisService {
      * @param key   key 键
      * @param value value 值
      */
-    void setAtomicLong(String key, Integer value);
+    void setAtomicLong(String key, long value);
 
     /**
      * 获取值

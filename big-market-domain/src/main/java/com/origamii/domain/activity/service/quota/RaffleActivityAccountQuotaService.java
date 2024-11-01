@@ -116,7 +116,7 @@ public class RaffleActivityAccountQuotaService extends AbstractRaffleActivityAcc
      */
     @Override
     public void updateOrder(DeliveryOrderEntity deliveryOrderEntity) {
-        repository.updateOder(deliveryOrderEntity);
+        repository.updateOrder(deliveryOrderEntity);
     }
 
     /**
