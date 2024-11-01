@@ -202,7 +202,7 @@ public class RaffleActivityController implements IRaffleActivityService {
      */
     @Override
     @PostMapping("calendar_sign_rebate")
-    public Response<Boolean> calendarSignRebate(String userId) {
+    public Response<Boolean> calendarSignRebate(@RequestParam String userId) {
         try {
             log.info("活动签到返利开始 userId:{}", userId);
             BehaviorEntity behaviorEntity = BehaviorEntity.builder()
@@ -240,7 +240,7 @@ public class RaffleActivityController implements IRaffleActivityService {
      */
     @Override
     @PostMapping("is_calendar_sign_rebate")
-    public Response<Boolean> isCalendarSignRebate(String userId) {
+    public Response<Boolean> isCalendarSignRebate(@RequestParam String userId) {
         try {
             log.info("查询用户是否完成日历签到返利开始 userId:{}", userId);
             String outBusinessNo = dateFormatDay.format(new Date());
@@ -268,7 +268,7 @@ public class RaffleActivityController implements IRaffleActivityService {
      */
     @Override
     @PostMapping("query_user_activity_account")
-    public Response<UserActivityAccountResponseDTO> queryUserActivityAccount(UserActivityAccountRequestDTO request) {
+    public Response<UserActivityAccountResponseDTO> queryUserActivityAccount(@RequestBody UserActivityAccountRequestDTO request) {
         try {
             log.info("查询用户活动账户信息开始 userId:{} activityId:{}", request.getUserId(), request.getActivityId());
             if (StringUtils.isBlank(request.getUserId()) || null == request.getActivityId())
