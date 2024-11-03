@@ -138,6 +138,32 @@ spring:
       send_rebate: send_rebate
       credit_adjust_success: credit_adjust_success
 
+# dubbo
+dubbo:
+  application:
+    name: big-market
+    version: 1.0
+  registry:
+    id: nacos-registry
+    address: nacos://192.168.236.132:8848
+  protocol:
+    name: dubbo
+    port: -1
+  scan:
+    base-packages: com.origamii.trigger.api
+
+# zookeeper
+zookeeper:
+  sdk:
+    config:
+      connect-string: 192.168.236.132:2181
+      base-sleep-time-ms: 1000
+      max-retries: 3
+      session-timeout-ms: 18000
+      connection-timeout-ms: 30000
+
+
+
 
 # 日志配置
 logging:

@@ -25,12 +25,14 @@ import com.origamii.domain.strategy.service.IRaffleStrategy;
 import com.origamii.domain.strategy.service.armory.IStrategyArmory;
 import com.origamii.trigger.api.IRaffleActivityService;
 import com.origamii.trigger.api.dto.*;
+import com.origamii.types.annotiations.DCCValue;
 import com.origamii.types.enums.ResponseCode;
 import com.origamii.types.exception.AppException;
 import com.origamii.types.model.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,6 +51,7 @@ import java.util.List;
 @RestController
 @CrossOrigin("${app.config.cross-origin}")
 @RequestMapping("/api/${app.config.api-version}/raffle/activity")
+@DubboService(version = "1.0")
 public class RaffleActivityController implements IRaffleActivityService {
 
     @Autowired
@@ -69,6 +72,9 @@ public class RaffleActivityController implements IRaffleActivityService {
     private IBehaviorRebateService behaviorRebateService;
     @Autowired
     private ICreditAdjustService creditAdjustService;
+
+    @DCCValue("degradeSwitch:open")
+    private String degradeSwitch;
 
     private final SimpleDateFormat dateFormatDay = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -132,6 +138,15 @@ public class RaffleActivityController implements IRaffleActivityService {
     public Response<ActivityDrawResponseDTO> draw(@RequestBody ActivityDrawRequestDTO request) {
         try {
             log.info("活动抽奖 user:{} activityId:{}", request.getUserId(), request.getActivityId());
+
+            // 降级开关
+            if (!"open".equals(degradeSwitch)) {
+                return Response.<ActivityDrawResponseDTO>builder()
+                        .code(ResponseCode.DEGRADE_SWITCH_OFF.getCode())
+                        .info(ResponseCode.DEGRADE_SWITCH_OFF.getInfo())
+                        .build();
+            }
+
             // 1.参数校验
             if (StringUtils.isBlank(request.getUserId()) || null == request.getActivityId())
                 throw new AppException(ResponseCode.ILLEGAL_PARAMETER.getCode(), ResponseCode.ILLEGAL_PARAMETER.getInfo());
