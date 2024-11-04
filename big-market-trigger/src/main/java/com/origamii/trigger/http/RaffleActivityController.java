@@ -1,6 +1,8 @@
 package com.origamii.trigger.http;
 
 import com.alibaba.fastjson2.JSON;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.origamii.domain.activity.model.entity.*;
 import com.origamii.domain.activity.model.valobj.OrderTradeTypeVO;
 import com.origamii.domain.activity.service.IRaffleActivityAccountQuotaService;
@@ -26,6 +28,7 @@ import com.origamii.domain.strategy.service.armory.IStrategyArmory;
 import com.origamii.trigger.api.IRaffleActivityService;
 import com.origamii.trigger.api.dto.*;
 import com.origamii.types.annotiations.DCCValue;
+import com.origamii.types.annotiations.RateLimiterAccessInterceptor;
 import com.origamii.types.enums.ResponseCode;
 import com.origamii.types.exception.AppException;
 import com.origamii.types.model.Response;
@@ -135,6 +138,8 @@ public class RaffleActivityController implements IRaffleActivityService {
      */
     @Override
     @PostMapping("draw")
+    @HystrixCommand(commandProperties={@HystrixProperty(name ="execution.isolation.thread.timeoutInMilliseconds",value ="150") },fallbackMethod="drawHystrix")
+    @RateLimiterAccessInterceptor(key = "userId",fallbackMethod = "drawRateLimiter", permitsPerSecond = 1.0d,blackListCount = 1)
     public Response<ActivityDrawResponseDTO> draw(@RequestBody ActivityDrawRequestDTO request) {
         try {
             log.info("活动抽奖 user:{} activityId:{}", request.getUserId(), request.getActivityId());
@@ -203,6 +208,22 @@ public class RaffleActivityController implements IRaffleActivityService {
                     .info(ResponseCode.UN_ERROR.getInfo())
                     .build();
         }
+    }
+
+    public Response<ActivityDrawResponseDTO> drawRateLimiter(@RequestBody ActivityDrawRequestDTO request) {
+        log.error("活动抽奖限流 userId:{} activityId:{}", request.getUserId(), request.getActivityId());
+        return Response.<ActivityDrawResponseDTO>builder()
+                .code(ResponseCode.RATE_LIMITER.getCode())
+                .info(ResponseCode.RATE_LIMITER.getInfo())
+                .build();
+    }
+
+    public Response<ActivityDrawResponseDTO> drawHystrix(@RequestBody ActivityDrawRequestDTO request) {
+        log.error("活动抽奖熔断 userId:{} activityId:{}", request.getUserId(), request.getActivityId());
+        return Response.<ActivityDrawResponseDTO>builder()
+                .code(ResponseCode.HYSTRIX.getCode())
+                .info(ResponseCode.HYSTRIX.getInfo())
+                .build();
     }
 
     /**

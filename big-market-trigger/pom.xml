@@ -47,6 +47,19 @@
             <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
         </dependency>
 
+        <!-- sentinel -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+
+        <!-- hystrix -->
+        <dependency>
+            <groupId>com.netflix.hystrix</groupId>
+            <artifactId>hystrix-javanica</artifactId>
+            <version>1.5.18</version>
+        </dependency>
+
         <!-- 系统模块 -->
         <dependency>
             <groupId>com.origamii</groupId>
