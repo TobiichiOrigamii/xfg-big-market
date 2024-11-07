@@ -114,12 +114,6 @@
             <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
         </dependency>
 
-        <!-- sentinel -->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>cn.bugstack.middleware</groupId>
             <artifactId>db-router-spring-boot-starter</artifactId>

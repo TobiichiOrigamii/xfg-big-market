@@ -57,7 +57,7 @@ mini-db-router:
       list: db01,db02
       db00:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:13306/big_market?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
+        url: jdbc:mysql://localhost:3306/big_market?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
         username: root
         password: dsdswww111
         type-class-name: com.zaxxer.hikari.HikariDataSource
@@ -72,7 +72,7 @@ mini-db-router:
           connection-test-query: SELECT 1
       db01:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:13306/big_market_01?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
+        url: jdbc:mysql://localhost:3306/big_market_01?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
         username: root
         password: dsdswww111
         type-class-name: com.zaxxer.hikari.HikariDataSource
@@ -87,7 +87,7 @@ mini-db-router:
           connection-test-query: SELECT 1
       db02:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:13306/big_market_02?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
+        url: jdbc:mysql://localhost:3306/big_market_02?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
         username: root
         password: dsdswww111
         type-class-name: com.zaxxer.hikari.HikariDataSource
@@ -112,7 +112,7 @@ redis:
   sdk:
     config:
       host: localhost
-      port: 16379
+      port: 6379
       pool-size: 10
       min-idle-size: 5
       idle-timeout: 30000
@@ -127,8 +127,8 @@ spring:
   rabbitmq:
     addresses: localhost
     port: 5672
-    username: origami
-    password: dsdswww111
+    username: admin
+    password: admin
     listener:
       simple:
         concurrency: 1 # 并发消费者数量

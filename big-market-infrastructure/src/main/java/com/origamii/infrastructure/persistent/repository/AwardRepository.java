@@ -197,7 +197,9 @@ public class AwardRepository implements IAwardRepository {
             });
         } finally {
             dbRouter.clear();
-            lock.unlock();
+            if (lock.isHeldByCurrentThread()) { // 确保锁是当前线程持有的
+                lock.unlock();
+            }
         }
     }
 
