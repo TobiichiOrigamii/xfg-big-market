@@ -31,7 +31,7 @@ thread:
 #  datasource:
 #    username: root
 #    password: dsdswww111
-#    url: jdbc:mysql://192.168.236.132:13306/big_market?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
+#    url: jdbc:mysql://localhost:13306/big_market?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 #  hikari:
 #    pool-name: Retail_HikariCP
@@ -57,7 +57,7 @@ mini-db-router:
       list: db01,db02
       db00:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://192.168.236.132:13306/big_market?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
+        url: jdbc:mysql://localhost:13306/big_market?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
         username: root
         password: dsdswww111
         type-class-name: com.zaxxer.hikari.HikariDataSource
@@ -72,7 +72,7 @@ mini-db-router:
           connection-test-query: SELECT 1
       db01:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://192.168.236.132:13306/big_market_01?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
+        url: jdbc:mysql://localhost:13306/big_market_01?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
         username: root
         password: dsdswww111
         type-class-name: com.zaxxer.hikari.HikariDataSource
@@ -87,7 +87,7 @@ mini-db-router:
           connection-test-query: SELECT 1
       db02:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://192.168.236.132:13306/big_market_02?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
+        url: jdbc:mysql://localhost:13306/big_market_02?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC&useSSL=true
         username: root
         password: dsdswww111
         type-class-name: com.zaxxer.hikari.HikariDataSource
@@ -111,7 +111,7 @@ mybatis:
 redis:
   sdk:
     config:
-      host: 192.168.236.132
+      host: localhost
       port: 16379
       pool-size: 10
       min-idle-size: 5
@@ -125,7 +125,7 @@ redis:
 # RabbitMQ
 spring:
   rabbitmq:
-    addresses: 192.168.236.132
+    addresses: localhost
     port: 5672
     username: origami
     password: dsdswww111
@@ -145,7 +145,7 @@ dubbo:
     version: 1.0
   registry:
     id: nacos-registry
-    address: nacos://192.168.236.132:8848
+    address: nacos://localhost:8848
   protocol:
     name: dubbo
     port: -1
@@ -156,7 +156,7 @@ dubbo:
 zookeeper:
   sdk:
     config:
-      connect-string: 192.168.236.132:2181
+      connect-string: localhost:2181
       base-sleep-time-ms: 1000
       max-retries: 3
       session-timeout-ms: 18000
