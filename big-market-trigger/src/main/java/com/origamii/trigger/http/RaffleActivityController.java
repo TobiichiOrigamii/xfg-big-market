@@ -76,7 +76,7 @@ public class RaffleActivityController implements IRaffleActivityService {
     @Autowired
     private ICreditAdjustService creditAdjustService;
 
-    @DCCValue("degradeSwitch:open")
+    @DCCValue("degradeSwitch:close")
     private String degradeSwitch;
 
     private final SimpleDateFormat dateFormatDay = new SimpleDateFormat("yyyy-MM-dd");
@@ -143,7 +143,7 @@ public class RaffleActivityController implements IRaffleActivityService {
     public Response<ActivityDrawResponseDTO> draw(@RequestBody ActivityDrawRequestDTO request) {
         try {
             log.info("活动抽奖 user:{} activityId:{}", request.getUserId(), request.getActivityId());
-
+            System.out.println("degradeSwitch:" + degradeSwitch);
             // 降级开关
             if (!"open".equals(degradeSwitch)) {
                 return Response.<ActivityDrawResponseDTO>builder()

@@ -1,7 +1,6 @@
 package com.origamii.config;
 
 import com.origamii.types.annotiations.DCCValue;
-import com.origamii.types.common.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.apache.curator.framework.CuratorFramework;
@@ -87,41 +86,45 @@ public class DCCValueBeanFactory implements BeanPostProcessor {
 
         Field[] fields = targetBeanClass.getDeclaredFields();
         for (Field field : fields) {
-            if (field.isAnnotationPresent(DCCValue.class)) {
-                DCCValue dccValue = field.getAnnotation(DCCValue.class);
-
-                String value = dccValue.value();
-                if (StringUtils.isBlank(value)) {
-                    throw new RuntimeException("DCCValue is empty");
-                }
-
-                String[] split = value.split(Constants.COLON);
-                String key = split[0];
-                String defaultValue = split.length == 2 ? split[1] : null;
-
-                String keyPath = BASE_CONFIG_PATH.concat("/").concat(key);
-                try {
-                    if (null == client.checkExists().forPath(keyPath)) {
-                        client.create().creatingParentsIfNeeded().forPath(keyPath);
-                        if (StringUtils.isNotBlank(defaultValue)) {
-                            field.setAccessible(true);
-                            field.set(targetBeanObject, defaultValue);
-                            field.setAccessible(false);
-                        }
-                    } else {
-                        String configValue = new String(client.getData().forPath(keyPath));
-                        if (StringUtils.isNotBlank(configValue)) {
-                            field.setAccessible(true);
-                            field.set(targetBeanObject, configValue);
-                            field.setAccessible(false);
-                        }
-                    }
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-                dccObjMap.put(keyPath, targetBeanObject);
+            if (!field.isAnnotationPresent(DCCValue.class)) {
+                continue;
             }
+
+            DCCValue dccValue = field.getAnnotation(DCCValue.class);
+
+            String value = dccValue.value();
+            if (org.apache.commons.lang3.StringUtils.isBlank(value)) {
+                throw new RuntimeException(field.getName() + " @DCCValue is not config value config case 「isSwitch/isSwitch:1」");
+            }
+
+            String[] splits = value.split(":");
+            String key = splits[0];
+            String defaultValue = splits.length == 2 ? splits[1] : null;
+
+
+            String keyPath = BASE_CONFIG_PATH_CONFIG.concat("/").concat(key);
+            try {
+                if (null == client.checkExists().forPath(keyPath)) {
+                    client.create().creatingParentsIfNeeded().forPath(keyPath);
+                    if (StringUtils.isNotBlank(defaultValue)) {
+                        field.setAccessible(true);
+                        field.set(targetBeanObject, defaultValue);
+                        field.setAccessible(false);
+                    }
+                } else {
+                    String configValue = new String(client.getData().forPath(keyPath));
+                    if (StringUtils.isNotBlank(configValue)) {
+                        field.setAccessible(true);
+                        field.set(targetBeanObject, configValue);
+                        field.setAccessible(false);
+                    }
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            dccObjMap.put(keyPath, targetBeanObject);
         }
+
         return bean;
     }
 

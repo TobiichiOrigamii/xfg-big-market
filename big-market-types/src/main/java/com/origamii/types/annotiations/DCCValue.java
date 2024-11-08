@@ -14,6 +14,4 @@ public @interface DCCValue {
 
     String value() default "";
 
-
-
 }
