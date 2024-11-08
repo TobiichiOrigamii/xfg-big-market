@@ -746,14 +746,19 @@ public class ActivityRepository implements IActivityRepository {
      */
     @Override
     public void updateOrder(DeliveryOrderEntity deliveryOrderEntity) {
-        RLock lock = redisService.getLock(Constants.RedisKey.ACTIVITY_ACCOUNT_UPDATE_LOCK + deliveryOrderEntity.getUserId());
+        RLock lock = redisService.getLock(Constants.RedisKey.ACTIVITY_ACCOUNT_UPDATE_LOCK + deliveryOrderEntity.getUserId() + Constants.UNDERLINE + deliveryOrderEntity.getOutBusinessNo());
         try {
-            lock.lock(3, TimeUnit.SECONDS);
             // 查询订单
             RaffleActivityOrder raffleActivityOrderReq = new RaffleActivityOrder();
             raffleActivityOrderReq.setUserId(deliveryOrderEntity.getUserId());
             raffleActivityOrderReq.setOutBusinessNo(deliveryOrderEntity.getOutBusinessNo());
             RaffleActivityOrder raffleActivityOrderRes = raffleActivityOrderDao.queryRaffleActivityOrder(raffleActivityOrderReq);
+
+            if (null == raffleActivityOrderRes) {
+                return;
+            }
+
+            lock.lock(3, TimeUnit.SECONDS);
 
             // 账户对象 - 总
             RaffleActivityAccount raffleActivityAccount = new RaffleActivityAccount();
@@ -813,11 +818,12 @@ public class ActivityRepository implements IActivityRepository {
             });
         } finally {
             dbRouter.clear();
-            if (lock.isHeldByCurrentThread()) { // 确保锁是当前线程持有的
+            if (lock.isLocked() && lock.isHeldByCurrentThread()) {
                 lock.unlock();
             }
         }
     }
+
 
     /**
      * 根据活动ID查询活动SKU商品列表
